@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en" ng-app="managedWifi">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://use.typekit.net/ezx0eeb.js"></script>
+    <script type="text/javascript">try{ Typekit.load(); } catch(e) { }</script>
+    <title>WiFi Management- Jive</title>
+    <link rel="stylesheet" href="lib/select2/select2.css">
+    <link rel="stylesheet" href="css/jive.css">
+    <link rel="stylesheet" href="css/managed-wifi.css">
+</head>
+<body class="loading">
+
+<div id="sidr" class="loading-hide">
+    <div class="portal-name">Dairy Queen</div>
+    <ul>
+        <li><a href="https://jive.onjive.com/admin/users/"><i class="icon-user"></i>User</a></li>
+        <li><a href="https://jive.onjive.com/admin/usergroups/"><i class="icon-group"></i>User Groups</a></li>
+        <li><a href="https://jive.onjive.com/admin/phonenumbers/"><i style="font-style: normal; margin-left: 5px; margin-right: 10px; font-weight: bold;">#</i>Phone Numbers</a></li>
+        <li><a href="https://jive.onjive.com/admin/devices/"><i class="icon-phone"></i>Phone Devices</a></li>
+        <li><a href="https://jive.onjive.com/admin/extensions/"><i class="icon-sitemap"></i>Phone Extensions</a></li>
+        <li><a href="https://jive.onjive.com/admin/holdmusic/"><i class="icon-music"></i>Hold Music</a></li>
+        <li><a href="https://jive.onjive.com/admin/directories/"><i class="icon-book"></i>Directories</a></li>
+        <li><a href="https://jive.onjive.com/admin/schedules/"><i class="icon-time"></i>Schedules</a></li>
+        <li><a href="#/" class="active"><i class="icon-signal"></i>WiFi</a></li>
+    </ul>
+</div>
+<header ng-controller="MainMenuController">
+    <nav class="navbar">
+        <div class="navbar-inner">
+            <ul class="nav">
+                <li><a href="#sidr" class="side-menu"><i class="icon-reorder"></i></a></li>
+                <li>
+                    <div class="title"><i class="icon-signal"></i>WiFi</div>
+                </li>
+                <li class="dropdown" ng-class="isActive('Devices')"><a href="#/" data-toggle="dropdown">Devices</a></li>
+                <li class="dropdown" ng-class="isActive('Networks')"><a href="#/networks" data-toggle="dropdown">Networks</a></li>
+                <li class="dropdown" ng-class="isActive('Users')"><a href="#/users" data-toggle="dropdown">Users</a></li>
+                <li class="dropdown" ng-class="isActive('Reports')"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Reports</a>
+                    <ul class="dropdown-menu">
+                        <li ng-class="isActive('DeviceReport')"><a href="#/device-report">Device Activity</a></li>
+                        <li ng-class="isActive('UserReport')"><a href="#/user-report">User Activity</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="meta-menu">
+                <ul class="nav pull-right">
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="icon-user"></i>Theo Zourzouvillys</a>
+                        <ul class="dropdown-menu pull-right user-menu">
+                            <li class="user-account"><a href="#"
+                                                        onclick="alert(&quot;TODO: switch to PBX admin for user theo@crazygreek.co.uk...&quot;)"><img
+                                    src="https://www.gravatar.com/avatar/0d3b17372bd92ad8090dbc813e317cf9?s=48&amp;r=g&amp;d=mm"
+                                    alt="Theo" class="thumbnail pull-left media-object">
+
+                                <div class="media-body">
+                                    <h4 class="media-heading">Theo Zourzouvillys</h4>
+                                    <small>theo@crazygreek.co.uk</small>
+                                </div>
+                            </a></li>
+                            <li class="divider"></li>
+                            <div class="options">
+                                <button ng-click="logout()" class="btn pull-right">Sign Out</button>
+                            </div>
+                        </ul>
+                    </li>
+                    <li class="dropdown help-command"><a href="#help"><i class="icon-question-sign"></i></a></li>
+                    <li>
+                        <div class="logo"></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="page-banner">
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+                    <ul class="status">
+                        <li>
+                            <div class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                                <div class="title">575 E Univesity Pwky<i class="icon-caret-down"></i></div></a>
+                                <ul role="menu" aria-labelledby="dropdownMenu" class="dropdown-menu pbx-menu">
+                                    <li class="pbx-account"><a href="#">
+                                        <div class="media-body">
+                                            <h4 class="media-heading">1545 N Canyon Rd</h4><small>Provo, UT 84604</small>
+                                        </div></a></li>
+                                    <li class="divider"></li>
+                                    <li class="pbx-account"><a href="#">
+                                        <div class="media-body">
+                                            <h4 class="media-heading">Provo Town Center</h4><small>Provo, UT 84601</small>
+                                        </div></a></li>
+                                    <li class="divider"></li>
+                                    <li class="pbx-account"><a href="#">
+                                        <div class="media-body">
+                                            <h4 class="media-heading">575 E Univesity Pwky</h4><small>Orem, UT 84097</small>
+                                        </div></a></li>
+                                    <li class="divider"></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                                <div class="count items red"><i class="icon-warning-sign"></i>10<i class="icon-caret-down"></i></div></a>
+                                <div role="menu" aria-labelledby="dropdownMenu" class="dropdown-menu page-banner-notification"><b>10 Inactive Devices</b>
+                                    <p>As of 10:22 PM</p>
+                                    <a href="#">View Devices</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <form class="form-search">
+                        <input id="global-search" type="text" placeholder="Search" class="input-large">
+                        <div class="global-search">
+                            <div class="result-type"><i class="icon-signal"></i>WiFi Devices</div>
+                            <ul>
+                                <li><a href="#">
+                                    <Result>Item Name Name Item</Result></a></li>
+                                <li><a href="#">
+                                    <Result>Item Name Name Item</Result></a></li>
+                                <li><a href="#">
+                                    <Result>Item Name Name Item</Result></a></li>
+                                <li><a href="#">
+                                    <Result>Item Name Name Item</Result></a></li>
+                                <li><a href="#">
+                                    <Result>Item Name Name Item</Result></a></li>
+                                <li><a href="#">
+                                    <Result>Item Name Name Item</Result></a></li>
+                                <li><a href="#">
+                                    <Result>Item Name Name Item</Result></a></li>
+                            </ul>
+                            <div class="result-type"><i class="icon-rss"></i>Networks</div>
+                            <ul>
+                                <li><a href="#">
+                                    <Result>Item Name Name Item</Result></a></li>
+                                <li><a href="#">
+                                    <Result>Item Name Name Item</Result></a></li>
+                                <li><a href="#">
+                                    <Result>Item Name Name Item</Result></a></li>
+                                <li><a href="#">
+                                    <Result>Item Name Name Item</Result></a></li>
+                            </ul>
+                            <div class="result-type"><i class="icon-group"></i>Users</div>
+                            <ul>
+                                <li><a href="#">
+                                    <Result>Item Name Name Item</Result></a></li>
+                                <li><a href="#">
+                                    <Result>Item Name Name Item</Result></a></li>
+                                <li><a href="#">
+                                    <Result>Item Name Name Item</Result></a></li>
+                            </ul>
+                            <div class="results-info">Showing first 40 results.<a href="#" class="show-all">Show All</a></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="workspace">
+    <div class="content-wrapper">
+        <div class="container-fluid">
+            <ng-view></ng-view>
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="status">
+                    Time of last update: 10:24pm.
+                    <i class="icon-refresh"></i>
+                </div>
+                <div class="copy">&copy; 2013 Jive Communications, Inc<a href="http://www.jive.com">jive.com</a></div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script src="lib/angular/angular.js"></script>
+<script src="lib/angular/angular-resource.js"></script>
+<script src="lib/angular-ext/ui-bootstrap-tpls-0.4.0.js"></script>
+<script src="lib/jquery/jquery-1.10.2.min.js"></script>
+<script src="lib/select2/select2.min.js"></script>
+<script src="lib/jquery.sidr.min.js"></script>
+<script src="lib/scripts.js"></script>
+
+<script src="js/app.js"></script>
+<script src="js/controllers/MainMenuController.js"></script>
+<script src="js/controllers/AccessPointListController.js"></script>
+<script src="js/controllers/HelpController.js"></script>
+<script src="js/controllers/LoginController.js"></script>
+<script src="js/controllers/UsersController.js"></script>
+<script src="js/controllers/NetworksController.js"></script>
+<script src="js/controllers/UserReportController.js"></script>
+<script src="js/controllers/DeviceReportController.js"></script>
+<script src="js/filters.js"></script>
+<script src="js/services/AppSettings.js"></script>
+<script src="js/services/NavigationService.js"></script>
+<script src="js/services/ExceptionHandler.js"></script>
+
+<script src="js/services/unifi/AccessPointRepository.js"></script>
+<script src="js/services/unifi/LoginService.js"></script>
+
+</body>
+</html>

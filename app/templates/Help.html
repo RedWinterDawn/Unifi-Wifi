@@ -1,0 +1,158 @@
+<div class="row-fluid page-title">
+    <div class="span12">
+        <h1 class="content-title">WiFi Help</h1>
+        <ul class="breadcrumb">
+            <li><a href="#/">Devices</a><span class="divider">/</span></li>
+            <li class="active"><a href="#">Help</a></li>
+        </ul>
+    </div>
+</div>
+<div class="page-actions"></div>
+<div class="row-fluid">
+    <div class="span12">
+        <ul class="content-sidebar">
+            <li><a ng-click="setActiveItem('Overview')" ng-class="itemClass('Overview')"><i class="icon-asterisk"></i>Overview</a></li>
+            <li><a ng-click="setActiveItem('Devices')" ng-class="itemClass('Devices')"><i class="icon-asterisk"></i>Devices</a></li>
+            <li><a ng-click="setActiveItem('Networks')" ng-class="itemClass('Networks')"><i class="icon-asterisk"></i>Networks</a></li>
+            <li><a ng-click="setActiveItem('Users')" ng-class="itemClass('Users')"><i class="icon-asterisk"></i>Users</a></li>
+            <li><a ng-click="setActiveItem('Reports')" ng-class="itemClass('Reports')"><i class="icon-asterisk"></i>Reports</a></li>
+        </ul>
+        <div class="content-pane multi">
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row-fluid" ng-show="activeHelpItem == 'Overview'">
+                        <div class="span12">
+                            <h2>Welcome!</h2>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid architecto autem
+                                consequuntur debitis deleniti, dignissimos dolor dolore eaque facere fugiat id incidunt
+                                itaque magni modi nam natus obcaecati optio placeat quia recusandae reiciendis
+                                reprehenderit sunt tempore ullam ut, vel veniam voluptatem! Alias eius iure porro quidem
+                                quod sit tempora temporibus.</p>
+
+                            <p>Aliquid beatae doloribus earum ipsa itaque maxime minima molestiae nam numquam obcaecati
+                                quos ratione, tempora tempore. Adipisci est, ullam. Accusamus aperiam delectus deserunt
+                                est expedita modi nemo quia repellendus, rerum. Aspernatur assumenda beatae cum dolorem
+                                eligendi fugiat itaque, iure maiores molestiae nihil numquam omnis qui reiciendis saepe
+                                sit! Eaque, exercitationem?</p>
+
+                            <p>Ab accusamus aspernatur dolorem ea eaque eligendi esse excepturi iste itaque labore
+                                laboriosam maxime minus nemo nesciunt omnis quae quibusdam, quod quos tenetur ut velit,
+                                veritatis voluptates. A at cum eligendi sunt. Alias, aperiam aspernatur deserunt eaque
+                                facilis maxime minus nesciunt officia provident quaerat quam quis voluptates! Eius, eos
+                                sit.</p>
+                        </div>
+                    </div>
+                    <div class="row-fluid" ng-show="activeHelpItem == 'Devices'">
+                        <div class="span12">
+                            <h2>Devices</h2>
+                            <h3>Section Title</h3>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias culpa cumque dolore sit
+                                vel. Adipisci atque autem culpa deleniti, ea illum ipsum laudantium minima nam, pariatur
+                                possimus tenetur? Accusamus, magni?</p>
+
+                            <p>Adipisci deserunt dignissimos itaque iure, magni molestiae nobis possimus provident sed
+                                sit. Iusto modi neque nostrum quasi vel. Accusamus enim illo in, ipsam natus nihil optio
+                                quibusdam rerum vitae. Vero.</p>
+
+                            <h3>Section Title</h3>
+                            <p>Assumenda aut culpa cumque delectus, deleniti eius esse fuga fugiat hic impedit ipsa
+                                ipsam laboriosam magni maiores minus molestiae molestias natus obcaecati pariatur
+                                perferendis praesentium quis quisquam quos recusandae voluptatibus.</p>
+
+                            <p>Accusantium atque, aut culpa dicta, dolore dolorem dolorum, excepturi facere fuga fugiat
+                                fugit minima molestias obcaecati optio reprehenderit. Corporis et necessitatibus porro
+                                vel velit. Est inventore iste nisi quo ut!</p>
+
+                            <p>Atque deserunt distinctio ducimus eum eveniet explicabo magni maxime modi molestiae quae,
+                                quasi quisquam quos veritatis? Adipisci amet consequatur itaque magnam, nihil nobis
+                                obcaecati optio quae rerum sit tenetur voluptas?</p>
+                        </div>
+                    </div>
+                    <div class="row-fluid" ng-show="activeHelpItem == 'Networks'">
+                        <div class="span12">
+                            <h2>Networks</h2>
+                            <h3>Section Title</h3>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias culpa cumque dolore sit
+                                vel. Adipisci atque autem culpa deleniti, ea illum ipsum laudantium minima nam, pariatur
+                                possimus tenetur? Accusamus, magni?</p>
+
+                            <p>Adipisci deserunt dignissimos itaque iure, magni molestiae nobis possimus provident sed
+                                sit. Iusto modi neque nostrum quasi vel. Accusamus enim illo in, ipsam natus nihil optio
+                                quibusdam rerum vitae. Vero.</p>
+
+                            <h3>Section Title</h3>
+                            <p>Assumenda aut culpa cumque delectus, deleniti eius esse fuga fugiat hic impedit ipsa
+                                ipsam laboriosam magni maiores minus molestiae molestias natus obcaecati pariatur
+                                perferendis praesentium quis quisquam quos recusandae voluptatibus.</p>
+
+                            <p>Accusantium atque, aut culpa dicta, dolore dolorem dolorum, excepturi facere fuga fugiat
+                                fugit minima molestias obcaecati optio reprehenderit. Corporis et necessitatibus porro
+                                vel velit. Est inventore iste nisi quo ut!</p>
+
+                            <p>Atque deserunt distinctio ducimus eum eveniet explicabo magni maxime modi molestiae quae,
+                                quasi quisquam quos veritatis? Adipisci amet consequatur itaque magnam, nihil nobis
+                                obcaecati optio quae rerum sit tenetur voluptas?</p>
+                        </div>
+                    </div>
+                    <div class="row-fluid" ng-show="activeHelpItem == 'Users'">
+                        <div class="span12">
+                            <h2>Users</h2>
+                            <h3>Section Title</h3>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias culpa cumque dolore sit
+                                vel. Adipisci atque autem culpa deleniti, ea illum ipsum laudantium minima nam, pariatur
+                                possimus tenetur? Accusamus, magni?</p>
+
+                            <p>Adipisci deserunt dignissimos itaque iure, magni molestiae nobis possimus provident sed
+                                sit. Iusto modi neque nostrum quasi vel. Accusamus enim illo in, ipsam natus nihil optio
+                                quibusdam rerum vitae. Vero.</p>
+
+                            <h3>Section Title</h3>
+                            <p>Assumenda aut culpa cumque delectus, deleniti eius esse fuga fugiat hic impedit ipsa
+                                ipsam laboriosam magni maiores minus molestiae molestias natus obcaecati pariatur
+                                perferendis praesentium quis quisquam quos recusandae voluptatibus.</p>
+
+                            <p>Accusantium atque, aut culpa dicta, dolore dolorem dolorum, excepturi facere fuga fugiat
+                                fugit minima molestias obcaecati optio reprehenderit. Corporis et necessitatibus porro
+                                vel velit. Est inventore iste nisi quo ut!</p>
+
+                            <p>Atque deserunt distinctio ducimus eum eveniet explicabo magni maxime modi molestiae quae,
+                                quasi quisquam quos veritatis? Adipisci amet consequatur itaque magnam, nihil nobis
+                                obcaecati optio quae rerum sit tenetur voluptas?</p>
+                        </div>
+                    </div>
+                    <div class="row-fluid" ng-show="activeHelpItem == 'Reports'">
+                        <div class="span12">
+                            <h2>Reports</h2>
+                            <h3>Section Title</h3>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias culpa cumque dolore sit
+                                vel. Adipisci atque autem culpa deleniti, ea illum ipsum laudantium minima nam, pariatur
+                                possimus tenetur? Accusamus, magni?</p>
+
+                            <p>Adipisci deserunt dignissimos itaque iure, magni molestiae nobis possimus provident sed
+                                sit. Iusto modi neque nostrum quasi vel. Accusamus enim illo in, ipsam natus nihil optio
+                                quibusdam rerum vitae. Vero.</p>
+
+                            <h3>Section Title</h3>
+                            <p>Assumenda aut culpa cumque delectus, deleniti eius esse fuga fugiat hic impedit ipsa
+                                ipsam laboriosam magni maiores minus molestiae molestias natus obcaecati pariatur
+                                perferendis praesentium quis quisquam quos recusandae voluptatibus.</p>
+
+                            <p>Accusantium atque, aut culpa dicta, dolore dolorem dolorum, excepturi facere fuga fugiat
+                                fugit minima molestias obcaecati optio reprehenderit. Corporis et necessitatibus porro
+                                vel velit. Est inventore iste nisi quo ut!</p>
+
+                            <p>Atque deserunt distinctio ducimus eum eveniet explicabo magni maxime modi molestiae quae,
+                                quasi quisquam quos veritatis? Adipisci amet consequatur itaque magnam, nihil nobis
+                                obcaecati optio quae rerum sit tenetur voluptas?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
