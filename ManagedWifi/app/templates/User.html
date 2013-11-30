@@ -1,0 +1,84 @@
+<div class="row-fluid page-title">
+    <div class="span12">
+        <h1 class="content-title">User Details for {{original.mac}}</h1>
+        <ul class="breadcrumb">
+            <li><a href="#/users">Device Users</a><span class="divider">/</span></li>
+            <li class="active"><a href="#">User Details for {{original.mac}}</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="page-actions">
+    <ul>
+        <li><a ng-click="toggleBlock()"><i ng-class="original.blocked ? 'icon-ok-circle' : 'icon-ban-circle'"></i>{{original.blocked ? 'Unblock' : 'Block'}} User</a></li>
+        <li ng-show="original.is_guest"><a ng-click="toggleAuthorize()"><i ng-class="original.authorized ? 'icon-unlock-alt' : 'icon-lock'"></i>{{original.authorized ? 'Unauthorize' : 'Authorize'}} User</a></li>
+    </ul>
+</div>
+
+<div class="row-fluid">
+    <div class="span12">
+        <ul class="content-sidebar">
+            <li><a class="active"><i class="icon-asterisk"></i>User Details</a></li>
+        </ul>
+        <div class="content-pane multi">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="span12">
+                        <ul class="nav nav-tabs">
+                            <li ng-class="activeSubItem == 'Overview' ? 'active' : ''"><a ng-click="activeSubItem = 'Overview'">Overview</a></li>
+                            <li ng ng-class="activeSubItem == 'Activity' ? 'active' : ''"><a ng-click="activeSubItem = 'Activity'">Network Activity</a></li>
+                        </ul>
+
+                        <div ng-show="activeSubItem=='Overview'">
+                            <h2>User Details</h2>
+                            <h3>Overview</h3>
+                            <div class="row-fluid">
+                                <dl class="dl-horizontal">
+                                    <dt>MAC Address</dt>
+                                    <dd>{{original.mac}}</dd>
+                                    <dt>Hostname</dt>
+                                    <dd>{{original.hostname}} &nbsp;</dd>
+                                    <dt>IP Address</dt>
+                                    <dd>{{original.ip}} &nbsp;</dd>
+                                    <dt>Uptime</dt>
+                                    <dd>{{original.uptime | uptime}} &nbsp;</dd>
+                                    <dt>Connected AP</dt>
+                                    <dd><a ng-href="#/device/{{original.apId}}" ng-show="{{original.ap}}">{{original.ap}}</a><span ng-hide="{{original.ap}}">not connected</span></dd>
+                                    <dt>Connected Network</dt>
+                                    <dd><a ng-href="#/network/{{original.networkId}}" ng-show="{{original.essid}}">{{original.essid}}</a><span ng-hide="{{original.essid}}">not connected</span></dd>
+                                </dl>
+                            </div>
+                        </div>
+
+                        <div ng-show="activeSubItem=='Activity'">
+                            <h2>User Details</h2>
+                            <h3>Network Activity</h3>
+                            <p>The following information reports on the activity, over the wire, from the device to your wired network.</p>
+                            <div class="row-fluid">
+                                <dl class="dl-horizontal">
+                                    <dt>Channel</dt>
+                                    <dd>{{original.channel}}</dd>
+                                    <dt>Signal</dt>
+                                    <dd>{{original.rssi | signal}} ({{original.signal}} dBm)</dd>
+                                    <dt>TX Rate</dt>
+                                    <dd>{{original.tx_rate | transferRate}}</dd>
+                                    <dt>RX Rate</dt>
+                                    <dd>{{original.rx_rate | transferRate}}</dd>
+                                    <dt>Activity</dt>
+                                    <dd>{{original | deviceActivity | pktsBytes}} B/sec</dd>
+
+                                    <dt>Down Pkts / Bytes</dt>
+                                    <dd>{{original.tx_packets | pktsBytes}} / {{original.tx_bytes | pktsBytes}}</dd>
+                                    <dt>Up Pkts / Bytes</dt>
+                                    <dd>{{original.rx_packets | pktsBytes}} / {{original.rx_bytes | pktsBytes}}</dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>

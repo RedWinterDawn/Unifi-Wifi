@@ -1,0 +1,111 @@
+<div class="row-fluid page-title">
+    <div class="span12">
+        <h1 class="content-title">Manage {{original.friendly_name}} </h1>
+        <ul class="breadcrumb">
+            <li><a href="#/sites">Sites</a><span class="divider">/</span></li>
+            <li class="active"><a href="#">Manage {{original.friendly_name}}</a></li>
+        </ul>
+    </div>
+</div>
+<div class="page-actions">
+    <ul ng-hide="isNew">
+        <li><a ng-click="delete()"><i class="icon-trash"></i>Delete Site</a></li>
+    </ul>
+</div>
+<div class="row-fluid">
+    <div class="span12">
+        <ul class="content-sidebar">
+            <li><a ng-click="activeItem = 'Details'" ng-class="activeItem == 'Details' ? 'active' : ''"><i class="icon-asterisk"></i>Site Details</a></li>
+            <li><a ng-click="activeItem = 'Macs'" ng-class="activeItem == 'Macs' ? 'active' : ''"><i class="icon-asterisk"></i>Assigned Devices</a></li>
+        </ul>
+        <div class="content-pane multi">
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row-fluid">
+                        <div class="span12">
+
+                            <div ng-show="activeItem == 'Details'">
+                                <h2>Site Details</h2>
+                                <p>Configure the settings for this site. The account id for this site is pre-determined and should be provided to you outside this application.</p>
+                            </div>
+
+                            <div ng-show="activeItem == 'Macs'">
+                                <h2>Assigned Devices</h2>
+                                <p>Provide the list of device MACs for this location. Provide each on their own line.</p>
+                            </div>
+
+                            <div class="row-fluid"><div class="span8 offset2">
+                            <form name="form" class="form-horizontal" novalidate>
+
+                                <div class="field-section" ng-show="activeItem=='Details'">
+                                    <div class="control-group" ng-class="form.name.$invalid ? 'error' : ''">
+                                        <label for="friendly_name" class="control-label">
+                                            Site name<i class="icon-asterisk required"></i>
+                                        </label>
+                                        <div class="controls">
+                                            <input type="text" id="friendly_name" name="friendly_name" placeholder="Provide a name..." ng-model="site.friendly_name" required>
+                                            <i ng-hide="form.friendly_name.$error.required" class="icon-ok-sign active"></i>
+                                            <div ng-show="form.friendly_name.$error.required" class="tip help">Name is required</div>
+                                        </div>
+                                    </div>
+                                    <div class="control-group" ng-class="form.account_id.$invalid ? 'error' : ''">
+                                        <label for="account_id" class="control-label">
+                                            Account Id<i class="icon-asterisk required"></i>
+                                        </label>
+                                        <div class="controls">
+                                            <input type="text" id="account_id" name="friendly_name" placeholder="Provide an id..." ng-model="site.account_id" required>
+                                            <i ng-hide="form.account_id.$error.required" class="icon-ok-sign active"></i>
+                                            <div ng-show="form.account_id.$error.required" class="tip help">Account Id is required</div>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label for="address" class="control-label">Address</label>
+                                        <div class="controls">
+                                            <input type="text" id="address" name="address" placeholder="Provide an address..." ng-model="site.address1">
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label for="city" class="control-label">City</label>
+                                        <div class="controls">
+                                            <input type="text" id="city" name="city" placeholder="Provide a city..." ng-model="site.city">
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label for="state" class="control-label">State</label>
+                                        <div class="controls">
+                                            <input type="text" id="state" name="state" placeholder="Provide a state..." ng-model="site.state">
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label for="zip" class="control-label">Zip</label>
+                                        <div class="controls">
+                                            <input type="text" id="zip" name="zip" placeholder="Provide a zip..." ng-model="site.zip">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="field-section" ng-show="activeItem=='Macs'">
+                                    <div class="control-group">
+                                        <label for="macs" class="control-label">Assigned Device MACs</label>
+                                        <div class="controls">
+                                            <textarea id="macs" placeholder="Provide a name..." ng-model="site.macs" rows="15"></textarea>
+                                            <div class="tip help">provide each MAC address on a seperate line</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+                            </div></div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="form-submit-sticky" ng-show="isNew || isDirty()">
+    <button class="btn btn-primary" ng-disabled="form.$invalid" ng-click="update()">{{isNew ? "Create" : "Update"}}</button>
+    <button class="btn btn-link clear-form" ng-hide="isNew" ng-click="reset()">Discard Changes</button>
+</div>

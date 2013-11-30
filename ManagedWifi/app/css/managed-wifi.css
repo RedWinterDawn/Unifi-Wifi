@@ -1,0 +1,19 @@
+.btn-group > .dropdown-toggle.select-check {border-top-right-radius: 0px; border-bottom-right-radius: 0px}
+.status {color: #b3b3b3; float: left; margin: 10px;}
+.modal {position: absolute;}
+a, .icon-refresh {cursor: pointer}
+
+.dropdown-toggle.active i {color: #666666;}
+.dropdown-menu li {list-style: none; margin-bottom: 4px}
+.dropdown-menu ul {margin-left: 20px;}
+.dropdown-menu .filters li, .dropdown-menu.filters li {cursor: pointer;}
+.dropdown-menu .filters input, .dropdown-menu.filters input {margin: -2px 6px 0 0;}
+.dropdown-menu .filters label, .dropdown-menu.filters label {display: inline;}
+.dropdown-menu.filters li {padding: 3px 20px;}
+.notificationMessage {width: 280px;}
+.notificationMessage .icon-remove {cursor: pointer; padding: 5px; float: right; margin: -10px -26px 0 0}
+.form-submit-sticky {left:0}
+
+.control-label .section-help {cursor: pointer; color: #5299da; font-size: 13px; margin: 0 0 2px 0; display: inline; float: none}
+
+.dl-horizontal dt, .dl-horizontal dd {margin-bottom: 10px;}

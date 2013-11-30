@@ -1,0 +1,89 @@
+<div class="row-fluid page-title">
+    <div class="span12">
+        <h1 class="content-title">Manage Access Point Devices</h1>
+        <ul class="breadcrumb">
+            <li class="active"><a href="#">Access Point Devices</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="row-fluid">
+    <div class="span12">
+        <div class="page-actions">
+        </div>
+    </div>
+</div>
+
+<div class="row-fluid">
+    <div class="span12">
+        <div class="well table-tools">
+            <div class="btn-toolbar">
+                <div class="search-extensions">
+                    <input type="text" placeholder="Search by name, MAC or IP..." ng-model="filter.searchables" class="search pull-right">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row-fluid">
+<div class="span12">
+<table class="table table-striped table-condensed">
+<thead>
+<tr>
+    <th><a ng-click="paginator.setOrder('name')">Name<i ng-class="paginator | sortClass:'name'"></i></a></th>
+    <th><a ng-click="paginator.setOrder('mac')">MAC Address<i ng-class="paginator | sortClass:'mac'"></i></a></th>
+    <th><a ng-click="paginator.setOrder('orderableIp')">IP Address<i ng-class="paginator | sortClass:'orderableIp'"></i></a></th>
+    <th>
+        <div class="dropdown"><a href="#" role="button" data-toggle="dropdown" class="dropdown-toggle" ng-class="filter.state ? 'active' : null">Status<i class="icon-filter"></i></a>
+            <ul role="menu" class="dropdown-menu">
+                <li><a ng-click="paginator.setOrder('state')">Sort A-&gt;Z</a></li>
+                <li><a ng-click="paginator.setOrder('-state')">Sort Z-&gt;A</a></li>
+                <li class="divider"></li>
+                <li class="filters">
+                    <div>
+                        <ul>
+                            <li><input id="disconnectedState" type="checkbox" ng-model="filter.state" ng-true-value="0" ng-false-value=""><label for="disconnectedState">Disconnected</label></li>
+                            <li><input id="connectedState" type="checkbox" ng-model="filter.state" ng-true-value="1" ng-false-value=""><label for="connectedState">Connected</label></li>
+                            <li><input id="pendingState" type="checkbox" ng-model="filter.state" ng-true-value="2" ng-false-value=""><label for="pendingState">Pending Adoption</label></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </th>
+    <th><a ng-click="paginator.setOrder('user_num_sta')"># of Clients<i ng-class="paginator | sortClass:'user_num_sta'"></i></a></th>
+    <th><a ng-click="paginator.setOrder('tx_bytes')">Download<i ng-class="paginator | sortClass:'tx_bytes'"></i></a></th>
+    <th><a ng-click="paginator.setOrder('rx_bytes')">Upload<i ng-class="paginator | sortClass:'rx_bytes'"></i></a></th>
+    <th class="no-hover"></th>
+</tr>
+</thead>
+<tbody>
+<tr ng-repeat="accessPoint in accessPoints | filter: filter | storeItemCount: paginator.updateTotalItems | orderBy: paginator.orderBy | slice:(paginator.currentPage-1)*20:20">
+    <td>{{accessPoint.name}}</td>
+    <td>
+        <a ng-show="accessPoint.state == 1" ng-href="#/device/{{accessPoint.id}}">{{accessPoint.mac}}</a>
+        <span ng-hide="accessPoint.adopted">{{accessPoint.mac}}</span>
+    </td>
+    <td>{{accessPoint.ip}}</td>
+    <td>{{accessPoint | deviceStatus}}</td>
+    <td>{{accessPoint.user_num_sta}}</td>
+    <td>{{accessPoint.tx_bytes | bytes}}</td>
+    <td>{{accessPoint.rx_bytes | bytes}}</td>
+    <td>
+        <div class="dropdown settings" ng-hide="accessPoint.state > 2"><a href="#" data-toggle="dropdown" class="dropdown-toggle icons"><i class="icon-cog"></i><i class="icon-caret-down"></i></a>
+            <ul role="menu" aria-labelledby="dropdownMenu" class="dropdown-menu pull-right">
+                <li ng-show="accessPoint.state == 1"><a ng-href="#/device/{{accessPoint.id}}">Edit Device</a></li>
+                <li ng-show="accessPoint.state == 2"><a ng-click="adoptDevice(accessPoint)">Adopt Device</a></li>
+            </ul>
+        </div>
+    </td>
+</tr>
+
+</tbody>
+</table>
+    <div class="pull-right">Showing {{(paginator.currentPage-1)*20}}-{{ paginator.currentPage*20 > paginator.totalItems ? paginator.totalItems : paginator.currentPage*20}} of {{paginator.totalItems}} </div>
+<pagination total-items="paginator.totalItems" page="paginator.currentPage" max-size="10" items-per-page="20" boundary-links="true"></pagination>
+
+</div>
+</div>

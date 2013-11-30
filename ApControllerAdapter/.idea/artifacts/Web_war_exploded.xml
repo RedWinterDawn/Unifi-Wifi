@@ -1,0 +1,40 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="Web:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/Web_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Web" />
+          <element id="module-output" name="Unifi" />
+          <element id="module-output" name="WebApi" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: org.jboss.resteasy:resteasy-jaxrs:3.0.2.Final" />
+          <element id="library" level="project" name="Maven: org.jboss.resteasy:jaxrs-api:3.0.2.Final" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-simple:1.5.8" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.5.8" />
+          <element id="library" level="project" name="Maven: org.scannotation:scannotation:1.0.3" />
+          <element id="library" level="project" name="Maven: javassist:javassist:3.12.1.GA" />
+          <element id="library" level="project" name="Maven: javax.annotation:jsr250-api:1.0" />
+          <element id="library" level="project" name="Maven: javax.activation:activation:1.1" />
+          <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpclient:4.2.1" />
+          <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpcore:4.2.1" />
+          <element id="library" level="project" name="Maven: commons-logging:commons-logging:1.1.1" />
+          <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.6" />
+          <element id="library" level="project" name="Maven: commons-io:commons-io:2.1" />
+          <element id="library" level="project" name="Maven: net.jcip:jcip-annotations:1.0" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.2.1" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.2.1" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.2.1" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.jaxrs:jackson-jaxrs-base:2.2.1" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.2.1" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.module:jackson-module-jaxb-annotations:2.2.1" />
+          <element id="library" level="project" name="Maven: org.jboss.resteasy:resteasy-jackson2-provider:3.0.2.Final" />
+          <element id="library" level="project" name="Maven: org.jboss.resteasy:resteasy-client:3.0.2.Final" />
+          <element id="library" level="project" name="Maven: org.mongodb:mongo-java-driver:2.11.3" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="Web/web/Web" />
+    </root>
+  </artifact>
+</component>

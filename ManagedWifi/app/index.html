@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en" ng-app="managedWifi">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="//use.typekit.net/weu0tnb.js"></script>
+    <script type="text/javascript">try{ Typekit.load(); } catch(e) { }</script>
+    <title>WiFi Management- Jive</title>
+    <link rel="stylesheet" href="lib/select2/select2.css">
+    <link rel="stylesheet" href="css/jive.css">
+    <link rel="stylesheet" href="css/managed-wifi.css">
+</head>
+<body class="loading">
+
+<div ng-controller="NotificationController" class="waiting-notification" ng-cloak ng-show="alerts.length>0">
+    <div ng-repeat="alert in alerts">
+        <div class="notificationMessage"
+             ng-class="alert.type=='success' ? 'success-example' : alert.type=='error' ? 'failure-example' : ''"
+        >
+            <i class="icon-remove" ng-click="closeAlert(alert)"></i>
+            <i class="icon-spinner icon-spin" ng-show="alert.type=='processing'"></i>
+            <i class="icon-ok" ng-show="alert.type=='success'"></i>
+            <i class="icon-warning-sign" ng-show="alert.type=='error'"></i>
+            {{alert.msg}}
+        </div>
+    </div>
+</div>
+
+
+<div id="sidr" class="loading-hide">
+    <div class="portal-name">Dairy Queen</div>
+    <ul>
+        <li><a href="https://jive.onjive.com/admin/users/"><i class="icon-user"></i>User</a></li>
+        <li><a href="https://jive.onjive.com/admin/usergroups/"><i class="icon-group"></i>User Groups</a></li>
+        <li><a href="https://jive.onjive.com/admin/phonenumbers/"><i style="font-style: normal; margin-left: 5px; margin-right: 10px; font-weight: bold;">#</i>Phone Numbers</a></li>
+        <li><a href="https://jive.onjive.com/admin/devices/"><i class="icon-phone"></i>Phone Devices</a></li>
+        <li><a href="https://jive.onjive.com/admin/extensions/"><i class="icon-sitemap"></i>Phone Extensions</a></li>
+        <li><a href="https://jive.onjive.com/admin/holdmusic/"><i class="icon-music"></i>Hold Music</a></li>
+        <li><a href="https://jive.onjive.com/admin/directories/"><i class="icon-book"></i>Directories</a></li>
+        <li><a href="https://jive.onjive.com/admin/schedules/"><i class="icon-time"></i>Schedules</a></li>
+        <li><a href="#/" class="active"><i class="icon-signal"></i>WiFi</a></li>
+    </ul>
+</div>
+<header ng-controller="MainMenuController">
+    <nav class="navbar">
+        <div class="navbar-inner">
+            <ul class="nav">
+                <li><a href="#sidr" class="side-menu"><i class="icon-reorder"></i></a></li>
+                <li>
+                    <div class="title"><i class="icon-signal"></i>WiFi</div>
+                </li>
+                <li class="dropdown" ng-class="isActive('Devices')"><a ng-click="navigate('devices')" data-toggle="dropdown">Access Point Devices</a></li>
+                <li class="dropdown" ng-class="isActive('Networks')"><a ng-click="navigate('networks')" data-toggle="dropdown">Wireless Networks</a></li>
+                <li class="dropdown" ng-class="isActive('Users')"><a ng-click="navigate('users')" data-toggle="dropdown">Device Users</a></li>
+                <li class="dropdown" ng-class="isActive('Settings')"><a ng-click="navigate('settings')" data-toggle="dropdown">Site Settings</a></li>
+            </ul>
+            <div class="meta-menu">
+                <ul class="nav pull-right">
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="icon-user"></i>Theo Zourzouvillys</a>
+                        <ul class="dropdown-menu pull-right user-menu">
+                            <li class="user-account"><a href="#"
+                                                        onclick="alert(&quot;TODO: switch to PBX admin for user theo@crazygreek.co.uk...&quot;)"><img
+                                    src="https://www.gravatar.com/avatar/0d3b17372bd92ad8090dbc813e317cf9?s=48&amp;r=g&amp;d=mm"
+                                    alt="Theo" class="thumbnail pull-left media-object">
+
+                                <div class="media-body">
+                                    <h4 class="media-heading">Theo Zourzouvillys</h4>
+                                    <small>theo@crazygreek.co.uk</small>
+                                </div>
+                            </a></li>
+                            <li class="divider"></li>
+                            <div class="options">
+                                <button ng-click="logout()" class="btn pull-right">Sign Out</button>
+                            </div>
+                        </ul>
+                    </li>
+                    <li class="dropdown help-command"><a ng-click="navigate('help')"><i class="icon-question-sign"></i></a></li>
+                    <li>
+                        <div class="logo"></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="page-banner">
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+                    <ul class="status">
+                        <li>
+                            <div class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                                <div class="title"><span ng-bind="selectedSite.friendly_name"></span><i class="icon-caret-down"></i></div></a>
+
+                                <ul role="menu" aria-labelledby="dropdownMenu" class="dropdown-menu pbx-menu">
+                                    <li class="pbx-account" ng-repeat="site in sites"><a ng-click="selectSite(site)">
+                                        <div class="media-body">
+                                            <h4 class="media-heading">{{site.friendly_name}}</h4><small>{{site.city}}, {{site.state}} {{site.zip}}</small>
+                                        </div></a></li>
+                                    <li class="divider"></li>
+                                </ul>
+
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="workspace">
+    <div class="content-wrapper">
+        <div class="container-fluid">
+            <div ng-view></div>
+        </div>
+    </div>
+</div>
+
+<footer ng-controller="RefreshDataController">
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="status">
+                    Data current as of <span ng-bind="lastRefreshed"></span>
+                    <i class="icon-refresh" ng-click="refreshData()"></i>
+                </div>
+                <div class="copy">&copy; 2013 Jive Communications, Inc<a href="http://www.jive.com">jive.com</a></div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script src="lib/angular/angular.js"></script>
+<script src="lib/angular/angular-resource.js"></script>
+<script src="lib/angular/angular-route.js"></script>
+<script src="lib/angular/angular-cookies.js"></script>
+<script src="lib/angular-ext/ui-bootstrap-tpls-0.6.0.js"></script>
+<script src="lib/jquery/jquery-1.10.2.min.js"></script>
+<script src="lib/select2/select2.min.js"></script>
+<script src="lib/jquery.sidr.min.js"></script>
+<script src="lib/scripts.js"></script>
+<script src="lib/moment.min.js"></script>
+<script src="lib/jive.js"></script>
+<script src="lib/pubsub.js"></script>
+
+<script src="js/app.js"></script>
+<script src="js/appLib.js"></script>
+<script src="js/directives/validators.js"></script>
+
+<script src="js/filters.js"></script>
+<script src="js/services/AppSettings.js"></script>
+<script src="js/services/DialogService.js"></script>
+<script src="js/services/NavigationService.js"></script>
+<script src="js/services/MessagingService.js"></script>
+<script src="js/services/NotificationService.js"></script>
+<script src="js/services/ExceptionHandler.js"></script>
+
+<script src="js/services/unifi/unifiLib.js"></script>
+<script src="js/services/unifi/UnifiAccessPointService.js"></script>
+<script src="js/services/unifi/UnifiAccessPointUserService.js"></script>
+<script src="js/services/unifi/UnifiNetworkService.js"></script>
+<script src="js/services/unifi/UnifiLoginService.js"></script>
+<script src="js/services/unifi/UnifiSiteSettingsService.js"></script>
+<script src="js/services/unifi/UnifiSiteService.js"></script>
+
+<script src="js/services/mock/MockAccessPointService.js"></script>
+<script src="js/services/mock/MockAccessPointUserService.js"></script>
+<script src="js/services/mock/MockNetworkService.js"></script>
+<script src="js/services/mock/MockSiteSettingsService.js"></script>
+<script src="js/services/mock/MockSiteService.js"></script>
+
+<script src="js/controllers/MainMenuController.js"></script>
+<script src="js/controllers/NotificationController.js"></script>
+<script src="js/controllers/ConfirmDialogController.js"></script>
+<script src="js/controllers/RefreshDataController.js"></script>
+
+<script src="js/controllers/AccessPointListController.js"></script>
+<script src="js/controllers/AccessPointController.js"></script>
+<script src="js/controllers/HelpController.js"></script>
+<script src="js/controllers/LoginController.js"></script>
+<script src="js/controllers/UsersController.js"></script>
+<script src="js/controllers/UserController.js"></script>
+<script src="js/controllers/NetworkController.js"></script>
+<script src="js/controllers/NetworksController.js"></script>
+<script src="js/controllers/SiteSettingsController.js"></script>
+<script src="js/controllers/SitesController.js"></script>
+<script src="js/controllers/SiteController.js"></script>
+
+</body>
+</html>

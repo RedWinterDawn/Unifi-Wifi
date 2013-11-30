@@ -1,0 +1,4 @@
+These services are RPC in nature due to the Unifi controller being an RPC endpoint.
+It is easier to adapt an RPC api to a resource api (than the other way around) if other device providers are introduced.
+This also has the advantage of leaner controllers. Controller actions will primarly map one-to-one actions with the service.
+This will allow the service to own the responsibility of interpreting the action and translate it to the appropriate device "controller".

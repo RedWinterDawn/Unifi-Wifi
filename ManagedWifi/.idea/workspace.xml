@@ -1,0 +1,913 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="cd40d016-37d7-496b-b4a4-1c02ae251e66" name="Default" comment="" />
+    <ignored path="ManagedWifi.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <file path="/index.html" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385644471088" ignored="false" />
+    <file path="/index2.html" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1374792617537" ignored="false" />
+    <file path="/app.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385562491807" ignored="false" />
+    <file path="/web-server.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1374794387842" ignored="false" />
+    <file path="/a.dummy" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385640320400" ignored="false" />
+    <file path="/EventListController.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1374849632715" ignored="false" />
+    <file path="/AccessPointRepository.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1384575296643" ignored="false" />
+    <file path="/ExceptionHandler.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385581249465" ignored="false" />
+    <file path="/Dummy.txt" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385492174969" ignored="false" />
+    <file path="/MainMenuController.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385643020941" ignored="false" />
+    <file path="/AccessPointList.html" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1384861138405" ignored="false" />
+    <file path="/*.regexp" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1374852520945" ignored="false" />
+    <file path="$USER_HOME$/Downloads/portal_design/app/html/list.html" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1374852445696" ignored="false" />
+    <file path="/managed-wifi.css" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385582575035" ignored="false" />
+    <file path="/appSettings.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1374855466555" ignored="false" />
+    <file path="/AccessPointListController.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385584676542" ignored="false" />
+    <file path="/system.properties" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1374858677189" ignored="false" />
+    <file path="$PROJECT_DIR$/../../../unifi-decompiled/system.properties" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1374858677189" ignored="false" />
+    <file path="$PROJECT_DIR$/../WEB-INF/web.xml" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1374860763549" ignored="false" />
+    <file path="G:/Development/Java/Projects/Clients/MPL MultiReg/MultiReg/classes/com/contentconnections/mpl/multireg/Course.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1380647209707" ignored="false" />
+    <file path="/Course.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1380647209328" ignored="false" />
+    <file path="/JsonServletHandler.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1380647327913" ignored="false" />
+    <file path="G:/Development/Java/Projects/Clients/MPL MultiReg/MultiReg/classes/com/contentconnections/mpl/multireg/JsonServletHandler.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1380647355702" ignored="false" />
+    <file path="G:/Development/Java/Projects/Clients/MPL MultiReg/MultiReg/classes/com/contentconnections/mpl/multireg/FileExporterHandler.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1380647385310" ignored="false" />
+    <file path="C:/Temp/intellijad/org/apache/myfaces/el/PropertyResolverImpl.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1380647542670" ignored="false" />
+    <file path="G:/Development/Java/Projects/Clients/MPL MultiReg/MultiReg.Web/classes/com/contentconnections/mpl/multireg/jsf/CourseHandler.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1380647792841" ignored="false" />
+    <file path="/CourseHandler.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1380647790427" ignored="false" />
+    <file path="/fragment.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385563553157" ignored="false" />
+    <file path="G:/Development/Java/Projects/Clients/MPL MultiReg/MultiReg.Web/classes/com/contentconnections/mpl/multireg/jsf/ProfileHandler.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1380658318952" ignored="false" />
+    <file path="/ProfileHandler.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1380658317354" ignored="false" />
+    <file path="G:/Development/Java/Projects/Clients/MPL MultiReg/WebApp/web/assessment/detailedReport.jsp" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1380744087093" ignored="false" />
+    <file path="G:/Development/Java/Projects/Clients/MPL MultiReg/WebApp/web/WEB-INF/faces-config.xml" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1380744644120" ignored="false" />
+    <file path="/faces-config.xml" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1380744342212" ignored="false" />
+    <file path="G:/Development/Java/Projects/Clients/MPL MultiReg/WebApp/web/WEB-INF/applicationContextWebApp.xml" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1380744569775" ignored="false" />
+    <file path="/applicationContextWebApp.xml" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1380744569775" ignored="false" />
+    <file path="/detailedReport.jsp" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1380744084398" ignored="false" />
+    <file path="G:/Development/Java/Projects/Clients/MPL MultiReg/MultiReg.Web/classes/com/contentconnections/mpl/multireg/jsf/AssessmentReportHandler.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1380745438689" ignored="false" />
+    <file path="/AssessmentReportHandler.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1380745012967" ignored="false" />
+    <file path="G:/Development/Java/Projects/Clients/MPL MultiReg/WebApp/web/assessment/detailedReportPrinter.jsp" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1380745268025" ignored="false" />
+    <file path="G:/Development/Java/Projects/Clients/MPL MultiReg/WebApp/web/assessment/detailedReportPrinterAnonymous.jsp" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1380745278593" ignored="false" />
+    <file path="$APPLICATION_HOME_DIR$/plugins/jsp/lib/jsp-impl.jar!/standardSchemas/jspdirectives.xsd" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1380822936347" ignored="false" />
+    <file path="$APPLICATION_HOME_DIR$/plugins/jsp/lib/jsp-impl.jar!/standardSchemas/jspxml2.xsd" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1380822936347" ignored="false" />
+    <file path="G:/Development/Java/Projects/Clients/MPL MultiReg/MultiReg/classes/com/contentconnections/mpl/multireg/VanityUrlFilter.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1381509244400" ignored="false" />
+    <file path="/VanityUrlFilter.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1381509210016" ignored="false" />
+    <file path="G:/Development/Java/Projects/Clients/MPL MultiReg/WebApp/web/admin/publisher/books.jsp" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1381509468217" ignored="false" />
+    <file path="/books.jsp" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1381509468217" ignored="false" />
+    <file path="/AccessPoint.html" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1384861158531" ignored="false" />
+    <file path="/AccessPointController.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1384858077307" ignored="false" />
+    <file path="/MockAccessPointRepository.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1384551261145" ignored="false" />
+    <file path="/filters.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1384866164925" ignored="false" />
+    <file path="/appLib.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385644693722" ignored="false" />
+    <file path="/a.html" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1384507273114" ignored="false" />
+    <file path="/MockAccessPointUserRepository.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1384575190589" ignored="false" />
+    <file path="/UsersController.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385585642641" ignored="false" />
+    <file path="/Users.html" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1384863521255" ignored="false" />
+    <file path="/UserReport.html" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1384559207439" ignored="false" />
+    <file path="/jive.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1384837263126" ignored="false" />
+    <file path="/AccessPointUserRepository.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1384623975035" ignored="false" />
+    <file path="/LoginService.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1384575349890" ignored="false" />
+    <file path="/NetworkRepository.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1384575374396" ignored="false" />
+    <file path="/MockNetworkRepository.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1384576347076" ignored="false" />
+    <file path="/Networks.html" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1384860948214" ignored="false" />
+    <file path="/NetworksController.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385584864799" ignored="false" />
+    <file path="/MockNetworkService.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1384868336952" ignored="false" />
+    <file path="/MockAccessPointUserService.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1384635479228" ignored="false" />
+    <file path="/MockAccessPointService.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1384855363359" ignored="false" />
+    <file path="/UnifiAccessPointService.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385580661230" ignored="false" />
+    <file path="/UnifiAccessPointUserService.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385580704635" ignored="false" />
+    <file path="/UnifiNetworkService.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385580733497" ignored="false" />
+    <file path="/.readme" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1384631098110" ignored="false" />
+    <file path="/NotificationController.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385582071610" ignored="false" />
+    <file path="/MessagingService.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385580809340" ignored="false" />
+    <file path="/NotificationService.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385581274466" ignored="false" />
+    <file path="/unifiLib.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385559912512" ignored="false" />
+    <file path="/NavigationService.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385586573763" ignored="false" />
+    <file path="/Network.html" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1384860936233" ignored="false" />
+    <file path="/NetworkController.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385557131613" ignored="false" />
+    <file path="/validators.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1384779418927" ignored="false" />
+    <file path="/DialogService.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1384884842677" ignored="false" />
+    <file path="/DialogController.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1384785483194" ignored="false" />
+    <file path="/ConfirmationDialog.html" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1384786543841" ignored="false" />
+    <file path="/User.html" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385553462666" ignored="false" />
+    <file path="/UserController.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1384866625563" ignored="false" />
+    <file path="/SiteSettingsController.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385585803288" ignored="false" />
+    <file path="/UnifiSiteSettingsService.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385586856105" ignored="false" />
+    <file path="/SiteSettings.html" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1384880850004" ignored="false" />
+    <file path="/MockSiteSettingsService.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1384881012943" ignored="false" />
+    <file path="/Login.html" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1384885134683" ignored="false" />
+    <file path="/LoginController.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1384888951825" ignored="false" />
+    <file path="/Blank.html" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1384885851290" ignored="false" />
+    <file path="G:/Development/Clients/Jive/UnifiAdapter/UnifiAdapter.iml" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385201466460" ignored="false" />
+    <file path="/a.txt" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385216372919" ignored="false" />
+    <file path="C:/Temp/intellijad/helloWorld.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385216394377" ignored="false" />
+    <file path="G:/Development/Clients/Jive/ApControllerAdapter/Web/.idea/modules.xml" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385217293861" ignored="false" />
+    <file path="G:/Development/Clients/Jive/ApControllerAdapter/Web/.idea/workspace.xml" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385217293861" ignored="false" />
+    <file path="G:/Development/Clients/Jive/ApControllerAdapter/WebApi/pom.xml" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385221631709" ignored="false" />
+    <file path="G:/Development/Clients/Jive/ApControllerAdapter/Web/pom.xml" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385372734323" ignored="false" />
+    <file path="G:/Development/Clients/Jive/ApControllerAdapter/UnifiAdapter/pom.xml" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385220219125" ignored="false" />
+    <file path="/pom.xml" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385222565898" ignored="false" />
+    <file path="G:/Development/Clients/Jive/ApControllerAdapter/Web/Web.iml" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385468350431" ignored="false" />
+    <file path="G:/Development/Clients/Jive/ApControllerAdapter/WebApi/src/main/java/HelloWorld.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385219691357" ignored="false" />
+    <file path="G:/Development/Clients/Jive/ApControllerAdapter/UnifiAdapter/src/main/java/helloWorldFoo.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385222424405" ignored="false" />
+    <file path="G:/Development/Clients/Jive/ApControllerAdapter/WebApi/src/main/java/helloWorldBar.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385222460737" ignored="false" />
+    <file path="/helloWorldFoo.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385222423286" ignored="false" />
+    <file path="G:/Development/Clients/Jive/ApControllerAdapter/Web/src/main/java/api.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385222165387" ignored="false" />
+    <file path="/api.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385497452801" ignored="false" />
+    <file path="G:/Development/Clients/Jive/ApControllerAdapter/Web/web/WEB-INF/web.xml" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385492028435" ignored="false" />
+    <file path="/web.xml" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385491638202" ignored="false" />
+    <file path="C:/Temp/intellijad/org/jboss/resteasy/plugins/server/servlet/HttpServletDispatcher.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385221385151" ignored="false" />
+    <file path="G:/Development/Clients/Jive/ApControllerAdapter/Web/src/main/java/com/jive/apcontrolleradapter/web/api.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385563228290" ignored="false" />
+    <file path="/helloWorldBar.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385222460737" ignored="false" />
+    <file path="G:/Development/Clients/Jive/ApControllerAdapter/UnifiAdapter/src/main/java/com/jive/apcontrolleradapter/unifi/helloWorldFoo.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385222476704" ignored="false" />
+    <file path="G:/Development/Clients/Jive/ApControllerAdapter/Unifi/pom.xml" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385468342435" ignored="false" />
+    <file path="G:/Development/Clients/Jive/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/unifi/helloWorldFoo.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385222526734" ignored="false" />
+    <file path="G:/Development/Clients/Jive/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/unifi/ControllerAdapter.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385370370185" ignored="false" />
+    <file path="G:/Development/Clients/Jive/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/unifi/UnifiWebApi.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385370403662" ignored="false" />
+    <file path="G:/Development/Clients/Jive/ApControllerAdapter/WebApi/src/main/java/com/jive/apcontrolleradapter/webapi/WebApi.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385370511070" ignored="false" />
+    <file path="G:/Development/Clients/Jive/ApControllerAdapter/WebApi/src/main/java/com/jive/apcontrolleradapter/webapi/AccessPoint.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385571019649" ignored="false" />
+    <file path="G:/Development/Clients/Jive/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/unifi/UnifiAccessPoint.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385630501242" ignored="false" />
+    <file path="/AccessPoint.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385570737149" ignored="false" />
+    <file path="/UnifiAccessPoint.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385570786589" ignored="false" />
+    <file path="C:/Temp/intellijad/org/jboss/resteasy/plugins/providers/jackson/ResteasyJacksonProvider.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385372431504" ignored="false" />
+    <file path="G:/Development/Clients/Jive/ApControllerAdapter/jetty.xml" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385475451309" ignored="false" />
+    <file path="C:/Temp/intellijad/javax/ws/rs/client/Invocation.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385379139531" ignored="false" />
+    <file path="C:/Temp/intellijad/org/apache/http/conn/ssl/AbstractVerifier.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385388604228" ignored="false" />
+    <file path="C:/Temp/intellijad/sun/security/ssl/SSLSessionImpl.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385388628495" ignored="false" />
+    <file path="C:/Temp/intellijad/org/apache/http/impl/conn/ManagedClientConnectionImpl.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385388895092" ignored="false" />
+    <file path="C:/Temp/intellijad/org/apache/http/conn/ssl/SSLSocketFactory.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385388689619" ignored="false" />
+    <file path="C:/Temp/intellijad/org/apache/http/impl/client/AbstractHttpClient.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385388760064" ignored="false" />
+    <file path="C:/Temp/intellijad/org/apache/http/impl/conn/DefaultClientConnectionOperator.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385388895092" ignored="false" />
+    <file path="C:/Temp/intellijad/org/apache/http/impl/client/DefaultRequestDirector.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385388893570" ignored="false" />
+    <file path="$USER_HOME$/AppData/Local/Temp/tmpRestClientResponse8509416797415587138.json" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385471351576" ignored="false" />
+    <file path="G:/Development/Clients/Jive/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/unifi/UnifiBase.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385559259197" ignored="false" />
+    <file path="G:/Development/Clients/Jive/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/unifi/MongoDbClientFactory.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385479297201" ignored="false" />
+    <file path="/MongoDbClientFactory.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385478230262" ignored="false" />
+    <file path="/UnifiBase.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385559258845" ignored="false" />
+    <file path="/jetty.xml" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385475244817" ignored="false" />
+    <file path="G:/Development/Clients/Jive/ApControllerAdapter/Unifi/src/main/resources/unifi.properties" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385478035906" ignored="false" />
+    <file path="/unifi.properties" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385477969321" ignored="false" />
+    <file path="G:/Development/Clients/Jive/ApControllerAdapter/Unifi/src/main/resources/com/jive/apcontrolleradapter/unifi/unifi.properties" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385478094669" ignored="false" />
+    <file path="G:/Development/Clients/Jive/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/unifi/UnifiNetwork.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385479971938" ignored="false" />
+    <file path="G:/Development/Clients/Jive/ApControllerAdapter/WebApi/src/main/java/com/jive/apcontrolleradapter/webapi/Network.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385479988211" ignored="false" />
+    <file path="G:/Development/Clients/Jive/ApControllerAdapter/WebApi/src/main/java/com/jive/apcontrolleradapter/webapi/WlanNetwork.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385560022342" ignored="false" />
+    <file path="G:/Development/Clients/Jive/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/unifi/UnifiWlanNetwork.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385559770069" ignored="false" />
+    <file path="/WlanNetwork.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385556177251" ignored="false" />
+    <file path="/UnifiWlanNetwork.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385559707577" ignored="false" />
+    <file path="G:/Development/Clients/Jive/ApControllerAdapter/WebApi/src/main/java/com/jive/apcontrolleradapter/webapi/DeviceUser.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385494310061" ignored="false" />
+    <file path="/DeviceUser.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385494309670" ignored="false" />
+    <file path="G:/Development/Clients/Jive/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/unifi/UnifiDeviceUser.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385553089744" ignored="false" />
+    <file path="/UnifiDeviceUser.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385553088746" ignored="false" />
+    <file path="G:/Development/Clients/Jive/ApControllerAdapter/WebApi/src/main/java/com/jive/apcontrolleradapter/webapi/SiteSetting.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385586294827" ignored="false" />
+    <file path="/SiteSetting.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385586238144" ignored="false" />
+    <file path="G:/Development/Clients/Jive/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/unifi/UnifiSiteSetting.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385586516010" ignored="false" />
+    <file path="/UnifiSiteSetting.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385553107081" ignored="false" />
+    <file path="G:/Development/Clients/Jive/ApControllerAdapter/WebApi/src/main/java/com/jive/apcontrolleradapter/webapi/Cmd.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385552196652" ignored="false" />
+    <file path="/Cmd.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385552196652" ignored="false" />
+    <file path="G:/Development/Clients/Jive/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/unifi/UnifiCmd.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385552224040" ignored="false" />
+    <file path="/UnifiCmd.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385552221034" ignored="false" />
+    <file path="/AppSettings.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385631682783" ignored="false" />
+    <file path="/UnifiLoginService.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385642036464" ignored="false" />
+    <file path="G:/Development/Clients/Jive/ApControllerAdapter/Web/src/main/java/com/jive/apcontrolleradapter/web/corsFilter.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385490584152" ignored="false" />
+    <file path="/corsFilter.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385492070572" ignored="false" />
+    <file path="G:/Development/Clients/Jive/ApControllerAdapter/Web/src/main/java/com/jive/apcontrolleradapter/web/CorsFilter.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385558872677" ignored="false" />
+    <file path="G:/Development/Clients/Jive/ApControllerAdapter/WebApi/src/main/java/com/jive/apcontrolleradapter/webapi/Site.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385643274835" ignored="false" />
+    <file path="/Site.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385643255992" ignored="false" />
+    <file path="G:/Development/Clients/Jive/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/unifi/UnifiSite.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385643709303" ignored="false" />
+    <file path="/UnifiSite.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385643675570" ignored="false" />
+    <file path="/MockSiteService.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385562601196" ignored="false" />
+    <file path="/UnifiSiteService.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385643901119" ignored="false" />
+    <file path="/RefreshDataController.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385644960749" ignored="false" />
+    <file path="/Sites.html" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385633590326" ignored="false" />
+    <file path="/Site.html" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385633198805" ignored="false" />
+    <file path="/SitesController.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385633610656" ignored="false" />
+    <file path="/SiteController.js" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385633732277" ignored="false" />
+    <file path="G:/Development/Clients/Jive/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/unifi/Utils.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385634252181" ignored="false" />
+    <file path="/Utils.java" changelist="cd40d016-37d7-496b-b4a4-1c02ae251e66" time="1385634244407" ignored="false" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints />
+  </component>
+  <component name="DebuggerManager">
+    <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
+      <breakpoint>
+        <option name="NOTIFY_CAUGHT" value="true" />
+        <option name="NOTIFY_UNCAUGHT" value="true" />
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint>
+        <option name="NOTIFY_CAUGHT" value="true" />
+        <option name="NOTIFY_UNCAUGHT" value="true" />
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </breakpoint_any>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <breakpoint_rules />
+    <ui_properties />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="ManagedWifi" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="RefreshDataController.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/js/controllers/RefreshDataController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="26" column="3" selection-start="945" selection-end="945" vertical-scroll-proportion="0.5169591">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="appLib.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/js/appLib.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="61" column="43" selection-start="1551" selection-end="1551" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NetworksController.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/js/controllers/NetworksController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="31" column="0" selection-start="1021" selection-end="1252" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="124" column="67" selection-start="6605" selection-end="6605" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindManager">
+    <FindUsagesManager>
+      <setting name="OPEN_NEW_TAB" value="false" />
+    </FindUsagesManager>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="changedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/app/templates/SiteSettings.html" />
+        <option value="$PROJECT_DIR$/app/js/services/unifi/UnifiSiteSettingsService.js" />
+        <option value="$PROJECT_DIR$/app/js/services/AppSettings.js" />
+        <option value="$PROJECT_DIR$/app/templates/Site.html" />
+        <option value="$PROJECT_DIR$/app/templates/Networks.html" />
+        <option value="$PROJECT_DIR$/app/templates/Sites.html" />
+        <option value="$PROJECT_DIR$/app/js/controllers/SitesController.js" />
+        <option value="$PROJECT_DIR$/app/js/controllers/SiteController.js" />
+        <option value="$PROJECT_DIR$/app/js/services/unifi/UnifiLoginService.js" />
+        <option value="$PROJECT_DIR$/app/js/app.js" />
+        <option value="$PROJECT_DIR$/app/js/controllers/MainMenuController.js" />
+        <option value="$PROJECT_DIR$/app/js/services/unifi/UnifiAccessPointService.js" />
+        <option value="$PROJECT_DIR$/app/js/services/unifi/UnifiSiteService.js" />
+        <option value="$PROJECT_DIR$/app/index.html" />
+        <option value="$PROJECT_DIR$/app/js/appLib.js" />
+        <option value="$PROJECT_DIR$/app/js/controllers/RefreshDataController.js" />
+      </list>
+    </option>
+  </component>
+  <component name="MessagesViewTool">
+    <option name="autoscrollToSource" value="true" />
+    <option name="info" value="true" />
+    <option name="warnings" value="true" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1696" />
+    <option name="height" value="1036" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>HTML</id>
+          </State>
+          <State>
+            <id>Spelling</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>HtmlFormInputWithoutLabel</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectReloadState">
+    <option name="STATE" value="0" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ManagedWifi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ManagedWifi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ManagedWifi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ManagedWifi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ManagedWifi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ManagedWifi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ManagedWifi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ManagedWifi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ManagedWifi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ManagedWifi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ManagedWifi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="options.lastSelected" value="editor.preferences.appearance" />
+    <property name="recentsLimit" value="5" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/angularjs-fundamentals/materials/5-angularjs-fundamentals-m5-directives-exercise-files/ExerciseFiles/m5-directives-after/Events/app/index.html" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="GoToClass.includeJavaFiles" value="false" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="restartRequiresConfirmation" value="true" />
+    <property name="FullScreen" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
+    <property name="GoToClass.includeLibraries" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\spena\Ubiquiti UniFi\webapps\ROOT\ManagedWifi\app\js\controllers" />
+      <recent name="C:\Users\spena\Ubiquiti UniFi\webapps\ROOT\ManagedWifi\app\templates" />
+      <recent name="C:\Users\spena\Ubiquiti UniFi\webapps\ROOT\ManagedWifi\app\js\services\mock" />
+      <recent name="C:\Users\spena\Ubiquiti UniFi\webapps\ROOT\ManagedWifi\app\js\services\unifi" />
+      <recent name="C:\Users\spena\Ubiquiti UniFi\webapps\ROOT\ManagedWifi\app\js\services" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\spena\Ubiquiti UniFi\webapps\ROOT\ManagedWifi\app\js\services" />
+      <recent name="D:\Development\Clients\Jive\ManagedWifi\app\js\services\unifi" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JavaScript Debug.Unnamed">
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugSession" factoryName="Remote" singleton="true">
+      <JSRemoteDebuggerConfigurationSettings>
+        <option name="engineId" value="embedded" />
+        <option name="fileUrl" />
+      </JSRemoteDebuggerConfigurationSettings>
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugSession" factoryName="Local" singleton="true">
+      <JSDebuggerConfigurationSettings>
+        <option name="engineId" value="embedded" />
+        <option name="fileUrl" />
+      </JSDebuggerConfigurationSettings>
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unnamed" type="JavascriptDebugSession" factoryName="Remote" singleton="true">
+      <JSRemoteDebuggerConfigurationSettings>
+        <option name="engineId" value="chrome" />
+        <option name="fileUrl" value="http://localhost:63342" />
+        <mapping url="" local-file="$PROJECT_DIR$/app" />
+      </JSRemoteDebuggerConfigurationSettings>
+      <RunnerSettings RunnerId="JavascriptDebugRunner" />
+      <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
+      <method />
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.Unnamed" />
+    </list>
+    <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
+      <Host>localhost</Host>
+      <Port>5050</Port>
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
+    <option name="LAST_MERGED_REVISION" />
+    <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
+    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
+    <configuration useDefault="true">C:\Users\spena\AppData\Roaming\Subversion</configuration>
+    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cd40d016-37d7-496b-b4a4-1c02ae251e66" name="Default" comment="" />
+      <created>1374787383545</created>
+      <updated>1374787383545</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1696" height="1036" extended-state="6" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Inspector" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33938706" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3325766" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32992035" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.249694" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20195839" sideWeight="0.66742337" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="CHECK_NEW_TODO" value="true" />
+    <option name="myTodoPanelSettings">
+      <value>
+        <are-packages-shown value="false" />
+        <are-modules-shown value="false" />
+        <flatten-packages value="false" />
+        <is-autoscroll-to-source value="false" />
+      </value>
+    </option>
+    <option name="PERFORM_UPDATE_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_COMMIT_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_EDIT_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_CHECKOUT_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_ADD_REMOVE_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_ROLLBACK_IN_BACKGROUND" value="false" />
+    <option name="CHECK_LOCALLY_CHANGED_CONFLICTS_IN_BACKGROUND" value="false" />
+    <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
+    <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
+    <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
+    <option name="DEFAULT_PATCH_EXTENSION" value="patch" />
+    <option name="SHORT_DIFF_HORIZONTALLY" value="true" />
+    <option name="SHORT_DIFF_EXTRA_LINES" value="2" />
+    <option name="SOFT_WRAPS_IN_SHORT_DIFF" value="true" />
+    <option name="INCLUDE_TEXT_INTO_PATCH" value="false" />
+    <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
+    <option name="SHOW_FILE_HISTORY_DETAILS" value="true" />
+    <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
+    <option name="SHOW_DIRTY_RECURSIVELY" value="false" />
+    <option name="LIMIT_HISTORY" value="true" />
+    <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
+    <option name="UPDATE_FILTER_SCOPE_NAME" />
+    <option name="USE_COMMIT_MESSAGE_MARGIN" value="false" />
+    <option name="COMMIT_MESSAGE_MARGIN_SIZE" value="72" />
+    <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
+    <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
+    <option name="LAST_COMMIT_MESSAGE" />
+    <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="REFORMAT_BEFORE_FILE_COMMIT" value="false" />
+    <option name="FILE_HISTORY_DIALOG_COMMENTS_SPLITTER_PROPORTION" value="0.8" />
+    <option name="FILE_HISTORY_DIALOG_SPLITTER_PROPORTION" value="0.5" />
+    <option name="ACTIVE_VCS_NAME" />
+    <option name="UPDATE_GROUP_BY_PACKAGES" value="false" />
+    <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
+    <option name="UPDATE_FILTER_BY_SCOPE" value="false" />
+    <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
+    <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/templates/Networks.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="0" selection-start="259" selection-end="402" vertical-scroll-proportion="0.18171021">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/controllers/SiteController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="87" selection-start="1173" selection-end="1173" vertical-scroll-proportion="0.060570072">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/Site.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="57" column="116" selection-start="3746" selection-end="3746" vertical-scroll-proportion="1.1508313">
+          <folding>
+            <marker date="1385633198641" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/services/AppSettings.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="8" selection-start="167" selection-end="167" vertical-scroll-proportion="0.05964912">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/services/unifi/UnifiLoginService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="29" selection-start="614" selection-end="614" vertical-scroll-proportion="0.45194274">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="84" column="39" selection-start="3175" selection-end="3175" vertical-scroll-proportion="2.5409253">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/node_modules/connect/node_modules/formidable/test/fixture/file/menu_separator.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/services/unifi/UnifiAccessPointService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="0" selection-start="366" selection-end="366" vertical-scroll-proportion="0.13918129">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/controllers/AccessPointListController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="59" selection-start="1437" selection-end="1437" vertical-scroll-proportion="0.61637425">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/services/unifi/UnifiSiteService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="73" column="86" selection-start="2528" selection-end="2528" vertical-scroll-proportion="0.8807018">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/controllers/MainMenuController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="0" selection-start="1357" selection-end="1357" vertical-scroll-proportion="0.54513067">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="124" column="67" selection-start="6605" selection-end="6605" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/controllers/NetworkController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="1" selection-start="1563" selection-end="1615" vertical-scroll-proportion="0.42339182">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/controllers/NetworksController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="0" selection-start="1021" selection-end="1252" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/appLib.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="61" column="43" selection-start="1551" selection-end="1551" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/controllers/RefreshDataController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="3" selection-start="945" selection-end="945" vertical-scroll-proportion="0.5169591">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.7</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>ManagedWifi</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.7</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.20000002" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
+
