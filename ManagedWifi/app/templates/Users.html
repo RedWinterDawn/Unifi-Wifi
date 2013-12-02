@@ -24,7 +24,7 @@
             <div class="btn-toolbar">
                 <div class="btn-group"><a data-toggle="dropdown" href="#" class="btn dropdown-toggle">Include columns <i class="icon-caret-down"></i></a>
                     <ul class="dropdown-menu filters">
-                        <li><input type="checkbox" id="authorizedColumn" ng-model="showAuthorized"><label for="authorizedColumn">Authorized</label></li>
+                        <li><input type="checkbox" id="authorizedColumn" ng-model="showAuthorized"><label for="authorizedColumn">Authorization</label></li>
                         <li><input type="checkbox" id="blockedColumn" ng-model="showBlocked"><label for="blockedColumn">Blocked</label></li>
                         <li><input type="checkbox" id="apMacColumn" ng-model="showApMac"><label for="apMacColumn">Device</label></li>
                     </ul>
@@ -81,7 +81,7 @@
                 </th>
                 <th><a ng-click="paginator.setOrder('orderableIp')">IP<i ng-class="paginator | sortClass:'orderableIp'"></i></a></th>
                 <th ng-show="showAuthorized">
-                    <div class="dropdown"><a href="#" role="button" data-toggle="dropdown" class="dropdown-toggle" ng-class="filter.authorized ? 'active' : null">Authorized<i class="icon-filter"></i></a>
+                    <div class="dropdown"><a href="#" role="button" data-toggle="dropdown" class="dropdown-toggle" ng-class="filter.authorized ? 'active' : null">Authorization<i class="icon-filter"></i></a>
                         <ul role="menu" class="dropdown-menu">
                             <li><a ng-click="paginator.orderBy = 'authorized'">Sort A-&gt;Z</a></li>
                             <li><a ng-click="paginator.orderBy = '-authorized'">Sort Z-&gt;A</a></li>
@@ -89,9 +89,9 @@
                             <li class="filters">
                                 <div>
                                     <ul>
-                                        <li><input type="checkbox" id="authorizedYes" ng-model="filter.authorized" ng-true-value="true" ng-false-value=""><label for="authorizedYes">Authorized</label></li>
+                                        <li><input type="checkbox" id="authorizedYes" ng-model="filter.authorized" ng-true-value="true" ng-false-value=""><label for="authorizedYes">User</label></li>
                                         <li><input type="checkbox" id="authorizedNo" ng-model="filter.authorized" ng-true-value="false" ng-false-value=""><label for="authorizedNo">Unauthorized</label></li>
-                                        <li><input type="checkbox" id="isGuest" ng-model="filter.is_guest" ng-true-value="false" ng-false-value=""><label for="isGuest">N/A</label></li>
+                                        <li><input type="checkbox" id="isGuest" ng-model="filter.is_guest" ng-true-value="false" ng-false-value=""><label for="isGuest">Guest</label></li>
                                     </ul>
                                 </div>
                             </li>
@@ -130,7 +130,7 @@
                 <td ng-show="showApMac">{{user.ap}}</td>
                 <td>{{user.is_connected ? "Connected" : "Disconnected"}}</td>
                 <td>{{user.ip}}</td>
-                <td ng-show="showAuthorized">{{user.is_guest ? user.authorized  ?  "Authorized" : "Unauthorized" : "N/A"}}</td>
+                <td ng-show="showAuthorized">{{user.is_guest ? user.authorized  ?  "User" : "Unauthorized" : "Guest"}}</td>
                 <td ng-show="showBlocked">{{user.blocked ? "Blocked" : "Unblocked"}}</td>
                 <td>{{user.rssi | signal}}</td>
                 <td>{{user.tx_bytes | bytes}}</td>

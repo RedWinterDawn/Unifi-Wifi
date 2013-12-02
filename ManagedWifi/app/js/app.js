@@ -82,7 +82,7 @@ managedWifi.config(['$routeProvider', '$locationProvider', function ($routeProvi
             controller: 'SiteSettingsController',
             resolve: managedWifi.resolveServiceAlias(["SiteSettingsService"])
         })
-        .otherwise({redirectTo: '/sites'});
+        .otherwise({redirectTo: '/devices'});
     $locationProvider.html5Mode(false);
 }])
 .run(["$location", "$cookies", "unifiLoginService", function($location, $cookies, loginService){

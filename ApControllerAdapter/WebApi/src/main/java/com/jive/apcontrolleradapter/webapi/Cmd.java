@@ -2,6 +2,7 @@ package com.jive.apcontrolleradapter.webapi;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.io.IOException;
 import java.util.Map;
 
 @Path("/{unifises}/cmd/")
@@ -13,4 +14,7 @@ public interface Cmd {
     @Path("{type}")
     public Map executeCmd(@PathParam("unifises") String sessionId, @PathParam("type") String type, Map message);
 
+    @GET
+    @Path("email-alerts")
+    public void emailAlerts(@QueryParam("interval") int intervalInSeconds);
 }

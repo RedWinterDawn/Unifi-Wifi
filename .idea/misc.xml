@@ -24,12 +24,9 @@
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
-        <option value="$PROJECT_DIR$/WebApi/pom.xml" />
-        <option value="$PROJECT_DIR$/Web/pom.xml" />
-        <option value="$PROJECT_DIR$/UnifiAdapter/pom.xml" />
-        <option value="$PROJECT_DIR$/UnifiAdapter/pom.xml" />
-        <option value="$PROJECT_DIR$/Web/pom.xml" />
-        <option value="$PROJECT_DIR$/WebApi/pom.xml" />
+        <option value="$PROJECT_DIR$/ApControllerAdapter/Unifi/pom.xml" />
+        <option value="$PROJECT_DIR$/ApControllerAdapter/Web/pom.xml" />
+        <option value="$PROJECT_DIR$/ApControllerAdapter/WebApi/pom.xml" />
       </list>
     </option>
   </component>

@@ -18,13 +18,14 @@ import java.util.Properties;
 public class UnifiBase {
     protected static MongoClient dbClient;
     protected static String controllerHost;
+    protected static Properties props;
 
     public UnifiBase() throws IOException {
         dbClient = MongoDbClientFactory.getDbClient();
 
-        Properties prop = new Properties();
-        prop.load(getClass().getClassLoader().getResourceAsStream("/com/jive/apcontrolleradapter/unifi/unifi.properties"));
-        controllerHost = prop.getProperty("controllerHost");
+        props = new Properties();
+        props.load(getClass().getClassLoader().getResourceAsStream("/com/jive/apcontrolleradapter/unifi/unifi.properties"));
+        controllerHost = props.getProperty("controllerHost");
     }
 
     protected Map getData(String sessionId, String uri, Map message){

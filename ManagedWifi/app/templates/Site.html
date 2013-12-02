@@ -58,6 +58,16 @@
                                             <div ng-show="form.account_id.$error.required" class="tip help">Account Id is required</div>
                                         </div>
                                     </div>
+                                    <div class="control-group" ng-class="form.alert_email.$invalid ? 'error' : ''">
+                                        <label for="alert_email" class="control-label">
+                                            Email for Alerts<i class="icon-asterisk required"></i>
+                                        </label>
+                                        <div class="controls">
+                                            <input type="text" id="alert_email" name="alert_email" placeholder="Provide an email address..." ng-model="site.alert_email" required pattern="email">
+                                            <i ng-hide="form.alert_email.$error.required" class="icon-ok-sign active"></i>
+                                            <div ng-show="form.alert_email.$error.required" class="tip help">An email is required</div>
+                                        </div>
+                                    </div>
                                     <div class="control-group">
                                         <label for="address" class="control-label">Address</label>
                                         <div class="controls">
