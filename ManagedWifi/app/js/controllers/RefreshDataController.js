@@ -1,6 +1,6 @@
 'use strict';
-managedWifi.controller('RefreshDataController',["$scope", "$timeout", "messagingService",
-    function RefreshDataController($scope, $timeout, messagingService) {
+managedWifi.controller('RefreshDataController',["$scope", "$timeout", "messagingService", "loginService",
+    function RefreshDataController($scope, $timeout, messagingService, loginService) {
 
         var refreshTimer;
 
@@ -12,7 +12,7 @@ managedWifi.controller('RefreshDataController',["$scope", "$timeout", "messaging
                 messagingService.publish(managedWifi.messageTopics.service.refresh);
             }, 30000);
         };
-        init();
+        loginService.isLoggedIn().then(init);
 
         $scope.refreshData = function(){
             messagingService.publishSync(managedWifi.messageTopics.service.refresh);

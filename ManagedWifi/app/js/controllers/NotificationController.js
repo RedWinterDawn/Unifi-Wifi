@@ -4,6 +4,15 @@ managedWifi.controller('NotificationController',["$scope", "$timeout", "messagin
         $scope.alerts = [];
 
         var addMsg = function(topic, msg){
+            if(msg.type == 'clear'){
+                $scope.alerts = $scope.alerts.filter(function(notice){return notice.id != msg.id;});
+                return;
+            }
+
+            var existingMsg = $scope.alerts.filter(function(notice){return notice.msg == msg.msg;});
+            if(existingMsg.length > 0)
+                return;
+
             $scope.alerts.push(msg);
             if(msg.type=='success'){
                 $timeout(function() {
@@ -18,7 +27,7 @@ managedWifi.controller('NotificationController',["$scope", "$timeout", "messagin
         });
 
         $scope.closeAlert = function(msg) {
-            $scope.alerts = $scope.alerts.filter(function(alert){return alert!=msg;});
+            $scope.alerts = $scope.alerts.filter(function(notice){return notice!=msg;});
         };
     }
 ]);

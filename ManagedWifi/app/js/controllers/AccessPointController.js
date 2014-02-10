@@ -15,7 +15,7 @@ managedWifi.controller('AccessPointController', ["$scope", "$location", "$routeP
         $scope.update = function() {
             accessPointService.update($scope.accessPoint).then(function(){
                 angular.copy($scope.accessPoint, $scope.original);
-                notificationService.success("The access point has been updated");
+                notificationService.success("accessPointEdit", "The access point has been updated");
             })
         };
 
@@ -33,7 +33,7 @@ managedWifi.controller('AccessPointController', ["$scope", "$location", "$routeP
                 msg: "If you no longer wish to manage this AP, you may remove it. Note that all configurations and history with respect to this access point will be deleted as well. The device will be restored to its factory state."
             }).result.then(function(){
                 accessPointService.delete($scope.original).then(function(){
-                    notificationService.success($scope.original.mac + " was deleted.");
+                    notificationService.success("accessPointDelete", $scope.original.mac + " was deleted.");
                     $location.replace("/devices");
                     $location.url("/devices");
                 });

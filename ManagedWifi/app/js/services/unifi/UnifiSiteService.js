@@ -10,35 +10,20 @@ managedWifi.factory('unifiSiteService', ['$q', '$http', 'appSettings', 'messagin
     return {
         getAll: function () {
             var deferred = $q.defer();
-
             if(sites == null){
-                sites = [];
                 $http({method: "GET", url: appSettings.apiEndpoint+"/site"}).then(
                     function(response){
                         sites = response.data;
                         deferred.resolve(sites);
                     },
                     function(response) {
+                        sites = [];
                         deferred.reject(response);
                     }
                 )
             } else {
                 deferred.resolve(sites);
             }
-            return deferred.promise;
-        },
-
-        getAllInAccounts: function () {
-            var deferred = $q.defer();
-
-            $http({method: "GET", url: appSettings.apiEndpoint+"/site?all-accounts=true"}).then(
-                function(response){
-                    deferred.resolve(response.data);
-                },
-                function(response) {
-                    deferred.reject(response);
-                }
-            );
             return deferred.promise;
         },
 
@@ -61,7 +46,12 @@ managedWifi.factory('unifiSiteService', ['$q', '$http', 'appSettings', 'messagin
         },
 
         add: function(site){
-            return $http.put(appSettings.apiEndpoint+"/site", site);
+            return $http.put(appSettings.apiEndpoint+"/site", site).then(
+                function(response){
+                    site.site_id = response.data;
+                    sites.push(site)
+                }
+            );
         },
 
         delete: function(site){

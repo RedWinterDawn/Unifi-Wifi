@@ -23,6 +23,8 @@ managedWifi.controller('UsersController', ["$scope", "$location", "$routeParams"
 
                     accessPointUserService.getAll().then(
                         function(users){
+                            notificationService.clear("loadUsers");
+
                             users.forEach(function(user){ // modify model to work with angular particulars
                                 var accessPoint = accessPoints.filter(function(ap){return ap.mac == user.ap_mac;});
                                 if(accessPoint.length > 0)
@@ -37,12 +39,12 @@ managedWifi.controller('UsersController', ["$scope", "$location", "$routeParams"
                             $scope.paginator.updateTotalItems(users.length);
                         },
                         function(reason){
-                            notificationService.error("An error occurred while loading users. Please reload the page.");
+                            notificationService.error("loadUsers", "An error occurred while loading users.");
                         }
                     );
                 },
                 function(reason){
-                    notificationService.error("An error occurred while loading users. Please reload the page.");
+                    notificationService.error("loadUsers", "An error occurred while loading users.");
                 }
             );
         };
@@ -53,10 +55,10 @@ managedWifi.controller('UsersController', ["$scope", "$location", "$routeParams"
                 function(){
                     user.blocked = !user.blocked;
                     var name = user.hostname == undefined ? user.mac : user.hostname;
-                    notificationService.success(name + " was " + (user.blocked ? "blocked" : "unblocked"));
+                    notificationService.success("userBlock", name + " was " + (user.blocked ? "blocked" : "unblocked"));
                 },
                 function(reason){
-                    notificationService.error("An error occurred while blocking this user.");
+                    notificationService.error("userBlock", "An error occurred while blocking this user.");
                 }
             );
         };
@@ -66,10 +68,10 @@ managedWifi.controller('UsersController', ["$scope", "$location", "$routeParams"
                 function(){
                     user.authorized = !user.authorized;
                     var name = user.hostname == undefined ? user.mac : user.hostname;
-                    notificationService.success(name + " was " + (user.authorized ? "authorized" : "unauthorized"));
+                    notificationService.success("userAuth", name + " was " + (user.authorized ? "authorized" : "unauthorized"));
                 },
                 function(reason){
-                    notificationService.error("An error occurred while unblocking this user.");
+                    notificationService.error("userAuth", "An error occurred while unblocking this user.");
                 }
             );
         };

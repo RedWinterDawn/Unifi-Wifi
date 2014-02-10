@@ -11,7 +11,7 @@ public interface Site {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Object> getSites(@PathParam("unifises") String sessionId, @DefaultValue("false") @QueryParam("all-accounts") boolean allAccounts);
+    public List<Object> getSites(@PathParam("unifises") String sessionId);
 
     @GET
     @Path("{id}")
@@ -26,7 +26,8 @@ public interface Site {
 
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
-    public void add(@PathParam("unifises") String sessionId, Map site);
+    @Produces(MediaType.TEXT_PLAIN)
+    public String add(@PathParam("unifises") String sessionId, Map site);
 
     @DELETE
     @Path("{id}")

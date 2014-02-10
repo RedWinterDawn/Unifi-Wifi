@@ -1,12 +1,13 @@
 'use strict';
 
-managedWifi.controller('LoginController',["$scope", "$http", "$location", "$modal", "unifiLoginService",
-    function LoginController($scope, $http, $location, $modal, loginService) {
+managedWifi.controller('LoginController',["$scope", "$http", "$location", "$modal", "$routeParams", "unifiLoginService",
+    function LoginController($scope, $http, $location, $modal, $routeParams, loginService) {
         $scope.credentials = {};
 
         var modal = $modal.open({
             templateUrl: 'templates/Login.html',
-            scope: $scope
+            scope: $scope,
+            backdrop: 'static'
         });
         modal.result.then(function(){$location.url("/");});
 

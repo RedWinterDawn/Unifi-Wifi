@@ -1,13 +1,19 @@
 managedWifi.factory('notificationService', ['messagingService', function (messagingService) {
     return {
-        error: function(msg){
-            messagingService.publishSync(managedWifi.messageTopics.ui.notify, {type: 'error', msg: msg});
+        processing: function(id, msg){
+            messagingService.publishSync(managedWifi.messageTopics.ui.notify, {type: 'processing', id: id, msg: msg});
         },
-        notice: function(msg){
-            messagingService.publishSync(managedWifi.messageTopics.ui.notify, {type: 'notice', msg: msg});
+        error: function(id, msg){
+            messagingService.publishSync(managedWifi.messageTopics.ui.notify, {type: 'error', id: id, msg: msg});
         },
-        success: function(msg){
-            messagingService.publishSync(managedWifi.messageTopics.ui.notify, {type: 'success', msg: msg});
+        notice: function(id, msg){
+            messagingService.publishSync(managedWifi.messageTopics.ui.notify, {type: 'notice', id: id, msg: msg});
+        },
+        success: function(id, msg){
+            messagingService.publishSync(managedWifi.messageTopics.ui.notify, {type: 'success', id: id, msg: msg});
+        },
+        clear: function(id){
+            messagingService.publishSync(managedWifi.messageTopics.ui.notify, {type: 'clear', id: id});
         }
     }
 }]);

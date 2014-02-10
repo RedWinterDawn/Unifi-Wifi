@@ -1,19 +1,27 @@
 'use strict';
-managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "appSettings", "navigationService", "notificationService", "siteService", "messagingService", "unifiLoginService",
+managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "appSettings", "navigationService", "notificationService", "siteService", "messagingService", "loginService",
     function MainMenuController($scope, $http, $location, appSettings, navigationService, notificationService, siteService, messagingService, loginService) {
 
         var init = function(){
             siteService.getAll().then(
                 function(sites){
+                    notificationService.clear("loadSites");
+
                     $scope.sites = sites;
                     $scope.selectedSite = sites.filter(function(site){
                         return site.is_selected;
                     })[0];
                 },
                 function(reason){
-                    notificationService.error("An error occurred while loading the sites for this account.");
+                    notificationService.error("loadSites", "An error occurred while loading the sites for this account.");
                 }
             );
+
+            loginService.isAdmin().then(
+                function(isAdmin){
+                    $scope.isAdmin = isAdmin;
+                }
+            )
         };
         loginService.isLoggedIn().then(init);
 
@@ -29,10 +37,10 @@ managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "ap
         $scope.logout = function(){
             loginService.logout().then(
                 function(){
-                    $location.url("/login");
+                    window.location.href = "https://www.onjive.com/auth/login";
                 },
                 function(reason){
-                    notificationService.error("An error occurred while logging you out.");
+                    notificationService.error("login", "An error occurred while logging you out.");
                 }
             );
         };
@@ -49,7 +57,7 @@ managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "ap
                     $scope.selectedSite = site;
                 },
                 function(){
-                    notificationService.error("An error occurred while switching sites.");
+                    notificationService.error("loadSite", "An error occurred while switching sites.");
                 }
             )
         };

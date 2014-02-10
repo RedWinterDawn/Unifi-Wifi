@@ -8,6 +8,8 @@ managedWifi.controller('NetworksController', ["$scope", "$location", "NetworkSer
         var init = function(){
             networkService.getAll().then(
                 function(networks){
+                    notificationService.clear("loadNetworks");
+
                     networks.forEach(function(network){ // modify model to work with angular particulars
                         network.id = network._id;
                     });
@@ -15,7 +17,7 @@ managedWifi.controller('NetworksController', ["$scope", "$location", "NetworkSer
                     $scope.paginator.updateTotalItems(networks.length);
                 },
                 function(reason){
-                    notificationService.error("An error occurred while blocking this user.");
+                    notificationService.error("loadNetworks", "An error occurred while loading networks.");
                 }
             );
         };

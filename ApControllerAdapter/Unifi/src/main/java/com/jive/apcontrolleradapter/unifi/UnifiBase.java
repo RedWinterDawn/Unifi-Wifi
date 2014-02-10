@@ -52,6 +52,16 @@ public class UnifiBase {
         return fullResponse;
     }
 
+    protected Map<String, Object> getSessionInfo(String sessionId){
+        DB db = dbClient.getDB("ace");
+        DBCollection dbCollection = db.getCollection("cache_login");
+        BasicDBObject query = new BasicDBObject("cookie", sessionId);
+        DBObject session = dbCollection.findOne(query);
+        if(session == null)
+            throw new ForbiddenException();
+        return session.toMap();
+    }
+
     protected Map<String, Object> getExtendedSiteInfo(String sessionId){
         DB db = dbClient.getDB("ace");
 

@@ -17,7 +17,7 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
                 $scope.limits = angular.copy($scope.originalLimits);
             },
             function(reason){
-                notificationService.error("An error occurred while loading this site's settings. Please reload the page.");
+                notificationService.error("loadSiteSettings", "An error occurred while loading this site's settings.");
             }
         );
 
@@ -25,10 +25,10 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
             siteSettingsService.update($scope.settings).then(
                 function(){
                     angular.copy($scope.settings, $scope.original);
-                    notificationService.success("This site's settings have been updated");
+                    notificationService.success("siteSettingsEdit", "This site's settings have been updated");
                 },
                 function(reason){
-                    notificationService.error("An error occurred while updating the settings.");
+                    notificationService.error("siteSettingsEdit", "An error occurred while updating the settings.");
                 }
             )
         };

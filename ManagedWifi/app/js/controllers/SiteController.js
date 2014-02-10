@@ -9,12 +9,12 @@ managedWifi.controller('SiteController', ["$scope", "$location", "$routeParams",
         if(!$scope.isNew){
             siteService.getById($routeParams.id).then(
                 function(site){
-                    site.macs = site.devices == undefined ? "" : site.devices.join("\n\r");
+                    site.macs = site.devices == undefined ? "" : site.devices.join("\n");
                     $scope.original = site;
                     $scope.site = angular.copy($scope.original);
                 },
                 function(reason){
-                    notificationService.error("An error occurred while attempting to retrieve this site's details");
+                    notificationService.error("loadSite", "An error occurred while attempting to retrieve this site's details");
                 }
             );
         } else {
@@ -25,25 +25,26 @@ managedWifi.controller('SiteController', ["$scope", "$location", "$routeParams",
         }
 
         $scope.update = function() {
-            $scope.site.devices = $scope.site.macs == undefined ? [] : $scope.site.macs.split("\n\r");
+            $scope.site.devices = $scope.site.macs == undefined ? [] : $scope.site.macs.split("\n");
             if($scope.isNew) {
                 siteService.add($scope.site).then(
                     function(){
-                        notificationService.success("The site has been added");
+                        notificationService.success("siteAdd", "The site has been added");
+
                         $location.url("/sites");
                     },
                     function(reason){
-                        notificationService.error("An error occurred while attempting to add this site");
+                        notificationService.error("siteAdd", "An error occurred while attempting to add this site");
                     }
                 )
             } else {
                 siteService.update($scope.site).then(
                     function(){
                         angular.copy($scope.site, $scope.original);
-                        notificationService.success("The site has been updated");
+                        notificationService.success("siteEdit", "The site has been updated");
                     },
                     function(reason){
-                        notificationService.error("An error occurred while attempting to save this site");
+                        notificationService.error("siteEdit", "An error occurred while attempting to save this site");
                     }
                 )
             }
@@ -63,7 +64,7 @@ managedWifi.controller('SiteController', ["$scope", "$location", "$routeParams",
                 msg: "Note that all configurations and history with respect to this site will be deleted. All associated devices will be restored to their factory state."
             }).result.then(function(){
                     siteService.delete($scope.original).then(function(){
-                    notificationService.success($scope.original.friendly_name + " was deleted.");
+                    notificationService.success("siteDelete", $scope.original.friendly_name + " was deleted.");
                     $location.replace("/sites");
                     $location.url("/sites");
                 });

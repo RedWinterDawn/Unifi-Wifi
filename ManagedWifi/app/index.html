@@ -17,7 +17,7 @@
         <div class="notificationMessage"
              ng-class="alert.type=='success' ? 'success-example' : alert.type=='error' ? 'failure-example' : ''"
         >
-            <i class="icon-remove" ng-click="closeAlert(alert)"></i>
+            <i class="icon-remove" ng-click="closeAlert(alert)" ng-hide="alert.type=='processing'"></i>
             <i class="icon-spinner icon-spin" ng-show="alert.type=='processing'"></i>
             <i class="icon-ok" ng-show="alert.type=='success'"></i>
             <i class="icon-warning-sign" ng-show="alert.type=='error'"></i>
@@ -28,7 +28,7 @@
 
 
 <div id="sidr" class="loading-hide">
-    <div class="portal-name">Dairy Queen</div>
+    <div class="portal-name"></div>
     <ul>
         <li><a href="https://jive.onjive.com/admin/users/"><i class="icon-user"></i>User</a></li>
         <li><a href="https://jive.onjive.com/admin/usergroups/"><i class="icon-group"></i>User Groups</a></li>
@@ -49,10 +49,11 @@
                 <li>
                     <div class="title"><i class="icon-signal"></i>WiFi</div>
                 </li>
-                <li class="dropdown" ng-class="isActive('Devices')"><a ng-click="navigate('devices')" data-toggle="dropdown">Access Point Devices</a></li>
-                <li class="dropdown" ng-class="isActive('Networks')"><a ng-click="navigate('networks')" data-toggle="dropdown">Wireless Networks</a></li>
-                <li class="dropdown" ng-class="isActive('Users')"><a ng-click="navigate('users')" data-toggle="dropdown">Device Users</a></li>
-                <li class="dropdown" ng-class="isActive('Settings')"><a ng-click="navigate('settings')" data-toggle="dropdown">Site Settings</a></li>
+                <li class="dropdown" ng-class="isActive('Devices')" ng-show="sites"><a ng-click="navigate('devices')" data-toggle="dropdown">Access Point Devices</a></li>
+                <li class="dropdown" ng-class="isActive('Networks')" ng-show="sites"><a ng-click="navigate('networks')" data-toggle="dropdown">Wireless Networks</a></li>
+                <li class="dropdown" ng-class="isActive('Users')" ng-show="sites"><a ng-click="navigate('users')" data-toggle="dropdown">Device Users</a></li>
+                <li class="dropdown" ng-class="isActive('Settings')" ng-show="sites"><a ng-click="navigate('settings')" data-toggle="dropdown">Site Settings</a></li>
+                <li class="dropdown" ng-class="isActive('Sites')" ng-show="isAdmin"><a ng-click="navigate('sites')" data-toggle="dropdown">Sites</a></li>
             </ul>
             <div class="meta-menu">
                 <ul class="nav pull-right">
@@ -88,7 +89,7 @@
             <div class="row-fluid">
                 <div class="span12">
                     <ul class="status">
-                        <li>
+                        <li ng-show="sites">
                             <div class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">
                                 <div class="title"><span ng-bind="selectedSite.friendly_name"></span><i class="icon-caret-down"></i></div></a>
 
@@ -132,11 +133,11 @@
 </footer>
 
 
-<script src="lib/angular/angular.js"></script>
-<script src="lib/angular/angular-resource.js"></script>
-<script src="lib/angular/angular-route.js"></script>
-<script src="lib/angular/angular-cookies.js"></script>
-<script src="lib/angular-ext/ui-bootstrap-tpls-0.6.0.js"></script>
+<script src="lib/angular/angular.min.js"></script>
+<script src="lib/angular/angular-resource.min.js"></script>
+<script src="lib/angular/angular-route.min.js"></script>
+<script src="lib/angular/angular-cookies.min.js"></script>
+<script src="lib/angular-ext/ui-bootstrap-tpls-0.6.0.min.js"></script>
 <script src="lib/jquery/jquery-1.10.2.min.js"></script>
 <script src="lib/select2/select2.min.js"></script>
 <script src="lib/jquery.sidr.min.js"></script>
@@ -161,9 +162,11 @@
 <script src="js/services/unifi/UnifiAccessPointService.js"></script>
 <script src="js/services/unifi/UnifiAccessPointUserService.js"></script>
 <script src="js/services/unifi/UnifiNetworkService.js"></script>
-<script src="js/services/unifi/UnifiLoginService.js"></script>
 <script src="js/services/unifi/UnifiSiteSettingsService.js"></script>
 <script src="js/services/unifi/UnifiSiteService.js"></script>
+<script src="js/services/unifi/UnifiLoginService.js"></script>
+
+<script src="js/services/jive/JiveLoginService.js"></script>
 
 <script src="js/services/mock/MockAccessPointService.js"></script>
 <script src="js/services/mock/MockAccessPointUserService.js"></script>
@@ -176,6 +179,7 @@
 <script src="js/controllers/ConfirmDialogController.js"></script>
 <script src="js/controllers/RefreshDataController.js"></script>
 
+<script src="js/controllers/Oauth2Controller.js"></script>
 <script src="js/controllers/AccessPointListController.js"></script>
 <script src="js/controllers/AccessPointController.js"></script>
 <script src="js/controllers/HelpController.js"></script>

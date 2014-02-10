@@ -46,6 +46,30 @@ managedWifi.regExLib = {
     ipAddress: /^[\d]{1,3}\.[\d]{1,3}\.[\d]{1,3}\.[\d]{1,3}$/
 };
 
+managedWifi.parseQuery = function () {
+    var regex = /[?&]([^=#]+)=([^&#]*)/g,
+        url = window.location.href,
+        params = {},
+        match;
+    while(match = regex.exec(url)) {
+        params[match[1]] = match[2];
+    }
+    return params;
+};
+
+managedWifi.getLocation = function(href) {
+    var match = href.match(/^(https?\:)\/\/(([^:\/?#]*)(?:\:([0-9]+))?)(\/[^?#]*)(\?[^#]*|)(#.*|)$/);
+    return match && {
+        protocol: match[1],
+        host: match[2],
+        hostname: match[3],
+        port: match[4],
+        pathname: match[5],
+        search: match[6],
+        hash: match[7]
+    }
+};
+
 managedWifi.messageTopics = {
     ui: {
         all: "ui",

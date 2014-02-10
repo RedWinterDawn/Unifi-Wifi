@@ -2,86 +2,81 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9d31116-19d8-4eb4-b429-a33e9b352292" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.name" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ApControllerAdapter/Unifi/.idea/.name" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_mail_mail_1_4_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ApControllerAdapter/Unifi/.idea/compiler.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ApControllerAdapter/Unifi/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ApControllerAdapter/Unifi/src/main/main.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ApControllerAdapter/Unifi/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ApControllerAdapter/Unifi/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ApControllerAdapter/Unifi/.idea/copyright/profiles_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ApControllerAdapter/Unifi/.idea/scopes/scope_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ApControllerAdapter/Unifi/.idea/uiDesigner.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ApControllerAdapter/Unifi/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ApControllerAdapter/Unifi/.idea/workspace.xml" />
-      <change type="DELETED" beforePath="G:\Development\Clients\Jive\Managed-Wifi\ApControllerAdapter\.idea\.name" afterPath="" />
-      <change type="DELETED" beforePath="G:\Development\Clients\Jive\Managed-Wifi\ApControllerAdapter\.idea\artifacts\Web_war_exploded.xml" afterPath="" />
-      <change type="DELETED" beforePath="G:\Development\Clients\Jive\Managed-Wifi\ApControllerAdapter\.idea\compiler.xml" afterPath="" />
-      <change type="DELETED" beforePath="G:\Development\Clients\Jive\Managed-Wifi\ApControllerAdapter\.idea\copyright\profiles_settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="G:\Development\Clients\Jive\Managed-Wifi\ApControllerAdapter\.idea\encodings.xml" afterPath="" />
-      <change type="DELETED" beforePath="G:\Development\Clients\Jive\Managed-Wifi\ApControllerAdapter\.idea\libraries\Maven__com_fasterxml_jackson_core_jackson_annotations_2_2_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="G:\Development\Clients\Jive\Managed-Wifi\ApControllerAdapter\.idea\libraries\Maven__com_fasterxml_jackson_core_jackson_core_2_2_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="G:\Development\Clients\Jive\Managed-Wifi\ApControllerAdapter\.idea\libraries\Maven__com_fasterxml_jackson_core_jackson_databind_2_2_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="G:\Development\Clients\Jive\Managed-Wifi\ApControllerAdapter\.idea\libraries\Maven__com_fasterxml_jackson_jaxrs_jackson_jaxrs_base_2_2_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="G:\Development\Clients\Jive\Managed-Wifi\ApControllerAdapter\.idea\libraries\Maven__com_fasterxml_jackson_jaxrs_jackson_jaxrs_json_provider_2_2_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="G:\Development\Clients\Jive\Managed-Wifi\ApControllerAdapter\.idea\libraries\Maven__com_fasterxml_jackson_module_jackson_module_jaxb_annotations_2_2_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="G:\Development\Clients\Jive\Managed-Wifi\ApControllerAdapter\.idea\libraries\Maven__commons_codec_commons_codec_1_6.xml" afterPath="" />
-      <change type="DELETED" beforePath="G:\Development\Clients\Jive\Managed-Wifi\ApControllerAdapter\.idea\libraries\Maven__commons_io_commons_io_2_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="G:\Development\Clients\Jive\Managed-Wifi\ApControllerAdapter\.idea\libraries\Maven__commons_logging_commons_logging_1_1_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="G:\Development\Clients\Jive\Managed-Wifi\ApControllerAdapter\.idea\libraries\Maven__javassist_javassist_3_12_1_GA.xml" afterPath="" />
-      <change type="DELETED" beforePath="G:\Development\Clients\Jive\Managed-Wifi\ApControllerAdapter\.idea\libraries\Maven__javax_activation_activation_1_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="G:\Development\Clients\Jive\Managed-Wifi\ApControllerAdapter\.idea\libraries\Maven__javax_annotation_jsr250_api_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="G:\Development\Clients\Jive\Managed-Wifi\ApControllerAdapter\.idea\libraries\Maven__net_jcip_jcip_annotations_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="G:\Development\Clients\Jive\Managed-Wifi\ApControllerAdapter\.idea\libraries\Maven__org_apache_httpcomponents_httpclient_4_2_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="G:\Development\Clients\Jive\Managed-Wifi\ApControllerAdapter\.idea\libraries\Maven__org_apache_httpcomponents_httpcore_4_2_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="G:\Development\Clients\Jive\Managed-Wifi\ApControllerAdapter\.idea\libraries\Maven__org_jboss_resteasy_jaxrs_api_3_0_2_Final.xml" afterPath="" />
-      <change type="DELETED" beforePath="G:\Development\Clients\Jive\Managed-Wifi\ApControllerAdapter\.idea\libraries\Maven__org_jboss_resteasy_resteasy_client_3_0_2_Final.xml" afterPath="" />
-      <change type="DELETED" beforePath="G:\Development\Clients\Jive\Managed-Wifi\ApControllerAdapter\.idea\libraries\Maven__org_jboss_resteasy_resteasy_jackson2_provider_3_0_2_Final.xml" afterPath="" />
-      <change type="DELETED" beforePath="G:\Development\Clients\Jive\Managed-Wifi\ApControllerAdapter\.idea\libraries\Maven__org_jboss_resteasy_resteasy_jaxrs_3_0_2_Final.xml" afterPath="" />
-      <change type="DELETED" beforePath="G:\Development\Clients\Jive\Managed-Wifi\ApControllerAdapter\.idea\libraries\Maven__org_mongodb_mongo_java_driver_2_11_3.xml" afterPath="" />
-      <change type="DELETED" beforePath="G:\Development\Clients\Jive\Managed-Wifi\ApControllerAdapter\.idea\libraries\Maven__org_scannotation_scannotation_1_0_3.xml" afterPath="" />
-      <change type="DELETED" beforePath="G:\Development\Clients\Jive\Managed-Wifi\ApControllerAdapter\.idea\libraries\Maven__org_slf4j_slf4j_api_1_5_8.xml" afterPath="" />
-      <change type="DELETED" beforePath="G:\Development\Clients\Jive\Managed-Wifi\ApControllerAdapter\.idea\libraries\Maven__org_slf4j_slf4j_simple_1_5_8.xml" afterPath="" />
-      <change type="DELETED" beforePath="G:\Development\Clients\Jive\Managed-Wifi\ApControllerAdapter\.idea\misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="G:\Development\Clients\Jive\Managed-Wifi\ApControllerAdapter\.idea\modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="G:\Development\Clients\Jive\Managed-Wifi\ApControllerAdapter\.idea\scopes\scope_settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="G:\Development\Clients\Jive\Managed-Wifi\ApControllerAdapter\.idea\uiDesigner.xml" afterPath="" />
-      <change type="DELETED" beforePath="G:\Development\Clients\Jive\Managed-Wifi\ApControllerAdapter\.idea\vcs.xml" afterPath="" />
-      <change type="DELETED" beforePath="G:\Development\Clients\Jive\Managed-Wifi\ApControllerAdapter\.idea\workspace.xml" afterPath="" />
-      <change type="DELETED" beforePath="G:\Development\Clients\Jive\Managed-Wifi\ApControllerAdapter\jetty.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/templates/AccessPoint.html" afterPath="$PROJECT_DIR$/ManagedWifi/app/templates/AccessPoint.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ApControllerAdapter/WebApi/src/main/java/com/jive/apcontrolleradapter/webapi/Cmd.java" afterPath="$PROJECT_DIR$/ApControllerAdapter/WebApi/src/main/java/com/jive/apcontrolleradapter/webapi/Cmd.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ApControllerAdapter/WebApi/src/main/java/com/jive/apcontrolleradapter/webapi/Auth.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/JiveAuth.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ManagedWifi/app/js/services/jive/JiveLoginService.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ApControllerAdapter/WebApi/src/main/java/com/jive/apcontrolleradapter/webapi/Login.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/Oauth2Controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ManagedWifi/app/templates/ProcessingLogin.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/unifi/UnifiLogin.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/AccessPointController.js" afterPath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/AccessPointController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/AccessPointListController.js" afterPath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/AccessPointListController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/js/services/AppSettings.js" afterPath="$PROJECT_DIR$/ManagedWifi/app/js/services/AppSettings.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/LoginController.js" afterPath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/LoginController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/MainMenuController.js" afterPath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/MainMenuController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/js/services/NavigationService.js" afterPath="$PROJECT_DIR$/ManagedWifi/app/js/services/NavigationService.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/NetworkController.js" afterPath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/NetworkController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/NetworksController.js" afterPath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/NetworksController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/NotificationController.js" afterPath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/NotificationController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/js/services/NotificationService.js" afterPath="$PROJECT_DIR$/ManagedWifi/app/js/services/NotificationService.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/RefreshDataController.js" afterPath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/RefreshDataController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/templates/Site.html" afterPath="$PROJECT_DIR$/ManagedWifi/app/templates/Site.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ApControllerAdapter/Unifi/Unifi.iml" afterPath="$PROJECT_DIR$/ApControllerAdapter/Unifi/Unifi.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ApControllerAdapter/WebApi/src/main/java/com/jive/apcontrolleradapter/webapi/Site.java" afterPath="$PROJECT_DIR$/ApControllerAdapter/WebApi/src/main/java/com/jive/apcontrolleradapter/webapi/Site.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/SiteController.js" afterPath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/SiteController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/SiteSettingsController.js" afterPath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/SiteSettingsController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/SitesController.js" afterPath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/SitesController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/unifi/UnifiBase.java" afterPath="$PROJECT_DIR$/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/unifi/UnifiBase.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/unifi/UnifiCmd.java" afterPath="$PROJECT_DIR$/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/unifi/UnifiCmd.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/js/services/unifi/UnifiLoginService.js" afterPath="$PROJECT_DIR$/ManagedWifi/app/js/services/unifi/UnifiLoginService.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/templates/Users.html" afterPath="$PROJECT_DIR$/ManagedWifi/app/templates/Users.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ApControllerAdapter/Web/Web.iml" afterPath="$PROJECT_DIR$/ApControllerAdapter/Web/Web.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ApControllerAdapter/WebApi/WebApi.iml" afterPath="$PROJECT_DIR$/ApControllerAdapter/WebApi/WebApi.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/unifi/UnifiSite.java" afterPath="$PROJECT_DIR$/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/unifi/UnifiSite.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/js/services/unifi/UnifiSiteService.js" afterPath="$PROJECT_DIR$/ManagedWifi/app/js/services/unifi/UnifiSiteService.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/UserController.js" afterPath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/UserController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/UsersController.js" afterPath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/UsersController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ApControllerAdapter/Web/src/main/java/com/jive/apcontrolleradapter/web/api.java" afterPath="$PROJECT_DIR$/ApControllerAdapter/Web/src/main/java/com/jive/apcontrolleradapter/web/api.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/js/app.js" afterPath="$PROJECT_DIR$/ManagedWifi/app/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ApControllerAdapter/Unifi/pom.xml" afterPath="$PROJECT_DIR$/ApControllerAdapter/Unifi/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ApControllerAdapter/Unifi/src/main/resources/com/jive/apcontrolleradapter/unifi/unifi.properties" afterPath="$PROJECT_DIR$/ApControllerAdapter/Unifi/src/main/resources/com/jive/apcontrolleradapter/unifi/unifi.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/js/appLib.js" afterPath="$PROJECT_DIR$/ManagedWifi/app/js/appLib.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/index.html" afterPath="$PROJECT_DIR$/ManagedWifi/app/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
-    <file path="/Dummy.txt" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1386001805194" ignored="false" />
+    <file path="/Dummy.txt" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392065264320" ignored="false" />
     <file path="/Users.html" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1385993392142" ignored="false" />
     <file path="/AccessPoint.html" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1385993794913" ignored="false" />
     <file path="/Cmd.java" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1385996197191" ignored="false" />
-    <file path="/UnifiBase.java" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1385994508729" ignored="false" />
+    <file path="/UnifiBase.java" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392051081333" ignored="false" />
     <file path="/UnifiCmd.java" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1386000988134" ignored="false" />
-    <file path="/unifi.properties" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1386001678195" ignored="false" />
-    <file path="/fragment.java" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1385996376594" ignored="false" />
-    <file path="/Site.html" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1386001111583" ignored="false" />
+    <file path="/unifi.properties" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392002990477" ignored="false" />
+    <file path="/fragment.java" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392051597618" ignored="false" />
+    <file path="/Site.html" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392050575078" ignored="false" />
+    <file path="/a.dummy" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392057447411" ignored="false" />
+    <file path="/UnifiSiteService.js" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392055165676" ignored="false" />
+    <file path="/UnifiSiteSettingsService.js" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1387186806357" ignored="false" />
+    <file path="/Login.html" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1387546622453" ignored="false" />
+    <file path="/LoginController.js" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1391894450991" ignored="false" />
+    <file path="/JiveLoginService.js" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392052607922" ignored="false" />
+    <file path="/index.html" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392050194958" ignored="false" />
+    <file path="/app.js" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392052362537" ignored="false" />
+    <file path="/Auth.java" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392030763398" ignored="false" />
+    <file path="/JiveAuth.java" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392044689543" ignored="false" />
+    <file path="/api.java" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392033348328" ignored="false" />
+    <file path="$PROJECT_DIR$/../../../Java/Projects/Clients/MPL MultiReg/MultiReg.Web/resources/mypowerlearning.properties" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1391399265877" ignored="false" />
+    <file path="/RefreshDataController.js" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1391896331704" ignored="false" />
+    <file path="/Oauth2Controller.js" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392053645612" ignored="false" />
+    <file path="/appLib.js" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392041118430" ignored="false" />
+    <file path="/UnifiAccessPoint.java" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1391901032339" ignored="false" />
+    <file path="/UnifiLogin.java" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392047705672" ignored="false" />
+    <file path="/Login.java" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392041880329" ignored="false" />
+    <file path="/AppSettings.js" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392039352959" ignored="false" />
+    <file path="/SitesController.js" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392043020436" ignored="false" />
+    <file path="/MainMenuController.js" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392056254276" ignored="false" />
+    <file path="/NavigationService.js" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392043446067" ignored="false" />
+    <file path="/UnifiSite.java" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392055127139" ignored="false" />
+    <file path="/NotificationController.js" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392056939008" ignored="false" />
+    <file path="/NotificationService.js" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392049236181" ignored="false" />
+    <file path="/AccessPointController.js" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392048903654" ignored="false" />
+    <file path="/NetworkController.js" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392048980776" ignored="false" />
+    <file path="/SiteController.js" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392050445884" ignored="false" />
+    <file path="/UserController.js" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392049161460" ignored="false" />
+    <file path="/Site.java" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392055113893" ignored="false" />
+    <file path="/AccessPointListController.js" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392056214128" ignored="false" />
+    <file path="/jetty.xml" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392062818062" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,6 +91,7 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -132,7 +128,23 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <line_breakpoints>
+      <breakpoint url="file://$PROJECT_DIR$/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/unifi/UnifiSite.java" line="42" class="com.jive.apcontrolleradapter.unifi.UnifiSite" package="com.jive.apcontrolleradapter.unifi">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </line_breakpoints>
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -141,7 +153,46 @@
     <favorites_list name="Managed-Wifi" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="JiveLoginService.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ManagedWifi/app/js/services/jive/JiveLoginService.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="52" column="14" selection-start="1785" selection-end="1785" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CorsFilter.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ApControllerAdapter/Web/src/main/java/com/jive/apcontrolleradapter/web/CorsFilter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="58" selection-start="561" selection-end="588" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="jetty.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ApControllerAdapter/Web/jetty.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="51" selection-start="832" selection-end="832" vertical-scroll-proportion="-9.153846">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ManagedWifi/app/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="63" column="111" selection-start="4052" selection-end="4052" vertical-scroll-proportion="0.3321492">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -160,17 +211,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/ManagedWifi/app/js/services/unifi/UnifiLoginService.js" />
-        <option value="$PROJECT_DIR$/ManagedWifi/app/js/services/AppSettings.js" />
-        <option value="$PROJECT_DIR$/ManagedWifi/app/js/app.js" />
-        <option value="$PROJECT_DIR$/ManagedWifi/app/templates/Users.html" />
-        <option value="$PROJECT_DIR$/ManagedWifi/app/templates/AccessPoint.html" />
-        <option value="$PROJECT_DIR$/ApControllerAdapter/Unifi/pom.xml" />
-        <option value="$PROJECT_DIR$/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/unifi/UnifiBase.java" />
-        <option value="$PROJECT_DIR$/ApControllerAdapter/WebApi/src/main/java/com/jive/apcontrolleradapter/webapi/Cmd.java" />
         <option value="$PROJECT_DIR$/ManagedWifi/app/templates/Site.html" />
-        <option value="$PROJECT_DIR$/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/unifi/UnifiCmd.java" />
-        <option value="$PROJECT_DIR$/ApControllerAdapter/Unifi/src/main/resources/com/jive/apcontrolleradapter/unifi/unifi.properties" />
+        <option value="$PROJECT_DIR$/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/unifi/UnifiBase.java" />
+        <option value="$PROJECT_DIR$/ManagedWifi/app/js/app.js" />
+        <option value="$PROJECT_DIR$/ManagedWifi/app/js/controllers/Oauth2Controller.js" />
+        <option value="$PROJECT_DIR$/ManagedWifi/app/js/controllers/SiteController.js" />
+        <option value="$PROJECT_DIR$/ApControllerAdapter/WebApi/src/main/java/com/jive/apcontrolleradapter/webapi/Site.java" />
+        <option value="$PROJECT_DIR$/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/unifi/UnifiSite.java" />
+        <option value="$PROJECT_DIR$/ManagedWifi/app/js/services/unifi/UnifiSiteService.js" />
+        <option value="$PROJECT_DIR$/ManagedWifi/app/js/controllers/AccessPointListController.js" />
+        <option value="$PROJECT_DIR$/ManagedWifi/app/js/controllers/MainMenuController.js" />
+        <option value="$PROJECT_DIR$/ManagedWifi/app/js/controllers/NetworksController.js" />
+        <option value="$PROJECT_DIR$/ManagedWifi/app/js/controllers/UsersController.js" />
+        <option value="$PROJECT_DIR$/ManagedWifi/app/js/services/NotificationService.js" />
+        <option value="$PROJECT_DIR$/ManagedWifi/app/js/controllers/NotificationController.js" />
+        <option value="$PROJECT_DIR$/ManagedWifi/app/js/services/jive/JiveLoginService.js" />
+        <option value="$PROJECT_DIR$/ApControllerAdapter/Web/jetty.xml" />
       </list>
     </option>
   </component>
@@ -189,6 +245,9 @@
     <option name="info" value="true" />
     <option name="warnings" value="true" />
   </component>
+  <component name="NamedScopeManager">
+    <scope name="ExcludeLibs" pattern="!file:app/lib//*" />
+  </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
@@ -203,7 +262,7 @@
     <OptionsSetting value="true" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="2" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
@@ -222,85 +281,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Managed-Wifi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Managed-Wifi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebApi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Managed-Wifi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebApi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Managed-Wifi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebApi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Managed-Wifi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebApi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane">
         <subPane>
           <PATH>
@@ -311,27 +291,39 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Managed-Wifi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Artifacts" />
-    <property name="OverrideImplement.combined" value="true" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
+    <property name="OverrideImplement.combined" value="true" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
-    <property name="MemberChooser.sorted" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Ubiquiti UniFi/webapps/ROOT/ManagedWifi" />
-    <property name="GoToClass.includeJavaFiles" value="false" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="GoToClass.includeJavaFiles" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="FullScreen" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter" />
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="options.lastSelected" value="settings" />
+    <property name="options.lastSelected" value="project.scopes" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="project.structure.side.proportion" value="0.2334173" />
     <property name="MemberChooser.copyJavadoc" value="false" />
@@ -350,6 +342,17 @@
         </serverdata>
       </server>
     </servers>
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.jive.apcontrolleradapter.webapi" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\Development\Clients\Jive\Managed-Wifi\ManagedWifi\app" />
+      <recent name="G:\Development\Clients\Jive\Managed-Wifi\ApControllerAdapter\Unifi\src\main\resources\com\jive\apcontroller" />
+      <recent name="G:\Development\Clients\Jive\Managed-Wifi\ManagedWifi\app\js\controllers" />
+      <recent name="G:\Development\Clients\Jive\Managed-Wifi\ManagedWifi\app\templates" />
+    </key>
   </component>
   <component name="RunManager" selected="Jetty Server.Jetty 6.1.26">
     <configuration default="true" type="Remote" factoryName="Remote">
@@ -373,6 +376,21 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="JettyConfiguration" factoryName="Local">
       <deployment />
       <server-settings>
@@ -389,21 +407,6 @@
       </server-settings>
       <predefined_log_file id="Jetty" enabled="true" />
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <method />
-    </configuration>
-    <configuration default="true" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" runner="idea" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
       <method />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
@@ -429,6 +432,7 @@
     </configuration>
     <configuration default="false" name="Jetty 6.1.26" type="JettyConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="Jetty 6.1.26">
       <option name="OPEN_IN_BROWSER" value="false" />
+      <option name="COMMON_VM_ARGUMENTS" value="-Dorg.apache.commons.logging.Log=org.apache.commons.logging.impl.SimpleLog -Dorg.apache.commons.logging.simplelog.showdatetime=true -Dorg.apache.commons.logging.simplelog.log.org.apache.http=DEBUG" />
       <option name="SHOW_DIALOG_ON_UPDATE" value="false" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
@@ -574,37 +578,42 @@
       <created>1385989704581</created>
       <updated>1385989704581</updated>
     </task>
+    <task id="LOCAL-00001" summary="Changed project structure a bit (intellij only).&#10;Implemented email alerts to site email">
+      <created>1386001866768</created>
+      <updated>1386001866768</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1036" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3291714" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspector" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25312147" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3291714" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspector" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5323496" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3291714" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32986537" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39954597" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32986537" sideWeight="0.6708286" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3802497" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3291714" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4449489" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3291714" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3166856" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32986537" sideWeight="0.6708286" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32986537" sideWeight="0.6708286" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2077185" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.249694" sideWeight="0.74687856" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2077185" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20930232" sideWeight="0.68331444" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3291714" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="SVN Repositories" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3291714" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="SVN Repositories" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3291714" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -653,7 +662,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed project structure a bit (intellij only).&#10;Implemented email alerts to site email" />
+    <option name="LAST_COMMIT_MESSAGE" value="Integrated with Jive Oauth" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -668,125 +677,130 @@
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
     <MESSAGE value="Changed project structure a bit (intellij only).&#10;Implemented email alerts to site email" />
+    <MESSAGE value="Integrated with Jive Oauth" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ManagedWifi/app/js/services/mock/MockAccessPointUserService.js">
+    <entry file="file://$PROJECT_DIR$/ManagedWifi/app/templates/Sites.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="45" selection-start="1098" selection-end="1098" vertical-scroll-proportion="0.45730993">
+        <state line="41" column="53" selection-start="1657" selection-end="1664" vertical-scroll-proportion="0.6365796">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ManagedWifi/app/templates/AccessPointList.html">
+    <entry file="file://$PROJECT_DIR$/ManagedWifi/app/js/controllers/SiteController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="34" selection-start="3409" selection-end="3421" vertical-scroll-proportion="0.49524942">
+        <state line="32" column="0" selection-start="1402" selection-end="1402" vertical-scroll-proportion="0.64608073">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ManagedWifi/app/js/filters.js">
+    <entry file="file://$PROJECT_DIR$/ManagedWifi/app/js/controllers/SitesController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="25" selection-start="2179" selection-end="2184" vertical-scroll-proportion="0.36342043">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ApControllerAdapter/Unifi/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="4" selection-start="1356" selection-end="1356" vertical-scroll-proportion="-24.846153">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/unifi/UnifiBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="43" selection-start="2643" selection-end="2687" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/unifi/UnifiDeviceUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="13" selection-start="191" selection-end="191" vertical-scroll-proportion="0.13518886">
+        <state line="22" column="32" selection-start="982" selection-end="982" vertical-scroll-proportion="0.6619469">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/unifi/UnifiSite.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="129" column="33" selection-start="5006" selection-end="5006" vertical-scroll-proportion="1.3041749">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/unifi/UnifiCmd.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="0" selection-start="894" selection-end="894" vertical-scroll-proportion="0.60570073">
+        <state line="100" column="25" selection-start="3686" selection-end="3686" vertical-scroll-proportion="0.7221239">
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#1187#1195#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ApControllerAdapter/WebApi/src/main/java/com/jive/apcontrolleradapter/webapi/AccessPoint.java">
+    <entry file="file://$PROJECT_DIR$/ManagedWifi/app/js/services/unifi/UnifiNetworkService.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="17" selection-start="210" selection-end="210" vertical-scroll-proportion="0.11929824">
+        <state line="96" column="31" selection-start="3569" selection-end="3569" vertical-scroll-proportion="0.45132744">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ApControllerAdapter/WebApi/src/main/java/com/jive/apcontrolleradapter/webapi/WlanNetwork.java">
+    <entry file="file://$PROJECT_DIR$/ManagedWifi/app/js/services/NotificationService.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="17" selection-start="256" selection-end="256" vertical-scroll-proportion="0.11929824">
+        <state line="17" column="5" selection-start="907" selection-end="907" vertical-scroll-proportion="0.33801168">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ApControllerAdapter/WebApi/src/main/java/com/jive/apcontrolleradapter/webapi/SiteSetting.java">
+    <entry file="file://$PROJECT_DIR$/ManagedWifi/app/js/controllers/UsersController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="17" selection-start="216" selection-end="216" vertical-scroll-proportion="0.11929824">
+        <state line="6" column="47" selection-start="446" selection-end="446" vertical-scroll-proportion="0.18478261">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ApControllerAdapter/WebApi/src/main/java/com/jive/apcontrolleradapter/webapi/Site.java">
+    <entry file="file://$PROJECT_DIR$/ManagedWifi/app/js/controllers/NetworksController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="0" selection-start="1176" selection-end="1176" vertical-scroll-proportion="0.72684085">
+        <state line="10" column="59" selection-start="422" selection-end="485" vertical-scroll-proportion="0.12743363">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ApControllerAdapter/WebApi/src/main/java/com/jive/apcontrolleradapter/webapi/DeviceUser.java">
+    <entry file="file://$PROJECT_DIR$/ManagedWifi/app/js/controllers/MainMenuController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="17" selection-start="208" selection-end="208" vertical-scroll-proportion="0.11929824">
+        <state line="7" column="57" selection-start="463" selection-end="523" vertical-scroll-proportion="0.14855072">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ApControllerAdapter/WebApi/src/main/java/com/jive/apcontrolleradapter/webapi/Cmd.java">
+    <entry file="file://$PROJECT_DIR$/ManagedWifi/app/js/controllers/AccessPointListController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="52" selection-start="515" selection-end="515" vertical-scroll-proportion="0.2982456">
+        <state line="22" column="45" selection-start="1199" selection-end="1224" vertical-scroll-proportion="0.6619469">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ManagedWifi/app/templates/Site.html">
+    <entry file="file://$PROJECT_DIR$/ManagedWifi/app/js/controllers/NotificationController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="0" selection-start="4590" selection-end="4590" vertical-scroll-proportion="0.6864608">
+        <state line="32" column="3" selection-start="1223" selection-end="1223" vertical-scroll-proportion="0.6362573">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ApControllerAdapter/Unifi/src/main/resources/com/jive/apcontrolleradapter/unifi/unifi.properties">
+    <entry file="file://$PROJECT_DIR$/ManagedWifi/app/design.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="39" selection-start="212" selection-end="212" vertical-scroll-proportion="0.11929824">
+        <state line="157" column="64" selection-start="8587" selection-end="8587" vertical-scroll-proportion="0.21852732">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ManagedWifi/app/js/services/jive/JiveLoginService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="52" column="14" selection-start="1785" selection-end="1785" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ApControllerAdapter/Web/src/main/java/com/jive/apcontrolleradapter/web/CorsFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="58" selection-start="561" selection-end="588" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ApControllerAdapter/Web/jetty.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="51" selection-start="832" selection-end="832" vertical-scroll-proportion="-9.153846">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ManagedWifi/app/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="111" selection-start="4052" selection-end="4052" vertical-scroll-proportion="0.3321492">
           <folding />
         </state>
       </provider>
@@ -877,6 +891,21 @@
               </list>
             </option>
           </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <last-edited>ExcludeLibs</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+          <order>
+            <scope name="ExcludeLibs" />
+          </order>
         </settings>
       </state>
     </states>

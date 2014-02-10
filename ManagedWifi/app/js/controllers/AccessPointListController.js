@@ -8,6 +8,7 @@ managedWifi.controller('AccessPointListController', ["$scope", "$location", "Acc
         var init = function (){
             accessPointService.getAll().then(
                 function(devices){
+                    notificationService.clear("loadDevices");
                     devices.forEach(function(device){ // modify model to work with angular particulars
                         device.orderableIp = managedWifi.createOrderableIp(device.ip);
                         device.searchables = managedWifi.createSearchables(device, ['name', 'mac', 'ip']);
@@ -17,6 +18,9 @@ managedWifi.controller('AccessPointListController', ["$scope", "$location", "Acc
                     });
                     $scope.accessPoints = devices;
                     $scope.paginator.updateTotalItems(devices.length);
+                },
+                function(reason){
+                    notificationService.error("loadDevices", "An error occurred while loading access points.");
                 }
             );
         };
@@ -24,7 +28,7 @@ managedWifi.controller('AccessPointListController', ["$scope", "$location", "Acc
 
         $scope.adoptDevice = function(accessPoint){
             accessPointService.adopt(accessPoint).then(function(){
-                notificationService.success("The access point has been adopted");
+                notificationService.success("accessPointAdopt", "The access point has been adopted");
                 init();
             });
         };

@@ -19,7 +19,7 @@ managedWifi.controller('UserController', ["$scope", "$location", "$routeParams",
                 });
             },
             function(reason){
-                notificationService.error("An error occurred while loading this user. Please reload the page.");
+                notificationService.error("loadUser", "An error occurred while loading this user. Please reload the page.");
             }
         );
 
@@ -28,10 +28,10 @@ managedWifi.controller('UserController', ["$scope", "$location", "$routeParams",
                 function(){
                     var name = $scope.original.hostname == undefined ? $scope.original.mac : $scope.original.hostname;
                     $scope.original.blocked = !$scope.original.blocked;
-                    notificationService.success(name + " was " + ($scope.original.blocked ? "blocked" : "unblocked"));
+                    notificationService.success("userBlock", name + " was " + ($scope.original.blocked ? "blocked" : "unblocked"));
                 },
                 function(reason){
-                    notificationService.error("An error occurred while blocking this user.");
+                    notificationService.error("userBlock", "An error occurred while blocking this user.");
                 }
             );
         };
@@ -41,10 +41,10 @@ managedWifi.controller('UserController', ["$scope", "$location", "$routeParams",
                 function(){
                     $scope.original.authorized = !$scope.original.authorized;
                     var name = $scope.original.hostname == undefined ? $scope.original.mac : $scope.original.hostname;
-                    notificationService.success(name + " was " + ($scope.original.authorized ? "authorized" : "unauthorized"));
+                    notificationService.success("userAuth", name + " was " + ($scope.original.authorized ? "authorized" : "unauthorized"));
                 },
                 function(reason){
-                    notificationService.error("An error occurred while unblocking this user.");
+                    notificationService.error("userAuth", "An error occurred while unblocking this user.");
                 }
             );
         }

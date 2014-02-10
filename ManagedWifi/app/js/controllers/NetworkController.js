@@ -35,21 +35,21 @@ managedWifi.controller('NetworkController', ["$scope", "$location", "$routeParam
             if($scope.isNew)
                 networkService.add($scope.network).then(
                     function(){
-                        notificationService.success($scope.network.name + " has been added");
+                        notificationService.success("networkAdd", $scope.network.name + " has been added");
                         $location.url("/networks");
                     },
                     function(reason){
-                        notificationService.error("An error occurred while attempting to add network");
+                        notificationService.error("networkAdd", "An error occurred while attempting to add network");
                     }
                 );
             else
                 networkService.update($scope.network).then(
                     function(){
                         angular.copy($scope.network, $scope.original);
-                        notificationService.success($scope.network.name + " has been updated");
+                        notificationService.success("networkEdit", $scope.network.name + " has been updated");
                     },
                     function(reason){
-                        notificationService.error("An error occurred while attempting to update this network");
+                        notificationService.error("networkEdit", "An error occurred while attempting to update this network");
                     }
                 );
         };
@@ -68,12 +68,12 @@ managedWifi.controller('NetworkController', ["$scope", "$location", "$routeParam
                 .result.then(function(){
                     networkService.delete($scope.original).then(
                         function(){
-                            notificationService.success($scope.original.name + " was deleted.");
+                            notificationService.success("networkDelete", $scope.original.name + " was deleted.");
                             $location.replace("/networks");
                             $location.url("/networks");
                         },
                         function(reason){
-                            notificationService.error("An error occurred while attempting to delete this network");
+                            notificationService.error("networkDelete", "An error occurred while attempting to delete this network");
                         }
                     )
                 });

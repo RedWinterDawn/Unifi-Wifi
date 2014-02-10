@@ -6,7 +6,7 @@ managedWifi.controller('SitesController', ["$scope", "$location", "SiteService",
         $scope.paginator = managedWifi.paginator('friendly_name');
 
         var init = function (){
-            siteService.getAllInAccounts().then(
+            siteService.getAll().then(
                 function(sites){
                     sites.forEach(function(site){ // modify model to work with angular particulars
                         site.orderableIp = managedWifi.createOrderableIp(site.ip);
@@ -22,10 +22,5 @@ managedWifi.controller('SitesController', ["$scope", "$location", "SiteService",
         $scope.addSite = function(){
             $location.url('/site/');
         };
-
-        var subToken = messagingService.subscribe(managedWifi.messageTopics.service.refreshComplete.siteService, init);
-        $scope.$on('$destroy', function() {
-            messagingService.unsubscribe(subToken);
-        });
     }
 ]);

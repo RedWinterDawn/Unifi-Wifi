@@ -18,7 +18,8 @@ managedWifi.resolveServiceAlias = function(names){
 };
 
 managedWifi.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
-    $routeProvider.when('/devices',
+    $routeProvider
+        .when('/devices',
         {
             templateUrl: 'templates/AccessPointList.html',
             controller: 'AccessPointListController',
@@ -76,19 +77,50 @@ managedWifi.config(['$routeProvider', '$locationProvider', function ($routeProvi
             templateUrl: 'templates/Blank.html',
             controller: 'LoginController'
         })
+        .when('/oauth2/:code?',
+        {
+            templateUrl: 'templates/Blank.html',
+            controller: 'Oauth2Controller'
+        })
         .when('/settings',
         {
             templateUrl: 'templates/SiteSettings.html',
             controller: 'SiteSettingsController',
             resolve: managedWifi.resolveServiceAlias(["SiteSettingsService"])
         })
-        .otherwise({redirectTo: '/devices'});
+        .otherwise({redirectTo: "/devices"});
     $locationProvider.html5Mode(false);
 }])
-.run(["$location", "$cookies", "unifiLoginService", function($location, $cookies, loginService){
+.run(["$location", "$cookies", "notificationService", "jiveLoginService", 'siteService', function($location, $cookies, notificationService, loginService, siteService){
     if($location.search().mock != undefined)
         $cookies.useMockServices = $location.search().mock;
-    var l = loginService.isLoggedIn().then(function(){$location.url("/");}, function(){$location.url("/login")});
+
+    if($location.url() == "/oauth2")
+        return;
+
+    if(managedWifi.parseQuery().pbx != null){
+        $location.url('/oauth2');
+        return;
+    }
+
+    loginService.isLoggedIn().then(
+        function(){
+            loginService.isAdmin().then(
+                function(isAdmin){
+                    if(isAdmin)
+                        siteService.getAll().then(
+                            function(sites){
+                                if(sites.length == 0)
+                                    $location.url('/sites')
+                            }
+                        );
+                }
+            )
+        },
+        function(){
+            notificationService.error("login", "We're sorry, but an error occurred while authorizing your login. You may reload this page and try again.")
+        }
+    );
 }])
 ;
 
@@ -98,3 +130,8 @@ managedWifi.factory('siteService', ['$cookies','$injector', function($cookies, $
     return $injector.get(prefix+"SiteService");
 }]);
 
+managedWifi.factory('loginService', ['$cookies','$injector', function($cookies, $injector) {
+    var useMockServices = $cookies.useMockServices != undefined ? $cookies.useMockServices : false;
+    var prefix = useMockServices == "true" ? "mock" : "jive";
+    return $injector.get(prefix+"LoginService");
+}]);

@@ -5,6 +5,7 @@ import com.mongodb.*;
 import org.bson.types.ObjectId;
 
 import javax.ws.rs.BadRequestException;
+import javax.ws.rs.ForbiddenException;
 import javax.ws.rs.NotFoundException;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.client.Client;
@@ -23,15 +24,15 @@ public class UnifiSite extends UnifiBase implements Site {
     }
 
     @Override
-    public List<Object> getSites(String sessionId, boolean allAccounts) {
-        Map<String, Object> siteInfo = getExtendedSiteInfo(sessionId);
+    public List<Object> getSites(String sessionId) {
+        Map<String, Object> session = getSessionInfo(sessionId);
 
         DB db = dbClient.getDB("ace");
-
-        // get current site for session
         DBCollection dbCollection = db.getCollection("site_ext");
-        BasicDBObject query = allAccounts ? new BasicDBObject() : new BasicDBObject("account_id", siteInfo.get("account_id").toString());
+        BasicDBObject query = new BasicDBObject("account_id", session.get("account_id"));
         DBCursor dbObjects = dbCollection.find(query);
+        if(dbObjects.count() == 0)
+            return new ArrayList<Object>();
 
         List<Object> sites = new ArrayList<Object>();
         try {
@@ -39,7 +40,7 @@ public class UnifiSite extends UnifiBase implements Site {
                 Map site = dbObjects.next().toMap();
                 site.remove("devices");
                 site.remove("_id");
-                site.put("is_selected", siteInfo.get("site_id").toString().equals(site.get("site_id")));
+                site.put("is_selected", session.get("site_id").toString().equals(site.get("site_id")));
                 sites.add(site);
             }
         } finally {
@@ -72,35 +73,42 @@ public class UnifiSite extends UnifiBase implements Site {
         dbCollection.update(query, new BasicDBObject(site));
     }
 
-    public void add(String sessionId, Map site){
-        Map<String, Object> siteInfo = getExtendedSiteInfo(sessionId);
+    public String add(String sessionId, Map site){
+        Map<String, Object> session = getSessionInfo(sessionId);
 
         javax.ws.rs.core.Form form = new javax.ws.rs.core.Form();
         form.param("json", String.format("{'name':'%s','desc':'%s','cmd':'add-site'}", Utils.randomString(20), site.get("friendly_name")));
 
         Client client= ClientBuilder.newClient();
-        WebTarget target = client.target(controllerHost + String.format("/api/s/%s/cmd/sitemgr", siteInfo.get("name")));
+        WebTarget target = client.target(controllerHost + "/api/s/super/cmd/sitemgr");
         Response response = target
-                .request("application/x-www-form-urlencoded")
+                .request(MediaType.APPLICATION_FORM_URLENCODED)
                 .cookie("unifises", sessionId)
                 .post(Entity.form(form));
         Map newSite = response.readEntity(Map.class);
-        site.put("site_id", ((List<Map>)newSite.get("data")).get(0).get("_id").toString());
+        String newSiteId = ((List<Map>) newSite.get("data")).get(0).get("_id").toString();
+        site.put("site_id", newSiteId);
+        site.put("account_id", session.get("account_id"));
 
         DB db = dbClient.getDB("ace");
         DBCollection dbCollection = db.getCollection("site_ext");
         dbCollection.insert(new BasicDBObject(site));
+
+        dbCollection = db.getCollection("site_ext");
+        BasicDBObject query = new BasicDBObject("account_id", session.get("account_id"));
+        if(dbCollection.count(query) == 1)
+            makeActive(sessionId, newSiteId);
+        return newSiteId;
     }
 
     public void delete(String sessionId, String id) {
-        Map<String, Object> siteInfo = getExtendedSiteInfo(sessionId);
         javax.ws.rs.core.Form form = new javax.ws.rs.core.Form();
         form.param("json", String.format("{'cmd':'delete-site','site':'%s'}", id));
 
         Client client= ClientBuilder.newClient();
-        WebTarget target = client.target(controllerHost + String.format("/api/s/%s/cmd/sitemgr", siteInfo.get("name")));
+        WebTarget target = client.target(controllerHost + "/api/s/super/cmd/sitemgr");
         Response response = target
-                .request("application/x-www-form-urlencoded")
+                .request(MediaType.APPLICATION_FORM_URLENCODED)
                 .cookie("unifises", sessionId)
                 .post(Entity.form(form));
 
@@ -116,20 +124,15 @@ public class UnifiSite extends UnifiBase implements Site {
 
     @Override
     public void makeActive(String sessionId, Map site){
-        Map<String, Object> siteInfo = getExtendedSiteInfo(sessionId);
-        DB db = dbClient.getDB("ace");
-
-        DBCollection dbCollection = db.getCollection("site_ext");
-        BasicDBObject query = new BasicDBObject();
-        query.append("account_id", siteInfo.get("account_id").toString());
-        query.append("site_id", site.get("site_id"));
-
-        if(dbCollection.count(query) > 0){
-            dbCollection = db.getCollection("cache_login");
-            query = new BasicDBObject("cookie", sessionId);
-            BasicDBObject update = new BasicDBObject("$set", new BasicDBObject("site_id", site.get("site_id").toString()));
-            dbCollection.update(query, update);
-        }
+        Map<String, Object> session = getSessionInfo(sessionId); //authenticates
+        makeActive(sessionId, (String) site.get("site_id"));
     }
 
+    private void makeActive(String sessionId, String siteId){
+        DB db = dbClient.getDB("ace");
+        DBCollection dbCollection = db.getCollection("cache_login");
+        BasicDBObject query = new BasicDBObject("cookie", sessionId);
+        BasicDBObject update = new BasicDBObject("$set", new BasicDBObject("site_id", siteId));
+        dbCollection.update(query, update);
+    }
 }

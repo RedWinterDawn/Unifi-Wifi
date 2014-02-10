@@ -1,5 +1,6 @@
 package com.jive.apcontrolleradapter.web;
 
+import com.jive.apcontrolleradapter.JiveAuth;
 import com.jive.apcontrolleradapter.unifi.*;
 
 import javax.ws.rs.container.ContainerResponseFilter;
@@ -18,6 +19,8 @@ public class api extends Application {
         tmp.add(UnifiSiteSetting.class);
         tmp.add(UnifiSite.class);
         tmp.add(UnifiCmd.class);
+        tmp.add(UnifiLogin.class);
+        tmp.add(JiveAuth.class);
         tmp.add(CorsFilter.class);
 
         CLASSES = Collections.unmodifiableSet(tmp);
