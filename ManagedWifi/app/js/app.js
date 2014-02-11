@@ -82,6 +82,11 @@ managedWifi.config(['$routeProvider', '$locationProvider', function ($routeProvi
             templateUrl: 'templates/Blank.html',
             controller: 'Oauth2Controller'
         })
+        .when('/error',
+        {
+            templateUrl: 'templates/Blank.html',
+            controller: 'ErrorController'
+        })
         .when('/settings',
         {
             templateUrl: 'templates/SiteSettings.html',
@@ -98,7 +103,7 @@ managedWifi.config(['$routeProvider', '$locationProvider', function ($routeProvi
     if($location.url() == "/oauth2")
         return;
 
-    if(managedWifi.parseQuery().pbx != null){
+    if(managedWifi.parseQuery().pbxid != null){
         $location.url('/oauth2');
         return;
     }
@@ -107,13 +112,12 @@ managedWifi.config(['$routeProvider', '$locationProvider', function ($routeProvi
         function(){
             loginService.isAdmin().then(
                 function(isAdmin){
-                    if(isAdmin)
-                        siteService.getAll().then(
-                            function(sites){
-                                if(sites.length == 0)
-                                    $location.url('/sites')
-                            }
-                        );
+                    siteService.getAll().then(
+                        function(sites){
+                            if(sites.length == 0)
+                                $location.url(isAdmin ? '/sites' : '/error')
+                        }
+                    );
                 }
             )
         },

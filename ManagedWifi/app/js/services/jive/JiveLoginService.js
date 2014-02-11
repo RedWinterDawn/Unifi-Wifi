@@ -7,8 +7,13 @@ managedWifi.factory('jiveLoginService', ['$q', '$http', '$cookies', '$location',
         var deferred = $q.defer();
         $http.get(appSettings.loginEndpoint + "oauth/authorize/" + account + "/" + code).then(
             function(response) {
-                $cookies.unifises = response.data;
-                sessionId = response.data;
+                sessionId = response.data.sessionId;
+                $cookies.unifises = sessionId;
+                $cookies.isAdmin = response.data.permissionLevel == "Platform-Admin";
+                $cookies.firstName = response.data.firstName;
+                $cookies.lastName = response.data.lastName;
+                $cookies.email = response.data.email;
+                $cookies.emailHash = response.data.emailHash;
                 deferred.resolve();
             },
             function(response) {
@@ -24,7 +29,7 @@ managedWifi.factory('jiveLoginService', ['$q', '$http', '$cookies', '$location',
         if(($cookies.unifises != null || sessionId != null) && isAdminCache == null){
             $http.get(appSettings.loginEndpoint + (sessionId == null ? $cookies.unifises : sessionId) + "/login").then(
                 function(response) {
-                    isAdminCache = response.data;
+                    isAdminCache = response.data == "true";
                     deferred.resolve(isAdminCache);
                 },
                 function(response) {

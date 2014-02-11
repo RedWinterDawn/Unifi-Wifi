@@ -14,6 +14,6 @@ public interface Auth {
 
     @GET
     @Path("authorize/{account}/{code}")
-    @Produces(MediaType.TEXT_PLAIN)
-    public String authorize(@PathParam("account") String account, @PathParam("code") String code);
+    @Produces(MediaType.APPLICATION_JSON)
+    public Map authorize(@PathParam("account") String account, @PathParam("code") String code);
 }

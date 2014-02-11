@@ -10,7 +10,7 @@ managedWifi.controller('Oauth2Controller',["$scope", "$http", "$location", "$mod
             backdrop: 'static'
         });
 
-        var account = managedWifi.parseQuery().pbx;
+        var account = managedWifi.parseQuery().pbxid;
         if(account != null){
             loginService.isLoggedIn().then(
                 function(){
@@ -31,7 +31,7 @@ managedWifi.controller('Oauth2Controller',["$scope", "$http", "$location", "$mod
                     window.location.href = location.pathname + "#/devices";
                 },
                 function(){
-                    notificationService.error("login", "We're sorry, but an error occurred while authorizing your login. You may reload this page and try again.");
+                    notificationService.error("login", "We're sorry, but an error occurred while authorizing your login. Please ensure you are browsing to this app from the Jive portal.");
                 }
             );
         }

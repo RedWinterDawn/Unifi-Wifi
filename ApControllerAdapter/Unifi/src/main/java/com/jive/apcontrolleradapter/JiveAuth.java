@@ -1,22 +1,22 @@
 package com.jive.apcontrolleradapter;
 
-import com.jive.apcontrolleradapter.unifi.MongoDbClientFactory;
-import com.jive.apcontrolleradapter.unifi.UnifiBase;
 import com.jive.apcontrolleradapter.unifi.UnifiLogin;
 import com.jive.apcontrolleradapter.webapi.Auth;
-import com.mongodb.*;
+import org.apache.commons.codec.digest.DigestUtils;
 
 import javax.ws.rs.ForbiddenException;
 import javax.ws.rs.InternalServerErrorException;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.*;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.io.IOException;
-import java.net.URLEncoder;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
 
 public class JiveAuth implements Auth{
     private final Properties props;
@@ -47,7 +47,7 @@ public class JiveAuth implements Auth{
     }
 
     @Override
-    public String authorize(String account, String code) {
+    public Map authorize(String account, String code) {
         Client client= ClientBuilder.newClient();
         WebTarget target = client.target(props.getProperty("oauthUri") + "/token");
 
@@ -69,8 +69,8 @@ public class JiveAuth implements Auth{
         target = client.target(props.getProperty("portalsApi") + "/user/");
         response = target.request().header("Authorization", "Bearer "+accessToken).get();
 
-        Map<String, String> result = new HashMap<String, String>();
-        String permissionLevel = null;
+        Map<String, Object> results = new HashMap<String, Object>();
+
         UnifiLogin unifiLogin;
         try {
             unifiLogin = new UnifiLogin();
@@ -81,23 +81,26 @@ public class JiveAuth implements Auth{
         if(response.getStatusInfo().getStatusCode() == 200){
             List<Map<String, String>> users = (List<Map<String, String>>) response.readEntity(Map.class).get("users");
             for (Map<String, String> user : users){
-                if(user.get("permissionLvl").equalsIgnoreCase("Platform-Admin")){
-                    permissionLevel = user.get("permissionLvl");
+                if(user.get("permissionLvl").equalsIgnoreCase("Platform-Admin") || user.get("pbxId").equals(account)){
+                    results.put("permissionLevel", user.get("permissionLvl"));
+                    results.put("firstName", user.get("firstName"));
+                    results.put("lastName", user.get("lastName"));
+                    results.put("email", user.get("email").toLowerCase());
+                    results.put("emailHash", DigestUtils.md5(user.get("email").toLowerCase()));
                     break;
-                } else {
-                    if(user.get("pbx").equals(account)){
-                        permissionLevel = user.get("permissionLvl");
-                    }
                 }
             }
         }
 
-        if(permissionLevel == null)
+        if(results.size() == 0)
             throw new ForbiddenException("Unable to retrieve user information from portals api");
 
         String sessionId = unifiLogin.login();
         unifiLogin.setActiveAccount(sessionId, account);
-        unifiLogin.setPermissionLevel(sessionId, permissionLevel);
-        return sessionId;
+        unifiLogin.setPermissionLevel(sessionId, (String) results.get("permissionLevel"));
+
+        results.put("sessionId", sessionId);
+
+        return results;
     }
 }

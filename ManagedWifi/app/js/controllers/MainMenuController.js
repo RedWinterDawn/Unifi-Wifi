@@ -1,6 +1,6 @@
 'use strict';
-managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "appSettings", "navigationService", "notificationService", "siteService", "messagingService", "loginService",
-    function MainMenuController($scope, $http, $location, appSettings, navigationService, notificationService, siteService, messagingService, loginService) {
+managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "$cookies", "appSettings", "navigationService", "notificationService", "siteService", "messagingService", "loginService",
+    function MainMenuController($scope, $http, $location, $cookies, appSettings, navigationService, notificationService, siteService, messagingService, loginService) {
 
         var init = function(){
             siteService.getAll().then(
@@ -23,7 +23,14 @@ managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "ap
                 }
             )
         };
-        loginService.isLoggedIn().then(init);
+
+        loginService.isLoggedIn().then(function(){
+            init();
+            $scope.firstName = $cookies.firstName;
+            $scope.lastName = $cookies.lastName;
+            $scope.email = $cookies.email;
+            $scope.emailHash = $cookies.emailHash;
+        });
 
         $scope.$on("$routeChangeSuccess", function(angularEvent, current, previous){
             $scope.activeMainNav = navigationService.getActiveMainNav(current.controller);
@@ -37,7 +44,7 @@ managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "ap
         $scope.logout = function(){
             loginService.logout().then(
                 function(){
-                    window.location.href = "https://www.onjive.com/auth/login";
+                    window.location.href = "https://www.onjive.com/auth/logout";
                 },
                 function(reason){
                     notificationService.error("login", "An error occurred while logging you out.");

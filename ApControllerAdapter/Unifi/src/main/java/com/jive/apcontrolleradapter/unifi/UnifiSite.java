@@ -76,6 +76,9 @@ public class UnifiSite extends UnifiBase implements Site {
     public String add(String sessionId, Map site){
         Map<String, Object> session = getSessionInfo(sessionId);
 
+        if(!session.get("permissionLevel").equals("Platform-Admin"))
+            throw new ForbiddenException();
+
         javax.ws.rs.core.Form form = new javax.ws.rs.core.Form();
         form.param("json", String.format("{'name':'%s','desc':'%s','cmd':'add-site'}", Utils.randomString(20), site.get("friendly_name")));
 

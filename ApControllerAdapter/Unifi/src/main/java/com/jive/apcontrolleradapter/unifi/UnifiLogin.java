@@ -29,7 +29,7 @@ public class UnifiLogin extends UnifiBase implements Login {
         if(dbObject == null)
             throw new ForbiddenException();
 
-        return dbObject.get("permissionLvl") != null && ((String) dbObject.get("permissionLvl")).equalsIgnoreCase("Platform-Admin");
+        return dbObject.get("permissionLevel") != null && ((String) dbObject.get("permissionLevel")).equalsIgnoreCase("Platform-Admin");
     }
 
     @Override
@@ -49,7 +49,7 @@ public class UnifiLogin extends UnifiBase implements Login {
         if(dbObject == null)
             throw new ForbiddenException();
 
-        BasicDBObject update = new BasicDBObject("$set", new BasicDBObject("permissionLvl", permissionLevel));
+        BasicDBObject update = new BasicDBObject("$set", new BasicDBObject("permissionLevel", permissionLevel));
         dbCollection.update(dbObject, update);
     }
 
@@ -104,9 +104,10 @@ public class UnifiLogin extends UnifiBase implements Login {
 
         // get current site for session
         DBCollection dbCollection = db.getCollection("admin");
-        DBObject dbObject = dbCollection.findOne();
+        DBObject query = new BasicDBObject("name", "admin");
+        DBObject dbObject = dbCollection.findOne(query);
         if(dbObject == null)
             throw new ForbiddenException();
-        return new AbstractMap.SimpleEntry<String, String>(dbObject.get("name").toString(),dbObject.get("x_password").toString());
+        return new AbstractMap.SimpleEntry<String, String>("admin",dbObject.get("x_password").toString());
     }
 }

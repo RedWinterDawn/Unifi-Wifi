@@ -2,41 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9d31116-19d8-4eb4-b429-a33e9b352292" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ApControllerAdapter/WebApi/src/main/java/com/jive/apcontrolleradapter/webapi/Auth.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/JiveAuth.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ManagedWifi/app/js/services/jive/JiveLoginService.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ApControllerAdapter/WebApi/src/main/java/com/jive/apcontrolleradapter/webapi/Login.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/Oauth2Controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ManagedWifi/app/templates/ProcessingLogin.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/unifi/UnifiLogin.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/AccessPointController.js" afterPath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/AccessPointController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/AccessPointListController.js" afterPath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/AccessPointListController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/js/services/AppSettings.js" afterPath="$PROJECT_DIR$/ManagedWifi/app/js/services/AppSettings.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/LoginController.js" afterPath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/LoginController.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ManagedWifi/app/templates/Error.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/ErrorController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ApControllerAdapter/WebApi/src/main/java/com/jive/apcontrolleradapter/webapi/Auth.java" afterPath="$PROJECT_DIR$/ApControllerAdapter/WebApi/src/main/java/com/jive/apcontrolleradapter/webapi/Auth.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/JiveAuth.java" afterPath="$PROJECT_DIR$/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/JiveAuth.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/js/services/jive/JiveLoginService.js" afterPath="$PROJECT_DIR$/ManagedWifi/app/js/services/jive/JiveLoginService.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/MainMenuController.js" afterPath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/MainMenuController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/js/services/NavigationService.js" afterPath="$PROJECT_DIR$/ManagedWifi/app/js/services/NavigationService.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/NetworkController.js" afterPath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/NetworkController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/NetworksController.js" afterPath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/NetworksController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/NotificationController.js" afterPath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/NotificationController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/js/services/NotificationService.js" afterPath="$PROJECT_DIR$/ManagedWifi/app/js/services/NotificationService.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/RefreshDataController.js" afterPath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/RefreshDataController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/templates/Site.html" afterPath="$PROJECT_DIR$/ManagedWifi/app/templates/Site.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ApControllerAdapter/WebApi/src/main/java/com/jive/apcontrolleradapter/webapi/Site.java" afterPath="$PROJECT_DIR$/ApControllerAdapter/WebApi/src/main/java/com/jive/apcontrolleradapter/webapi/Site.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/SiteController.js" afterPath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/SiteController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/SiteSettingsController.js" afterPath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/SiteSettingsController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/SitesController.js" afterPath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/SitesController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/unifi/UnifiBase.java" afterPath="$PROJECT_DIR$/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/unifi/UnifiBase.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/Oauth2Controller.js" afterPath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/Oauth2Controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/unifi/UnifiLogin.java" afterPath="$PROJECT_DIR$/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/unifi/UnifiLogin.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/unifi/UnifiSite.java" afterPath="$PROJECT_DIR$/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/unifi/UnifiSite.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/js/services/unifi/UnifiSiteService.js" afterPath="$PROJECT_DIR$/ManagedWifi/app/js/services/unifi/UnifiSiteService.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/UserController.js" afterPath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/UserController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/UsersController.js" afterPath="$PROJECT_DIR$/ManagedWifi/app/js/controllers/UsersController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ApControllerAdapter/Web/src/main/java/com/jive/apcontrolleradapter/web/api.java" afterPath="$PROJECT_DIR$/ApControllerAdapter/Web/src/main/java/com/jive/apcontrolleradapter/web/api.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/js/app.js" afterPath="$PROJECT_DIR$/ManagedWifi/app/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/js/appLib.js" afterPath="$PROJECT_DIR$/ManagedWifi/app/js/appLib.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManagedWifi/app/index.html" afterPath="$PROJECT_DIR$/ManagedWifi/app/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
-    <file path="/Dummy.txt" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392065264320" ignored="false" />
+    <file path="/Dummy.txt" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392065298225" ignored="false" />
     <file path="/Users.html" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1385993392142" ignored="false" />
     <file path="/AccessPoint.html" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1385993794913" ignored="false" />
     <file path="/Cmd.java" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1385996197191" ignored="false" />
@@ -45,29 +24,29 @@
     <file path="/unifi.properties" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392002990477" ignored="false" />
     <file path="/fragment.java" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392051597618" ignored="false" />
     <file path="/Site.html" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392050575078" ignored="false" />
-    <file path="/a.dummy" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392057447411" ignored="false" />
+    <file path="/a.dummy" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392088752019" ignored="false" />
     <file path="/UnifiSiteService.js" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392055165676" ignored="false" />
     <file path="/UnifiSiteSettingsService.js" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1387186806357" ignored="false" />
     <file path="/Login.html" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1387546622453" ignored="false" />
     <file path="/LoginController.js" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1391894450991" ignored="false" />
-    <file path="/JiveLoginService.js" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392052607922" ignored="false" />
-    <file path="/index.html" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392050194958" ignored="false" />
-    <file path="/app.js" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392052362537" ignored="false" />
-    <file path="/Auth.java" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392030763398" ignored="false" />
-    <file path="/JiveAuth.java" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392044689543" ignored="false" />
+    <file path="/JiveLoginService.js" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392089479226" ignored="false" />
+    <file path="/index.html" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392089325554" ignored="false" />
+    <file path="/app.js" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392088914307" ignored="false" />
+    <file path="/Auth.java" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392066133776" ignored="false" />
+    <file path="/JiveAuth.java" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392088236451" ignored="false" />
     <file path="/api.java" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392033348328" ignored="false" />
     <file path="$PROJECT_DIR$/../../../Java/Projects/Clients/MPL MultiReg/MultiReg.Web/resources/mypowerlearning.properties" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1391399265877" ignored="false" />
     <file path="/RefreshDataController.js" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1391896331704" ignored="false" />
     <file path="/Oauth2Controller.js" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392053645612" ignored="false" />
     <file path="/appLib.js" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392041118430" ignored="false" />
     <file path="/UnifiAccessPoint.java" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1391901032339" ignored="false" />
-    <file path="/UnifiLogin.java" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392047705672" ignored="false" />
+    <file path="/UnifiLogin.java" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392069170991" ignored="false" />
     <file path="/Login.java" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392041880329" ignored="false" />
     <file path="/AppSettings.js" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392039352959" ignored="false" />
     <file path="/SitesController.js" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392043020436" ignored="false" />
-    <file path="/MainMenuController.js" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392056254276" ignored="false" />
+    <file path="/MainMenuController.js" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392067560048" ignored="false" />
     <file path="/NavigationService.js" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392043446067" ignored="false" />
-    <file path="/UnifiSite.java" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392055127139" ignored="false" />
+    <file path="/UnifiSite.java" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392070041745" ignored="false" />
     <file path="/NotificationController.js" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392056939008" ignored="false" />
     <file path="/NotificationService.js" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392049236181" ignored="false" />
     <file path="/AccessPointController.js" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392048903654" ignored="false" />
@@ -77,6 +56,8 @@
     <file path="/Site.java" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392055113893" ignored="false" />
     <file path="/AccessPointListController.js" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392056214128" ignored="false" />
     <file path="/jetty.xml" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392062818062" ignored="false" />
+    <file path="/Error.html" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392089192761" ignored="false" />
+    <file path="/ErrorController.js" changelist="e9d31116-19d8-4eb4-b429-a33e9b352292" time="1392089166343" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,23 +109,6 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <line_breakpoints>
-      <breakpoint url="file://$PROJECT_DIR$/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/unifi/UnifiSite.java" line="42" class="com.jive.apcontrolleradapter.unifi.UnifiSite" package="com.jive.apcontrolleradapter.unifi">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </line_breakpoints>
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -154,39 +118,55 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="app.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ManagedWifi/app/js/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="127" column="3" selection-start="4583" selection-end="4583" vertical-scroll-proportion="0.60213774">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ManagedWifi/app/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="187" column="56" selection-start="9649" selection-end="9649" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ErrorController.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ManagedWifi/app/js/controllers/ErrorController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="18" selection-start="212" selection-end="212" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Error.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ManagedWifi/app/templates/Error.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="20" selection-start="179" selection-end="182" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="JiveLoginService.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ManagedWifi/app/js/services/jive/JiveLoginService.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="52" column="14" selection-start="1785" selection-end="1785" vertical-scroll-proportion="0.0">
+            <state line="31" column="48" selection-start="1388" selection-end="1398" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CorsFilter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ApControllerAdapter/Web/src/main/java/com/jive/apcontrolleradapter/web/CorsFilter.java">
+      <file leaf-file-name="Oauth2Controller.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ManagedWifi/app/js/controllers/Oauth2Controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="58" selection-start="561" selection-end="588" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="jetty.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ApControllerAdapter/Web/jetty.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="51" selection-start="832" selection-end="832" vertical-scroll-proportion="-9.153846">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ManagedWifi/app/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="63" column="111" selection-start="4052" selection-end="4052" vertical-scroll-proportion="0.3321492">
+            <state line="12" column="52" selection-start="512" selection-end="512" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -211,22 +191,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/ManagedWifi/app/templates/Site.html" />
-        <option value="$PROJECT_DIR$/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/unifi/UnifiBase.java" />
-        <option value="$PROJECT_DIR$/ManagedWifi/app/js/app.js" />
-        <option value="$PROJECT_DIR$/ManagedWifi/app/js/controllers/Oauth2Controller.js" />
-        <option value="$PROJECT_DIR$/ManagedWifi/app/js/controllers/SiteController.js" />
-        <option value="$PROJECT_DIR$/ApControllerAdapter/WebApi/src/main/java/com/jive/apcontrolleradapter/webapi/Site.java" />
-        <option value="$PROJECT_DIR$/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/unifi/UnifiSite.java" />
-        <option value="$PROJECT_DIR$/ManagedWifi/app/js/services/unifi/UnifiSiteService.js" />
-        <option value="$PROJECT_DIR$/ManagedWifi/app/js/controllers/AccessPointListController.js" />
-        <option value="$PROJECT_DIR$/ManagedWifi/app/js/controllers/MainMenuController.js" />
         <option value="$PROJECT_DIR$/ManagedWifi/app/js/controllers/NetworksController.js" />
         <option value="$PROJECT_DIR$/ManagedWifi/app/js/controllers/UsersController.js" />
         <option value="$PROJECT_DIR$/ManagedWifi/app/js/services/NotificationService.js" />
         <option value="$PROJECT_DIR$/ManagedWifi/app/js/controllers/NotificationController.js" />
-        <option value="$PROJECT_DIR$/ManagedWifi/app/js/services/jive/JiveLoginService.js" />
         <option value="$PROJECT_DIR$/ApControllerAdapter/Web/jetty.xml" />
+        <option value="$PROJECT_DIR$/ApControllerAdapter/WebApi/src/main/java/com/jive/apcontrolleradapter/webapi/Auth.java" />
+        <option value="$PROJECT_DIR$/ManagedWifi/app/js/controllers/MainMenuController.js" />
+        <option value="$PROJECT_DIR$/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/unifi/UnifiLogin.java" />
+        <option value="$PROJECT_DIR$/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/unifi/UnifiSite.java" />
+        <option value="$PROJECT_DIR$/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/JiveAuth.java" />
+        <option value="$PROJECT_DIR$/ManagedWifi/app/js/controllers/Oauth2Controller.js" />
+        <option value="$PROJECT_DIR$/ManagedWifi/app/templates/Error.html" />
+        <option value="$PROJECT_DIR$/ManagedWifi/app/index.html" />
+        <option value="$PROJECT_DIR$/ManagedWifi/app/js/services/jive/JiveLoginService.js" />
+        <option value="$PROJECT_DIR$/ManagedWifi/app/js/app.js" />
+        <option value="$PROJECT_DIR$/ManagedWifi/app/js/controllers/ErrorController.js" />
       </list>
     </option>
   </component>
@@ -348,10 +328,10 @@
       <recent name="com.jive.apcontrolleradapter.webapi" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\Development\Clients\Jive\Managed-Wifi\ManagedWifi\app\templates" />
+      <recent name="G:\Development\Clients\Jive\Managed-Wifi\ManagedWifi\app\js\controllers" />
       <recent name="G:\Development\Clients\Jive\Managed-Wifi\ManagedWifi\app" />
       <recent name="G:\Development\Clients\Jive\Managed-Wifi\ApControllerAdapter\Unifi\src\main\resources\com\jive\apcontroller" />
-      <recent name="G:\Development\Clients\Jive\Managed-Wifi\ManagedWifi\app\js\controllers" />
-      <recent name="G:\Development\Clients\Jive\Managed-Wifi\ManagedWifi\app\templates" />
     </key>
   </component>
   <component name="RunManager" selected="Jetty Server.Jetty 6.1.26">
@@ -582,12 +562,16 @@
       <created>1386001866768</created>
       <updated>1386001866768</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Integrated with Jive Oauth">
+      <created>1392065309845</created>
+      <updated>1392065309845</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1036" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3291714" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Inspector" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
@@ -604,14 +588,14 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3291714" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3166856" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3166856" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32986537" sideWeight="0.6708286" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2077185" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20930232" sideWeight="0.68331444" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20930232" sideWeight="0.6708286" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3291714" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="SVN Repositories" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3291714" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -689,118 +673,118 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ManagedWifi/app/templates/Sites.html">
+    <entry file="file://$PROJECT_DIR$/ManagedWifi/app/js/controllers/LoginController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="53" selection-start="1657" selection-end="1664" vertical-scroll-proportion="0.6365796">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ManagedWifi/app/js/controllers/SiteController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="0" selection-start="1402" selection-end="1402" vertical-scroll-proportion="0.64608073">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ManagedWifi/app/js/controllers/SitesController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="32" selection-start="982" selection-end="982" vertical-scroll-proportion="0.6619469">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/unifi/UnifiSite.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="100" column="25" selection-start="3686" selection-end="3686" vertical-scroll-proportion="0.7221239">
-          <folding>
-            <element signature="e#1187#1195#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ManagedWifi/app/js/services/unifi/UnifiNetworkService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="96" column="31" selection-start="3569" selection-end="3569" vertical-scroll-proportion="0.45132744">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ManagedWifi/app/js/services/NotificationService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="5" selection-start="907" selection-end="907" vertical-scroll-proportion="0.33801168">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ManagedWifi/app/js/controllers/UsersController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="47" selection-start="446" selection-end="446" vertical-scroll-proportion="0.18478261">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ManagedWifi/app/js/controllers/NetworksController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="59" selection-start="422" selection-end="485" vertical-scroll-proportion="0.12743363">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ManagedWifi/app/js/controllers/MainMenuController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="57" selection-start="463" selection-end="523" vertical-scroll-proportion="0.14855072">
+        <state line="70" column="0" selection-start="2742" selection-end="2742" vertical-scroll-proportion="2.155797">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ManagedWifi/app/js/controllers/AccessPointListController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="45" selection-start="1199" selection-end="1224" vertical-scroll-proportion="0.6619469">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ManagedWifi/app/js/controllers/NotificationController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="3" selection-start="1223" selection-end="1223" vertical-scroll-proportion="0.6362573">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ManagedWifi/app/design.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="157" column="64" selection-start="8587" selection-end="8587" vertical-scroll-proportion="0.21852732">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ManagedWifi/app/js/services/jive/JiveLoginService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="14" selection-start="1785" selection-end="1785" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ApControllerAdapter/Web/src/main/java/com/jive/apcontrolleradapter/web/CorsFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="58" selection-start="561" selection-end="588" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ApControllerAdapter/Web/jetty.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="51" selection-start="832" selection-end="832" vertical-scroll-proportion="-9.153846">
+        <state line="23" column="82" selection-start="1215" selection-end="1215" vertical-scroll-proportion="0.72541744">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/unifi/UnifiSite.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="97" column="53" selection-start="3541" selection-end="3541" vertical-scroll-proportion="0.5368421">
+          <folding>
+            <element signature="e#1187#1195#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/unifi/UnifiBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="61" column="22" selection-start="2311" selection-end="2318" vertical-scroll-proportion="0.71695906">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/unifi/UnifiLogin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="28" selection-start="1728" selection-end="1728" vertical-scroll-proportion="0.06549708">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ApControllerAdapter/Unifi/src/main/java/com/jive/apcontrolleradapter/JiveAuth.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="83" column="93" selection-start="3587" selection-end="3587" vertical-scroll-proportion="0.42339182">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ManagedWifi/app/templates/ProcessingLogin.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="6" selection-start="377" selection-end="377" vertical-scroll-proportion="0.42123893">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ManagedWifi/app/templates/ConfirmationDialog.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="6" selection-start="517" selection-end="517" vertical-scroll-proportion="0.39115044">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ManagedWifi/app/templates/Blank.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ManagedWifi/app/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="111" selection-start="4052" selection-end="4052" vertical-scroll-proportion="0.3321492">
+        <state line="187" column="56" selection-start="9649" selection-end="9649" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ManagedWifi/app/js/controllers/Oauth2Controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="52" selection-start="512" selection-end="512" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ManagedWifi/app/js/services/jive/JiveLoginService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="48" selection-start="1388" selection-end="1398" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ManagedWifi/app/templates/Error.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="20" selection-start="179" selection-end="182" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ManagedWifi/app/js/controllers/ErrorController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="18" selection-start="212" selection-end="212" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ManagedWifi/app/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="127" column="3" selection-start="4583" selection-end="4583" vertical-scroll-proportion="0.60213774">
           <folding />
         </state>
       </provider>

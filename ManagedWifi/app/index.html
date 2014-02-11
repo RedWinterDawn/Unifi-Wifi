@@ -56,20 +56,20 @@
                 <li class="dropdown" ng-class="isActive('Sites')" ng-show="isAdmin"><a ng-click="navigate('sites')" data-toggle="dropdown">Sites</a></li>
             </ul>
             <div class="meta-menu">
-                <ul class="nav pull-right">
+                <ul class="nav pull-right" ng-show="email">
                     <li class="dropdown">
-                        <a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="icon-user"></i>Theo Zourzouvillys</a>
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="icon-user"></i><span ng-bind="firstName + ' ' + lastName" /></a>
                         <ul class="dropdown-menu pull-right user-menu">
-                            <li class="user-account"><a href="#"
-                                                        onclick="alert(&quot;TODO: switch to PBX admin for user theo@crazygreek.co.uk...&quot;)"><img
-                                    src="https://www.gravatar.com/avatar/0d3b17372bd92ad8090dbc813e317cf9?s=48&amp;r=g&amp;d=mm"
-                                    alt="Theo" class="thumbnail pull-left media-object">
+                            <li class="user-account">
+                            <a>
+                                <img ng-src="https://www.gravatar.com/avatar/{{emailHash}}" alt="{{lastName}}" class="thumbnail pull-left media-object">
 
                                 <div class="media-body">
-                                    <h4 class="media-heading">Theo Zourzouvillys</h4>
-                                    <small>theo@crazygreek.co.uk</small>
+                                    <h4 class="media-heading">{{firstName}} {{lastName}}</h4>
+                                    <small>{{email}}</small>
                                 </div>
-                            </a></li>
+                            </a>
+                            </li>
                             <li class="divider"></li>
                             <div class="options">
                                 <button ng-click="logout()" class="btn pull-right">Sign Out</button>
@@ -191,6 +191,7 @@
 <script src="js/controllers/SiteSettingsController.js"></script>
 <script src="js/controllers/SitesController.js"></script>
 <script src="js/controllers/SiteController.js"></script>
+<script src="js/controllers/ErrorController.js"></script>
 
 </body>
 </html>
