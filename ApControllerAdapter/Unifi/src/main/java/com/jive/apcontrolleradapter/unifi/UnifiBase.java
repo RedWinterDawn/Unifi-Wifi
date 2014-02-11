@@ -32,7 +32,7 @@ public class UnifiBase {
         Client client= ClientBuilder.newClient();
         WebTarget target = client.target(controllerHost + uri);
         Response response = target
-                .request("application/json")
+                .request(MediaType.APPLICATION_JSON)
                 .cookie("unifises", sessionId)
                 .post(Entity.json(message == null ? "" : message));
 
@@ -44,7 +44,7 @@ public class UnifiBase {
         Client client= ClientBuilder.newClient();
         WebTarget target = client.target(controllerHost + uri);
         Response response = target
-                .request("application/x-www-form-urlencoded")
+                .request(MediaType.APPLICATION_FORM_URLENCODED)
                 .cookie("unifises", sessionId)
                 .post(Entity.form(form == null ? new Form() : form));
 

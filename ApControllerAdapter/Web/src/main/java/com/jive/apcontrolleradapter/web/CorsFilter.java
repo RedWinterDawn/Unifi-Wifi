@@ -7,13 +7,21 @@ import javax.ws.rs.ext.Provider;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 @Provider
 public class CorsFilter implements ContainerResponseFilter {
 
+    private final Properties props;
+
+    public CorsFilter() throws IOException {
+        props = new Properties();
+        props.load(getClass().getClassLoader().getResourceAsStream("/com/jive/apcontrolleradapter/web/web.properties"));
+    }
+
     @Override
     public void filter(ContainerRequestContext requestCtx, ContainerResponseContext responseCtx) throws IOException {
-        responseCtx.getHeaders().add("Access-Control-Allow-Origin", "https://unifi.emarkit.com:8443");
+        responseCtx.getHeaders().add("Access-Control-Allow-Origin", props.getProperty("uihost"));
         responseCtx.getHeaders().add("Access-Control-Allow-Methods", "POST, GET, DELETE, PUT, OPTIONS");
         List<String> reqHead=requestCtx.getHeaders().get("Access-Control-Request-Headers");
         if(null != reqHead)
