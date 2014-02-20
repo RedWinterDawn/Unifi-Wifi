@@ -1,6 +1,6 @@
 managedWifi.factory('appSettings', ['$cookies', function ($cookies) {
     return {
-        apiEndpoint: "https://unifi.emarkit.com:8090/" + $cookies.unifises,
-        loginEndpoint: "https://unifi.emarkit.com:8090/"
+        apiEndpoint: "http://localhost:8080/web/" + $cookies.unifises,
+        loginEndpoint: "http://localhost:8080/web/"
     }
 }]);
