@@ -83,7 +83,9 @@ public class JiveAuth implements Auth{
         if(response.getStatusInfo().getStatusCode() == 200){
             List<Map<String, String>> users = (List<Map<String, String>>) response.readEntity(Map.class).get("users");
             for (Map<String, String> user : users){
-                if("Platform-Admin".equalsIgnoreCase(user.get("permissionLvl")) || account.equals(user.get("pbxId"))){
+                if("Platform-Admin".equalsIgnoreCase(user.get("permissionLvl")) 
+                		|| "Platform-Customer-Service".equalsIgnoreCase(user.get("permissionLvl"))
+                		|| account.equals(user.get("pbxId"))){
                     results.put("permissionLevel", user.get("permissionLvl"));
                     results.put("firstName", user.get("firstName"));
                     results.put("lastName", user.get("lastName"));

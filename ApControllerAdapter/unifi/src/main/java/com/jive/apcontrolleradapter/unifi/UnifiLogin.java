@@ -10,6 +10,7 @@ import javax.ws.rs.ForbiddenException;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.client.*;
 import javax.ws.rs.core.*;
+
 import java.io.IOException;
 import java.util.AbstractMap;
 import java.util.Map;
@@ -29,7 +30,8 @@ public class UnifiLogin extends UnifiBase implements Login {
         if(dbObject == null)
             throw new ForbiddenException();
 
-        return dbObject.get("permissionLevel") != null && ((String) dbObject.get("permissionLevel")).equalsIgnoreCase("Platform-Admin");
+        return "Platform-Admin".equalsIgnoreCase((String) dbObject.get("permissionLevel"))
+        		|| "Platform-Customer-Service".equalsIgnoreCase((String) dbObject.get("permissionLevel"));
     }
 
     @Override

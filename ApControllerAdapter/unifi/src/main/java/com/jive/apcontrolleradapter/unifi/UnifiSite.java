@@ -2,6 +2,7 @@ package com.jive.apcontrolleradapter.unifi;
 
 import com.jive.apcontrolleradapter.webapi.Site;
 import com.mongodb.*;
+
 import org.bson.types.ObjectId;
 
 import javax.ws.rs.BadRequestException;
@@ -13,6 +14,7 @@ import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.*;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -76,7 +78,9 @@ public class UnifiSite extends UnifiBase implements Site {
     public String add(String sessionId, Map site){
         Map<String, Object> session = getSessionInfo(sessionId);
 
-        if(!session.get("permissionLevel").equals("Platform-Admin"))
+        if (!("Platform-Admin".equalsIgnoreCase((String) session.get("permissionLevel"))
+        		|| "Platform-Customer-Service".equalsIgnoreCase((String) session.get("permissionLevel"))
+        		))
             throw new ForbiddenException();
 
         javax.ws.rs.core.Form form = new javax.ws.rs.core.Form();
