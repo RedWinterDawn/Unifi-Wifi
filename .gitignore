@@ -1,0 +1,15 @@
+# eclipse project files
+.settings/
+.classpath
+.project
+*/bin
+.idea/
+*.iml
+*.wpu
+
+# maven build directories
+target/
+
+# mac files
+*.DS_Store
+*.sublime-*
