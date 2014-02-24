@@ -1,19 +1,16 @@
 package com.jive.apcontrolleradapter.unifi;
 
-import com.mongodb.MongoClient;
-
 import java.io.IOException;
-import java.util.Properties;
+
+import com.jive.apcontrolleradapter.Configuration;
+import com.mongodb.MongoClient;
 
 public class MongoDbClientFactory {
     private static MongoClient dbClient;
 
     public static MongoClient getDbClient() throws IOException {
         if(dbClient == null){
-            Properties prop = new Properties();
-            ClassLoader classLoader = MongoDbClientFactory.class.getClassLoader();
-            prop.load(classLoader.getResourceAsStream("unifi.properties"));
-            dbClient = new MongoClient(prop.getProperty("mongoDbHost"), Integer.parseInt(prop.getProperty("mongoDbPort")));
+            dbClient = new MongoClient(Configuration.getMongoDBHost(), Configuration.getMongoDBPort());
         }
         return dbClient;
     }

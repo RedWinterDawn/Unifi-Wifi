@@ -1,8 +1,9 @@
 package com.jive.apcontrolleradapter;
 
-import com.jive.apcontrolleradapter.unifi.UnifiLogin;
-import com.jive.apcontrolleradapter.webapi.Auth;
-import org.apache.commons.codec.digest.DigestUtils;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.ws.rs.ForbiddenException;
 import javax.ws.rs.InternalServerErrorException;
@@ -12,27 +13,39 @@ import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
+
+import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.codec.digest.DigestUtils;
+
+import com.jive.apcontrolleradapter.unifi.UnifiLogin;
+import com.jive.apcontrolleradapter.webapi.Auth;
 
 public class JiveAuth implements Auth{
-    private final Properties props;
+	
+	private final String baseURL;
+	private final String clientID;
+	private final String password;
+	private final String redirectURI;
+	private final String portalAPIBaseURL;
+	
+	private final String encodedCredentials;
 
-    public JiveAuth() throws IOException {
-        props = new Properties();
-        props.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("jive.properties"));
-    }
-
+	public JiveAuth() {
+		baseURL = Configuration.getOAuthURL();
+		clientID = Configuration.getOAuthClientID();
+		password = Configuration.getOAuthPassword();
+		redirectURI = Configuration.getOAuthRedirectURI();
+		portalAPIBaseURL = Configuration.getPortalAPIBaseURL();
+		encodedCredentials = Base64.encodeBase64String((clientID + ":" + password).getBytes());
+	}
+	
     @Override
     public String getLoginUri(String account) {
         Client client= ClientBuilder.newClient();
         WebTarget target =
-            client.target(props.getProperty("oauthUri") + "/grant")
-            .queryParam("client_id", props.getProperty("oauthUsername"))
-            .queryParam("redirect_uri", props.getProperty("oauthRedirect"))
+            client.target(baseURL + "/grant")
+            .queryParam("client_id", clientID)
+            .queryParam("redirect_uri", redirectURI)
             .queryParam("response_type", "code")
             .queryParam("state", account);
 
@@ -51,24 +64,24 @@ public class JiveAuth implements Auth{
     @Override
     public Map authorize(String account, String code) {
         Client client= ClientBuilder.newClient();
-        WebTarget target = client.target(props.getProperty("oauthUri") + "/token");
+        WebTarget target = client.target(baseURL + "/token");
 
         javax.ws.rs.core.Form form = new javax.ws.rs.core.Form();
-        form.param("client_id", props.getProperty("oauthUsername"));
-        form.param("redirect_uri", props.getProperty("oauthRedirect"));
+        form.param("client_id", clientID);
+        form.param("redirect_uri", redirectURI);
         form.param("grant_type", "authorization_code");
         form.param("code", code);
 
         Response response = target.request(MediaType.APPLICATION_FORM_URLENCODED)
             .accept(MediaType.APPLICATION_JSON)
-            .header("Authorization", "Basic " + props.getProperty("oauthBasicAuth"))
+            .header("Authorization", "Basic " + encodedCredentials)
             .post(Entity.form(form))
             ;
         if(response.getStatusInfo().getStatusCode() != 200)
             throw new ForbiddenException("Unable to authorize");
 
         String accessToken = (String) response.readEntity(Map.class).get("access_token");
-        target = client.target(props.getProperty("portalsApi") + "/user/");
+        target = client.target(portalAPIBaseURL + "/user/");
         response = target.request().header("Authorization", "Bearer "+accessToken).get();
 
         Map<String, Object> results = new HashMap<String, Object>();

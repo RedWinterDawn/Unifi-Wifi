@@ -1,7 +1,8 @@
 package com.jive.apcontrolleradapter.unifi;
 
-import com.mongodb.*;
-import org.bson.types.ObjectId;
+import java.io.IOException;
+import java.util.Map;
+import java.util.Properties;
 
 import javax.ws.rs.ForbiddenException;
 import javax.ws.rs.NotFoundException;
@@ -9,11 +10,18 @@ import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.*;
-import java.io.IOException;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
+import javax.ws.rs.core.Form;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import org.bson.types.ObjectId;
+
+import com.jive.apcontrolleradapter.Configuration;
+import com.mongodb.BasicDBObject;
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.DBObject;
+import com.mongodb.MongoClient;
 
 public class UnifiBase {
     protected static MongoClient dbClient;
@@ -22,10 +30,7 @@ public class UnifiBase {
 
     public UnifiBase() throws IOException {
         dbClient = MongoDbClientFactory.getDbClient();
-
-        props = new Properties();
-        props.load(getClass().getClassLoader().getResourceAsStream("unifi.properties"));
-        controllerHost = props.getProperty("controllerHost");
+        controllerHost = Configuration.getControllerURL();
     }
 
     protected Map getData(String sessionId, String uri, Map message){
