@@ -1,12 +1,13 @@
 package com.jive.apcontrolleradapter.unifi;
 
-import com.jive.apcontrolleradapter.webapi.AccessPoint;
-
-import javax.ws.rs.core.Form;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import javax.ws.rs.core.Form;
+
+import com.jive.apcontrolleradapter.webapi.AccessPoint;
 
 public class UnifiAccessPoint extends UnifiBase implements AccessPoint {
 
@@ -14,11 +15,11 @@ public class UnifiAccessPoint extends UnifiBase implements AccessPoint {
     }
 
     @Override
-    public Map getAll(String sessionId) {
+    public Map<String, List<Map<String, Object>>> getAll(String sessionId) {
         Map<String, Object> siteInfo = getExtendedSiteInfo(sessionId);
 
-        Map fullResponse = getData(sessionId, String.format("/api/s/%s/stat/device", siteInfo.get("name")), null);
-        List<Map<String, Object>> allDevices = (List<Map<String, Object>>) fullResponse.get("data");
+        Map<String, List<Map<String, Object>>> fullResponse = getData(sessionId, String.format("/api/s/%s/stat/device", siteInfo.get("name")), null);
+        List<Map<String, Object>> allDevices = fullResponse.get("data");
         List<String> assignedMacs = (List<String>) siteInfo.get("devices");
 
         List<Map<String, Object>> filteredDevices = new ArrayList<Map<String, Object>>();

@@ -1,15 +1,9 @@
 package com.jive.apcontrolleradapter.unifi;
 
-import com.jive.apcontrolleradapter.webapi.WlanNetwork;
-import org.jboss.resteasy.annotations.Form;
-
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.Entity;
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.util.Map;
+
+import com.jive.apcontrolleradapter.webapi.WlanNetwork;
 
 public class UnifiWlanNetwork extends UnifiBase implements WlanNetwork {
 

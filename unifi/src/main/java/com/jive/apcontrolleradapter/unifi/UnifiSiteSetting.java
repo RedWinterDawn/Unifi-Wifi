@@ -1,9 +1,9 @@
 package com.jive.apcontrolleradapter.unifi;
 
-import com.jive.apcontrolleradapter.webapi.SiteSetting;
-
 import java.io.IOException;
 import java.util.Map;
+
+import com.jive.apcontrolleradapter.webapi.SiteSetting;
 
 public class UnifiSiteSetting extends UnifiBase implements SiteSetting {
 

@@ -1,19 +1,25 @@
 package com.jive.apcontrolleradapter.unifi;
 
+import java.io.IOException;
+import java.util.AbstractMap;
+import java.util.Map;
+
+import javax.ws.rs.ForbiddenException;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.client.Invocation;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.NewCookie;
+import javax.ws.rs.core.Response;
+
 import com.jive.apcontrolleradapter.webapi.Login;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
-
-import javax.ws.rs.ForbiddenException;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.client.*;
-import javax.ws.rs.core.*;
-
-import java.io.IOException;
-import java.util.AbstractMap;
-import java.util.Map;
 
 public class UnifiLogin extends UnifiBase implements Login {
     public UnifiLogin() throws IOException {

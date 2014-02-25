@@ -14,6 +14,8 @@ import javax.ws.rs.core.Form;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import lombok.extern.slf4j.Slf4j;
+
 import org.bson.types.ObjectId;
 
 import com.jive.apcontrolleradapter.Configuration;
@@ -23,6 +25,7 @@ import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 
+@Slf4j
 public class UnifiBase {
     protected static MongoClient dbClient;
     protected static String controllerHost;
@@ -99,7 +102,7 @@ public class UnifiBase {
         query = new BasicDBObject("site_id", siteId);
         dbObject = dbCollection.findOne(query);
 
-        Map map = dbObject.toMap();
+        Map<String, Object> map = dbObject.toMap();
         map.put("name", siteName);
 
         return map;
