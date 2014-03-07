@@ -95,7 +95,7 @@ managedWifi.factory('unifiNetworkService', ['$q', '$http', 'appSettings', 'messa
         add: function(network){
             delete network.id;
             delete network._id;
-            var firstGroup = wlangroups.filter(function(group){return group.attr_no_edit == undefined;});
+            var firstGroup = wlangroups == null ? [] : wlangroups.filter(function(group){return group.attr_no_edit == undefined;});
             if(firstGroup.length > 0)
                 network.wlangroup_id = firstGroup[0]._id;
             network.usergroup_id = usergroups[0]._id;
