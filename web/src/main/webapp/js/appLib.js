@@ -43,7 +43,8 @@ managedWifi.randomBool = function () {
 };
 
 managedWifi.regExLib = {
-    ipAddress: /^[\d]{1,3}\.[\d]{1,3}\.[\d]{1,3}\.[\d]{1,3}$/
+    ipAddress: /^[\d]{1,3}\.[\d]{1,3}\.[\d]{1,3}\.[\d]{1,3}$/g,
+    macAddress: /^([0-9A-F]{2}[:-]){5}([0-9A-F]{2})$/g
 };
 
 managedWifi.parseQuery = function () {
