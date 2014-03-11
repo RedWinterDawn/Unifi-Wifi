@@ -1,9 +1,9 @@
 <div class="row-fluid page-title">
     <div class="span12">
         <h1 class="content-title">Manage {{name}}</h1>
-        <ul class="breadcrumb">
-            <li><a href="#/devices">Access Point Devices</a><span class="divider">/</span></li>
-            <li class="active"><a href="#">Manage {{name}}</a></li>
+        <ul class="crumbs">
+            <li><a href="#/devices">Access Point Devices</a></li>
+            <li><a style="cursor:pointer;">Manage {{name}}</a></li>
         </ul>
     </div>
 </div>
@@ -11,7 +11,7 @@
 <div class="page-actions">
     <ul>
         <li><a ng-click="forgetDevice()"><i class="icon-trash"></i>Remove Device</a></li>
-        <li><a ng-click="viewUsers()"><i class="icon-group"></i>View Users</a></li>
+        <li><a ng-click="viewUsers()"><i class="icon-group"></i>View Connected Devices</a></li>
     </ul>
 </div>
 
@@ -193,8 +193,9 @@
         </div>
         </div>
     </div>
-</div>
-<div class="form-submit-sticky" ng-show="isDirty()">
-    <button class="btn btn-primary" ng-disabled="form.$invalid" ng-click="update()">Update</button>
-    <button class="btn btn-link clear-form" ng-click="reset()">Discard Changes</button>
+
+    <div class="update-controls" ng-show="isDirty()">
+        <button class="btn btn-primary" ng-disabled="form.$invalid" ng-click="update()">Update</button>
+        <button class="btn btn-link clear-form" ng-click="reset()">Discard Changes</button>
+    </div>
 </div>

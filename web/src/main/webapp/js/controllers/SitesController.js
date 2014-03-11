@@ -22,5 +22,14 @@ managedWifi.controller('SitesController', ["$scope", "$location", "SiteService",
         $scope.addSite = function(){
             $location.url('/site/');
         };
+
+        $scope.switchToSite = function(site){
+            siteService.selectSite(site).then(
+                function(){},
+                function(){
+                    notificationService.error("loadSite", "An error occurred while switching sites.");
+                }
+            )
+        };
     }
 ]);

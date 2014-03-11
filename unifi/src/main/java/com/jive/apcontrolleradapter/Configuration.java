@@ -46,7 +46,7 @@ public class Configuration {
 
 	public static String getHostForCORSFilter() {
 		return INSTANCE.properties.getProperty("web.CORS.origin",
-				"http://localhost:8080");
+				"http://localhost:8000");
 	}
 
 	public static String getControllerURL() {
@@ -89,7 +89,7 @@ public class Configuration {
 
 	public static String getOAuthRedirectURI() {
 		return INSTANCE.properties.getProperty("oauth.redirectURI",
-				"http://localhost:8080/web/index.html#/oauth2");
+				"http://localhost:8000/web/index.html#/oauth2");
 	}
 
 	public static String getOAuthClientID() {

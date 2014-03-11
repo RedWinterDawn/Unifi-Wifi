@@ -20,6 +20,15 @@
 		<module>web-api</module>
 	</modules>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.12.6</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
 	<build>
 		<pluginManagement>
 			<plugins>

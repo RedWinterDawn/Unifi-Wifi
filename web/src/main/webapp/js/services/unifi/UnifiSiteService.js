@@ -46,16 +46,18 @@ managedWifi.factory('unifiSiteService', ['$q', '$http', 'appSettings', 'messagin
         },
 
         add: function(site){
-            return $http.put(appSettings.apiEndpoint+"/site", site).then(
-                function(response){
-                    site.site_id = response.data;
-                    sites.push(site)
-                }
-            );
+            return $http.put(appSettings.apiEndpoint+"/site", site).then(function(response) {
+                site.site_id = response.data;
+                sites.push(site)
+            });
         },
 
         delete: function(site){
-            return $http.delete(appSettings.apiEndpoint+"/site/"+site.site_id, site);
+            return $http.delete(appSettings.apiEndpoint+"/site/"+site.site_id, site).then(function(response) {
+                sites = _.reject(sites, function(s) {
+                    return s.site_id === site.site_id;
+                });
+            });
         },
 
         selectSite: function(site){

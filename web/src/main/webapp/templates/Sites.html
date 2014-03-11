@@ -1,8 +1,8 @@
 <div class="row-fluid page-title">
     <div class="span12">
         <h1 class="content-title">Manage Sites</h1>
-        <ul class="breadcrumb">
-            <li class="active"><a href="#">Sites</a></li>
+        <ul class="crumbs">
+            <li><a style="cursor:pointer;">Sites</a></li>
         </ul>
     </div>
 </div>
@@ -33,6 +33,7 @@
                 <th><a ng-click="paginator.setOrder('friendly_name')">Name<i ng-class="paginator | sortClass:'friendly_name'"></i></a></th>
                 <th><a ng-click="paginator.setOrder('city')">City<i ng-class="paginator | sortClass:'city'"></i></a></th>
                 <th><a ng-click="paginator.setOrder('account_id')">Account<i ng-class="paginator | sortClass:'account_id'"></i></a></th>
+                <th></th>
                 <th class="no-hover"></th>
             </tr>
             </thead>
@@ -43,6 +44,7 @@
                 </td>
                 <td>{{site.city}}</td>
                 <td>{{site.account_id}}</td>
+                <td><a ng-click="switchToSite(site)">Switch To This Site</a></td>
             </tr>
 
             </tbody>

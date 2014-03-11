@@ -12,7 +12,7 @@ managedWifi.factory('unifiSiteSettingsService', ['$q', '$http', 'appSettings', '
         getAll: function () {
             var deferred = $q.defer();
 
-            if(settings == null){
+            if(settings == null) {
                 settings = [];
                 $http({method: "POST", url: appSettings.apiEndpoint+"/network/groups/user"})
                 .then(
@@ -23,6 +23,10 @@ managedWifi.factory('unifiSiteSettingsService', ['$q', '$http', 'appSettings', '
                             userGroup.qos_rate_max_down = parseInt(userGroup.qos_rate_max_down);
                         if(userGroup.qos_rate_max_up != undefined)
                             userGroup.qos_rate_max_up = parseInt(userGroup.qos_rate_max_up);
+
+                        if (!_.has(userGroup, 'upRate_enabled')) userGroup.upRate_enabled = false;
+                        if (!_.has(userGroup, 'downRate_enabled')) userGroup.downRate_enabled = false;
+
                         settings.push(userGroup);
                     },
                     function(response) {
@@ -67,11 +71,22 @@ managedWifi.factory('unifiSiteSettingsService', ['$q', '$http', 'appSettings', '
             return deferred.promise;
         },
 
-        update: function(setting){
+        update: function(setting) {
             var copy = angular.copy(setting);
             delete copy.id;
             delete copy._id;
             return service.webServicePostForm("/site-setting/", copy);
+        },
+
+        updateLimits: function(limits) {
+            var limitsCopy = angular.copy(limits);
+            var id = limitsCopy._id;
+            var deleteProps = ['_id', 'attr_hidden_id', 'attr_no_delete', 'site_id', 'key'];
+            angular.forEach(deleteProps, function(prop) {
+                delete limitsCopy[prop];
+            });
+
+            return service.webServicePostForm("/site-setting/" + id, limitsCopy);
         }
 
     };

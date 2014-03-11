@@ -1,9 +1,9 @@
 <div class="row-fluid page-title">
     <div class="span12">
         <h1 class="content-title">Manage {{original.name}} </h1>
-        <ul class="breadcrumb">
-            <li><a href="#/networks">Wireless Networks</a><span class="divider">/</span></li>
-            <li class="active"><a href="#">Manage {{original.name}}</a></li>
+        <ul class="crumbs">
+            <li><a href="#/networks">Wireless Networks</a></li>
+            <li><a style="cursor:pointer;">Manage {{original.name}}</a></li>
         </ul>
     </div>
 </div>
@@ -228,8 +228,8 @@
             </div>
         </div>
     </div>
-</div>
-<div class="form-submit-sticky" ng-show="isNew || isDirty()">
-    <button class="btn btn-primary" ng-disabled="form.$invalid" ng-click="update()">{{isNew ? "Create" : "Update"}}</button>
-    <button class="btn btn-link clear-form" ng-hide="isNew" ng-click="reset()">Discard Changes</button>
+    <div class="update-controls" ng-show="isNew || isDirty()">
+        <button class="btn btn-primary" ng-disabled="form.$invalid" ng-click="update()">{{isNew ? "Create" : "Update"}}</button>
+        <button class="btn btn-link clear-form" ng-hide="isNew" ng-click="reset()">Discard Changes</button>
+    </div>
 </div>

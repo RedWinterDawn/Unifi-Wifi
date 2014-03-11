@@ -1,6 +1,24 @@
 'use strict';
 managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "$cookies", "appSettings", "navigationService", "notificationService", "siteService", "messagingService", "loginService",
     function MainMenuController($scope, $http, $location, $cookies, appSettings, navigationService, notificationService, siteService, messagingService, loginService) {
+        $scope.siteFilter = '';
+
+        $(window).resize(resizeSiteList);
+
+        function resizeSiteList() {
+            $('.site-list ul').css('max-height', $(window).height() - 170);
+        }
+
+        function killEvent(e) {
+            if (!e) return false;
+            if (e.stopPropagation) e.stopPropagation();
+            if (e.preventDefault) e.preventDefault();
+            e.returnValue = false;
+
+            return false;
+        }
+
+        resizeSiteList();
 
         var init = function(){
             siteService.getAll().then(
@@ -8,9 +26,10 @@ managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "$c
                     notificationService.clear("loadSites");
 
                     $scope.sites = sites;
-                    $scope.selectedSite = sites.filter(function(site){
+                    $scope.selectedSite = sites.filter(function(site) {
                         return site.is_selected;
                     })[0];
+                    $scope.filter();
                 },
                 function(reason){
                     notificationService.error("loadSites", "An error occurred while loading the sites for this account.");
@@ -36,6 +55,10 @@ managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "$c
             $scope.activeMainNav = navigationService.getActiveMainNav(current.controller);
             $scope.activeSubNav = navigationService.getActiveSubNav(current.controller);
         });
+
+        $scope.cancel = function(e) {
+            return killEvent(e);
+        };
 
         $scope.isActive = function (navElement){
             return $scope.activeMainNav == navElement || $scope.activeSubNav == navElement ? "active" : "";
@@ -67,6 +90,69 @@ managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "$c
                     notificationService.error("loadSite", "An error occurred while switching sites.");
                 }
             )
+        };
+
+        var sitePropertiesToFilter = ['friendly_name', 'city', 'state', 'zip'];
+        $scope.filter = function() {
+            if ($scope.siteFilter.replace(/^\s+|\s+$/g, '') === '') {
+                $scope.filteredSites = $scope.sites;
+            } else {
+                var searchTerms = $scope.siteFilter.toLowerCase().split(' ');
+
+                $scope.filteredSites = _.filter($scope.sites, function(site) {
+                    return _.all(searchTerms, function(term) {
+                        return _.any(sitePropertiesToFilter, function(prop) {
+                            return site[prop].toLowerCase().indexOf(term) > -1;
+                        });
+                    });
+                });
+            }
+
+            sort(sortField, sortReverse);
+        };
+
+        $scope.sortIcons = {
+            friendly_name: 'icon-arrow-down',
+            city: '',
+            state: '',
+            zip: ''
+        };
+        var sortField = 'friendly_name',
+            sortReverse = false;
+
+        function setAllIcons(value) {
+            _.each(_.keys($scope.sortIcons), function(key) {
+                $scope.sortIcons[key] = value;
+            });
+        }
+
+        $scope.toggleSortDirection = function(e, field) {
+            var direction = $scope.sortIcons[field];
+            var reverse = false;
+
+            setAllIcons('');
+
+            if (direction.indexOf('down') >= 0) {
+                $scope.sortIcons[field] = 'icon-arrow-up';
+                reverse = true;
+            } else {
+                $scope.sortIcons[field] = 'icon-arrow-down';
+            }
+
+            sort(field, reverse);
+
+            if (e) return killEvent(e);
+        }
+
+        function sort(field, reverse) {
+            sortField = field;
+            sortReverse = reverse;
+
+            $scope.filteredSites = _.sortBy($scope.filteredSites, function(site) {
+                return site[field];
+            });
+
+            if (reverse) $scope.filteredSites.reverse();
         };
 
         var subToken = messagingService.subscribe(managedWifi.messageTopics.service.refreshComplete.siteService, init);

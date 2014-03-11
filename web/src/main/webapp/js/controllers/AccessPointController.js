@@ -24,8 +24,38 @@ managedWifi.controller('AccessPointController', ["$scope", "$location", "$routeP
         };
 
         $scope.isDirty = function() {
-            return !angular.equals($scope.accessPoint, $scope.original);
+            var dirty = !angular.equals($scope.accessPoint, $scope.original);
+
+            if (dirty) window.onbeforeunload = confirmExit;
+            else window.onbeforeunload = null;
+
+            return dirty;
         };
+
+        function confirmExit(e) {
+            e = e || window.event;
+            var message = 'You have unsaved changes, are you sure you want to leave this page?';
+            if (e) e.returnValue = message;
+
+            return message;
+        }
+
+        function confirmRoute(event, next) {
+            if ($scope.isDirty()) {
+                event.preventDefault();
+                dialogService.confirm({
+                    title: 'Confirmation Required',
+                    msg: 'You have unsaved changes, are you sure you want to leave this page?'
+                }).result.then(function() {
+                    $scope.offLocationChangeStart();
+                    window.onbeforeunload = null;
+                    window.location = next;
+                });
+            }
+        }
+
+        $scope.offLocationChangeStart = $scope.$on('$locationChangeStart', confirmRoute);
+
 
         $scope.forgetDevice = function(){
             dialogService.confirm({

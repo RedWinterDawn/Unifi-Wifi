@@ -9,11 +9,10 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
         siteSettingsService.getAll().then(
             function(settings){
                 $scope.original = settings.filter(function(setting){return setting.key == 'guest_access'})[0];
+                if (!_.has($scope.original, 'expire')) $scope.original.expire = '4320';
                 $scope.settings = angular.copy($scope.original);
 
                 $scope.originalLimits = settings.filter(function(setting){return setting.key == 'limits'})[0];
-                $scope.originalLimits.limitDownload = $scope.originalLimits.qos_rate_max_down > -1;
-                $scope.originalLimits.limitUpload = $scope.originalLimits.qos_rate_max_up > -1;
                 $scope.limits = angular.copy($scope.originalLimits);
             },
             function(reason){
@@ -22,25 +21,73 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
         );
 
         $scope.update = function() {
-            siteSettingsService.update($scope.settings).then(
-                function(){
-                    angular.copy($scope.settings, $scope.original);
-                    notificationService.success("siteSettingsEdit", "This site's settings have been updated");
-                },
-                function(reason){
-                    notificationService.error("siteSettingsEdit", "An error occurred while updating the settings.");
+            var completed = 0;
+            var allSuccessful = true;
+            var callback = function() {
+                if (completed == 2) {
+                    if (allSuccessful) {
+                        notificationService.success("siteSettingsEdit", "This site's settings have been updated");
+                    } else {
+                        notificationService.error("siteSettingsEdit", "An error occurred while updating the settings.");
+                    }
                 }
-            )
+            };
+
+            siteSettingsService.update($scope.settings).then(function() {
+                completed++;
+                angular.copy($scope.settings, $scope.original);
+                callback();
+            }, function(reason) {
+                completed++;
+                callback();
+            });
+
+            siteSettingsService.updateLimits($scope.limits).then(function() {
+                completed++;
+                angular.copy($scope.limits, $scope.originalLimits);
+                callback();
+            }, function(reason) {
+                completed++;
+                callback();
+            });
         };
 
         $scope.reset = function() {
             $scope.settings = angular.copy($scope.original);
-            $scope.limits = angular.copy($scope.limits);
+            $scope.limits = angular.copy($scope.originalLimits);
         };
 
         $scope.isDirty = function() {
-            return !angular.equals($scope.settings, $scope.original) || !angular.equals($scope.limits, $scope.originalLimits);
+            var dirty = !angular.equals($scope.settings, $scope.original) || !angular.equals($scope.limits, $scope.originalLimits);
+
+            if (dirty) window.onbeforeunload = confirmExit;
+            else window.onbeforeunload = null;
+
+            return dirty;
         };
 
+        function confirmExit(e) {
+            e = e || window.event;
+            var message = 'You have unsaved changes, are you sure you want to leave this page?';
+            if (e) e.returnValue = message;
+
+            return message;
+        }
+
+        function confirmRoute(event, next) {
+            if ($scope.isDirty()) {
+                event.preventDefault();
+                dialogService.confirm({
+                    title: 'Confirmation Required',
+                    msg: 'You have unsaved changes, are you sure you want to leave this page?'
+                }).result.then(function() {
+                    $scope.offLocationChangeStart();
+                    window.onbeforeunload = null;
+                    window.location = next;
+                });
+            }
+        }
+
+        $scope.offLocationChangeStart = $scope.$on('$locationChangeStart', confirmRoute);
     }
 ]);
