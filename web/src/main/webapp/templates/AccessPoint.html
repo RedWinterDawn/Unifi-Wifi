@@ -71,7 +71,7 @@
                                     <div class="control-group" ng-class="form.ipAddress.$invalid ? 'error' : ''">
                                         <label for="ipAddress" class="control-label">IP address<i class="icon-asterisk required"></i></label>
                                         <div class="controls">
-                                            <input type="text" name="ipAddress" id="ipAddress" ng-model="accessPoint.config_network.ip" ng-required="accessPoint.config_network.type=='static'" ng-pattern="regExIpAddress">
+                                            <input type="text" name="ipAddress" id="ipAddress" ng-model="accessPoint.config_network.ip" ng-required="accessPoint.config_network.type=='static'" valid-ip>
                                             <i ng-hide="form.ipAddress.$invalid" class="icon-ok-sign active"></i>
                                             <div ng-show="form.ipAddress.$invalid" class="tip help">Please provide a valid IP address</div>
                                         </div>
@@ -79,7 +79,7 @@
                                     <div class="control-group" ng-class="form.netmask.$invalid ? 'error' : ''">
                                         <label for="netmask" class="control-label">Subnet mask<i class="icon-asterisk required"></i></label>
                                         <div class="controls">
-                                            <input type="text" name="netmask" id="netmask" ng-model="accessPoint.config_network.netmask" ng-required="accessPoint.config_network.type=='static'" ng-pattern="regExIpAddress">
+                                            <input type="text" name="netmask" id="netmask" ng-model="accessPoint.config_network.netmask" ng-required="accessPoint.config_network.type=='static'" valid-ip>
                                             <i ng-hide="form.netmask.$invalid" class="icon-ok-sign active"></i>
                                             <div ng-show="form.netmask.$invalid" class="tip help">Please provide a valid subnet</div>
                                         </div>
@@ -87,7 +87,7 @@
                                     <div class="control-group" ng-class="form.gateway.$invalid ? 'error' : ''">
                                         <label for="gateway" class="control-label">Gateway</label>
                                         <div class="controls">
-                                            <input type="text" name="gateway" id="gateway" ng-model="accessPoint.config_network.gateway" ng-pattern="regExIpAddress">
+                                            <input type="text" name="gateway" id="gateway" ng-model="accessPoint.config_network.gateway" valid-ip>
                                             <i ng-hide="form.gateway.$invalid" class="icon-ok-sign active"></i>
                                             <div ng-show="form.gateway.$invalid" class="tip help">Please provide a valid IP</div>
                                         </div>
@@ -95,7 +95,7 @@
                                     <div class="control-group" ng-class="form.prefDns.$invalid ? 'error' : ''">
                                         <label for="prefDns" class="control-label">Preferred DNS</label>
                                         <div class="controls">
-                                            <input type="text" name="prefDns" id="prefDns" ng-model="accessPoint.config_network.dns1" ng-pattern="regExIpAddress">
+                                            <input type="text" name="prefDns" id="prefDns" ng-model="accessPoint.config_network.dns1" valid-ip>
                                             <i ng-hide="form.prefDns.$invalid" class="icon-ok-sign active"></i>
                                             <div ng-show="form.prefDns.$invalid" class="tip help">Please provide a valid IP</div>
                                         </div>
@@ -103,7 +103,7 @@
                                     <div class="control-group" ng-class="form.secondaryDns.$invalid ? 'error' : ''">
                                         <label for="secondaryDns" class="control-label">Secondary DNS</label>
                                         <div class="controls">
-                                            <input type="text" name="secondaryDns" id="secondaryDns" ng-model="accessPoint.config_network.dns2" ng-pattern="regExIpAddress">
+                                            <input type="text" name="secondaryDns" id="secondaryDns" ng-model="accessPoint.config_network.dns2" valid-ip>
                                             <i ng-hide="form.secondaryDns.$invalid" class="icon-ok-sign active"></i>
                                             <div ng-show="form.secondaryDns.$invalid" class="tip help">Please provide a valid IP</div>
                                         </div>

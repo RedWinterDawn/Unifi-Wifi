@@ -117,19 +117,19 @@
                                     <div class="control-group">
                                         <div class="control-label">Restricted Subnets</div>
                                         <div class="controls">
-                                            <input type="text" ng-model="settings.restricted_subnet_1" />
-                                            <input type="text" ng-model="settings.restricted_subnet_2" />
-                                            <input type="text" ng-model="settings.restricted_subnet_3" />
-                                            <input type="text" ng-model="settings.restricted_subnet_4" />
+                                            <input type="text" ng-model="settings.restricted_subnet_1" valid-subnet/>
+                                            <input type="text" ng-model="settings.restricted_subnet_2" valid-subnet/>
+                                            <input type="text" ng-model="settings.restricted_subnet_3" valid-subnet/>
+                                            <input type="text" ng-model="settings.restricted_subnet_4" valid-subnet/>
                                         </div>
                                     </div>
                                     <div class="control-group">
                                         <div class="control-label">Allowed Subnets</div>
                                         <div class="controls">
-                                            <input type="text" ng-model="settings.allowed_subnet_1" />
-                                            <input type="text" ng-model="settings.allowed_subnet_2" />
-                                            <input type="text" ng-model="settings.allowed_subnet_3" />
-                                            <input type="text" ng-model="settings.allowed_subnet_4" />
+                                            <input type="text" ng-model="settings.allowed_subnet_1" valid-subnet/>
+                                            <input type="text" ng-model="settings.allowed_subnet_2" valid-subnet/>
+                                            <input type="text" ng-model="settings.allowed_subnet_3" valid-subnet/>
+                                            <input type="text" ng-model="settings.allowed_subnet_4" valid-subnet/>
                                         </div>
                                     </div>
                                 </div>
@@ -147,7 +147,7 @@
                                         </div>
                                     </div>
                                     <div class="control-group" ng-class="form.downloadLimit.$invalid ? 'error' : ''" ng-show="limits.downRate_enabled">
-                                        <div class="control-label">Dowload limit (in Kbps)</div>
+                                        <div class="control-label">Download Limit (Kbps) <i class="icon-question-sign section-help" tooltip-placement="top" tooltip="Minimum 32768 Kbps (4 MB/s) suggested. Limits below 8192 Kbps (1 MB/s) may result in poor performance."></i></div>
                                         <div class="controls">
                                             <input type="number" id="downloadLimit" name="downloadLimit" min="-1" ng-model="limits.qos_rate_max_down" ng-required="limits.downRate_enabled" />
                                             <i ng-hide="form.downloadLimit.$invalid" class="icon-ok-sign active"></i>
@@ -167,7 +167,7 @@
                                         </div>
                                     </div>
                                     <div class="control-group" ng-class="form.uploadLimit.$invalid ? 'error' : ''" ng-show="limits.upRate_enabled">
-                                        <div class="control-label">Upload limit (in Kbps)</div>
+                                        <div class="control-label">Upload Limit (Kbps) <i class="icon-question-sign section-help" tooltip-placement="top" tooltip="Minimum 8192 Kbps (1 MB/s) suggested. Limits below 2048 Kbps (256 KB/s) may result in poor performance."></i></div>
                                         <div class="controls">
                                             <input type="number" id="uploadLimit" name="uploadLimit" min="-1" ng-model="limits.qos_rate_max_up" ng-required="limits.upRate_enabled" />
                                             <i ng-hide="form.uploadLimit.$invalid" class="icon-ok-sign active"></i>

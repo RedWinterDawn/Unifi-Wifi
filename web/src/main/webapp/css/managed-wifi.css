@@ -145,3 +145,8 @@ h1.content-title {
     -ms-user-select: none;
     user-select: none;
 }
+
+.ng-invalid-subnet,.ng-invalid-ip {
+    border-color: #b94a48 !important;
+    color: #b94a48 !important;
+}

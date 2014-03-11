@@ -118,7 +118,7 @@
                                     <div class="control-group" ng-show="network.security == 'wpaeap'" ng-class="form.wpaeapIP.$invalid ? 'error' : ''">
                                         <div class="control-label">RADIUS Server IP</div>
                                         <div class="controls">
-                                            <input type="text" id="wpaeapIP" name="wpaeapIP" ng-model="network.radius_ip_1" ng-required="network.security == 'wpaeap'" ng-pattern="regExIpAddress" />
+                                            <input type="text" id="wpaeapIP" name="wpaeapIP" ng-model="network.radius_ip_1" ng-required="network.security == 'wpaeap'" valid-ip />
                                             <i ng-hide="form.wpaeapIP.$invalid" class="icon-ok-sign active"></i>
                                             <div ng-show="form.wpaeapIP.$invalid" class="tip help">Please provide a valid IP address</div>
                                         </div>
