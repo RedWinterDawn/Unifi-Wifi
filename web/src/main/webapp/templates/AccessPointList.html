@@ -71,7 +71,7 @@
     <td>{{accessPoint.user_num_sta}}</td>
     <td>{{accessPoint.tx_bytes | bytes}}</td>
     <td>{{accessPoint.rx_bytes | bytes}}</td>
-    <td>{{accessPoint.cfgversion}}</td>
+    <td>{{accessPoint.version || ''}}</td>
     <td>
         <div class="dropdown settings" ng-hide="accessPoint.state > 2"><a href="#" data-toggle="dropdown" class="dropdown-toggle icons"><i class="icon-cog"></i><i class="icon-caret-down"></i></a>
             <ul role="menu" aria-labelledby="dropdownMenu" class="dropdown-menu pull-right">
