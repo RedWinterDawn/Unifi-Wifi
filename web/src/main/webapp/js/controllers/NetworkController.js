@@ -8,6 +8,10 @@ managedWifi.controller('NetworkController', ["$scope", "$location", "$routeParam
 
         $scope.isNew = $routeParams.id == undefined;
 
+        $scope.showWepPassword = false;
+        $scope.showWpaePassword = false;
+        $scope.showWpapPassword = false;
+
         if(!$scope.isNew){
             networkService.getById($routeParams.id).then(function(network){
                 if(network.vlan != undefined) network.vlan = parseInt(network.vlan);

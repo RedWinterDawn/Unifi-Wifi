@@ -2,11 +2,12 @@
 managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "$cookies", "appSettings", "navigationService", "notificationService", "siteService", "messagingService", "loginService",
     function MainMenuController($scope, $http, $location, $cookies, appSettings, navigationService, notificationService, siteService, messagingService, loginService) {
         $scope.siteFilter = '';
+        $scope.referrer = document.referrer;
 
         $(window).resize(resizeSiteList);
 
         function resizeSiteList() {
-            $('.site-list ul').css('max-height', $(window).height() - 170);
+            $('.site-list ul').css('max-height', $(window).height() - 200);
         }
 
         function killEvent(e) {
@@ -112,10 +113,10 @@ managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "$c
         };
 
         $scope.sortIcons = {
-            friendly_name: 'icon-arrow-down',
-            city: '',
-            state: '',
-            zip: ''
+            friendly_name: 'icon-caret-down',
+            city: 'icon-sort',
+            state: 'icon-sort',
+            zip: 'icon-sort'
         };
         var sortField = 'friendly_name',
             sortReverse = false;
@@ -130,13 +131,13 @@ managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "$c
             var direction = $scope.sortIcons[field];
             var reverse = false;
 
-            setAllIcons('');
+            setAllIcons('icon-sort');
 
             if (direction.indexOf('down') >= 0) {
-                $scope.sortIcons[field] = 'icon-arrow-up';
+                $scope.sortIcons[field] = 'icon-caret-up';
                 reverse = true;
             } else {
-                $scope.sortIcons[field] = 'icon-arrow-down';
+                $scope.sortIcons[field] = 'icon-caret-down';
             }
 
             sort(field, reverse);
@@ -153,6 +154,10 @@ managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "$c
             });
 
             if (reverse) $scope.filteredSites.reverse();
+        };
+
+        $scope.returnHome = function() {
+            window.location = "https://www.onjive.com/";
         };
 
         var subToken = messagingService.subscribe(managedWifi.messageTopics.service.refreshComplete.siteService, init);

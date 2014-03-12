@@ -87,7 +87,8 @@
                                     <div class="control-group" ng-show="network.security == 'wep'" ng-class="form.wepKey.$invalid ? 'error' : ''">
                                         <div class="control-label">WEP Key</div>
                                         <div class="controls">
-                                            <input type="password" id="wepKey" name="wepKey" ng-model="network.x_wep" ng-required="network.security == 'wep'" />
+                                            <input type="{{ showWepPassword ? 'text' : 'password' }}" id="wepKey" name="wepKey" ng-model="network.x_wep" ng-required="network.security == 'wep'" />
+                                            <label class="checkbox" style="display: inline-block;"><input type="checkbox" ng-model="showWepPassword">Show Password</label>
                                             <i ng-hide="form.wepKey.$invalid" class="icon-ok-sign active"></i>
                                             <div ng-show="form.wepKey.$invalid" class="tip help">Please provide a valid passkey</div>
                                         </div>
@@ -109,7 +110,8 @@
                                     <div class="control-group" ng-show="network.security == 'wpapsk'" ng-class="form.wpapskKey.$invalid ? 'error' : ''">
                                         <div class="control-label">Security Key</div>
                                         <div class="controls">
-                                            <input type="password" id="wpapskKey" name="wpapskKey" ng-model="network.x_passphrase" ng-required="network.security == 'wpapsk'" />
+                                            <input type="{{ showWpapPassword ? 'text' : 'password' }}" id="wpapskKey" name="wpapskKey" ng-model="network.x_passphrase" ng-required="network.security == 'wpapsk'" />
+                                            <label class="checkbox" style="display: inline-block;"><input type="checkbox" ng-model="showWpapPassword">Show Password</label>
                                             <i ng-hide="form.wpapskKey.$invalid" class="icon-ok-sign active"></i>
                                             <div ng-show="form.wpapskKey.$invalid" class="tip help">Please provide a valid key</div>
                                         </div>
@@ -134,7 +136,8 @@
                                     <div class="control-group" ng-show="network.security == 'wpaeap'" ng-class="form.wpaeapPass.$invalid ? 'error' : ''">
                                         <div class="control-label">Security Key</div>
                                         <div class="controls">
-                                            <input type="password" id="wpaeapPass" name="wpaeapPass" ng-model="network.x_radius_secret_1" ng-required="network.security == 'wpaeap'" />
+                                            <input type="{{ showWpaePassword ? 'text' : 'password' }}" id="wpaeapPass" name="wpaeapPass" ng-model="network.x_radius_secret_1" ng-required="network.security == 'wpaeap'" />
+                                            <label class="checkbox" style="display: inline-block;"><input type="checkbox" ng-model="showWpaePassword">Show Password</label>
                                             <i ng-hide="form.wpaeapPass.$invalid" class="icon-ok-sign active"></i>
                                             <div ng-show="form.wpaeapPass.$invalid" class="tip help">Please provide a valid password</div>
                                         </div>

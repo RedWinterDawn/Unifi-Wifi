@@ -66,7 +66,8 @@
                                         <div class="control-group" ng-class="form.guestPassword.$invalid ? 'error' : ''" ng-show="settings.auth == 'password'">
                                             <div class="control-label">Password</div>
                                             <div class="controls">
-                                                <input type="password" id="guestPassword" name="guestPassword" ng-model="settings.x_password" ng-required="settings.auth == 'password'" ng-disabled="!settings.portal_enabled"/>
+                                                <input type="{{ showPassword ? 'text' : 'password' }}" id="guestPassword" name="guestPassword" ng-model="settings.x_password" ng-required="settings.auth == 'password'" ng-disabled="!settings.portal_enabled"/>
+                                                <label class="checkbox" style="display: inline-block;"><input type="checkbox" ng-model="showPassword">Show Password</label>
                                                 <i ng-hide="form.guestPassword.$invalid" class="icon-ok-sign active"></i>
                                                 <div ng-show="form.guestPassword.$invalid" class="tip help">Please provide a password</div>
                                             </div>

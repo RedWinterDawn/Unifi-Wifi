@@ -5,6 +5,7 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
         $scope.activeItem = 'Portal';
         $scope.activeSubItem = 'Limits';
         $scope.regExIpAddress = managedWifi.regExLib.ipAddress;
+        $scope.showPassword = false;
 
         siteSettingsService.getAll().then(
             function(settings){
