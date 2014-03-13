@@ -12,143 +12,250 @@
     <div class="span12">
         <ul class="content-sidebar">
             <li><a ng-click="setActiveItem('Overview')" ng-class="itemClass('Overview')"><i class="icon-asterisk"></i>Overview</a></li>
-            <li><a ng-click="setActiveItem('Devices')" ng-class="itemClass('Devices')"><i class="icon-asterisk"></i>Devices</a></li>
-            <li><a ng-click="setActiveItem('Networks')" ng-class="itemClass('Networks')"><i class="icon-asterisk"></i>Networks</a></li>
-            <li><a ng-click="setActiveItem('Users')" ng-class="itemClass('Users')"><i class="icon-asterisk"></i>Connected Devices</a></li>
-            <li><a ng-click="setActiveItem('Reports')" ng-class="itemClass('Reports')"><i class="icon-asterisk"></i>Reports</a></li>
+            <li><a ng-click="setActiveItem('APDevices')" ng-class="itemClass('APDevices')"><i class="icon-asterisk"></i>Access Point Devices</a></li>
+            <li><a ng-click="setActiveItem('Networks')" ng-class="itemClass('Networks')"><i class="icon-asterisk"></i>Wireless Networks</a></li>
+            <li><a ng-click="setActiveItem('Devices')" ng-class="itemClass('Devices')"><i class="icon-asterisk"></i>Connected Devices</a></li>
+            <li><a ng-click="setActiveItem('Sites')" ng-class="itemClass('Sites')"><i class="icon-asterisk"></i>Sites</a></li>
+            <li><a ng-click="setActiveItem('FAQ')" ng-class="itemClass('FAQ')"><i class="icon-asterisk"></i>FAQ</a></li>
         </ul>
         <div class="content-pane multi">
             <div class="content">
                 <div class="container-fluid">
                     <div class="row-fluid" ng-show="activeHelpItem == 'Overview'">
                         <div class="span12">
-                            <h2>Welcome!</h2>
+                            <h2>Overview</h2>
 
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid architecto autem
-                                consequuntur debitis deleniti, dignissimos dolor dolore eaque facere fugiat id incidunt
-                                itaque magni modi nam natus obcaecati optio placeat quia recusandae reiciendis
-                                reprehenderit sunt tempore ullam ut, vel veniam voluptatem! Alias eius iure porro quidem
-                                quod sit tempora temporibus.</p>
+                            <p>The Jive Wifi Management tool allows admins to manage wireless networks and individual wireless access points. Admins can manage bandwidth, users, and devices. Admins can also limit bandwidth, block users and devices from using the wireless network.</p>
 
-                            <p>Aliquid beatae doloribus earum ipsa itaque maxime minima molestiae nam numquam obcaecati
-                                quos ratione, tempora tempore. Adipisci est, ullam. Accusamus aperiam delectus deserunt
-                                est expedita modi nemo quia repellendus, rerum. Aspernatur assumenda beatae cum dolorem
-                                eligendi fugiat itaque, iure maiores molestiae nihil numquam omnis qui reiciendis saepe
-                                sit! Eaque, exercitationem?</p>
+                            <hr>
+                            <h3>Global Tips</h3>
 
-                            <p>Ab accusamus aspernatur dolorem ea eaque eligendi esse excepturi iste itaque labore
-                                laboriosam maxime minus nemo nesciunt omnis quae quibusdam, quod quos tenetur ut velit,
-                                veritatis voluptates. A at cum eligendi sunt. Alias, aperiam aspernatur deserunt eaque
-                                facilis maxime minus nesciunt officia provident quaerat quam quis voluptates! Eius, eos
-                                sit.</p>
+                            <p>The pages that have a search box in the upper right corner of the page, allow for admins to search for items on that page. The pages that have a search bar are:
+                                <ul>
+                                    <li>
+                                        Access Point Devices
+                                        <ul>
+                                            <li>
+                                                Searchable by:
+                                                <ul>
+                                                    <li>MAC address</li>
+                                                    <li>IP address</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        Wireless Networks
+                                        <ul>
+                                            <li>Searchable by:
+                                                <ul>
+                                                    <li>Name</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        Devices
+                                        <ul>
+                                            <li>Searchable by:
+                                                <ul>
+                                                    <li>MAC address</li>
+                                                    <li>IP address</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        Sites
+                                        <ul>
+                                            <li>Searchable by:
+                                                <ul>
+                                                    <li>Name</li>
+                                                    <li>City</li>
+                                                    <li>Account ID</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </p>
+                            <p>
+                                With any change, the admin must click the <img src="/assets/help/update.png"> button for the changes to persist.
+                            </p>
+                            <hr>
+                            <p style="color:red; font-weight: bold;">
+                                Only Ubiquiti Unifi Access Points with supported firmware versions will work with this tool.
+                            </p>
+                            <p style="color:red; font-weight: bold;">
+                                We do not support Internet Explorer 8. Please download Google Chrome, Firefox or update Internet Explorer to 9 or 10.
+                            </p>
+                            <p>
+                                Any questions please contact us at <a href="mailto:customersupport@getjive.com" target="_top">customersupport@getjive.com</a>
+                            </p>
                         </div>
                     </div>
-                    <div class="row-fluid" ng-show="activeHelpItem == 'Devices'">
+                    <div class="row-fluid" ng-show="activeHelpItem == 'APDevices'">
                         <div class="span12">
-                            <h2>Devices</h2>
-                            <h3>Section Title</h3>
-
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias culpa cumque dolore sit
-                                vel. Adipisci atque autem culpa deleniti, ea illum ipsum laudantium minima nam, pariatur
-                                possimus tenetur? Accusamus, magni?</p>
-
-                            <p>Adipisci deserunt dignissimos itaque iure, magni molestiae nobis possimus provident sed
-                                sit. Iusto modi neque nostrum quasi vel. Accusamus enim illo in, ipsam natus nihil optio
-                                quibusdam rerum vitae. Vero.</p>
-
-                            <h3>Section Title</h3>
-                            <p>Assumenda aut culpa cumque delectus, deleniti eius esse fuga fugiat hic impedit ipsa
-                                ipsam laboriosam magni maiores minus molestiae molestias natus obcaecati pariatur
-                                perferendis praesentium quis quisquam quos recusandae voluptatibus.</p>
-
-                            <p>Accusantium atque, aut culpa dicta, dolore dolorem dolorum, excepturi facere fuga fugiat
-                                fugit minima molestias obcaecati optio reprehenderit. Corporis et necessitatibus porro
-                                vel velit. Est inventore iste nisi quo ut!</p>
-
-                            <p>Atque deserunt distinctio ducimus eum eveniet explicabo magni maxime modi molestiae quae,
-                                quasi quisquam quos veritatis? Adipisci amet consequatur itaque magnam, nihil nobis
-                                obcaecati optio quae rerum sit tenetur voluptas?</p>
+                            <h2>Access Point Devices</h2>
+                            <p>This section helps admins adopt, remove and manage individual access points(AP’s). This screen is where AP’s are adopted, removed, and sorted. Each line has a MAC address which links to the page to edit the AP. Admins can also click on the gear icon <img src="/assets/help/gear.png"> at the end of the line to see the options available to configure the IP address of the AP. Clicking on “Settings” allows users to change the ‘Alias’ or name that shows up in the Wifi Management tool.</p>
+                            <p>If Static IP address is chosen, an extra “Network” tab shows up next to the tab “Config”. In the Network tab, there are fields to configure the Static IP address.</p>
                         </div>
                     </div>
                     <div class="row-fluid" ng-show="activeHelpItem == 'Networks'">
                         <div class="span12">
-                            <h2>Networks</h2>
-                            <h3>Section Title</h3>
-
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias culpa cumque dolore sit
-                                vel. Adipisci atque autem culpa deleniti, ea illum ipsum laudantium minima nam, pariatur
-                                possimus tenetur? Accusamus, magni?</p>
-
-                            <p>Adipisci deserunt dignissimos itaque iure, magni molestiae nobis possimus provident sed
-                                sit. Iusto modi neque nostrum quasi vel. Accusamus enim illo in, ipsam natus nihil optio
-                                quibusdam rerum vitae. Vero.</p>
-
-                            <h3>Section Title</h3>
-                            <p>Assumenda aut culpa cumque delectus, deleniti eius esse fuga fugiat hic impedit ipsa
-                                ipsam laboriosam magni maiores minus molestiae molestias natus obcaecati pariatur
-                                perferendis praesentium quis quisquam quos recusandae voluptatibus.</p>
-
-                            <p>Accusantium atque, aut culpa dicta, dolore dolorem dolorum, excepturi facere fuga fugiat
-                                fugit minima molestias obcaecati optio reprehenderit. Corporis et necessitatibus porro
-                                vel velit. Est inventore iste nisi quo ut!</p>
-
-                            <p>Atque deserunt distinctio ducimus eum eveniet explicabo magni maxime modi molestiae quae,
-                                quasi quisquam quos veritatis? Adipisci amet consequatur itaque magnam, nihil nobis
-                                obcaecati optio quae rerum sit tenetur voluptas?</p>
+                            <h2>Wireless Networks</h2>
+                            <p>This section helps admins manage the wireless networks that can be shared on many access points across a site. They can set up several networks with different rules, and security options.</p>
+                            <p>To add a network, click on the <img src="/assets/help/addNetwork.png"> button. In this new window admins have can change the network name, set the status, security password and enable/disable a guest policy. When guest policies are enabled the settings from the “Site Settings” are enforced.  Advanced options include setting up a VLAN, broadcasting the SSID, and options for the type of security and encryption being used.</p>
                         </div>
                     </div>
-                    <div class="row-fluid" ng-show="activeHelpItem == 'Users'">
+                    <div class="row-fluid" ng-show="activeHelpItem == 'Devices'">
                         <div class="span12">
-                            <h2>Users</h2>
-                            <h3>Section Title</h3>
+                            <h2>Connected Devices</h2>
 
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias culpa cumque dolore sit
-                                vel. Adipisci atque autem culpa deleniti, ea illum ipsum laudantium minima nam, pariatur
-                                possimus tenetur? Accusamus, magni?</p>
+                            <p>This section is where end user devices are listed. The gear icon <img src="/assets/help/gear.png"> on the right of each line has two options. Admins can block/unblock users and authorize/unauthorize users. Admins can also sort, block and limit devices.</p>
+                            <p>Click on the MAC address (<span style="color: blue; font-weight: bold">dc:9b:9c:14:b2:ff</span>) link, to show an overview of network activity for the end user device. From this new screen admins can also block/unblock users and authorize/unauthorize users.</p>
+                            <p>Clicking on the <img src="/assets/help/IncludeColumns.png"> button, shows options to include extra columns, such as:
+                                <ul>
+                                    <li>Authorization</li>
+                                    <li>Blocked</li>
+                                    <li>Device</li>
+                                </ul>
+                            </p>
+                            <hr>
 
-                            <p>Adipisci deserunt dignissimos itaque iure, magni molestiae nobis possimus provident sed
-                                sit. Iusto modi neque nostrum quasi vel. Accusamus enim illo in, ipsam natus nihil optio
-                                quibusdam rerum vitae. Vero.</p>
-
-                            <h3>Section Title</h3>
-                            <p>Assumenda aut culpa cumque delectus, deleniti eius esse fuga fugiat hic impedit ipsa
-                                ipsam laboriosam magni maiores minus molestiae molestias natus obcaecati pariatur
-                                perferendis praesentium quis quisquam quos recusandae voluptatibus.</p>
-
-                            <p>Accusantium atque, aut culpa dicta, dolore dolorem dolorum, excepturi facere fuga fugiat
-                                fugit minima molestias obcaecati optio reprehenderit. Corporis et necessitatibus porro
-                                vel velit. Est inventore iste nisi quo ut!</p>
-
-                            <p>Atque deserunt distinctio ducimus eum eveniet explicabo magni maxime modi molestiae quae,
-                                quasi quisquam quos veritatis? Adipisci amet consequatur itaque magnam, nihil nobis
-                                obcaecati optio quae rerum sit tenetur voluptas?</p>
+                            <p>List of column headers and what they describe:
+                                <ul>
+                                    <li>
+                                        Network
+                                        <ul>
+                                            <li>
+                                                Which network the device is connected to
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        Status
+                                        <ul>
+                                            <li>
+                                                Connected/Disconnected
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        Authorization
+                                        <ul>
+                                            <li>
+                                                User
+                                            </li>
+                                            <li>
+                                                Unauthorized
+                                            </li>
+                                            <li>
+                                                UserGuest
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        Download
+                                        <ul>
+                                            <li>
+                                                How much data has been downloaded
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        Upload
+                                        <ul>
+                                            <li>
+                                                How much data has been uploaded
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </p>
                         </div>
                     </div>
-                    <div class="row-fluid" ng-show="activeHelpItem == 'Reports'">
+                    <div class="row-fluid" ng-show="activeHelpItem == 'Sites'">
                         <div class="span12">
-                            <h2>Reports</h2>
-                            <h3>Section Title</h3>
+                            <h2>Sites</h2>
 
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias culpa cumque dolore sit
-                                vel. Adipisci atque autem culpa deleniti, ea illum ipsum laudantium minima nam, pariatur
-                                possimus tenetur? Accusamus, magni?</p>
+                            <p>This section allows the admin to add and sort sites. To add a site click on the <img src="/assets/help/addSite.png"> button. The new screen will give the user options to enter:
+                                <ul>
+                                    <li>Site name</li>
+                                    <li>Email for alerts</li>
+                                    <li>Address</li>
+                                    <li>
+                                        Assigned Devices
+                                        <ul>
+                                            <li>Enter the MAC address of each Access Point you want associated with this site.</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row-fluid" ng-show="activeHelpItem == 'FAQ'">
+                        <div class="span12">
+                            <h2>FAQ</h2>
 
-                            <p>Adipisci deserunt dignissimos itaque iure, magni molestiae nobis possimus provident sed
-                                sit. Iusto modi neque nostrum quasi vel. Accusamus enim illo in, ipsam natus nihil optio
-                                quibusdam rerum vitae. Vero.</p>
+                            <p>
+                                <span style="font-weight: bold;">My AP is plugged in and is set to inform <span style="color:blue;">http://wifi.jive.com:8080/inform</span> and it is not showing up for me to adopt the AP, what is wrong?</span>
+                                <ul>
+                                    <li>
+                                        The wrong site is selected
+                                        <ul>
+                                            <li>In the top left corner there is a drop down to select different sites</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        You did not add the MAC address of the AP to the correct site
+                                        <ul>
+                                            <li>Go to “Sites”</li>
+                                            <li>Select the Site you want the AP to connect to</li>
+                                            <li>Click on “Assigned Devices”</li>
+                                            <li>Add the MAC address of the access point</li>
+                                            <li>Click “Update” to save the changes</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </p>
+                            <hr>
+                            <p><span style="font-weight: bold;">My AP is plugged in but it is not showing up in my Site to adopt.</span>
+                                There are 2 options:
+                                <ul>
+                                    <li>
+                                        SSH into the device and copy/paste this command:
+                                        <ul>
+                                            <li>ssh ubnt@&lt;ip-address-of-access-point&gt; (e.g. ssh ubnt@192.168.10.4)</li>
+                                            <li>Password is: ubnt</li>
+                                            <li>
+                                                Then type the following once you have made a connection:
+                                                <ul>
+                                                    <li>
+                                                        set-inform http://wifi.jive.com:8080/inform
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                OR
+                                <ul>
+                                    <li>
+                                        Open up the “Unifi Discovery Utility” link to utility tool
+                                        <ul>
+                                            <li>Wait for the tool to find the access point</li>
+                                            <li>Click on “Manage”</li>
+                                            <li>On the next window select “Set Inform”</li>
+                                            <li>Type in: http://wifi.jive.com:8080/inform</li>
+                                            <li>Select “Apply”</li>
 
-                            <h3>Section Title</h3>
-                            <p>Assumenda aut culpa cumque delectus, deleniti eius esse fuga fugiat hic impedit ipsa
-                                ipsam laboriosam magni maiores minus molestiae molestias natus obcaecati pariatur
-                                perferendis praesentium quis quisquam quos recusandae voluptatibus.</p>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                Go back to the browser, and browse to wifi.jive.com and click on “Access Points”. Find the MAC address that you want to adopt. Click the gear Icon on the right and select “Adopt”. After a few minutes the Access Point should say “Connected” under “Status”
+                            </p>
 
-                            <p>Accusantium atque, aut culpa dicta, dolore dolorem dolorum, excepturi facere fuga fugiat
-                                fugit minima molestias obcaecati optio reprehenderit. Corporis et necessitatibus porro
-                                vel velit. Est inventore iste nisi quo ut!</p>
-
-                            <p>Atque deserunt distinctio ducimus eum eveniet explicabo magni maxime modi molestiae quae,
-                                quasi quisquam quos veritatis? Adipisci amet consequatur itaque magnam, nihil nobis
-                                obcaecati optio quae rerum sit tenetur voluptas?</p>
                         </div>
                     </div>
                 </div>
