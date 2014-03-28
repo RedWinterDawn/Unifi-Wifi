@@ -40,6 +40,8 @@ managedWifi.controller('NetworkController', ["$scope", "$location", "$routeParam
                 networkService.add($scope.network).then(
                     function(){
                         notificationService.success("networkAdd", $scope.network.name + " has been added");
+                        $scope.offLocationChangeStart();
+                        window.onbeforeunload = null;
                         $location.url("/networks");
                     },
                     function(reason){

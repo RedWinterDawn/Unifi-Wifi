@@ -87,6 +87,15 @@ managedWifi.factory('unifiSiteSettingsService', ['$q', '$http', 'appSettings', '
             });
 
             return service.webServicePostForm("/site-setting/" + id, limitsCopy);
+        },
+
+        updateTou: function(terms, company) {
+            return $http({
+                method: "POST",
+                data: angular.toJson({ terms: terms, company: company }),
+                url: appSettings.apiEndpoint + "/site-setting/terms/",
+                headers: {'Content-Type': 'application/json; charset=UTF-8'}
+            });
         }
 
     };

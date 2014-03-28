@@ -1,5 +1,6 @@
 package com.jive.apcontrolleradapter.webapi;
 
+import java.io.IOException;
 import java.util.Map;
 
 import javax.ws.rs.*;
@@ -16,7 +17,13 @@ public interface SiteSetting {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public Map updateSetting(@PathParam("unifises") String sessionId, javax.ws.rs.core.Form settings);
+    public Map updateSetting(@PathParam("unifises") String sessionId, javax.ws.rs.core.Form settings) throws IOException;
+
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("terms")
+    public String updateTou(@PathParam("unifises") String sessionId, Map form) throws IOException;
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)

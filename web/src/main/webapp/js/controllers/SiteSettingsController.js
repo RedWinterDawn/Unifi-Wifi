@@ -11,6 +11,10 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
             function(settings){
                 $scope.original = settings.filter(function(setting){return setting.key == 'guest_access'})[0];
                 if (!_.has($scope.original, 'expire')) $scope.original.expire = '4320';
+                if ($scope.original.hotspotNoAuth === 'true') {
+                    $scope.original.auth = 'tou';
+                }
+
                 $scope.settings = angular.copy($scope.original);
 
                 $scope.originalLimits = settings.filter(function(setting){return setting.key == 'limits'})[0];
@@ -22,10 +26,23 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
         );
 
         $scope.update = function() {
+            if ($scope.settings.auth === 'tou') {
+                $scope.settings.portal_customized = true;
+                $scope.settings.payment_enabled = false;
+                $scope.settings.voucher_enabled = false;
+                $scope.settings.auth_none = true;
+                $scope.settings.hotspotNoAuth = 'true';
+                $scope.settings.auth = 'none';
+            }
+
+            var termsModified = $scope.settings.terms !== $scope.original.terms || $scope.settings.companyName !== $scope.original.companyName;
+            var terms = $scope.settings.terms;
+            var companyName = $scope.settings.companyName;
+            var toComplete = 2;
             var completed = 0;
             var allSuccessful = true;
             var callback = function() {
-                if (completed == 2) {
+                if (completed == toComplete) {
                     if (allSuccessful) {
                         notificationService.success("siteSettingsEdit", "This site's settings have been updated");
                     } else {
@@ -36,8 +53,24 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
 
             siteSettingsService.update($scope.settings).then(function() {
                 completed++;
+                if ($scope.settings.hotspotNoAuth === 'true') {
+                    $scope.settings.auth = 'tou';
+                }
+
                 angular.copy($scope.settings, $scope.original);
-                callback();
+
+                if (termsModified) {
+                    siteSettingsService.updateTou(terms, companyName).then(function() {
+                        completed++;
+                        callback();
+                    }, function(reason) {
+                        completed++;
+                        callback();
+                    });
+                } else {
+                    callback();
+                }
+
             }, function(reason) {
                 completed++;
                 callback();

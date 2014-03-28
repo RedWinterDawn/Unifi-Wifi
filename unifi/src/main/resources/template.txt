@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+<head>
+  <title><unifi txt="WelcomePage.Title" /></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="reset-min.css" />
+  <link rel="stylesheet" type="text/css" href="styles.css" />
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/guest.js"></script>
+</head>
+<body class="login-page">
+<!-- see README.txt for HTML customization instructions -->
+<div class="page-content" style="padding-top:100px;">
+        <div class="login-content content-box">
+                <unifi if="auth_hotspot">
+                        <unifi if="payment_enabled">
+                                <form name="input" method="post" action="">
+                                        <h2>Please select the package of your choice</h2>
+                                        <div class="options-box">
+                                                <input type="radio" value="1" name="package" id="package-1" checked="checked" /><label for="package-1">8-Hour Pass - $5.99</label>
+                                                <input type="radio" value="2" name="package" id="package-2" /><label for="package-2">Day Pass $8.99</label>
+                                        </div>
+                                        <div class="form-controls">
+                                                <!-- for Paypal, we go straight to /guest/login to initiate the paypal process -->
+                                                <!--
+                                                        if Pay-by-Paypal or Paypal Standard is desired
+                                                        1. see http://wiki.ubnt.com/UniFi_and_Paypal_Integration
+                                                        2. make the necessary changes to allow access to Paypal subnets
+                                                        3. uncomment this section
+
+                                                <input type="hidden" name="by" value="paypal" />
+                                                <input type="submit" value="Pay by PayPal" class="button requires-tou" name="bypaypal" onclick="form.action='/guest/login';" />
+                                                -->
+                                                <!--
+                                                        for credit card payment, we'll ask for more information in a separate page
+                                                        Two more things:
+                                                        - we pass the "package" information along using a post
+                                                        - we also make sure it's using HTTPS
+                                                -->
+                                                <input type="submit" value="Pay by credit card" class="button requires-tou" name="bycredit" onclick="form.action='<unifi url="payment.html" https="true"/>';" />
+                                        </div>
+                                </form>
+                        </unifi>
+
+                        <unifi if="voucher_enabled">
+                                <form name="input" method="post" action="login">
+                                        <input type="hidden" name="by" value="voucher" />
+                                        <input type="hidden" name="page_error" value="index.html" />
+                                        <div class="voucher-box">
+                                                <!-- Title or Error -->
+                                                <unifi if="has_error">
+                                                        <h2 class="error"><unifi error="error" /></h2>
+                                                <unifi else="has_error" />
+                                                        <h2><unifi txt="UseVoucher" /></h2>
+                                                </unifi>
+                                                <fieldset class="large-text">
+                                                        <p class="form-element">
+                                                                <label for="voucher" class="fieldname">Voucher</label>
+                                                                <input id="voucher" name="voucher" type="text" class="textInput" value="" autocomplete="off" />
+                                                        </p>
+                                                </fieldset>
+                                        </div>
+                                        <div class="form-controls">
+                                                <input type="submit" value="Use Voucher" class="button requires-tou" />
+                                        </div>
+                                </form>
+                        </unifi>
+                        <unifi if="payment_enabled">
+                                <form name="input" method="post" action="login">
+                                        <h2>or try it out for free</h2>
+                                        <div class="form-controls">
+                                                <input type="hidden" name="package" value="3" />
+                                                <!--
+                                                <input type="hidden" name="landing_url" value="http://www.yourdomain.com/?ap=<unifi var="ap_mac" />" />
+                                                -->
+                                                <input type="submit" value="2-hour Free Trial" class="button requires-tou"  name="byfree" />
+                                        </div>
+                                </form>
+                        </unifi>
+                </unifi>
+
+                <unifi if="auth_password">
+                    <form name="input" method="post" action="login">
+                                <input type="hidden" name="page_error" value="index.html" />
+                                <div class="password-box">
+                                        <!-- Title or Error -->
+                                        <unifi if="has_error">
+                                                <h2 class="error"><unifi error="error" /></h2>
+                                        <unifi else="has_error" />
+                                                <h2><unifi txt="PasswordRequiredForWirelessAccess" /></h2>
+                                        </unifi>
+
+                                        <!-- password input -->
+                                        <fieldset class="large-text">
+                                                <p class="form-element">
+                                                        <label for="Password" class="fieldname">Guest Password</label>
+                                                        <input id="Password" name="password" type="password" class="textInput" value="" autocomplete="off" />
+                                                </p>
+                                        </fieldset>
+
+                                        <!-- submit -->
+                                        <div class="form-controls">
+                                                <input name="connect" type="submit" value="Connect" id="connect" class="button requires-tou" />
+                                        </div>
+                                </div>
+                        </form>
+                </unifi>
+        </div>
+
+        <div class="login-content content-box">
+                <form name="input" method="post" action="login">
+                        <div class="tou-box">
+                                <h2>Terms of Use</h2>
+                                <div class="tou-wrapper" id="tou">
+                                        <div class="tou">
+                                        <p>Terms of Use</p>
+                                        <p>%TERMS%</p>
+                                        </div>
+                                </div>
+                                <fieldset class="accept-tou">
+                                        <input id="accept-tou" type="checkbox" checked="checked" name="accept-tou" value="yes" />
+                                        <label class="normal" >I accept the %COMPANY%Managed Wifi <a href="javascript:void(0)" id="show-tou">Terms of Use</a></label>
+                                </fieldset>
+                                <div class="form-controls">
+                                        <!-- submit (only for no authentication) -->
+                                        <input name="connect" type="submit" value="Connect" id="connect" class="button requires-tou" />
+                                </div>
+                        </div>
+                </form>
+        </div>
+</div>
+
+<script type="text/javascript">
+$(function() {
+        $('#tou').hide();
+        $('#show-tou').click(function() {
+                $('#tou').show();
+        });
+        $('#accept-tou').click(function() {
+                if (!$('#accept-tou').checked()) {
+                        $('input.requires-tou').disable();
+                }
+                else {
+                        $('input.requires-tou').enable();
+                }
+        })
+});
+</script>
+
+</body>
+</html>

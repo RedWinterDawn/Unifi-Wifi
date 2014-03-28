@@ -60,8 +60,34 @@
                                             <label class="radio">
                                                 <input type="radio" ng-model="settings.auth" value="custom" ng-disabled="!settings.portal_enabled">External Portal Server
                                             </label>
+                                            <label class="radio">
+                                                <input type="radio" ng-model="settings.auth" value="tou" ng-disabled="!settings.portal_enabled">Custom Terms and Conditions
+                                            </label>
                                         </div>
                                     </div>
+
+                                        <div class="control-group" ng-class="form.custom_ip.$invalid ? 'error' : ''" ng-show="settings.auth == 'custom'">
+                                            <div class="control-label">IP Address:</div>
+                                            <div class="controls">
+                                                <input type="text" id="customIp" name="customIp" ng-model="settings.custom_ip" ng-required="settings.auth == 'custom'" ng-disabled="!settings.portal_enabled" valid-ip/>
+                                                <i ng-hide="form.customIp.$invalid" class="icon-ok-sign active"></i>
+                                                <div ng-show="form.customIp.$invalid" class="tip help">Please provide an IP Address</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="control-group" ng-show="settings.auth == 'tou'">
+                                            <div class="control-label">Company Name:</div>
+                                            <div class="controls">
+                                                <input type="text" id="companyName" name="companyName" ng-model="settings.companyName" ng-disabled="!settings.portal_enabled"/>
+                                            </div>
+                                        </div>
+                                        <div class="control-group" ng-show="settings.auth == 'tou'">
+                                            <div class="control-label">Terms and Conditions:</div>
+                                            <div class="controls">
+                                                <textarea type="text" id="terms" name="terms" ng-model="settings.terms" ng-required="settings.auth == 'tou'" ng-disabled="!settings.portal_enabled"></textarea>
+                                                <div ng-show="form.terms.$invalid" class="tip help">Please provide the terms and conditions</div>
+                                            </div>
+                                        </div>
 
                                         <div class="control-group" ng-class="form.guestPassword.$invalid ? 'error' : ''" ng-show="settings.auth == 'password'">
                                             <div class="control-label">Password</div>
