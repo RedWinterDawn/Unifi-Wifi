@@ -1,16 +1,17 @@
 package com.jive.apcontrolleradapter.unifi;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.Map;
-
 import com.jive.apcontrolleradapter.webapi.SiteSetting;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 
 import javax.ws.rs.core.Form;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class UnifiSiteSetting extends UnifiBase implements SiteSetting {
 
@@ -57,14 +58,45 @@ public class UnifiSiteSetting extends UnifiBase implements SiteSetting {
     }
 
     @Override
-    public String updateTou(String sessionId, Map form) throws IOException {
-        Map<String, Object> siteInfo = getExtendedSiteInfo(sessionId);
+    public String updateTou(String sessionId, Map form) throws IOException, InterruptedException {
+        /*
+        * Note to maintainers:
+        *
+        * This requires a couple of changes to visudo on the server:
+        * 1. comment out:
+        *     Defaults  requiretty
+        * 2. root ALL=NOPASSWD: ALL
+        */
+
+         Map<String, Object> siteInfo = getExtendedSiteInfo(sessionId);
         String siteName = (String) siteInfo.get("name");
         String fileToReplace = "/opt/unifi/data/sites/" + siteName + "/portal/index.html";
-
         File file = new File(fileToReplace);
+
+        String[] cmd = {"/bin/bash","-c","sudo chmod -R 777 /opt/unifi"};
+        Process pb = Runtime.getRuntime().exec(cmd);
+        pb.waitFor();
+        String line;
+        String output = "";
+        BufferedReader input = new BufferedReader(new InputStreamReader(pb.getInputStream()));
+        while ((line = input.readLine()) != null) {
+            output += line;
+        }
+        String outErr = "";
+        BufferedReader inputErr = new BufferedReader(new InputStreamReader(pb.getErrorStream()));
+        while ((line = inputErr.readLine()) != null) {
+            outErr += line;
+        }
+        input.close();
+        inputErr.close();
+
+        String deleted = "true";
         if (file.exists()) {
-            file.delete();
+            try {
+                file.delete();
+            } catch (Exception e) {
+                deleted = "false";
+            }
         }
 
         String html = IOUtils.toString(Thread.currentThread().getContextClassLoader().getResourceAsStream("template.txt"));
@@ -72,9 +104,15 @@ public class UnifiSiteSetting extends UnifiBase implements SiteSetting {
         if (!company.equals("")) company += " ";
         html = html.replace("%TERMS%", (String)form.get("terms"));
         html = html.replace("%COMPANY%", company);
-        FileUtils.writeStringToFile(new File(fileToReplace), html);
 
-        return html;
+        String wrote = "true";
+        try {
+            FileUtils.writeStringToFile(new File(fileToReplace), html);
+        } catch (Exception e) {
+            wrote = "false";
+        }
+
+        return "deleted: " + deleted + " wrote: " + wrote + " log: " + output + outErr;
     }
 
     @Override

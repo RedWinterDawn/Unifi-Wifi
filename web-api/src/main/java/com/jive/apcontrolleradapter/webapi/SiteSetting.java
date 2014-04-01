@@ -23,7 +23,7 @@ public interface SiteSetting {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("terms")
-    public String updateTou(@PathParam("unifises") String sessionId, Map form) throws IOException;
+    public String updateTou(@PathParam("unifises") String sessionId, Map form) throws IOException, InterruptedException;
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)

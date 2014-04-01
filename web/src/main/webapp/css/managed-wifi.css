@@ -84,11 +84,12 @@ h1.content-title {
     background: #7c9f23;
     padding-right: 20px;
     border-top-right-radius: 2px; border-bottom-right-radius: 2px;
+    cursor: auto !important;
 }
 .crumbs li:last-child a:after {
     display: none;
 }
-.crumbs li a:hover {
+.crumbs li:not(:last-child) a:hover {
     background: #8cb427;
 }
 .crumbs li a:hover:after {
