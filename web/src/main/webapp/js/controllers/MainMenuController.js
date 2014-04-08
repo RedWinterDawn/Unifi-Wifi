@@ -86,6 +86,7 @@ managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "$c
             siteService.selectSite(site).then(
                 function(){
                     $scope.selectedSite = site;
+                    location.reload();
                 },
                 function(){
                     notificationService.error("loadSite", "An error occurred while switching sites.");
