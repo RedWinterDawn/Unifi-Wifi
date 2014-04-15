@@ -66,42 +66,68 @@ Deploy New Fresh Instance
 ================================
 
 Spin up an AWS instance using the jive-el6-v8 AMI according to the standard devops procedure
+
 SSH into the AWS instance and set the default gateway to the correct nat
+
 run yum install tomcat6 
+
 in vim /etc/tomcat6/server.xml change the http connector to port 9080
+
 add 127.0.0.1 unifi to /etc/hosts
+
 export JAVA_HOME=/usr/lib/jvm/jre-1.7.0-openjdk.x86_64/
+
 create the file Create a /etc/yum.repos.d/mongodb.repo
+
 contents of file :
 [mongodb]
 name=MongoDB Repository
 baseurl=http://downloads-distro.mongodb.org/repo/redhat/os/x86_64/
 gpgcheck=0
 enabled=1
+
 run: yum install mongo-10gen mongo-10gen-server
+
 scp the Unifi Controller software version 3.1.3
 NOTE: The version must be 3.1.3 at this time no other version is supported by the UI
+
 unzip the file e.g.: unzip UniFi.unix.zip
+
 mv UniFi unifi
+
 mv unifi /opt/
+
 cd /opt/unifi/
 NOTE: /opt/unfi/bin/mongod needs to symlink to the installed mongod (usally /usr/bin/mongod)
+
 java -jar lib/ace.jar start &
 NOTE: needs to have the 
-got to https://<ipaddess>:8443
+
+go to https://<ipaddess>:8443
+
 setup the unifi controller
 username: admin
 password: Jive123
+
 all other info not important set to whatever
 echo |openssl s_client -connect localhost:8443 2>&1 |sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' |keytool -import -trustcacerts -alias "managed wifi controller"   -keystore "$JAVA_HOME/lib/security/cacerts"   -storepass changeit -noprompt
+
 expect: Certificate was added to the keystore
+
 cd /var/lib/tomcat6/webapps/
+
 wget <link copied from repo for the com.jiveapadapter web version <latest > jar>
+
 mv <downloaded file> ROOT.war
+
 create file /etc/managed-wifi.config
+
 contents of file:
+
 web.CORS.origin=https://wifi.jive.com
+
 unifi.controller.URL=https://unifi:8443
+
 mongo.host=localhost
 mongo.port=27117
 smtp.host=mail
@@ -113,8 +139,11 @@ oauth.redirectURI=https://wifi.jive.com/index.html#/oauth2
 oauth.clientId=27abd5a4-9e81-4e4e-9ccf-f6e81df64d19
 oauth.password=i4egS4Cd59LWJiP6SnafL7nvJjg7cI
 portal-api.URL=https://api.jive.com/wifi
+
 service tomcat6 start
+
 to verify tomcat started properly by running  tail on the logs.
+
 tail -f path/to/tomcat/files
 
 
