@@ -149,4 +149,53 @@ tail -f path/to/tomcat/files
 
 
 
+# Getting the bastard running
+The process to get Managed Wifi up and running is slightly involved. The steps here might not be complete, so if you figure something out, PLEASE add it to the README.
 
+
+Add the following line to `/etc/hosts`
+```
+10.104.1.240 unifi
+```
+
+Make sure that you're using JRE 1.7.0 at the very least.
+
+Run the following to get the unifi SSL cert trusted
+```
+echo |openssl s_client -connect unifi:8443 2>&1 |sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' |keytool -import -trustcacerts -alias "managed wifi controller"   -keystore "$JAVA_HOME/jre/lib/security/cacerts"   -storepass changeit -noprompt
+```
+
+It should output `Certificate was added to the keystore`
+
+create file /etc/managed-wifi.config with the contents like so:
+
+```
+web.CORS.origin=https://wifi.jive.com
+unifi.controller.URL=https://unifi:8443
+
+mongo.host=localhost
+mongo.port=27117
+
+smtp.host=mail
+
+alert.message.from=noreply@jive.com
+alert.message.subject=Jive Wifi Alert
+alert.message.template=Access point: {0}, from {1} has been {2}
+
+oauth.URL=https://auth.jive.com/oauth2
+oauth.redirectURI=https://wifi.jive.com/index.html#/oauth2
+oauth.clientId=27abd5a4-9e81-4e4e-9ccf-f6e81df64d19
+oauth.password=i4egS4Cd59LWJiP6SnafL7nvJjg7cI
+
+portal-api.URL=https://api.jive.com/wifi
+```
+
+Next, you have to set up an SSH tunnel to the managed wifi Mongo DB on the Unifi host. Assuming you have the phil-east key, you can do:
+```
+ssh -i ~/PATH/TO/phil-east.pem root@unifi -L 27117:localhost:27117
+```
+
+You should now be able to start the server in Eclipse (you have to make a Tomcat server for it). Then, you might be able to go to http://localhost:8000/index.html?pbxid=0127d974-f9f3-0704-2dee-000100420001#/oauth2
+
+
+Good luck.
