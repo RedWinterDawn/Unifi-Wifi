@@ -64,6 +64,7 @@ In order to automatically provision an access point to a specific site, the MAC 
 
 Deploy New Fresh Instance
 ================================
+This is only for production and is not formatted the best. Be wary of what follows a little.
 
 Spin up an AWS instance using the jive-el6-v8 AMI according to the standard devops procedure
 
