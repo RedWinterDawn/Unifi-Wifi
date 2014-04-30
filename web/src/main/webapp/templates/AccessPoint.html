@@ -2,7 +2,7 @@
     <div class="span12">
         <h1 class="content-title">Manage {{name}}</h1>
         <ul class="crumbs">
-            <li><a href="#/devices">Access Point Devices</a></li>
+            <li><a href="#/devices">Access Points</a></li>
             <li><a style="cursor:pointer;">Manage {{name}}</a></li>
         </ul>
     </div>
@@ -48,9 +48,9 @@
 
                                 <div class="field-section" ng-show="activeSubItem=='Config'">
                                     <div class="control-group">
-                                        <label for="alias" class="control-label">Alias</label>
+                                        <label for="alias" class="control-label">Name Device</label>
                                         <div class="controls">
-                                            <input type="text" id="alias" placeholder="Provide an alias..." ng-model="accessPoint.name">
+                                            <input type="text" id="alias" placeholder="Provide a name for the device..." ng-model="accessPoint.name">
                                         </div>
                                     </div>
 
