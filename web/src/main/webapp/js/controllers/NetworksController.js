@@ -26,6 +26,10 @@ managedWifi.controller('NetworksController', ["$scope", "$location", "NetworkSer
         $scope.addNetwork = function(){
             $location.url('/network/');
         };
+
+         $scope.addGuestNetwork = function(){
+            $location.url('/guestnetwork/');
+        };
         
         $scope.deleteNetwork = function(networkId){
             dialogService

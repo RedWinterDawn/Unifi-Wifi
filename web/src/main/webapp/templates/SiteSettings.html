@@ -11,7 +11,7 @@
 <div class="row-fluid">
     <div class="span12">
         <ul class="content-sidebar">
-            <li><a ng-click="activeItem = 'Portal'" ng-class="activeItem == 'Portal' ? 'active' : ''"><i class="icon-asterisk"></i>Portal Settings</a></li>
+            <li><a ng-click="activeItem = 'Details'" ng-class="activeItem == 'Details' ? 'active' : ''"><i class="icon-asterisk"></i>Site Details</a></li>
             <li><a ng-click="activeItem = 'Access'" ng-class="activeItem == 'Access' ? 'active' : ''"><i class="icon-asterisk"></i>Access Control</a></li>
             <li><a ng-click="activeItem = 'Limits'" ng-class="activeItem == 'Limits' ? 'active' : ''"><i class="icon-asterisk"></i>Traffic Limits</a></li>
         </ul>
@@ -20,10 +20,10 @@
                 <div class="container-fluid">
                     <div class="row-fluid">
                         <div class="span12">
-
-                            <div ng-show="activeItem=='Portal'">
-                                <h2>Portal Settings</h2>
-                                <h3>Guest Policies</h3>
+                        
+                            <div ng-show="activeItem=='Details'">
+                                <h2>Site Details</h2>
+                                <p>Configure the settings for this site. The account id for this site is pre-determined and should be provided to you outside this application.</p>
                             </div>
 
                             <div ng-show="activeItem=='Access'">
@@ -38,36 +38,61 @@
 
                             <div class="row-fluid"><div class="span8 offset2">
                             <form name="form" class="form-horizontal" novalidate>
-
-                                <div class="field-section" ng-show="activeItem=='Portal'">
+                            
+                                    <div class="field-section" ng-show="activeItem=='Details'">
+                                    <div class="control-group" ng-class="form.name.$invalid ? 'error' : ''">
+                                        <label for="friendly_name" class="control-label">
+                                            Site name<i class="icon-asterisk required"></i>
+                                        </label>
+                                        <div class="controls">
+                                            <input type="text" id="friendly_name" name="friendly_name" placeholder="Provide a name..." ng-model="site.friendly_name" required>
+                                            <i ng-hide="form.friendly_name.$error.required" class="icon-ok-sign active"></i>
+                                            <div ng-show="form.friendly_name.$error.required" class="tip help">Name is required</div>
+                                        </div>
+                                    </div>
+                                    <div class="control-group" ng-class="form.alert_email.$invalid ? 'error' : ''">
+                                        <label for="alert_email" class="control-label">
+                                            Email for Alerts<i class="icon-asterisk required"></i>
+                                        </label>
+                                        <div class="controls">
+                                            <input type="text" id="alert_email" name="alert_email" placeholder="Provide an email address..." ng-model="site.alert_email" required pattern="email">
+                                            <i ng-hide="form.alert_email.$error.required" class="icon-ok-sign active"></i>
+                                            <div ng-show="form.alert_email.$error.required" class="tip help">An email is required</div>
+                                        </div>
+                                    </div>
                                     <div class="control-group">
-                                        <label for="guestEnable" class="control-label">Enable Portal</label>
+                                        <label for="address" class="control-label">Account Number</label>
                                         <div class="controls">
-                                            <input type="checkbox" id="guestEnable" ng-model="settings.portal_enabled" ng-value="true">
+                                            <input type="text" id="account" name="account" placeholder="Provide an account number..." ng-model="site.account">
                                         </div>
                                     </div>
+                                    <div class="control-group">
+                                        <label for="address" class="control-label">Address</label>
+                                        <div class="controls">
+                                            <input type="text" id="address" name="address" placeholder="Provide an address..." ng-model="site.address1">
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label for="city" class="control-label">City</label>
+                                        <div class="controls">
+                                            <input type="text" id="city" name="city" placeholder="Provide a city..." capitalize-first ng-model="site.city">
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label for="state" class="control-label">State</label>
+                                        <div class="controls">
+                                            <input type="text" id="state" name="state" placeholder="Provide a state..." capitalize-state ng-model="site.state">
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label for="zip" class="control-label">Zip</label>
+                                        <div class="controls">
+                                            <input type="text" id="zip" name="zip" placeholder="Provide a zip..." ng-model="site.zip">
+                                        </div>
+                                    </div>
+                                </div>
 
-                                    <div ng-class="{'disabled-form': !settings.portal_enabled}">
-                                        <div class="control-group">
-                                        <div class="control-label">
-                                            Authentication
-                                            <i class="icon-question-sign section-help" tooltip-placement="left" tooltip="If you already have your own hotspot authentication system, choose the [External Portal Server] option to defer to that system. Contact Jive Communications for more information on implementation details."></i>
-                                        </div>
-                                        <div class="controls">
-                                            <label class="radio">
-                                                <input type="radio" ng-model="settings.auth" value="none" ng-disabled="!settings.portal_enabled">No authentication
-                                            </label>
-                                            <label class="radio">
-                                                <input type="radio" ng-model="settings.auth" value="password" ng-disabled="!settings.portal_enabled">Simple Password
-                                            </label>
-                                            <label class="radio">
-                                                <input type="radio" ng-model="settings.auth" value="custom" ng-disabled="!settings.portal_enabled">External Portal Server
-                                            </label>
-                                            <label class="radio">
-                                                <input type="radio" ng-model="settings.auth" value="tou" ng-disabled="!settings.portal_enabled">Custom Terms and Conditions
-                                            </label>
-                                        </div>
-                                    </div>
+                                    
 
                                         <div class="control-group" ng-class="form.custom_ip.$invalid ? 'error' : ''" ng-show="settings.auth == 'custom'">
                                             <div class="control-label">IP Address:</div>
@@ -102,33 +127,9 @@
                                             </div>
                                         </div>
 
-                                        <div class="control-group" ng-show="settings.auth == 'password' || settings.auth == 'none'" ng-class="form.expire.$invalid ? 'error' : ''">
-                                            <div class="control-label">Expiration</div>
-                                            <div class="controls">
-                                                <select name="expire" ng-model="settings.expire" ng-required="settings.auth == 'password' || settings.auth == 'none'" ng-disabled="!settings.portal_enabled">
-                                                    <option value="480">8 hours</option>
-                                                    <option value="1440">24 hours</option>
-                                                    <option value="2880">2 days</option>
-                                                    <option value="4320">3 days</option>
-                                                    <option value="5760">4 days</option>
-                                                    <option value="10080">7 days</option>
-                                                </select>
-                                                <i ng-hide="form.expire.$error.required" class="icon-ok-sign active"></i>
-                                                <div ng-show="form.expire.$error.required" class="tip help">Please select an expiration period</div>
-                                            </div>
-                                        </div>
+                                        
 
-                                        <div class="control-group">
-                                            <div class="control-label">Landing Page</div>
-                                            <div class="controls">
-                                                <label class="radio">
-                                                    <input type="radio" ng-model="settings.redirect_enabled" ng-value="false" ng-disabled="!settings.portal_enabled">Redirect to the original URL
-                                                </label>
-                                                <label class="radio">
-                                                    <input type="radio" ng-model="settings.redirect_enabled" ng-value="true" ng-disabled="!settings.portal_enabled">Redirect to promotional URL
-                                                </label>
-                                            </div>
-                                        </div>
+                                       
 
                                         <div class="control-group" ng-class="form.promoUrl.$invalid ? 'error' : ''" ng-show="settings.redirect_enabled">
                                             <div class="control-label">Promotional URL</div>

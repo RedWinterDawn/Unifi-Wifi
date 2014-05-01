@@ -87,11 +87,17 @@ managedWifi.config(['$routeProvider', '$locationProvider', function ($routeProvi
             templateUrl: 'templates/Blank.html',
             controller: 'ErrorController'
         })
-        .when('/settings',
+        .when('/settings/:id?',
         {
             templateUrl: 'templates/SiteSettings.html',
             controller: 'SiteSettingsController',
             resolve: managedWifi.resolveServiceAlias(["SiteSettingsService"])
+        })
+         .when('/guestnetwork',
+        {
+            templateUrl: 'templates/GuestNetwork.html',
+            controller: 'NetworkController',
+            resolve: managedWifi.resolveServiceAlias(["NetworkService"])
         })
         .otherwise({redirectTo: "/devices"});
     $locationProvider.html5Mode(false);

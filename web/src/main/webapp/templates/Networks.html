@@ -10,6 +10,7 @@
 <div class="page-actions">
     <ul>
         <li><a ng-click="addNetwork()"><i class="icon-plus-sign"></i>Add Network</a></li>
+        <li><a ng-click="addGuestNetwork()"><i class="icon-plus-sign"></i>Add Guest Network</a></li>
     </ul>
 </div>
 
@@ -31,7 +32,22 @@
             <thead>
             <tr>
                 <th></th>
-                <th><a ng-click="paginator.setOrder('name')">Name<i ng-class="paginator | sortClass:'name'"></i></a></th>
+                <th><a ng-click="paginator.setOrder('name')">Name(SSID)<i ng-class="paginator | sortClass:'name'"></a></th>
+                <th>
+                  <div class="dropdown"><a href="#" role="button" data-toggle="dropdown" class="dropdown-toggle" ng-class="SSIDFilter.enabled ? 'active' : null">Broadcast SSID<i class="icon-filter"></i></a>
+                        <ul role="menu" class="dropdown-menu">
+                            <li class="filters">
+                                <div>
+                                    <ul>
+                                        <li><input id="SSIDEnabledState" type="checkbox" ng-model="SSIDFilter.enabled" ng-true-value="true" ng-false-value=""><label for="SSIDEnabledState">Enabled</label></li>
+                                        <li><input id="SSIDDisabledState" type="checkbox" ng-model="SSIDFilter.enabled" ng-true-value="false" ng-false-value=""><label for="SSIDDisabledState">Disabled</label></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </th>
+                    
                 <th>
                     <div class="dropdown"><a href="#" role="button" data-toggle="dropdown" class="dropdown-toggle" ng-class="filter.enabled ? 'active' : null">Status<i class="icon-filter"></i></a>
                         <ul role="menu" class="dropdown-menu">
@@ -66,6 +82,8 @@
                         </ul>
                     </div>
                 </th>
+                 <th><a>Terms & Conditions</a></th>
+                 <th><a>Redirect</a></th>
                 <th><a ng-click="paginator.setOrder('security')">Security<i ng-class="paginator | sortClass:'security'"></i></a></th>
                 <th class="no-hover"></th>
             </tr>
@@ -74,9 +92,13 @@
             <tr ng-repeat="network in networks | filter: filter | storeItemCount: paginator.updateTotalItems | orderBy: paginator.orderBy | slice:(paginator.currentPage-1)*20:20">
                 <td><a ng-click="deleteNetwork(network.id)"><i class="icon-trash" ></i></a></td>
                 <td><a ng-href="#/network/{{network.id}}">{{network.name}}</a></td>
+                <td><i class="{{network.hide_ssid ? null : 'icon-check'}}"></i></td>
                 <td>{{network.enabled ? 'Enabled' : 'Disabled'}}</td>
                 <td>{{network.is_guest ? 'Guest Network' : 'Private Network'}}</td>
+                <td><i class="icon-check"></i></td>
+                <td><i class="icon-check"></i></td>
                 <td>{{network.security}}</td>
+                <td><a ng-href="#/network/{{network.id}}"><i class="icon-gear"></i></a>
             </tr>
 
             </tbody>

@@ -34,56 +34,10 @@
                 <li>
                     <div class="title"><i class="icon-signal"></i>WiFi</div>
                 </li>
-                <li ng-show="sites" class="dropdown">
-                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">
-                        <span ng-bind="selectedSite.friendly_name"></span><i class="icon-caret-down"></i>
-                    </a>
-
-                    <div class="site-list dropdown-menu">
-                        <div class="no-select" style="background-color: #f7f7f7;padding-top: 10px;">
-                            <input ng-model="siteFilter" ng-click="cancel($event)" ng-focus="cancel($event)" ng-change="filter()" type="text" placeholder="Search by name" class="search input-xs ng-pristine ng-valid" style="width: 275px; border: 1px solid lightgrey; margin-left: 5px;">
-                            <div style="border-top: 1px solid lightgrey; border-bottom: 1px solid lightgrey; padding-left: 5px;">
-                                Sort By:
-                                <a ng-click="toggleSortDirection($event, 'friendly_name')" style="margin-left: 5px;">
-                                    Name
-                                    <i class="{{sortIcons.friendly_name}}"></i>
-                                </a>
-                                <a ng-click="toggleSortDirection($event, 'city')" style="margin-left: 5px;">
-                                    City
-                                    <i class="{{sortIcons.city}}"></i>
-                                </a>
-                                <a ng-click="toggleSortDirection($event, 'state')" style="margin-left: 5px;">
-                                    State
-                                    <i class="{{sortIcons.state}}"></i>
-                                </a>
-                                <a ng-click="toggleSortDirection($event, 'zip')" style="margin-left: 5px;">
-                                    Zip
-                                    <i class="{{sortIcons.zip}}"></i>
-                                </a>
-                            </div>
-                        </div>
-
-                        <ul role="menu">
-                            <li class="pbx-account" ng-repeat="site in filteredSites"><a ng-click="selectSite(site)">
-                                <div class="media-body">
-                                    <h4 class="media-heading">{{site.friendly_name}}</h4><small>{{site.city}}, {{site.state}} {{site.zip}}</small>
-                                </div></a>
-                            </li>
-                        </ul>
-
-                        <div style="background-color: #f7f7f7;padding-bottom: 5px;">
-                            <a href="#/site" class="btn btn-primary" style="margin-right: 5px; margin-left: 200px;">
-                                <i class="icon-plus"></i>
-                                Add Site</a>
-                        </div>
-                    </div>
-
-                </li>
                 <li class="dropdown" ng-class="isActive('Devices')" ng-show="sites"><a ng-click="navigate('devices')" data-toggle="dropdown">Access Points</a></li>
                 <li class="dropdown" ng-class="isActive('Networks')" ng-show="sites"><a ng-click="navigate('networks')" data-toggle="dropdown">Wireless Networks</a></li>
                 <li class="dropdown" ng-class="isActive('Users')" ng-show="sites"><a ng-click="navigate('users')" data-toggle="dropdown">Connected Devices</a></li>
-                <li class="dropdown" ng-class="isActive('Settings')" ng-show="sites"><a ng-click="navigate('settings')" data-toggle="dropdown">Site Settings</a></li>
-                <li class="dropdown" ng-class="isActive('Sites')" ng-show="isAdmin"><a ng-click="navigate('sites')" data-toggle="dropdown">Sites</a></li>
+                <li class="dropdown" ng-class="isActive('Settings')" ng-show="sites"><a ng-href="#/site/{{site.site_id}}" data-toggle="dropdown">Site Settings</a></li>
             </ul>
             <div class="meta-menu">
                 <ul class="nav pull-right" ng-show="email">
@@ -116,10 +70,164 @@
     </nav>
 </header>
 
-<div class="workspace">
-    <div class="content-wrapper">
-        <div class="container-fluid">
-            <div ng-view></div>
+<div class="workspace" >
+    <div class="content-container">
+        <div class="content-wrapper">
+            <div class="container-fluid">
+                <div ng-view>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Words</p>
+                    <p>Last Words</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main-sidebar" ng-controller="MainMenuController">
+        <div style="padding-bottom: 5px; position: relative; width: 100%;">
+            <h2 style="margin-left: 10px; float: left;">Sites</h2>
+            <a href="#/site" class="btn btn-primary" style="margin: 14px 20px; float: right;">
+                <i class="icon-plus"></i>
+                Add Site</a>
+        </div>
+        <div class="no-select">
+            <input ng-model="siteFilter" ng-click="cancel($event)" ng-focus="cancel($event)" ng-change="filter()" type="text" placeholder="Search by name" class="search input-xs ng-pristine ng-valid" style="min-width: 90%; border: 1px solid lightgrey; margin-left: 5px;">
+            <div style="border-top: 1px solid lightgrey; border-bottom: 1px solid lightgrey; padding-left: 5px;">
+                Sort By:
+                <a ng-click="toggleSortDirection($event, 'friendly_name')" style="margin-left: 5px;">
+                    Name
+                    <i class="{{sortIcons.friendly_name}}"></i>
+                </a>
+                <a ng-click="toggleSortDirection($event, 'city')" style="margin-left: 5px;">
+                    City
+                    <i class="{{sortIcons.city}}"></i>
+                </a>
+                <a ng-click="toggleSortDirection($event, 'state')" style="margin-left: 5px;">
+                    State
+                    <i class="{{sortIcons.state}}"></i>
+                </a>
+                <a ng-click="toggleSortDirection($event, 'zip')" style="margin-left: 5px;">
+                    Zip
+                    <i class="{{sortIcons.zip}}"></i>
+                </a>
+            </div>
+        </div>
+        <div class="scrollable">
+            <ul role="menu">
+                <li class="pbx-account" ng-repeat="site in filteredSites"><a ng-click="selectSite(site)">
+                    <div class="media-body">
+                        <h4 class="media-heading">{{site.friendly_name}}</h4><small>{{site.city}}, {{site.state}} {{site.zip}}</small>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Words</p>
+                        <p>Last Words</p>
+                    </div></a>
+                </li>
+            </ul>
         </div>
     </div>
 </div>
@@ -144,6 +252,7 @@
 <script src="lib/angular/angular-resource.min.js"></script>
 <script src="lib/angular/angular-route.min.js"></script>
 <script src="lib/angular/angular-cookies.min.js"></script>
+<script src="lib/angular-ext/ui-bootstrap-tpls-0.11.0.min.js"></script>
 <script src="lib/angular-ext/ui-bootstrap-tpls-0.6.0.min.js"></script>
 <script src="lib/jquery/jquery-1.10.2.min.js"></script>
 <script src="lib/select2/select2.min.js"></script>
