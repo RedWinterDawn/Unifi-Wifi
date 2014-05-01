@@ -9,6 +9,7 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
 
         siteSettingsService.getBySiteId($routeParams.id).then(
             function(settings){
+            	if(1 === 1){ alert('hello'); }
 //                if (!_.has($scope.original, 'expire')) $scope.original.expire = '4320';
 //                if ($scope.original.hotspotNoAuth === 'true') {
 //                    $scope.original.auth = 'tou';
@@ -24,24 +25,6 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
             }
         );     
         $scope.isNew = $routeParams.id == undefined;
-
-        if(!$scope.isNew){
-            siteService.getById($routeParams.id).then(
-                function(site){
-                    site.macs = site.devices == undefined ? "" : site.devices.join("\n");
-                    $scope.original = site;
-                    $scope.site = angular.copy($scope.original);
-                },
-                function(reason){
-                    notificationService.error("loadSite", "An error occurred while attempting to retrieve this site's details");
-                }
-            );
-        } else {
-            $scope.original = {
-                friendly_name: "New Site"
-            };
-            $scope.site = angular.copy($scope.original);
-        }
 
         $scope.update = function() {
             if ($scope.settings.auth === 'tou') {

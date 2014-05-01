@@ -37,7 +37,7 @@
                 <li class="dropdown" ng-class="isActive('Devices')" ng-show="sites"><a ng-click="navigate('devices')" data-toggle="dropdown">Access Points</a></li>
                 <li class="dropdown" ng-class="isActive('Networks')" ng-show="sites"><a ng-click="navigate('networks')" data-toggle="dropdown">Wireless Networks</a></li>
                 <li class="dropdown" ng-class="isActive('Users')" ng-show="sites"><a ng-click="navigate('users')" data-toggle="dropdown">Connected Devices</a></li>
-                <li class="dropdown" ng-class="isActive('Settings')" ng-show="sites"><a ng-href="#/site/{{site.site_id}}" data-toggle="dropdown">Site Settings</a></li>
+                <li class="dropdown" ng-class="isActive('Settings')" ng-show="sites"><a ng-click="navigate('settings')" data-toggle="dropdown">Site Settings</a></li>
             </ul>
             <div class="meta-menu">
                 <ul class="nav pull-right" ng-show="email">
@@ -74,71 +74,14 @@
     <div class="content-container">
         <div class="content-wrapper">
             <div class="container-fluid">
-                <div ng-view>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Words</p>
-                    <p>Last Words</p>
-                </div>
+                <div ng-view></div>
             </div>
         </div>
     </div>
     <div class="main-sidebar" ng-controller="MainMenuController">
-        <div style="padding-bottom: 5px; position: relative; width: 100%;">
+        <div style="position: relative; width: 100%;">
             <h2 style="margin-left: 10px; float: left;">Sites</h2>
-            <a href="#/site" class="btn btn-primary" style="margin: 14px 20px; float: right;">
+            <a href="#/newsite" class="btn btn-primary" style="margin: 14px 20px; float: right;">
                 <i class="icon-plus"></i>
                 Add Site</a>
         </div>
@@ -169,62 +112,6 @@
                 <li class="pbx-account" ng-repeat="site in filteredSites"><a ng-click="selectSite(site)">
                     <div class="media-body">
                         <h4 class="media-heading">{{site.friendly_name}}</h4><small>{{site.city}}, {{site.state}} {{site.zip}}</small>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Words</p>
-                        <p>Last Words</p>
                     </div></a>
                 </li>
             </ul>

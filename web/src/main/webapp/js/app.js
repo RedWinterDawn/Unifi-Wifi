@@ -99,6 +99,12 @@ managedWifi.config(['$routeProvider', '$locationProvider', function ($routeProvi
             controller: 'NetworkController',
             resolve: managedWifi.resolveServiceAlias(["NetworkService"])
         })
+         .when('/newsite',
+        {
+            templateUrl: 'templates/NewSite.html',
+            controller: 'SiteController',
+            resolve: managedWifi.resolveServiceAlias(["SiteService"])
+        })
         .otherwise({redirectTo: "/devices"});
     $locationProvider.html5Mode(false);
 }])

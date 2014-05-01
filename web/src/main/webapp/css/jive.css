@@ -5596,29 +5596,31 @@ header {
 	cursor: default
 }
 .workspace {
-	padding-bottom: 38px;
-	margin: 0 auto;
-	height: 100%;
 	width: 100%;
-	position: absolute;
+	top:40px;
+	bottom: -200px;
+	height: calc(100% - 78px);
+	overflow: hidden;
 }
 .workspace .main-sidebar {
   -webkit-box-shadow: 3px 0 10px -4px rgba(0, 0, 0, 0.6);
   -moz-box-shadow: 3px 0 10px -4px rgba(0, 0, 0, 0.6);
   box-shadow: 3px 0 10px -4px rgba(0, 0, 0, 0.6);
-	min-width: 255px;
+	min-width: 200px;
 	width: 20%;
 	height: 100%;
-	position: fixed;
+	position: relative;
 	left: 0px;
-	top: 40px;
+	top: 0px;
 	background-color: #f7f7f7;
 	float: left;
 }
 .workspace .content-container {
 	width: 80%;
+	height: 100%;
 	position: relative;
 	float: right;
+	overflow: scroll;
 }
 .workspace .content-wrapper {
 	position: relative;
@@ -5631,14 +5633,14 @@ header {
 	box-shadow: 0 3px 10px -4px rgba(0, 0, 0, 0.6);
 	margin: 30px auto;
 }
-.workspace .media-body {
-	max-height: 100%;
-	position: relative;
+.workspace .container-fluid {
+	height: 100%;
 	overflow: scroll;
 }
 .workspace .scrollable {
-	height: 500px;
+	height: calc(100% - 130px);
 	overflow: scroll;
+	padding-top: 10px;
 }
 .page-title {
 	*zoom: 1
