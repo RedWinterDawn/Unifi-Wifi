@@ -21,7 +21,7 @@ managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "$c
 
         resizeSiteList();
 
-        var init = function(){
+        $scope.init = function(){
             siteService.getAll().then(
                 function(sites){
                     notificationService.clear("loadSites");
@@ -45,7 +45,7 @@ managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "$c
         };
 
         loginService.isLoggedIn().then(function(){
-            init();
+            $scope.init();
             $scope.firstName = $cookies.firstName;
             $scope.lastName = $cookies.lastName;
             $scope.email = $cookies.email;
@@ -161,7 +161,7 @@ managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "$c
             window.location = "https://www.onjive.com/";
         };
 
-        var subToken = messagingService.subscribe(managedWifi.messageTopics.service.refreshComplete.siteService, init);
+        var subToken = messagingService.subscribe(managedWifi.messageTopics.service.refreshComplete.siteService, $scope.init);
         $scope.$on('$destroy', function() {
             messagingService.unsubscribe(subToken);
         });

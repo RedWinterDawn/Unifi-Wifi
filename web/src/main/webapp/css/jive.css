@@ -5606,8 +5606,7 @@ header {
   -webkit-box-shadow: 3px 0 10px -4px rgba(0, 0, 0, 0.6);
   -moz-box-shadow: 3px 0 10px -4px rgba(0, 0, 0, 0.6);
   box-shadow: 3px 0 10px -4px rgba(0, 0, 0, 0.6);
-	min-width: 200px;
-	width: 20%;
+	width: 22%;
 	height: 100%;
 	position: relative;
 	left: 0px;
@@ -5616,7 +5615,7 @@ header {
 	float: left;
 }
 .workspace .content-container {
-	width: 80%;
+	width: 78%;
 	height: 100%;
 	position: relative;
 	float: right;

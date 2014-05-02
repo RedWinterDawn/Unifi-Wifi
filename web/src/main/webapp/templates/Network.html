@@ -1,6 +1,6 @@
 <div class="row-fluid page-title">
     <div class="span12">
-        <h1 class="content-title">Manage {{original.name}} </h1>
+        <h1 class="content-title">{{isNew ? "Create New Network" : "Manage" }} </h1>
         <ul class="crumbs">
             <li><a href="#/networks">Wireless Networks</a></li>
             <li><a style="cursor:pointer;">Manage {{original.name}}</a></li>
@@ -12,10 +12,6 @@
 </div>
 <div class="row-fluid">
     <div class="span12">
-        <ul class="content-sidebar">
-            <li><a ng-click="activeItem = 'Configuration'" ng-class="activeItem == 'Configuration' ? 'active' : ''"><i class="icon-asterisk"></i>Network Configuration</a></li>
-        </ul>
-        <div class="content-pane multi">
             <div class="content">
                 <div class="container-fluid">
                     <div class="row-fluid" ng-show="activeItem == 'Configuration'">
@@ -211,7 +207,6 @@
                 </div>
             </div>
         </div>
-    </div>
     <div class="update-controls" ng-show="isNew || isDirty()">
         <button class="btn btn-primary" ng-disabled="form.$invalid" ng-click="update()">{{isNew ? "Create" : "Update"}}</button>
         <button class="btn btn-link clear-form" ng-hide="isNew" ng-click="reset()">Discard Changes</button>
