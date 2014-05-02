@@ -31,9 +31,9 @@ managedWifi.controller('NetworkController', ["$scope", "$location", "$routeParam
                 vlan_enabled: false,
                 wpa_enc: "auto",
                 wpa_mode: "auto",
-                auth: "auto",
-                landing: "auto",
-                exp: "auth"
+                auth: "none",
+                redirect_enabled: false,
+                expire: ""
             };
             $scope.network = angular.copy($scope.original);
         }

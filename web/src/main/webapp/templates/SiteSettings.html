@@ -92,7 +92,7 @@
                                     <div class="control-group" ng-class="form.custom_ip.$invalid ? 'error' : ''" ng-show="settings.auth == 'custom'">
                                         <div class="control-label">IP Address:</div>
                                         <div class="controls">
-                                            <input type="text" id="customIp" name="customIp" ng-model="settings.custom_ip" ng-required="settings.auth == 'custom'" ng-disabled="!settings.portal_enabled" valid-ip/>
+                                            <input type="text" id="customIp" name="customIp" ng-model="settings.custom_ip" ng-required="settings.auth == 'custom'"   valid-ip/>
                                             <i ng-hide="form.customIp.$invalid" class="icon-ok-sign active"></i>
                                             <div ng-show="form.customIp.$invalid" class="tip help">Please provide an IP Address</div>
                                         </div>
@@ -100,20 +100,20 @@
                                     <div class="control-group" ng-show="settings.auth == 'tou'">
                                         <div class="control-label">Company Name:</div>
                                         <div class="controls">
-                                            <input type="text" id="companyName" name="companyName" ng-model="settings.companyName" ng-disabled="!settings.portal_enabled"/>
+                                            <input type="text" id="companyName" name="companyName" ng-model="settings.companyName"  />
                                         </div>
                                     </div>
                                     <div class="control-group" ng-show="settings.auth == 'tou'">
                                         <div class="control-label">Terms and Conditions:</div>
                                         <div class="controls">
-                                            <textarea type="text" id="terms" name="terms" ng-model="settings.terms" ng-required="settings.auth == 'tou'" ng-disabled="!settings.portal_enabled"></textarea>
+                                            <textarea type="text" id="terms" name="terms" ng-model="settings.terms" ng-required="settings.auth == 'tou'"  ></textarea>
                                             <div ng-show="form.terms.$invalid" class="tip help">Please provide the terms and conditions</div>
                                         </div>
                                     </div>
                                     <div class="control-group" ng-class="form.guestPassword.$invalid ? 'error' : ''" ng-show="settings.auth == 'password'">
                                         <div class="control-label">Password</div>
                                         <div class="controls">
-                                            <input type="{{ showPassword ? 'text' : 'password' }}" id="guestPassword" name="guestPassword" ng-model="settings.x_password" ng-required="settings.auth == 'password'" ng-disabled="!settings.portal_enabled"/>
+                                            <input type="{{ showPassword ? 'text' : 'password' }}" id="guestPassword" name="guestPassword" ng-model="settings.x_password" ng-required="settings.auth == 'password'"  />
                                             <label class="checkbox" style="display: inline-block;"><input type="checkbox" ng-model="showPassword">Show Password</label>
                                             <i ng-hide="form.guestPassword.$invalid" class="icon-ok-sign active"></i>
                                             <div ng-show="form.guestPassword.$invalid" class="tip help">Please provide a password</div>
@@ -124,7 +124,7 @@
                                     <div class="control-group" ng-class="form.promoUrl.$invalid ? 'error' : ''" ng-show="settings.redirect_enabled">
                                         <div class="control-label">Promotional URL</div>
                                         <div class="controls">
-                                            <input type="text" id="promoUrl" name="promoUrl" ng-model="settings.redirect_url" ng-required="settings.redirect_enabled" ng-disabled="!settings.portal_enabled"/>
+                                            <input type="text" id="promoUrl" name="promoUrl" ng-model="settings.redirect_url" ng-required="settings.redirect_enabled"  />
                                             <i ng-hide="form.promoUrl.$invalid" class="icon-ok-sign active"></i>
                                             <div ng-show="form.promoUrl.$invalid" class="tip help">Please provide a url</div>
                                         </div>

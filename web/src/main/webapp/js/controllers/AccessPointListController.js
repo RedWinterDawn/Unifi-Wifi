@@ -32,6 +32,19 @@ managedWifi.controller('AccessPointListController', ["$scope", "$location", "Acc
                 init();
             });
         };
+        
+        $scope.forgetDevice = function(){
+            dialogService.confirm({
+                title: "Confirmation Required",
+                msg: "If you no longer wish to manage this AP, you may remove it. Note that all configurations and history with respect to this access point will be deleted as well. The device will be restored to its factory state."
+            }).result.then(function(){
+                accessPointService.delete($scope.original).then(function(){
+                    notificationService.success("accessPointDelete", $scope.original.mac + " was deleted.");
+                    $location.replace("/devices");
+                    $location.url("/devices");
+                });
+            });
+        };
 
         var subToken = messagingService.subscribe(managedWifi.messageTopics.service.refreshComplete.accessPointService, init);
         $scope.$on('$destroy', function() {

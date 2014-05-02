@@ -56,20 +56,6 @@ managedWifi.controller('AccessPointController', ["$scope", "$location", "$routeP
 
         $scope.offLocationChangeStart = $scope.$on('$locationChangeStart', confirmRoute);
 
-
-        $scope.forgetDevice = function(){
-            dialogService.confirm({
-                title: "Confirmation Required",
-                msg: "If you no longer wish to manage this AP, you may remove it. Note that all configurations and history with respect to this access point will be deleted as well. The device will be restored to its factory state."
-            }).result.then(function(){
-                accessPointService.delete($scope.original).then(function(){
-                    notificationService.success("accessPointDelete", $scope.original.mac + " was deleted.");
-                    $location.replace("/devices");
-                    $location.url("/devices");
-                });
-            });
-        };
-
         $scope.viewUsers = function(){
             $location.url("/users?mac="+$scope.original.mac);
         }
