@@ -156,7 +156,7 @@ The process to get Managed Wifi up and running is slightly involved. The steps h
 
 Add the following line to `/etc/hosts`
 ```
-10.104.1.240 unifi
+10.120.255.70 unifi
 ```
 
 Make sure that you're using JRE 1.7.0 at the very least.
@@ -168,10 +168,12 @@ echo | openssl s_client -connect unifi:8443 2>&1 |sed -ne '/-BEGIN CERTIFICATE-/
 
 It should output `Certificate was added to the keystore`
 
+If you get the error that you already have a key name < managed wifi controller >, simply change the name to whatever in the command.
+
 create file /etc/managed-wifi.config with the contents like so:
 
 ```
-web.CORS.origin=https://wifi.jive.com
+#web.CORS.origin=https://wifi.jive.com
 unifi.controller.URL=https://unifi:8443
 
 mongo.host=localhost
@@ -184,16 +186,16 @@ alert.message.subject=Jive Wifi Alert
 alert.message.template=Access point: {0}, from {1} has been {2}
 
 oauth.URL=https://auth.jive.com/oauth2
-oauth.redirectURI=https://wifi.jive.com/index.html#/oauth2
+#oauth.redirectURI=https://wifi.jive.com/index.html#/oauth2
 oauth.clientId=27abd5a4-9e81-4e4e-9ccf-f6e81df64d19
 oauth.password=i4egS4Cd59LWJiP6SnafL7nvJjg7cI
 
 portal-api.URL=https://api.jive.com/wifi
 ```
 
-Next, you have to set up an SSH tunnel to the managed wifi Mongo DB on the Unifi host. Assuming you have the phil-east key, you can do:
+Next, you have to set up an SSH tunnel to the managed wifi Mongo DB on the Unifi host. Your public key needs to added to the server (talk to devops):
 ```
-ssh -i ~/PATH/TO/phil-east.pem root@unifi -L 27117:localhost:27117
+ssh admin@172.20.9.70 -L 27117:localhost:27117
 ```
 
 You should now be able to start the server in Eclipse (you have to make a Tomcat server for it). Then, you might be able to go to http://localhost:8000/index.html?pbxid=0127d974-f9f3-0704-2dee-000100420001#/oauth2
