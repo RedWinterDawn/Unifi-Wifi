@@ -161,6 +161,10 @@ Add the following line to `/etc/hosts`
 
 Make sure that you're using JRE 1.7.0 at the very least.
 
+Go to `unifi:8080`. This will redirect you to the unifi login page.
+username: `admin`
+password: `Jive1234`
+
 Run the following to get the unifi SSL cert trusted
 ```
 echo | openssl s_client -connect unifi:8443 2>&1 |sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo keytool -import -trustcacerts -alias "managed wifi controller"   -keystore "$JAVA_HOME/jre/lib/security/cacerts"   -storepass changeit -noprompt
