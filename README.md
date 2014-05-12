@@ -163,7 +163,7 @@ Make sure that you're using JRE 1.7.0 at the very least.
 
 Go to `unifi:8080`. This will redirect you to the unifi login page.
 username: `admin`
-password: `Jive1234`
+password: `Jive123`
 
 Run the following to get the unifi SSL cert trusted
 ```
