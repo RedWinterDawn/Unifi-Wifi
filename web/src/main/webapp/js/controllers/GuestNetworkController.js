@@ -1,7 +1,7 @@
 'use strict';
 
-managedWifi.controller('NetworkController', ["$scope", "$location", "$routeParams", "NetworkService", "notificationService", "dialogService",
-    function NetworkController($scope, $location, $routeParams, networkService, notificationService, dialogService) {
+managedWifi.controller('GuestNetworkController', ["$scope", "$location", "$routeParams", "NetworkService", "notificationService", "dialogService",
+    function GuestNetworkController($scope, $location, $routeParams, networkService, notificationService, dialogService) {
         $scope.activeItem = 'Configuration';
         $scope.activeSubItem = 'Basic';
         $scope.regExIpAddress = managedWifi.regExLib.ipAddress;
@@ -25,8 +25,8 @@ managedWifi.controller('NetworkController', ["$scope", "$location", "$routeParam
             $scope.original = {
                 enabled: true,
                 hide_ssid: false,
-                is_guest: false,
-                name: "New Network",
+                is_guest: true,
+                name: "New Guest Network",
                 security: "wpapsk",
                 vlan_enabled: false,
                 wpa_enc: "auto",

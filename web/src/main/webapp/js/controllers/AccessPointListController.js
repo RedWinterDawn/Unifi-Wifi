@@ -25,6 +25,11 @@ managedWifi.controller('AccessPointListController', ["$scope", "$location", "Acc
             );
         };
         init();
+        
+        $scope.addAccessPoints = function(){
+        	$scope.site_id = $location.path().split("/")[2];
+        	$location.url('/site/'+$scope.site_id+'/devices/new');
+        };
 
         $scope.adoptDevice = function(accessPoint){
             accessPointService.adopt(accessPoint).then(function(){

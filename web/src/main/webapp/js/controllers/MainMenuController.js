@@ -1,6 +1,6 @@
 'use strict';
-managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "$cookies", "appSettings", "navigationService", "notificationService", "siteService", "messagingService", "loginService",
-    function MainMenuController($scope, $http, $location, $cookies, appSettings, navigationService, notificationService, siteService, messagingService, loginService) {
+managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "$routeParams", "$cookies", "appSettings", "navigationService", "notificationService", "siteService", "messagingService", "dialogService", "loginService",
+    function MainMenuController($scope, $http, $location, $cookies, $routeParams, appSettings, navigationService, notificationService, siteService, messagingService, dialogService, loginService) {
         $scope.siteFilter = '';
         $scope.referrer = document.referrer;
 
@@ -77,9 +77,11 @@ managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "$c
         };
 
         $scope.navigate = function(route){
+        	$scope.site_id = $location.path().split("/")[2];
+        	var prefix = '/site/' + $scope.site_id + '/';
             if(route == null || route == '')
-                route = '/';
-            $location.url(route);
+                route = prefix;
+            $location.url(prefix + route);
         };
 
         $scope.selectSite = function(site){
@@ -92,6 +94,19 @@ managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "$c
                     notificationService.error("loadSite", "An error occurred while switching sites.");
                 }
             )
+        };
+        
+        $scope.deleteSite = function(site,sites){
+            dialogService.confirm({
+                title: "Confirmation Required",
+                msg: "Note that all configurations and history with respect to this site will be deleted. All associated devices will be restored to their factory state."
+            }).result.then(function(){
+                siteService.delete(site).then(function() {
+                    notificationService.success("siteDelete", site.friendly_name + " was deleted.");
+                    $location.replace("#/newsite");
+                    $location.url("#/newsite");
+                });
+            });
         };
 
         var sitePropertiesToFilter = ['friendly_name', 'city', 'state', 'zip'];
@@ -112,6 +127,8 @@ managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "$c
 
             sort(sortField, sortReverse);
         };
+        
+        
 
         $scope.sortIcons = {
             friendly_name: 'icon-caret-down',

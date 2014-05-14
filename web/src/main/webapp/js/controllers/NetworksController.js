@@ -1,9 +1,10 @@
 'use strict';
 
-managedWifi.controller('NetworksController', ["$scope", "$location", "NetworkService", "notificationService", "messagingService", "dialogService",
-    function NetworksController($scope, $location, networkService, notificationService, messagingService, dialogService) {
+managedWifi.controller('NetworksController', ["$scope", "$location", "$routeParams", "NetworkService", "notificationService", "messagingService", "dialogService",
+    function NetworksController($scope, $location, $routeParams, networkService, notificationService, messagingService, dialogService) {
 
         $scope.paginator = managedWifi.paginator('name');
+        $scope.site_id = $routeParams.site_id;
 
         var init = function(){
             networkService.getAll().then(
@@ -23,12 +24,8 @@ managedWifi.controller('NetworksController', ["$scope", "$location", "NetworkSer
         };
         init();
 
-        $scope.addNetwork = function(){
-            $location.url('/network/');
-        };
-
-         $scope.addGuestNetwork = function(){
-            $location.url('/guestnetwork/');
+        $scope.addNetwork = function(type){
+            $location.url('/site/'+$scope.site_id+'/networks/new'+type+'/');
         };
         
         $scope.deleteNetwork = function(networkId){

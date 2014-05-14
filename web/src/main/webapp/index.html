@@ -109,10 +109,13 @@
         </div>
         <div class="scrollable">
             <ul role="menu">
-                <li class="pbx-account" ng-repeat="site in filteredSites"><a ng-click="selectSite(site)">
+                <li class="pbx-account" ng-repeat="site in filteredSites">
+                  <a ng-click="selectSite(site)" ng-href="/index.html#/site/{{site.site_id}}/devices">
                     <div class="media-body">
-                        <h4 class="media-heading">{{site.friendly_name}}</h4><small>{{site.city}}, {{site.state}} {{site.zip}}</small>
-                    </div></a>
+                        <h4 class="media-heading">{{site.friendly_name}}</h4><a ng-click="deleteSite(site,sites)"><i class="icon-trash" ></i></a>
+                        <small>{{site.city}}, {{site.state}} {{site.zip}}</small>
+                    </div>
+                  </a>
                 </li>
             </ul>
         </div>
@@ -139,7 +142,7 @@
 <script src="lib/angular/angular-resource.min.js"></script>
 <script src="lib/angular/angular-route.min.js"></script>
 <script src="lib/angular/angular-cookies.min.js"></script>
-<script src="lib/angular-ext/ui-bootstrap-tpls-0.11.0.min.js"></script>
+<!-- <script src="lib/angular-ext/ui-bootstrap-tpls-0.11.0.min.js"></script> -->
 <script src="lib/angular-ext/ui-bootstrap-tpls-0.6.0.min.js"></script>
 <script src="lib/jquery/jquery-1.10.2.min.js"></script>
 <script src="lib/select2/select2.min.js"></script>

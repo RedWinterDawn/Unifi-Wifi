@@ -1,9 +1,11 @@
 <div class="row-fluid page-title">
     <div class="span12">
-        <h1 class="content-title">{{isNew ? "Create New Network" : "Manage" }} </h1>
+        <h1 class="content-title" ng-show="!isGuest">{{isNew ? "Create New Network" : "Manage" }} </h1>
+        <h1 class="content-title" ng-show="isGuest">{{isNew ? "Create New Guest Network" : "Manage" }} </h1>
         <ul class="crumbs">
             <li><a href="#/networks">Wireless Networks</a></li>
-            <li><a style="cursor:pointer;">{{isNew ? "Create New Network" : "Manage" }}</a></li>
+            <li ng-show="!isGuest"><a style="cursor:pointer;">{{isNew ? "Create New Network" : "Manage" }}</a></li>
+            <li ng-show="isGuest"><a style="cursor:pointer;">{{isNew ? "Create New Guest Network" : "Manage" }}</a></li>
         </ul>
     </div>
 </div>
@@ -12,28 +14,29 @@
 </div>
 <div class="row-fluid">
     <div class="span12">
-            <div class="content">
-                <div class="container-fluid">
-                    <div class="row-fluid" ng-show="activeItem == 'Configuration'">
-                        <div class="span12">
-                            <ul class="nav nav-tabs">
-                                <li ng-class="activeSubItem == 'Basic' ? 'active' : ''"><a ng-click="activeSubItem = 'Basic'">Basic</a></li>
-                                <li ng-class="activeSubItem == 'Advanced' ? 'active' : ''"><a ng-click="activeSubItem = 'Advanced'">Advanced</a></li>
-                            </ul>
-
-                            <div ng-show="activeSubItem=='Basic'">
-                                <h3>Basic Settings</h3>
-                                <p>Configure the settings for this network. Depending on the settings choosen, additional tabs/options will become available for further configuration.</p>
-                            </div>
-
-                            <div ng-show="activeSubItem=='Advanced'">
-                                <h3>Advanced Settings</h3>
-                                <p>Configure the advanced settings for this network.</p>
-                            </div>
-
-                            <div class="row-fluid"><div class="span8 offset2">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row-fluid" ng-show="activeItem == 'Configuration'">
+                    <div class="span12">
+                        <ul class="nav nav-tabs">
+                            <li ng-class="activeSubItem == 'Basic' ? 'active' : ''"><a ng-click="activeSubItem = 'Basic'">Basic</a></li>
+                            <li ng-class="activeSubItem == 'Advanced' ? 'active' : ''"><a ng-click="activeSubItem = 'Advanced'">Advanced</a></li>
+                            <li ng-show="isGuest" ng-class="activeSubItem == 'Guest' ? 'active' : ''"><a ng-click="activeSubItem = 'Guest'">Guest Policies</a></li>
+                        </ul>
+                        <div ng-show="activeSubItem=='Basic'">
+                            <h3>Basic Settings</h3>
+                            <p>Configure the settings for this network. Depending on the settings choosen, additional tabs/options will become available for further configuration.</p>
+                        </div>
+                        <div ng-show="activeSubItem=='Advanced'">
+                            <h3>Advanced Settings</h3>
+                            <p>Configure the advanced settings for this network.</p>
+                        </div>
+                        <div ng-show="activeSubItem=='Guest'">
+                            <h3>Guest Policies</h3>
+                            <p></p>
+                        </div>
+                        <div class="row-fluid"><div class="span8 offset2">
                             <form name="form" class="form-horizontal" novalidate>
-
                                 <div class="field-section" ng-show="activeSubItem=='Basic'">
                                     <div class="control-group" ng-class="form.name.$invalid ? 'error' : ''">
                                         <label for="name" class="control-label">
@@ -57,7 +60,6 @@
                                             </label>
                                         </div>
                                     </div>
-
                                     <div class="control-group">
                                         <div class="control-label">Status</div>
                                         <div class="controls">
@@ -69,7 +71,6 @@
                                             </label>
                                         </div>
                                     </div>
-
                                     <div class="control-group">
                                         <div class="control-label">Security</div>
                                         <div class="controls">
@@ -87,7 +88,6 @@
                                             </label>
                                         </div>
                                     </div>
-
                                     <div class="control-group" ng-show="network.security == 'wep'" ng-class="form.wepKey.$invalid ? 'error' : ''">
                                         <div class="control-label">WEP Key</div>
                                         <div class="controls">
@@ -110,7 +110,6 @@
                                             <div ng-show="form.wepIdx.$error.required" class="tip help">A key index is required</div>
                                         </div>
                                     </div>
-
                                     <div class="control-group" ng-show="network.security == 'wpapsk'" ng-class="form.wpapskKey.$invalid ? 'error' : ''">
                                         <div class="control-label">Security Key</div>
                                         <div class="controls">
@@ -120,7 +119,6 @@
                                             <div ng-show="form.wpapskKey.$invalid" class="tip help">Please provide a valid key</div>
                                         </div>
                                     </div>
-
                                     <div class="control-group" ng-show="network.security == 'wpaeap'" ng-class="form.wpaeapIP.$invalid ? 'error' : ''">
                                         <div class="control-label">RADIUS Server IP</div>
                                         <div class="controls">
@@ -146,18 +144,14 @@
                                             <div ng-show="form.wpaeapPass.$invalid" class="tip help">Please provide a valid password</div>
                                         </div>
                                     </div>
-
                                 </div>
-
                                 <div class="field-section" ng-show="activeSubItem=='Advanced'">
-
                                     <div class="control-group">
                                         <label for="name" class="control-label">VLAN</label>
                                         <div class="controls">
                                             <input type="checkbox" id="vlanEnabled" name="vlanEnabled" ng-model="network.vlan_enabled" ng-value="true"/>
                                         </div>
                                     </div>
-
                                     <div class="control-group" ng-class="form.vlan.$invalid ? 'error' : ''">
                                         <label for="name" class="control-label">VLAN ID</label>
                                         <div class="controls">
@@ -166,7 +160,6 @@
                                             <div ng-show="form.vlan.$invalid" class="tip help">Please provide a number between 2-4095</div>
                                         </div>
                                     </div>
-
                                     <div class="control-group" ng-show="network.security == 'wpapsk' || network.security == 'wpaeap'">
                                         <div class="control-label">WPA Mode</div>
                                         <div class="controls">
@@ -195,18 +188,102 @@
                                             </label>
                                         </div>
                                     </div>
-
                                 </div>
-
+                                <div class="field-section" ng-show="activeSubItem=='Guest'">
+                                    <div>
+                                        <div class="control-group">
+                                            <div class="control-label">
+                                                Authentication
+                                                <i class="icon-question-sign section-help" tooltip-placement="left" tooltip="If you already have your own hotspot authentication system, choose the [External Portal Server] option to defer to that system. Contact Jive Communications for more information on implementation details."></i>
+                                            </div>
+                                            <div class="controls">
+                                                <label class="radio">
+                                                    <input type="radio" ng-model="settings.auth" value="none">No authentication
+                                                </label>
+                                                <label class="radio">
+                                                    <input type="radio" ng-model="settings.auth" value="password">Simple Password
+                                                </label>
+                                                <label class="radio">
+                                                    <input type="radio" ng-model="settings.auth" value="custom">External Portal Server
+                                                </label>
+                                                <label class="radio">
+                                                    <input type="radio" ng-model="settings.auth" value="tou">Custom Terms and Conditions
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="control-group" ng-class="form.custom_ip.$invalid ? 'error' : ''" ng-show="settings.auth == 'custom'">
+                                            <div class="control-label">IP Address:</div>
+                                            <div class="controls">
+                                                <input type="text" id="customIp" name="customIp" ng-model="settings.custom_ip" ng-required="settings.auth == 'custom'" valid-ip/>
+                                                <i ng-hide="form.customIp.$invalid" class="icon-ok-sign active"></i>
+                                                <div ng-show="form.customIp.$invalid" class="tip help">Please provide an IP Address</div>
+                                            </div>
+                                        </div>
+                                        <div class="control-group" ng-show="settings.auth == 'tou'">
+                                            <div class="control-label">Company Name:</div>
+                                            <div class="controls">
+                                                <input type="text" id="companyName" name="companyName" ng-model="settings.companyName"/>
+                                            </div>
+                                        </div>
+                                        <div class="control-group" ng-show="settings.auth == 'tou'">
+                                            <div class="control-label">Terms and Conditions:</div>
+                                            <div class="controls">
+                                                <textarea type="text" id="terms" name="terms" ng-model="settings.terms" ng-required="settings.auth == 'tou'"></textarea>
+                                                <div ng-show="form.terms.$invalid" class="tip help">Please provide the terms and conditions</div>
+                                            </div>
+                                        </div>
+                                        <div class="control-group" ng-class="form.guestPassword.$invalid ? 'error' : ''" ng-show="settings.auth == 'password'">
+                                            <div class="control-label">Password</div>
+                                            <div class="controls">
+                                                <input type="{{ showPassword ? 'text' : 'password' }}" id="guestPassword" name="guestPassword" ng-model="settings.x_password" ng-required="settings.auth == 'password'"/>
+                                                <label class="checkbox" style="display: inline-block;"><input type="checkbox" ng-model="showPassword">Show Password</label>
+                                                <i ng-hide="form.guestPassword.$invalid" class="icon-ok-sign active"></i>
+                                                <div ng-show="form.guestPassword.$invalid" class="tip help">Please provide a password</div>
+                                            </div>
+                                        </div>
+                                        <div class="control-group" ng-show="settings.auth == 'password' || settings.auth == 'none'" ng-class="form.expire.$invalid ? 'error' : ''">
+                                            <div class="control-label">Expiration</div>
+                                            <div class="controls">
+                                                <select name="expire" ng-model="settings.expire" ng-required="settings.auth == 'password' || settings.auth == 'none'">
+                                                    <option value="480">8 hours</option>
+                                                    <option value="1440">24 hours</option>
+                                                    <option value="2880">2 days</option>
+                                                    <option value="4320">3 days</option>
+                                                    <option value="5760">4 days</option>
+                                                    <option value="10080">7 days</option>
+                                                </select>
+                                                <i ng-hide="form.expire.$error.required" class="icon-ok-sign active"></i>
+                                                <div ng-show="form.expire.$error.required" class="tip help">Please select an expiration period</div>
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <div class="control-label">Landing Page</div>
+                                            <div class="controls">
+                                                <label class="radio">
+                                                    <input type="radio" ng-model="settings.redirect_enabled" ng-value="false">Redirect to the original URL
+                                                </label>
+                                                <label class="radio">
+                                                    <input type="radio" ng-model="settings.redirect_enabled" ng-value="true">Redirect to promotional URL
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="control-group" ng-class="form.promoUrl.$invalid ? 'error' : ''" ng-show="settings.redirect_enabled">
+                                            <div class="control-label">Promotional URL</div>
+                                            <div class="controls">
+                                                <input type="text" id="promoUrl" name="promoUrl" ng-model="settings.redirect_url" ng-required="settings.redirect_enabled"/>
+                                                <i ng-hide="form.promoUrl.$invalid" class="icon-ok-sign active"></i>
+                                                <div ng-show="form.promoUrl.$invalid" class="tip help">Please provide a url</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </form>
-                            </div></div>
-
-                        </div>
+                        </div></div>
                     </div>
-
                 </div>
             </div>
         </div>
+    </div>
     <div class="update-controls" ng-show="isNew || isDirty()">
         <button class="btn btn-primary" ng-disabled="form.$invalid" ng-click="update()">{{isNew ? "Create" : "Update"}}</button>
         <button class="btn btn-link clear-form" ng-hide="isNew" ng-click="reset()">Discard Changes</button>

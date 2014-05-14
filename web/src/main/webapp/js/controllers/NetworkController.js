@@ -7,6 +7,8 @@ managedWifi.controller('NetworkController', ["$scope", "$location", "$routeParam
         $scope.regExIpAddress = managedWifi.regExLib.ipAddress;
 
         $scope.isNew = $routeParams.id == undefined;
+        
+        $scope.isGuest = $routeParams.network_type == 'newguestnetwork';
 
         $scope.showWepPassword = false;
         $scope.showWpaePassword = false;
@@ -22,16 +24,33 @@ managedWifi.controller('NetworkController', ["$scope", "$location", "$routeParam
 
             });
         } else {
-            $scope.original = {
-                enabled: true,
-                hide_ssid: false,
-                is_guest: false,
-                name: "New Network",
-                security: "wpapsk",
-                vlan_enabled: false,
-                wpa_enc: "auto",
-                wpa_mode: "auto"
-            };
+        	if(!$scope.isGuest) {
+	            $scope.original = {           		
+	                enabled: true,
+	                hide_ssid: false,
+	                is_guest: false,
+	                name: "New Network",
+	                security: "wpapsk",
+	                vlan_enabled: false,
+	                wpa_enc: "auto",
+	                wpa_mode: "auto"
+	            };
+        	}
+        	else {
+        		 $scope.original = {
+        	                enabled: true,
+        	                hide_ssid: false,
+        	                is_guest: true,
+        	                name: "New Guest Network",
+        	                security: "wpapsk",
+        	                vlan_enabled: false,
+        	                wpa_enc: "auto",
+        	                wpa_mode: "auto",
+        	                auth: "none",
+        	                redirect_enabled: false,
+        	                expire: ""
+        	            };
+        	}
             $scope.network = angular.copy($scope.original);
         }
 

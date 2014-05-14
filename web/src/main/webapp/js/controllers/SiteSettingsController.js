@@ -1,40 +1,54 @@
 'use strict';
 
-managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$routeParams", "SiteSettingsService", "notificationService", "dialogService",
-    function SiteSettingsController($scope, $location, $routeParams, siteSettingsService, notificationService, dialogService) {
+managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$routeParams", "SiteService", "SiteSettingsService", "notificationService", "dialogService",
+    function SiteSettingsController($scope, $location, $routeParams, siteService, siteSettingsService, notificationService, dialogService) {
         $scope.activeItem = 'Details';
         $scope.activeSubItem = 'Access';
         $scope.regExIpAddress = managedWifi.regExLib.ipAddress;
         $scope.showPassword = false;
 
-        siteSettingsService.getBySiteId($routeParams.id).then(
-            function(settings){
-            	if(1 === 1){ alert('hello'); }
-//                if (!_.has($scope.original, 'expire')) $scope.original.expire = '4320';
-//                if ($scope.original.hotspotNoAuth === 'true') {
-//                    $scope.original.auth = 'tou';
-//                }
-//
-//                $scope.settings = angular.copy($scope.original);
-//
-//                $scope.originalLimits = settings.filter(function(setting){return setting.key == 'limits'})[0];
-//                $scope.limits = angular.copy($scope.originalLimits);
-            },
-            function(reason){
-                notificationService.error("loadSiteSettings", "An error occurred while loading this site's settings.");
-            }
-        );     
+        siteService.getById($routeParams.site_id).then(
+                function(site){
+                    site.macs = site.devices == undefined ? "" : site.devices.join("\n");
+                    $scope.original = site;
+                    $scope.site = angular.copy($scope.original);
+                },
+                function(reason){
+                    notificationService.error("loadSite", "An error occurred while attempting to retrieve this site's details");
+                }
+            );
+        
+        siteSettingsService.getAll().then(
+                function(settings){
+                    $scope.original = settings.filter(function(setting){return setting.key == 'guest_access'})[0];
+                    if (!_.has($scope.original, 'expire')) $scope.original.expire = '4320';
+                    if ($scope.original.hotspotNoAuth === 'true') {
+                        $scope.original.auth = 'tou';
+                    }
+
+                    $scope.settings = angular.copy($scope.original);
+
+                    $scope.originalLimits = settings.filter(function(setting){return setting.key == 'limits'})[0];
+                    $scope.limits = angular.copy($scope.originalLimits);
+                },
+                function(reason){
+                    notificationService.error("loadSiteSettings", "An error occurred while loading this site's settings.");
+                }
+       );
+
+        
+        
         $scope.isNew = $routeParams.id == undefined;
 
         $scope.update = function() {
-            if ($scope.settings.auth === 'tou') {
-                $scope.settings.portal_customized = true;
-                $scope.settings.payment_enabled = false;
-                $scope.settings.voucher_enabled = false;
-                $scope.settings.auth_none = true;
-                $scope.settings.hotspotNoAuth = 'true';
-                $scope.settings.auth = 'none';
-            }
+//            if ($scope.settings.auth === 'tou') {
+//                $scope.settings.portal_customized = true;
+//                $scope.settings.payment_enabled = false;
+//                $scope.settings.voucher_enabled = false;
+//                $scope.settings.auth_none = true;
+//                $scope.settings.hotspotNoAuth = 'true';
+//                $scope.settings.auth = 'none';
+//            }
 
             var termsModified = $scope.settings.terms !== $scope.original.terms || $scope.settings.companyName !== $scope.original.companyName;
             var terms = $scope.settings.terms;
