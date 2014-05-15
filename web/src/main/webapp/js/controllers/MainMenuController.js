@@ -1,10 +1,12 @@
 'use strict';
-managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "$routeParams", "$cookies", "appSettings", "navigationService", "notificationService", "siteService", "messagingService", "dialogService", "loginService",
-    function MainMenuController($scope, $http, $location, $cookies, $routeParams, appSettings, navigationService, notificationService, siteService, messagingService, dialogService, loginService) {
+managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "$routeParams", "$cookies", "appSettings", "navigationService", "notificationService", "siteService", "networkService", "messagingService", "dialogService", "loginService",
+    function MainMenuController($scope, $http, $location, $cookies, $routeParams, appSettings, navigationService, notificationService, siteService, networkService, messagingService, dialogService, loginService) {
         $scope.siteFilter = '';
         $scope.referrer = document.referrer;
 
         $(window).resize(resizeSiteList);
+        
+        $scope.siteChosen = $location.path().split("/")[2] !== undefined;
 
         function resizeSiteList() {
             $('.site-list ul').css('max-height', $(window).height() - 200);
@@ -22,6 +24,11 @@ managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "$r
         resizeSiteList();
 
         $scope.init = function(){
+            networkService.getAll().then(
+                function(networks){
+                    $scope.networks = networks;
+                }
+            );
             siteService.getAll().then(
                 function(sites){
                     notificationService.clear("loadSites");
@@ -102,9 +109,11 @@ managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "$r
                 msg: "Note that all configurations and history with respect to this site will be deleted. All associated devices will be restored to their factory state."
             }).result.then(function(){
                 siteService.delete(site).then(function() {
+                	$scope.init();
                     notificationService.success("siteDelete", site.friendly_name + " was deleted.");
-                    $location.replace("#/newsite");
-                    $location.url("#/newsite");
+                    $scope.selectSite(sites[0]);
+                    //$location.replace("#/newsite");
+                    //$location.url("#/newsite");        
                 });
             });
         };

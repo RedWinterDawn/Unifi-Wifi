@@ -8,13 +8,17 @@ managedWifi.controller('NetworkController', ["$scope", "$location", "$routeParam
 
         $scope.isNew = $routeParams.id == undefined;
         
-        $scope.isGuest = $routeParams.network_type == 'newguestnetwork';
+        $scope.site_id = $location.path().split("/")[2];
+        
+        $scope.isGuest = $routeParams.network_type == 'guestnetwork';
 
         $scope.showWepPassword = false;
         $scope.showWpaePassword = false;
         $scope.showWpapPassword = false;
 
         if(!$scope.isNew){
+        	if($scope.isGuest)
+        		$scope.activeSubItem = 'Guest';
             networkService.getById($routeParams.id).then(function(network){
                 if(network.vlan != undefined) network.vlan = parseInt(network.vlan);
                 if(network.radius_port_1 != undefined) network.radius_port_1 = parseInt(network.radius_port_1);
@@ -61,7 +65,7 @@ managedWifi.controller('NetworkController', ["$scope", "$location", "$routeParam
                         notificationService.success("networkAdd", $scope.network.name + " has been added");
                         $scope.offLocationChangeStart();
                         window.onbeforeunload = null;
-                        $location.url("/networks");
+                        $location.url("/site/"+$scope.site_id+"/networks");
                     },
                     function(reason){
                         notificationService.error("networkAdd", "An error occurred while attempting to add network");

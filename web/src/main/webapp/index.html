@@ -34,10 +34,11 @@
                 <li>
                     <div class="title"><i class="icon-signal"></i>WiFi</div>
                 </li>
-                <li class="dropdown" ng-class="isActive('Devices')" ng-show="sites"><a ng-click="navigate('devices')" data-toggle="dropdown">Access Points</a></li>
-                <li class="dropdown" ng-class="isActive('Networks')" ng-show="sites"><a ng-click="navigate('networks')" data-toggle="dropdown">Wireless Networks</a></li>
-                <li class="dropdown" ng-class="isActive('Users')" ng-show="sites"><a ng-click="navigate('users')" data-toggle="dropdown">Connected Devices</a></li>
-                <li class="dropdown" ng-class="isActive('Settings')" ng-show="sites"><a ng-click="navigate('settings')" data-toggle="dropdown">Site Settings</a></li>
+                <li class="brand" ng-bind="selectedSite.friendly_name" style="width:100px; text-align:center" ng-show="siteChosen ? sites : ''"></li>
+                <li class="dropdown" ng-class="isActive('Networks')" ng-show="siteChosen ? sites : ''"><a ng-click="navigate('networks')" data-toggle="dropdown">Wireless Networks</a></li>
+                <li class="dropdown" ng-class="isActive('Devices')" ng-show="siteChosen ? sites : ''"><a  ng-disabled="true" ng-click="navigate('devices')" data-toggle="dropdown">Access Points</a></li>
+                <li class="dropdown" ng-class="isActive('Users')" ng-show="siteChosen ? sites : ''"><a ng-click="navigate('users')" data-toggle="dropdown">Connected User Devices</a></li>
+                <li class="dropdown" ng-class="isActive('Settings')" ng-show="siteChosen ? sites : ''"><a ng-click="navigate('settings')" data-toggle="dropdown">Site Settings</a></li>
             </ul>
             <div class="meta-menu">
                 <ul class="nav pull-right" ng-show="email">
@@ -108,16 +109,18 @@
             </div>
         </div>
         <div class="scrollable">
-            <ul role="menu">
-                <li class="pbx-account" ng-repeat="site in filteredSites">
-                  <a ng-click="selectSite(site)" ng-href="/index.html#/site/{{site.site_id}}/devices">
-                    <div class="media-body">
-                        <h4 class="media-heading">{{site.friendly_name}}</h4><a ng-click="deleteSite(site,sites)"><i class="icon-trash" ></i></a>
-                        <small>{{site.city}}, {{site.state}} {{site.zip}}</small>
-                    </div>
-                  </a>
-                </li>
-            </ul>
+               <div class="pbx-account" ng-repeat="site in filteredSites" ng-class="siteClass('{{site}}')">
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="page-actions" >
+                            <a class="delete-site" ng-click="deleteSite(site,sites)"><i class="icon-trash" ></i></a>
+                            <a ng-click="selectSite(site)" ng-href="/index.html#/site/{{site.site_id}}/networks">
+                                <h4 class="media-heading">{{site.friendly_name}}</h4>
+                                <small>{{site.city}}, {{site.state}} {{site.zip}}</small>
+                            </a>
+                    </li>
+                     </ul>
+                </div>
+           
         </div>
     </div>
 </div>

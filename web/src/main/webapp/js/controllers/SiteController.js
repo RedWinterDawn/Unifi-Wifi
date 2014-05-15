@@ -31,6 +31,7 @@ managedWifi.controller('SiteController', ["$scope", "$location", "$routeParams",
                         notificationService.success("siteAdd", "The site has been added");
                         $scope.offLocationChangeStart();
                         window.onbeforeunload = null;
+                        siteService.selectSite($scope.site);
                         $location.url("/site/"+$scope.site.site_id+"/devices");
                     },
                     function(reason){

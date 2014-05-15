@@ -94,13 +94,13 @@ managedWifi.config(['$routeProvider', '$locationProvider', function ($routeProvi
 	            controller: 'NetworkController',
 	            resolve: managedWifi.resolveServiceAlias("NetworkService")
 	        })
-	        .when(prefix + '/networks/new:network_type?/:id?',
+	        .when(prefix + '/networks/:network_type?/:id?',
 	        {
 	            templateUrl: 'templates/Network.html',
 	            controller: 'NetworkController',
 	            resolve: managedWifi.resolveServiceAlias("NetworkService")
 	        })
-	        .otherwise({redirectTo: "/newsite"});
+	        //.otherwise({redirectTo: "/newsite"});
 	    $locationProvider.html5Mode(false);
 }])
 .run(["$location", "$cookies", "notificationService", "jiveLoginService", 'siteService', function($location, $cookies, notificationService, loginService, siteService){
@@ -122,7 +122,7 @@ managedWifi.config(['$routeProvider', '$locationProvider', function ($routeProvi
                     siteService.getAll().then(
                         function(sites){
                             if(sites.length == 0)
-                                $location.url(isAdmin ? '/sites' : '/error')
+                                $location.url(isAdmin ? '/newsite' : '/error')
                         }
                     );
                 }
@@ -140,6 +140,13 @@ managedWifi.factory('siteService', ['$cookies','$injector', function($cookies, $
     var prefix = useMockServices == "true" ? "mock" : "unifi";
     return $injector.get(prefix+"SiteService");
 }]);
+
+managedWifi.factory('networkService', ['$cookies','$injector', function($cookies, $injector) {
+    var useMockServices = $cookies.useMockServices != undefined ? $cookies.useMockServices : false;
+    var prefix = useMockServices == "true" ? "mock" : "unifi";
+    return $injector.get(prefix+"NetworkService");
+}]);
+
 
 managedWifi.factory('loginService', ['$cookies','$injector', function($cookies, $injector) {
     var useMockServices = $cookies.useMockServices != undefined ? $cookies.useMockServices : false;

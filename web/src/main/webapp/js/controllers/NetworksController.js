@@ -28,6 +28,11 @@ managedWifi.controller('NetworksController', ["$scope", "$location", "$routePara
             $location.url('/site/'+$scope.site_id+'/networks/new'+type+'/');
         };
         
+        $scope.manageNetwork = function(network_id,type){
+        	type = type ? 'guestnetwork' : 'network';
+            $location.url('/site/'+$scope.site_id+'/networks/'+type+'/'+network_id);
+        };
+        
         $scope.deleteNetwork = function(networkId){
             dialogService
                 .confirm({title: "Confirmation Required", msg: "Deleting this network is irreversible. Please click 'confim' to delete this network."})

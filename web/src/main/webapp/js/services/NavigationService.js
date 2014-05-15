@@ -10,7 +10,6 @@ managedWifi.factory('navigationService', function () {
         AccessPointController : "Devices",
         SiteSettingsController : "Settings",
         SitesController : "Sites",
-        GuestNetworkController: "Networks"
     }
 
     return {

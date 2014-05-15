@@ -59,6 +59,10 @@ managedWifi.factory('unifiSiteService', ['$q', '$http', 'appSettings', 'messagin
                 });
             });
         },
+        
+        addNewSite: function(){
+        	$route.reload();
+        },
 
         selectSite: function(site){
             return $http.post(appSettings.apiEndpoint+"/site/active", {site_id: site.site_id})

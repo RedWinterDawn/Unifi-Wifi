@@ -1,9 +1,11 @@
 'use strict';
 
-managedWifi.controller('AccessPointListController', ["$scope", "$location", "AccessPointService", "notificationService", "messagingService",
-    function AccessPointListController($scope, $location, accessPointService, notificationService, messagingService) {
+managedWifi.controller('AccessPointListController', ["$scope", "$location", "dialogService", "AccessPointService", "notificationService", "messagingService",
+    function AccessPointListController($scope, $location, dialogService, accessPointService, notificationService, messagingService) {
 
         $scope.paginator = managedWifi.paginator('name');
+        
+        $scope.site_id = $location.path().split("/")[2];
 
         var init = function (){
             accessPointService.getAll().then(
@@ -25,9 +27,15 @@ managedWifi.controller('AccessPointListController', ["$scope", "$location", "Acc
             );
         };
         init();
+
+        $scope.upgradeDevice = function(accessPoint){
+            accessPointService.upgrade(accessPoint).then(function(){
+                notificationService.success("accessPointUpgrade", "The access point is upgrading");
+                init();
+            });
+        };
         
         $scope.addAccessPoints = function(){
-        	$scope.site_id = $location.path().split("/")[2];
         	$location.url('/site/'+$scope.site_id+'/devices/new');
         };
 
@@ -38,15 +46,16 @@ managedWifi.controller('AccessPointListController', ["$scope", "$location", "Acc
             });
         };
         
-        $scope.forgetDevice = function(){
+        $scope.forgetDevice = function(mac){
             dialogService.confirm({
                 title: "Confirmation Required",
                 msg: "If you no longer wish to manage this AP, you may remove it. Note that all configurations and history with respect to this access point will be deleted as well. The device will be restored to its factory state."
             }).result.then(function(){
-                accessPointService.delete($scope.original).then(function(){
-                    notificationService.success("accessPointDelete", $scope.original.mac + " was deleted.");
-                    $location.replace("/devices");
-                    $location.url("/devices");
+                accessPointService.delete(mac).then(function(){
+                    notificationService.success("accessPointDelete", mac + " was deleted.");
+                    init();
+                    //$location.replace('/site/'+$scope.site_id+'/devices');
+                    //$location.url('/site/'+$scope.site_id+'/devices');
                 });
             });
         };

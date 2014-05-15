@@ -35,20 +35,32 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
                     notificationService.error("loadSiteSettings", "An error occurred while loading this site's settings.");
                 }
        );
+        
+        $scope.updateSite = function() {
+	        siteService.update($scope.site).then(
+	                function(){
+	                    angular.copy($scope.site, $scope.original);
+	                    notificationService.success("siteEdit", "The site has been updated");
+	                },
+	                function(reason){
+	                    notificationService.error("siteEdit", "An error occurred while attempting to save this site");
+	                }
+	            );
+        }
 
         
         
         $scope.isNew = $routeParams.id == undefined;
 
         $scope.update = function() {
-//            if ($scope.settings.auth === 'tou') {
-//                $scope.settings.portal_customized = true;
-//                $scope.settings.payment_enabled = false;
-//                $scope.settings.voucher_enabled = false;
-//                $scope.settings.auth_none = true;
-//                $scope.settings.hotspotNoAuth = 'true';
-//                $scope.settings.auth = 'none';
-//            }
+            if ($scope.settings.auth === 'tou') {
+                $scope.settings.portal_customized = true;
+                $scope.settings.payment_enabled = false;
+                $scope.settings.voucher_enabled = false;
+                $scope.settings.auth_none = true;
+                $scope.settings.hotspotNoAuth = 'true';
+                $scope.settings.auth = 'none';
+            }
 
             var termsModified = $scope.settings.terms !== $scope.original.terms || $scope.settings.companyName !== $scope.original.companyName;
             var terms = $scope.settings.terms;

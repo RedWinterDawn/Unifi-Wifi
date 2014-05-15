@@ -1610,6 +1610,7 @@ a [class^="icon-"], a [class*=" icon-"] {
 	-moz-border-radius: 3px;
 	border-radius: 3px
 }
+.icon-
 .icon-2x {
 	font-size: 2em
 }
@@ -5614,6 +5615,9 @@ header {
 	background-color: #f7f7f7;
 	float: left;
 }
+.workspace .main-sidebar li {
+	border-bottom: 1px solid #eee;
+}
 .workspace .content-container {
 	width: 78%;
 	height: 100%;
@@ -5639,8 +5643,65 @@ header {
 .workspace .scrollable {
 	height: calc(100% - 130px);
 	overflow: scroll;
-	padding-top: 10px;
 }
+.workspace .scrollable ul {
+	margin-left: 0px;
+}
+.workspace .scrollable ul .media-body {
+	padding-left: 25px;
+}
+.workspace .scrollable ul .media-body .delete-site {
+	float: right;
+	position: relative;
+	right: 20px;
+}
+.workspace .scrollable ul .media-body a.active {
+	background: #7c9f23;
+	color: white;
+	border-right: 4px solid #9cc92c
+}
+.workspace .scrollable ul .media-body a:hover {
+	background-color: #f2f2f2;
+	color: white;
+}
+.workspace .scrollable ul .page-actions {
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding: 2px 0px;
+}
+************************
+.content-sidebar li {
+	border-bottom: 1px solid #e6e6e6
+}
+.content-sidebar li:last-child {
+	border-bottom: 0
+}
+.content-sidebar li a {
+	display: block;
+	padding: 15px 10px;
+	text-transform: uppercase;
+	font-size: 16px
+}
+.content-sidebar li a.active {
+	background-color: #f7f7f7;
+	color: #4d4d4d;
+	cursor: default;
+	border-right: 4px solid #9cc92c
+}
+.content-sidebar li a:hover {
+	background-color: #f2f2f2;
+	color: #4d4d4d
+}
+.content-sidebar li a:hover.active {
+	background-color: #f7f7f7
+}
+.content-sidebar li a i {
+	margin-right: 10px;
+	width: 16px;
+	display: inline-block;
+	text-align: center
+}
+*************************
 .page-title {
 	*zoom: 1
 }
@@ -6584,6 +6645,9 @@ nav.navbar .nav>li>a {
 	padding: 10px 12px
 }
 nav.navbar>.navbar-inner {
+	webkit-box-shadow: 0 0px 0px rgba(0, 0, 0, 0.065);
+	-moz-box-shadow: 0 0px 0px rgba(0, 0, 0, 0.065);
+	box-shadow: 0 0px 0px rgba(0, 0, 0, 0.065);
 	padding-left: 0;
 	-webkit-border-radius: 0;
 	-moz-border-radius: 0;

@@ -1,7 +1,7 @@
 <div class="row-fluid page-title">
     <div class="span12">
 
-        <h1 class="content-title">Manage Connected Devices<span ng-show="accessPoint">for {{accessPoint}}</span></h1>
+        <h1 class="content-title">Manage Connected User Devices <span ng-show="accessPoint">For {{accessPoint}}</span></h1>
         <ul class="crumbs">
             <li ng-show="accessPoint"><a href="#/devices">Access Points</a></li>
             <li ng-show="accessPoint"><a ng-href="#/device/{{apId}}">Manage {{accessPoint}}</a></li>
@@ -125,7 +125,7 @@
             <tbody>
             <tr ng-repeat="user in users | filter: filter | storeItemCount: paginator.updateTotalItems | orderBy: paginator.orderBy | slice:(paginator.currentPage-1)*20:20">
                 <td>{{user.hostname}}</td>
-                <td><a ng-href="#/user/{{user.id}}">{{user.mac}}</a></td>
+                <td><a ng-href="#/site/{{site_id}}/user/{{user.id}}">{{user.mac}}</a></td>
                 <td>{{user.essid}}</td>
                 <td ng-show="showApMac">{{user.ap}}</td>
                 <td>{{user.is_connected ? "Connected" : "Disconnected"}}</td>

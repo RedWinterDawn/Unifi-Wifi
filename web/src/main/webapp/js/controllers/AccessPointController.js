@@ -2,9 +2,11 @@
 
 managedWifi.controller('AccessPointController', ["$scope", "$location", "$routeParams", "AccessPointService", "notificationService", "dialogService",
     function AccessPointController($scope, $location, $routeParams, accessPointService, notificationService, dialogService) {
-        $scope.activeItem = 'Details';
+        $scope.activeItem = 'Settings';
         $scope.activeSubItem = 'Overview';
         $scope.regExIpAddress = managedWifi.regExLib.ipAddress;
+        
+        $scope.site_id = $location.path().split("/")[2];
 
         accessPointService.getById($routeParams.id).then(function(accessPoint){
             $scope.original = accessPoint;
@@ -55,9 +57,23 @@ managedWifi.controller('AccessPointController', ["$scope", "$location", "$routeP
         }
 
         $scope.offLocationChangeStart = $scope.$on('$locationChangeStart', confirmRoute);
+        
+        $scope.forgetDevice = function(){
+            dialogService.confirm({
+                title: "Confirmation Required",
+                msg: "If you no longer wish to manage this AP, you may remove it. Note that all configurations and history with respect to this access point will be deleted as well. The device will be restored to its factory state."
+            }).result.then(function(){
+                accessPointService.delete($scope.original.mac).then(function(){
+                    notificationService.success("accessPointDelete", $scope.original.mac + " was deleted.");
+                    $location.replace("/site/"+$scope.site_id+"/devices");
+                    $location.url("/site/"+$scope.site_id+"/devices");
+                });
+            });
+        };
 
         $scope.viewUsers = function(){
-            $location.url("/users?mac="+$scope.original.mac);
+            $location.replace("/site/"+$scope.site_id+"/users?mac="+$scope.original.mac);
+            $location.url("/site/"+$scope.site_id+"/users?mac="+$scope.original.mac);
         }
     }
 ]);
