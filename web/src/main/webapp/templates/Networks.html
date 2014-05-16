@@ -91,14 +91,14 @@
             <tbody>
             <tr ng-repeat="network in networks | filter: filter | storeItemCount: paginator.updateTotalItems | orderBy: paginator.orderBy | slice:(paginator.currentPage-1)*20:20">
                 <td><a ng-click="deleteNetwork(network.id)"><i class="icon-trash" ></i></a></td>
-                <td><a ng-click="manageNetwork(network.id, network.is_guest)">{{network.name}}</a></td>
+                <td><a ng-click="manageNetwork(network.id, network.is_guest,'')">{{network.name}}</a></td>
                 <td><i class="{{network.hide_ssid ? null : 'icon-check'}}"></i></td>
                 <td>{{network.enabled ? 'Enabled' : 'Disabled'}}</td>
                 <td>{{network.is_guest ? 'Guest Network' : 'Private Network'}}</td>
-                <td><a ng-click="manageNetwork(network.id, network.is_guest)"><i class="{{network.auth ? 'icon-check' : null}}"></i></a></td>
-                <td><a ng-click="manageNetwork(network.id, network.is_guest)"><i class="{{network.redirect_enabled ? 'icon-check' : null}}"></i></a></td>
+                <td><a ng-click="manageNetwork(network.id, network.is_guest,'policies')"><i class="{{network.auth ? 'icon-check' : null}}"></i></a></td>
+                <td><a ng-click="manageNetwork(network.id, network.is_guest,'policies')"><i class="{{network.redirect_enabled ? 'icon-check' : null}}"></i></a></td>
                 <td>{{network.security}}</td>
-                <td><a ng-click="manageNetwork(network.id, network.is_guest)"><i class="icon-gear"></i></a>
+                <td><a ng-click="manageNetwork(network.id, network.is_guest,'')"><i class="icon-gear"></i></a>
             </tr>
 
             </tbody>

@@ -199,7 +199,7 @@
     </div>
 </div>
 </div>
-<div class="update-controls" ng-show="isNew || isDirty()">
+<div class="update-controls" ng-show="isDirty()">
 <button class="btn btn-primary" ng-disabled="form.$invalid" ng-click="activeItem=='Details' ? updateSite() : update()">Update</button>
 <button class="btn btn-link clear-form" ng-hide="isNew" ng-click="reset()">Discard Changes</button>
 </div>

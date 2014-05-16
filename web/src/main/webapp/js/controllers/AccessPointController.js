@@ -6,8 +6,6 @@ managedWifi.controller('AccessPointController', ["$scope", "$location", "$routeP
         $scope.activeSubItem = 'Overview';
         $scope.regExIpAddress = managedWifi.regExLib.ipAddress;
         
-        $scope.site_id = $location.path().split("/")[2];
-
         accessPointService.getById($routeParams.id).then(function(accessPoint){
             $scope.original = accessPoint;
             $scope.accessPoint = angular.copy($scope.original);
@@ -65,15 +63,15 @@ managedWifi.controller('AccessPointController', ["$scope", "$location", "$routeP
             }).result.then(function(){
                 accessPointService.delete($scope.original.mac).then(function(){
                     notificationService.success("accessPointDelete", $scope.original.mac + " was deleted.");
-                    $location.replace("/site/"+$scope.site_id+"/devices");
-                    $location.url("/site/"+$scope.site_id+"/devices");
+                    $location.replace("/devices");
+                    $location.url("/devices");
                 });
             });
         };
 
         $scope.viewUsers = function(){
-            $location.replace("/site/"+$scope.site_id+"/users?mac="+$scope.original.mac);
-            $location.url("/site/"+$scope.site_id+"/users?mac="+$scope.original.mac);
+            $location.replace("/users?mac="+$scope.original.mac);
+            $location.url("/users?mac="+$scope.original.mac);
         }
     }
 ]);

@@ -18,39 +18,38 @@ managedWifi.resolveServiceAlias = function(names){
 };
 
 managedWifi.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
-	 var prefix = "/site/:site_id?";
 	    $routeProvider
-	        .when(prefix + '/devices',
+	        .when('/devices',
 	        {
 	            templateUrl: 'templates/AccessPointList.html',
 	            controller: 'AccessPointListController',
 	            resolve: managedWifi.resolveServiceAlias("AccessPointService")
 	        })
-	        .when(prefix + '/device/:id?',
+	        .when('/device/:id?/:tab',
 	        {
 	            templateUrl: 'templates/AccessPoint.html',
 	            controller: 'AccessPointController',
 	            resolve: managedWifi.resolveServiceAlias("AccessPointService")
 	        })
-	        .when(prefix + '/users',
+	        .when('/users',
 	        {
 	            templateUrl: 'templates/Users.html',
 	            controller: 'UsersController',
 	            resolve: managedWifi.resolveServiceAlias(["AccessPointUserService", "AccessPointService"])
 	        })
-	        .when(prefix + '/user/:id?',
+	        .when('/user/:id?',
 	        {
 	            templateUrl: 'templates/User.html',
 	            controller: 'UserController',
 	            resolve: managedWifi.resolveServiceAlias(["AccessPointUserService", "AccessPointService", "NetworkService"])
 	        })
-	        .when(prefix + '/devices/new',
+	        .when('/macs',
 	        {
 	            templateUrl: 'templates/Site.html',
 	            controller: 'SiteController',
 	            resolve: managedWifi.resolveServiceAlias(["SiteService"])
 	        })
-	        .when(prefix + '/help',
+	        .when('/help',
 	        {
 	            templateUrl: 'templates/Help.html',
 	            controller: 'HelpController'
@@ -70,7 +69,7 @@ managedWifi.config(['$routeProvider', '$locationProvider', function ($routeProvi
 	            templateUrl: 'templates/Blank.html',
 	            controller: 'ErrorController'
 	        })
-	        .when(prefix + '/settings',
+	        .when('/settings',
 	        {
 	            templateUrl: 'templates/SiteSettings.html',
 	            controller: 'SiteSettingsController',
@@ -82,25 +81,25 @@ managedWifi.config(['$routeProvider', '$locationProvider', function ($routeProvi
 	            controller: 'SiteController',
 	            resolve: managedWifi.resolveServiceAlias(["SiteService"])
 	        })
-	         .when(prefix + '/networks',
+	         .when('/networks',
 	        {
 	            templateUrl: 'templates/Networks.html',
 	            controller: 'NetworksController',
 	            resolve: managedWifi.resolveServiceAlias("NetworkService")
 	        })
-	         .when(prefix + '/networks/new:network_type?/',
+	         .when('/networks/new:network_type?/',
 	        {
 	            templateUrl: 'templates/Network.html',
 	            controller: 'NetworkController',
 	            resolve: managedWifi.resolveServiceAlias("NetworkService")
 	        })
-	        .when(prefix + '/networks/:network_type?/:id?',
+	        .when('/networks/:network_type?/:id?/:tab?',
 	        {
 	            templateUrl: 'templates/Network.html',
 	            controller: 'NetworkController',
 	            resolve: managedWifi.resolveServiceAlias("NetworkService")
 	        })
-	        //.otherwise({redirectTo: "/newsite"});
+	        	//.otherwise({redirectTo: "/devices"});
 	    $locationProvider.html5Mode(false);
 }])
 .run(["$location", "$cookies", "notificationService", "jiveLoginService", 'siteService', function($location, $cookies, notificationService, loginService, siteService){

@@ -12,8 +12,6 @@ managedWifi.controller('UsersController', ["$scope", "$location", "$routeParams"
             $scope.filter['ap_mac'] = $routeParams.mac;
         }
         
-        $scope.site_id = $location.path().split("/")[2];
-
         var init = function(){
             accessPointService.getAll().then(
                 function(accessPoints){

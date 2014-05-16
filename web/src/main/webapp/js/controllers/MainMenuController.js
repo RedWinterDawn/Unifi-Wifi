@@ -5,8 +5,6 @@ managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "$r
         $scope.referrer = document.referrer;
 
         $(window).resize(resizeSiteList);
-        
-        $scope.siteChosen = $location.path().split("/")[2] !== undefined;
 
         function resizeSiteList() {
             $('.site-list ul').css('max-height', $(window).height() - 200);
@@ -84,11 +82,9 @@ managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "$r
         };
 
         $scope.navigate = function(route){
-        	$scope.site_id = $location.path().split("/")[2];
-        	var prefix = '/site/' + $scope.site_id + '/';
             if(route == null || route == '')
-                route = prefix;
-            $location.url(prefix + route);
+            	route = '/';
+            $location.url(route);
         };
 
         $scope.selectSite = function(site){
@@ -111,9 +107,13 @@ managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "$r
                 siteService.delete(site).then(function() {
                 	$scope.init();
                     notificationService.success("siteDelete", site.friendly_name + " was deleted.");
-                    $scope.selectSite(sites[0]);
-                    //$location.replace("#/newsite");
-                    //$location.url("#/newsite");        
+                    if(sites.length !== 0)
+                    	$scope.selectSite(sites[0]);
+                    else {
+                    	location.replace("#/newsite");
+                    	location.url("#/newsite");
+                    }
+                    	
                 });
             });
         };

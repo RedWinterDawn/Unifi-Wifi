@@ -28,7 +28,7 @@ managedWifi.controller('Oauth2Controller',["$scope", "$http", "$location", "$mod
             loginService.oauthReceive(params.code, params.state).then(loginService.isAdmin).then(
                 function(response){
                     var location = managedWifi.getLocation(window.location.href);
-                    window.location.href = location.pathname + "#/newsite";
+                    window.location.href = location.pathname + "#/devices";
                 },
                 function(){
                     notificationService.error("login", "We're sorry, but an error occurred while authorizing your login. Please ensure you are browsing to this app from the Jive portal.");

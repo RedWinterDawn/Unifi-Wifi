@@ -5,8 +5,6 @@ managedWifi.controller('AccessPointListController', ["$scope", "$location", "dia
 
         $scope.paginator = managedWifi.paginator('name');
         
-        $scope.site_id = $location.path().split("/")[2];
-
         var init = function (){
             accessPointService.getAll().then(
                 function(devices){
@@ -36,7 +34,7 @@ managedWifi.controller('AccessPointListController', ["$scope", "$location", "dia
         };
         
         $scope.addAccessPoints = function(){
-        	$location.url('/site/'+$scope.site_id+'/devices/new');
+        	$location.url('/macs');
         };
 
         $scope.adoptDevice = function(accessPoint){
@@ -54,8 +52,6 @@ managedWifi.controller('AccessPointListController', ["$scope", "$location", "dia
                 accessPointService.delete(mac).then(function(){
                     notificationService.success("accessPointDelete", mac + " was deleted.");
                     init();
-                    //$location.replace('/site/'+$scope.site_id+'/devices');
-                    //$location.url('/site/'+$scope.site_id+'/devices');
                 });
             });
         };

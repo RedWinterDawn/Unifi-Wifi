@@ -73,7 +73,7 @@
     <td>{{accessPoint.name}}</td>
     <td>{{accessPoint.model}}</td>
     <td>
-        <a ng-show="accessPoint.state == 1" ng-href="#/site/{{site_id}}/device/{{accessPoint.id}}">{{accessPoint.mac}}</a>
+        <a ng-show="accessPoint.state == 1" ng-href="#/device/{{accessPoint.id}}">{{accessPoint.mac}}</a>
         <span ng-hide="accessPoint.adopted">{{accessPoint.mac}}</span>
     </td>
     <td>{{accessPoint.ip}}</td>
@@ -83,7 +83,7 @@
     <td>{{accessPoint.tx_bytes | bytes}}</td>
     <td>{{accessPoint.rx_bytes | bytes}}</td>
     <td>{{accessPoint.version || ''}}</td>
-    <td><a href="">Activity</a></td>
+    <td><a ng-href="#/device/{{accessPoint.id}}/activity">Activity</a></td>
     <td><a ng-click="upgradeDevice(accessPoint)"><i class="icon-upload"></i></a></td>
     <td>
         <div class="dropdown settings" ng-hide="accessPoint.state > 2"><a href="#" data-toggle="dropdown" class="dropdown-toggle icons"><i class="icon-cog"></i><i class="icon-caret-down"></i></a>

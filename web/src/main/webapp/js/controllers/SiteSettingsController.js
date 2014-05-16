@@ -6,17 +6,6 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
         $scope.activeSubItem = 'Access';
         $scope.regExIpAddress = managedWifi.regExLib.ipAddress;
         $scope.showPassword = false;
-
-        siteService.getById($routeParams.site_id).then(
-                function(site){
-                    site.macs = site.devices == undefined ? "" : site.devices.join("\n");
-                    $scope.original = site;
-                    $scope.site = angular.copy($scope.original);
-                },
-                function(reason){
-                    notificationService.error("loadSite", "An error occurred while attempting to retrieve this site's details");
-                }
-            );
         
         siteSettingsService.getAll().then(
                 function(settings){
@@ -30,23 +19,37 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
 
                     $scope.originalLimits = settings.filter(function(setting){return setting.key == 'limits'})[0];
                     $scope.limits = angular.copy($scope.originalLimits);
+                    
+                    siteService.getById($scope.original.site_id).then(
+                            function(site){
+                                site.macs = site.devices == undefined ? "" : site.devices.join("\n");
+                                $scope.original = site;
+                                $scope.site = angular.copy($scope.original);
+                                $scope.settings = angular.copy($scope.original);
+                            },
+                            function(reason){
+                                notificationService.error("loadSite", "An error occurred while attempting to retrieve this site's details");
+                            }
+                        );
+                    
+                    
                 },
                 function(reason){
                     notificationService.error("loadSiteSettings", "An error occurred while loading this site's settings.");
                 }
        );
-        
-        $scope.updateSite = function() {
-	        siteService.update($scope.site).then(
-	                function(){
-	                    angular.copy($scope.site, $scope.original);
-	                    notificationService.success("siteEdit", "The site has been updated");
-	                },
-	                function(reason){
-	                    notificationService.error("siteEdit", "An error occurred while attempting to save this site");
-	                }
-	            );
-        }
+
+    $scope.updateSite = function() {
+        siteService.update($scope.site).then(
+                function(){
+                    angular.copy($scope.site, $scope.original);
+                    notificationService.success("siteEdit", "The site has been updated");
+                },
+                function(reason){
+                    notificationService.error("siteEdit", "An error occurred while attempting to save this site");
+                }
+            );
+    };
 
         
         

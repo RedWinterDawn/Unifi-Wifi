@@ -7,7 +7,7 @@ managedWifi.controller('SiteController', ["$scope", "$location", "$routeParams",
         $scope.isNew = $routeParams.site_id == undefined;
 
         if(!$scope.isNew){
-            siteService.getById($routeParams.site_id).then(
+            siteService.getById($routeParams.id).then(
                 function(site){
                     site.macs = site.devices == undefined ? "" : site.devices.join("\n");
                     $scope.original = site;
@@ -32,7 +32,7 @@ managedWifi.controller('SiteController', ["$scope", "$location", "$routeParams",
                         $scope.offLocationChangeStart();
                         window.onbeforeunload = null;
                         siteService.selectSite($scope.site);
-                        $location.url("/site/"+$scope.site.site_id+"/devices");
+                        $location.url("/devices");
                     },
                     function(reason){
                         notificationService.error("siteAdd", "An error occurred while attempting to add this site");
