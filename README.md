@@ -111,7 +111,10 @@ username: admin
 password: Jive123
 
 all other info not important set to whatever
-echo |openssl s_client -connect localhost:8443 2>&1 |sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' |keytool -import -trustcacerts -alias "managed wifi controller"   -keystore "$JAVA_HOME/lib/security/cacerts"   -storepass changeit -noprompt
+
+```
+echo |openssl s_client -connect localhost:8443 2>&1 |sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' |keytool -import -trustcacerts -alias "managed wifi controller"   -keystore "$JAVA_HOME/jre/lib/security/cacerts"   -storepass changeit -noprompt
+```
 
 expect: Certificate was added to the keystore
 
@@ -144,9 +147,9 @@ portal-api.URL=https://api.jive.com/wifi
 service tomcat6 start
 
 to verify tomcat started properly by running  tail on the logs.
-
+```
 tail -f path/to/tomcat/files
-
+```
 
 
 
