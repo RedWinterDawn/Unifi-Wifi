@@ -127,7 +127,7 @@ mv <downloaded file> ROOT.war
 create file /etc/managed-wifi.config
 
 contents of file:
-
+```
 web.CORS.origin=https://wifi.jive.com
 
 unifi.controller.URL=https://unifi:8443
@@ -143,7 +143,7 @@ oauth.redirectURI=https://wifi.jive.com/index.html#/oauth2
 oauth.clientId=27abd5a4-9e81-4e4e-9ccf-f6e81df64d19
 oauth.password=i4egS4Cd59LWJiP6SnafL7nvJjg7cI
 portal-api.URL=https://api.jive.com/wifi
-
+```
 service tomcat6 start
 
 to verify tomcat started properly by running  tail on the logs.
