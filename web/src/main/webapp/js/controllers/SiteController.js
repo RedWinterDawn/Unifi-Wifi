@@ -4,10 +4,10 @@ managedWifi.controller('SiteController', ["$scope", "$location", "$routeParams",
     function SiteController($scope, $location, $routeParams, siteService, notificationService, dialogService) {
 
         $scope.activeItem = 'Details';
-        $scope.isNew = $routeParams.site_id == undefined;
+        $scope.isNew = $location.path().split("/")[2] == undefined;
 
         if(!$scope.isNew){
-            siteService.getById($routeParams.id).then(
+            siteService.getById(localStorage.site_id).then(
                 function(site){
                     site.macs = site.devices == undefined ? "" : site.devices.join("\n");
                     $scope.original = site;

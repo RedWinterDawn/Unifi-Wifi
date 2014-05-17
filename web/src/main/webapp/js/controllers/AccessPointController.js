@@ -4,6 +4,10 @@ managedWifi.controller('AccessPointController', ["$scope", "$location", "$routeP
     function AccessPointController($scope, $location, $routeParams, accessPointService, notificationService, dialogService) {
         $scope.activeItem = 'Settings';
         $scope.activeSubItem = 'Overview';
+        
+        if($routeParams.tab == 'activity')
+        	$scope.activeSubItem = 'Network Activity';
+       
         $scope.regExIpAddress = managedWifi.regExLib.ipAddress;
         
         accessPointService.getById($routeParams.id).then(function(accessPoint){

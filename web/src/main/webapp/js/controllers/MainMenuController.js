@@ -41,7 +41,7 @@ managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "$r
                     notificationService.error("loadSites", "An error occurred while loading the sites for this account.");
                 }
             );
-
+            
             loginService.isAdmin().then(
                 function(isAdmin){
                     $scope.isAdmin = isAdmin;
@@ -98,6 +98,7 @@ managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "$r
                 }
             )
         };
+
         
         $scope.deleteSite = function(site,sites){
             dialogService.confirm({

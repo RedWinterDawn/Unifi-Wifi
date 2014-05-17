@@ -83,12 +83,12 @@
     <td>{{accessPoint.tx_bytes | bytes}}</td>
     <td>{{accessPoint.rx_bytes | bytes}}</td>
     <td>{{accessPoint.version || ''}}</td>
-    <td><a ng-href="#/device/{{accessPoint.id}}/activity">Activity</a></td>
-    <td><a ng-click="upgradeDevice(accessPoint)"><i class="icon-upload"></i></a></td>
+    <td><a ng-click="redirect(accessPoint.id, 'activity')" ng-show="accessPoint.state == 1">Activity</a></td>
+    <td><a ng-click="upgradeDevice(accessPoint)" ng-show="accessPoint.upgradable && accessPoint.state != 4"><i class="icon-upload"></i></a></td>
     <td>
         <div class="dropdown settings" ng-hide="accessPoint.state > 2"><a href="#" data-toggle="dropdown" class="dropdown-toggle icons"><i class="icon-cog"></i><i class="icon-caret-down"></i></a>
             <ul role="menu" aria-labelledby="dropdownMenu" class="dropdown-menu pull-right">
-                <li ng-show="accessPoint.state == 1"><a ng-href="#/site/{{site_id}}/device/{{accessPoint.id}}">Edit Device</a></li>
+                <li ng-show="accessPoint.state == 1"><a ng-href="#/device/{{accessPoint.id}}">Edit Device</a></li>
                 <li ng-show="accessPoint.state == 2"><a ng-click="adoptDevice(accessPoint)">Adopt Device</a></li>
             </ul>
         </div>

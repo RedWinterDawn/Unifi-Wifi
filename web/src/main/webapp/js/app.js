@@ -25,7 +25,7 @@ managedWifi.config(['$routeProvider', '$locationProvider', function ($routeProvi
 	            controller: 'AccessPointListController',
 	            resolve: managedWifi.resolveServiceAlias("AccessPointService")
 	        })
-	        .when('/device/:id?/:tab',
+	        .when('/device/:id?/:tab?',
 	        {
 	            templateUrl: 'templates/AccessPoint.html',
 	            controller: 'AccessPointController',
@@ -43,7 +43,7 @@ managedWifi.config(['$routeProvider', '$locationProvider', function ($routeProvi
 	            controller: 'UserController',
 	            resolve: managedWifi.resolveServiceAlias(["AccessPointUserService", "AccessPointService", "NetworkService"])
 	        })
-	        .when('/macs',
+	        .when('/devices/new',
 	        {
 	            templateUrl: 'templates/Site.html',
 	            controller: 'SiteController',

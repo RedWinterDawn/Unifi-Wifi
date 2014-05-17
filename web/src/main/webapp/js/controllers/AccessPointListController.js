@@ -1,7 +1,7 @@
 'use strict';
 
-managedWifi.controller('AccessPointListController', ["$scope", "$location", "dialogService", "AccessPointService", "notificationService", "messagingService",
-    function AccessPointListController($scope, $location, dialogService, accessPointService, notificationService, messagingService) {
+managedWifi.controller('AccessPointListController', ["$rootScope","$scope", "$location", "dialogService", "AccessPointService", "siteService", "notificationService", "messagingService",
+    function AccessPointListController($rootScope, $scope, $location, dialogService, accessPointService, siteService, notificationService, messagingService) {
 
         $scope.paginator = managedWifi.paginator('name');
         
@@ -34,8 +34,12 @@ managedWifi.controller('AccessPointListController', ["$scope", "$location", "dia
         };
         
         $scope.addAccessPoints = function(){
-        	$location.url('/macs');
+        	$location.url('/devices/new');
         };
+        
+        $scope.redirect = function(accesspoint_id, tab){
+        	$location.url('/device/'+accesspoint_id+'/'+tab);
+        }
 
         $scope.adoptDevice = function(accessPoint){
             accessPointService.adopt(accessPoint).then(function(){

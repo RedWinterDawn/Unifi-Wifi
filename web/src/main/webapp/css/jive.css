@@ -5646,62 +5646,28 @@ header {
 }
 .workspace .scrollable ul {
 	margin-left: 0px;
+	margin-bottom: 0px;
 }
-.workspace .scrollable ul .media-body {
+.workspace .scrollable ul .page-actions {
 	padding-left: 25px;
 }
-.workspace .scrollable ul .media-body .delete-site {
+.workspace .scrollable ul .page-actions .delete-site {
 	float: right;
 	position: relative;
 	right: 20px;
 }
-.workspace .scrollable ul .media-body a.active {
-	background: #7c9f23;
-	color: white;
+.workspace .scrollable ul .page-actions a.active {
+	background: black;
 	border-right: 4px solid #9cc92c
 }
-.workspace .scrollable ul .media-body a:hover {
-	background-color: #f2f2f2;
-	color: white;
+.workspace .scrollable ul .page-actions a:hover {
+	background-color: #66b7e0;
 }
 .workspace .scrollable ul .page-actions {
 	margin-top: 0px;
 	margin-bottom: 0px;
 	padding: 2px 0px;
 }
-************************
-.content-sidebar li {
-	border-bottom: 1px solid #e6e6e6
-}
-.content-sidebar li:last-child {
-	border-bottom: 0
-}
-.content-sidebar li a {
-	display: block;
-	padding: 15px 10px;
-	text-transform: uppercase;
-	font-size: 16px
-}
-.content-sidebar li a.active {
-	background-color: #f7f7f7;
-	color: #4d4d4d;
-	cursor: default;
-	border-right: 4px solid #9cc92c
-}
-.content-sidebar li a:hover {
-	background-color: #f2f2f2;
-	color: #4d4d4d
-}
-.content-sidebar li a:hover.active {
-	background-color: #f7f7f7
-}
-.content-sidebar li a i {
-	margin-right: 10px;
-	width: 16px;
-	display: inline-block;
-	text-align: center
-}
-*************************
 .page-title {
 	*zoom: 1
 }
