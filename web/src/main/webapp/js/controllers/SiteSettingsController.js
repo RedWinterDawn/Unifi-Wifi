@@ -1,29 +1,59 @@
 'use strict';
 
-managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$routeParams", "SiteSettingsService", "notificationService", "dialogService",
-    function SiteSettingsController($scope, $location, $routeParams, siteSettingsService, notificationService, dialogService) {
-        $scope.activeItem = 'Portal';
-        $scope.activeSubItem = 'Limits';
+managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$routeParams", "SiteService", "SiteSettingsService", "notificationService", "dialogService",
+    function SiteSettingsController($scope, $location, $routeParams, siteService, siteSettingsService, notificationService, dialogService) {
+        $scope.activeItem = 'Details';
+        $scope.activeSubItem = 'Access';
         $scope.regExIpAddress = managedWifi.regExLib.ipAddress;
         $scope.showPassword = false;
-
+        
         siteSettingsService.getAll().then(
-            function(settings){
-                $scope.original = settings.filter(function(setting){return setting.key == 'guest_access'})[0];
-                if (!_.has($scope.original, 'expire')) $scope.original.expire = '4320';
-                if ($scope.original.hotspotNoAuth === 'true') {
-                    $scope.original.auth = 'tou';
+                function(settings){
+                    $scope.original = settings.filter(function(setting){return setting.key == 'guest_access'})[0];
+                    if (!_.has($scope.original, 'expire')) $scope.original.expire = '4320';
+                    if ($scope.original.hotspotNoAuth === 'true') {
+                        $scope.original.auth = 'tou';
+                    }
+
+                    $scope.settings = angular.copy($scope.original);
+
+                    $scope.originalLimits = settings.filter(function(setting){return setting.key == 'limits'})[0];
+                    $scope.limits = angular.copy($scope.originalLimits);
+                    
+                    siteService.getById($scope.original.site_id).then(
+                            function(site){
+                                site.macs = site.devices == undefined ? "" : site.devices.join("\n");
+                                $scope.original = site;
+                                $scope.site = angular.copy($scope.original);
+                                $scope.settings = angular.copy($scope.original);
+                            },
+                            function(reason){
+                                notificationService.error("loadSite", "An error occurred while attempting to retrieve this site's details");
+                            }
+                        );
+                    
+                    
+                },
+                function(reason){
+                    notificationService.error("loadSiteSettings", "An error occurred while loading this site's settings.");
                 }
+       );
 
-                $scope.settings = angular.copy($scope.original);
+    $scope.updateSite = function() {
+        siteService.update($scope.site).then(
+                function(){
+                    angular.copy($scope.site, $scope.original);
+                    notificationService.success("siteEdit", "The site has been updated");
+                },
+                function(reason){
+                    notificationService.error("siteEdit", "An error occurred while attempting to save this site");
+                }
+            );
+    };
 
-                $scope.originalLimits = settings.filter(function(setting){return setting.key == 'limits'})[0];
-                $scope.limits = angular.copy($scope.originalLimits);
-            },
-            function(reason){
-                notificationService.error("loadSiteSettings", "An error occurred while loading this site's settings.");
-            }
-        );
+        
+        
+        $scope.isNew = $routeParams.id == undefined;
 
         $scope.update = function() {
             if ($scope.settings.auth === 'tou') {

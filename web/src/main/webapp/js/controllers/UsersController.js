@@ -1,3 +1,4 @@
+
 'use strict';
 
 managedWifi.controller('UsersController', ["$scope", "$location", "$routeParams", "AccessPointUserService", "AccessPointService", "notificationService", "messagingService",
@@ -10,7 +11,7 @@ managedWifi.controller('UsersController', ["$scope", "$location", "$routeParams"
             $scope.showApMac = true;
             $scope.filter['ap_mac'] = $routeParams.mac;
         }
-
+        
         var init = function(){
             accessPointService.getAll().then(
                 function(accessPoints){
@@ -49,6 +50,8 @@ managedWifi.controller('UsersController', ["$scope", "$location", "$routeParams"
             );
         };
         init();
+        
+        
 
         $scope.blockUser = function(user){
             accessPointUserService.blockUser(user._id, !user.blocked).then(
@@ -61,6 +64,7 @@ managedWifi.controller('UsersController', ["$scope", "$location", "$routeParams"
                     notificationService.error("userBlock", "An error occurred while blocking this user.");
                 }
             );
+            init();
         };
 
         $scope.authorizeUser = function(user){

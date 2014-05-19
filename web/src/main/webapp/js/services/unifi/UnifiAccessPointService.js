@@ -69,14 +69,20 @@ managedWifi.factory('unifiAccessPointService', ['$q', '$http', 'appSettings', 'm
             return service.webServicePostForm("/device/" + accessPoint._id, {name: accessPoint.name, config_network: update});
         },
 
+        upgrade: function(accessPoint){
+            return service.webServiceCmdDevMgr({mac: accessPoint.mac, cmd: "upgrade"}).then(function(){
+                accessPoints = null;
+            });
+        },
+
         adopt: function(accessPoint){
             return service.webServiceCmdDevMgr({mac: accessPoint.mac, cmd: "adopt"}).then(function(){
                 accessPoints = null;
             });
         },
 
-        delete: function(accessPoint){
-            return service.webServiceCmdDevMgr({mac: accessPoint.mac, cmd: "delete-ap"}).then(function(){
+        delete: function(mac){
+            return service.webServiceCmdDevMgr({mac: mac, cmd: "delete-ap"}).then(function(){
                 accessPoints = null;
             });
         }

@@ -2,58 +2,47 @@
     <div class="span12">
         <h1 class="content-title">Manage {{name}}</h1>
         <ul class="crumbs">
-            <li><a href="#/devices">Access Point Devices</a></li>
+            <li><a href="#/devices">Access Points</a></li>
             <li><a style="cursor:pointer;">Manage {{name}}</a></li>
         </ul>
     </div>
 </div>
-
 <div class="page-actions">
     <ul>
-        <li><a ng-click="forgetDevice()"><i class="icon-trash"></i>Remove Device</a></li>
         <li><a ng-click="viewUsers()"><i class="icon-group"></i>View Connected Devices</a></li>
     </ul>
 </div>
-
 <div class="row-fluid">
     <div class="span12">
-        <ul class="content-sidebar">
-            <li><a ng-click="activeItem = 'Details';activeSubItem='Overview'" ng-class="activeItem == 'Details' ? 'active' : ''"><i class="icon-asterisk"></i>Details</a></li>
-            <li><a ng-click="activeItem = 'Settings';activeSubItem='Config'" ng-class="activeItem == 'Settings' ? 'active' : ''"><i class="icon-asterisk"></i>Settings</a></li>
-        </ul>
-        <div class="content-pane multi">
         <div class="content">
             <div class="container-fluid">
                 <div class="row-fluid" ng-show="activeItem == 'Settings'">
                     <div class="span12">
                         <ul class="nav nav-tabs">
+                            <li ng-class="activeSubItem == 'Overview' ? 'active' : ''"><a ng-click="activeSubItem = 'Overview'">Overview</a></li>
+                            <li ng-class="activeSubItem == 'Network Activity' ? 'active' : ''"><a ng-click="activeSubItem = 'Network Activity'">Network Activity</a></li>
                             <li ng-class="activeSubItem == 'Config' ? 'active' : ''"><a ng-click="activeSubItem = 'Config'">Config</a></li>
-                            <li ng ng-class="activeSubItem == 'Network' ? 'active' : ''" ng-show="accessPoint.config_network.type == 'static'"><a ng-click="activeSubItem = 'Network'">Network</a></li>
                         </ul>
-
+                        <div ng-show="activeSubItem=='Overview'">
+                            <h3>Overview</h3>
+                        </div>
                         <div ng-show="activeSubItem=='Config'">
-                            <h2>Configuration</h2>
                             <h3>Basic Settings</h3>
                             <p>Configure the settings for this access point. Depending on the settings choosen, additional tabs/options will become available for further configuration.</p>
                         </div>
-
-                        <div ng-show="activeSubItem=='Network'">
-                            <h2>Network</h2>
-                            <h3>Static IP Configuration</h3>
-                            <p>This access point has a static IP configuration. Provide the following network settings to complete the configuration.</p>
+                        <div ng-show="activeSubItem=='Network Activity'">
+                            <h3>Uplink</h3>
+                            <p>The following information reports on the activity, over the wire, from the device to your wired network.</p>
                         </div>
-
                         <div class="row-fluid"><div class="span8 offset2">
                             <form name="form" class="form-horizontal" novalidate>
-
                                 <div class="field-section" ng-show="activeSubItem=='Config'">
                                     <div class="control-group">
-                                        <label for="alias" class="control-label">Alias</label>
+                                        <label for="alias" class="control-label">Name Device</label>
                                         <div class="controls">
-                                            <input type="text" id="alias" placeholder="Provide an alias..." ng-model="accessPoint.name">
+                                            <input type="text" id="alias" placeholder="Provide a name for the device..." ng-model="accessPoint.name">
                                         </div>
                                     </div>
-
                                     <div class="control-group">
                                         <div class="control-label">IP Configuration</div>
                                         <div class="controls">
@@ -64,136 +53,105 @@
                                                 <input type="radio" ng-model="accessPoint.config_network.type" value="static">Static
                                             </label>
                                         </div>
+                                        <div class="field-section" ng-show="accessPoint.config_network.type == 'static'">
+                                            <div class="control-group" ng-class="form.ipAddress.$invalid ? 'error' : ''">
+                                                <label for="ipAddress" class="control-label">IP address<i class="icon-asterisk required"></i></label>
+                                                <div class="controls">
+                                                    <input type="text" name="ipAddress" id="ipAddress" ng-model="accessPoint.config_network.ip" ng-required="accessPoint.config_network.type=='static'" valid-ip>
+                                                    <i ng-hide="form.ipAddress.$invalid" class="icon-ok-sign active"></i>
+                                                    <div ng-show="form.ipAddress.$invalid" class="tip help">Please provide a valid IP address</div>
+                                                </div>
+                                            </div>
+                                            <div class="control-group" ng-class="form.netmask.$invalid ? 'error' : ''">
+                                                <label for="netmask" class="control-label">Subnet mask<i class="icon-asterisk required"></i></label>
+                                                <div class="controls">
+                                                    <input type="text" name="netmask" id="netmask" ng-model="accessPoint.config_network.netmask" ng-required="accessPoint.config_network.type=='static'" valid-ip>
+                                                    <i ng-hide="form.netmask.$invalid" class="icon-ok-sign active"></i>
+                                                    <div ng-show="form.netmask.$invalid" class="tip help">Please provide a valid subnet</div>
+                                                </div>
+                                            </div>
+                                            <div class="control-group" ng-class="form.gateway.$invalid ? 'error' : ''">
+                                                <label for="gateway" class="control-label">Gateway</label>
+                                                <div class="controls">
+                                                    <input type="text" name="gateway" id="gateway" ng-model="accessPoint.config_network.gateway" valid-ip>
+                                                    <i ng-hide="form.gateway.$invalid" class="icon-ok-sign active"></i>
+                                                    <div ng-show="form.gateway.$invalid" class="tip help">Please provide a valid IP</div>
+                                                </div>
+                                            </div>
+                                            <div class="control-group" ng-class="form.prefDns.$invalid ? 'error' : ''">
+                                                <label for="prefDns" class="control-label">Preferred DNS</label>
+                                                <div class="controls">
+                                                    <input type="text" name="prefDns" id="prefDns" ng-model="accessPoint.config_network.dns1" valid-ip>
+                                                    <i ng-hide="form.prefDns.$invalid" class="icon-ok-sign active"></i>
+                                                    <div ng-show="form.prefDns.$invalid" class="tip help">Please provide a valid IP</div>
+                                                </div>
+                                            </div>
+                                            <div class="control-group" ng-class="form.secondaryDns.$invalid ? 'error' : ''">
+                                                <label for="secondaryDns" class="control-label">Secondary DNS</label>
+                                                <div class="controls">
+                                                    <input type="text" name="secondaryDns" id="secondaryDns" ng-model="accessPoint.config_network.dns2" valid-ip>
+                                                    <i ng-hide="form.secondaryDns.$invalid" class="icon-ok-sign active"></i>
+                                                    <div ng-show="form.secondaryDns.$invalid" class="tip help">Please provide a valid IP</div>
+                                                </div>
+                                            </div>
+                                            <div class="control-group">
+                                                <label for="dnssuffix" class="control-label">DNS Suffix</label>
+                                                <div class="controls">
+                                                    <input type="text" name="dnssuffix" id="dnssuffix" ng-model="accessPoint.config_network.dnssuffix">
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-
-                                <div class="field-section" ng-show="activeSubItem=='Network'">
-                                    <div class="control-group" ng-class="form.ipAddress.$invalid ? 'error' : ''">
-                                        <label for="ipAddress" class="control-label">IP address<i class="icon-asterisk required"></i></label>
-                                        <div class="controls">
-                                            <input type="text" name="ipAddress" id="ipAddress" ng-model="accessPoint.config_network.ip" ng-required="accessPoint.config_network.type=='static'" valid-ip>
-                                            <i ng-hide="form.ipAddress.$invalid" class="icon-ok-sign active"></i>
-                                            <div ng-show="form.ipAddress.$invalid" class="tip help">Please provide a valid IP address</div>
-                                        </div>
-                                    </div>
-                                    <div class="control-group" ng-class="form.netmask.$invalid ? 'error' : ''">
-                                        <label for="netmask" class="control-label">Subnet mask<i class="icon-asterisk required"></i></label>
-                                        <div class="controls">
-                                            <input type="text" name="netmask" id="netmask" ng-model="accessPoint.config_network.netmask" ng-required="accessPoint.config_network.type=='static'" valid-ip>
-                                            <i ng-hide="form.netmask.$invalid" class="icon-ok-sign active"></i>
-                                            <div ng-show="form.netmask.$invalid" class="tip help">Please provide a valid subnet</div>
-                                        </div>
-                                    </div>
-                                    <div class="control-group" ng-class="form.gateway.$invalid ? 'error' : ''">
-                                        <label for="gateway" class="control-label">Gateway</label>
-                                        <div class="controls">
-                                            <input type="text" name="gateway" id="gateway" ng-model="accessPoint.config_network.gateway" valid-ip>
-                                            <i ng-hide="form.gateway.$invalid" class="icon-ok-sign active"></i>
-                                            <div ng-show="form.gateway.$invalid" class="tip help">Please provide a valid IP</div>
-                                        </div>
-                                    </div>
-                                    <div class="control-group" ng-class="form.prefDns.$invalid ? 'error' : ''">
-                                        <label for="prefDns" class="control-label">Preferred DNS</label>
-                                        <div class="controls">
-                                            <input type="text" name="prefDns" id="prefDns" ng-model="accessPoint.config_network.dns1" valid-ip>
-                                            <i ng-hide="form.prefDns.$invalid" class="icon-ok-sign active"></i>
-                                            <div ng-show="form.prefDns.$invalid" class="tip help">Please provide a valid IP</div>
-                                        </div>
-                                    </div>
-                                    <div class="control-group" ng-class="form.secondaryDns.$invalid ? 'error' : ''">
-                                        <label for="secondaryDns" class="control-label">Secondary DNS</label>
-                                        <div class="controls">
-                                            <input type="text" name="secondaryDns" id="secondaryDns" ng-model="accessPoint.config_network.dns2" valid-ip>
-                                            <i ng-hide="form.secondaryDns.$invalid" class="icon-ok-sign active"></i>
-                                            <div ng-show="form.secondaryDns.$invalid" class="tip help">Please provide a valid IP</div>
-                                        </div>
-                                    </div>
-                                    <div class="control-group">
-                                        <label for="dnssuffix" class="control-label">DNS Suffix</label>
-                                        <div class="controls">
-                                            <input type="text" name="dnssuffix" id="dnssuffix" ng-model="accessPoint.config_network.dnssuffix">
-                                        </div>
-                                    </div>
-
-                                </div>
-
                             </form>
                         </div></div>
-
                     </div>
-                </div>
-                <div class="row-fluid" ng-show="activeItem == 'Details'">
-                    <div class="span12">
-                        <ul class="nav nav-tabs">
-                            <li ng-class="activeSubItem == 'Overview' ? 'active' : ''"><a ng-click="activeSubItem = 'Overview'">Overview</a></li>
-                            <li ng-class="activeSubItem == 'Network Activity' ? 'active' : ''"><a ng-click="activeSubItem = 'Network Activity'">Network Activity</a></li>
-                        </ul>
-
-                        <div ng-show="activeSubItem=='Overview'">
-                            <h2>Details</h2>
-                            <h3>Overview</h3>
-                            <div class="row-fluid">
-                                <dl class="dl-horizontal">
-                                    <dt>MAC Address</dt>
-                                    <dd>{{original.mac}}</dd>
-                                    <dt>Model</dt>
-                                    <dd>{{original.model}}</dd>
-                                    <dt>Version</dt>
-                                    <dd>{{original.version}}</dd>
-                                    <dt>IP Address</dt>
-                                    <dd>{{original.ip}}</dd>
-                                    <dt>Uptime</dt>
-                                    <dd>{{original.uptime | uptime}}</dd>
-                                </dl>
-                            </div>
-                        </div>
-
-                        <div ng-show="activeSubItem=='Network Activity'">
-                            <h2>Network Activity</h2>
-                            <h3>Uplink</h3>
-                            <p>The following information reports on the activity, over the wire, from the device to your wired network.</p>
-                            <div class="row-fluid">
-                                <dl class="dl-horizontal">
-                                    <dt>Speed</dt>
-                                    <dd>{{original.uplink.speed}}</dd>
-                                    <dt>Duplex</dt>
-                                    <dd>{{original.uplink.full_duplex ? "Full Duplex" : "Half Duplex"}}</dd>
-                                    <dt>Down Pkts / Bytes</dt>
-                                    <dd>{{original.uplink.rx_packets | pktsBytes}} / {{original.uplink.rx_bytes | pktsBytes}}</dd>
-                                    <dt>Up Pkts / Bytes</dt>
-                                    <dd>{{original.uplink.tx_packets | pktsBytes}} / {{original.uplink.tx_bytes | pktsBytes}}</dd>
-                                    <dt>Activity</dt>
-                                    <dd>{{original | deviceActivity | pktsBytes}} B/sec</dd>
-                                </dl>
-                           </div>
-
-                            <h3>Radio</h3>
-                            <p>The following information reports on the activity, over the radio, from the device to users.</p>
+                    <div class="field-section" ng-show="activeSubItem=='Overview'">
                             <dl class="dl-horizontal">
-                                <dt>Channel</dt>
-                                <dd>{{original['ng-channel']}}&nbsp;</dd>
-
-                                <dt>Transmit Power</dt>
-                                <dd>{{original['ng-tx_power']}} dBm (EIRP)</dd>
-
-                                <dt>TX Pkts / Bytes</dt>
-                                <dd>{{original.stat.tx_packets | pktsBytes}} / {{original.stat.tx_bytes | pktsBytes}}&nbsp;</dd>
-
-                                <dt>RX Pkts / Bytes</dt>
-                                <dd>{{original.stat.rx_packets | pktsBytes}} / {{original.stat.rx_bytes | pktsBytes}}&nbsp;</dd>
-
-                                <dt># of Users</dt>
-                                <dd>{{original.user_num_sta}}</dd>
+                                <dt>MAC Address</dt>
+                                <dd>{{original.mac}}</dd>
+                                <dt>Model</dt>
+                                <dd>{{original.model}}</dd>
+                                <dt>Version</dt>
+                                <dd>{{original.version}}</dd>
+                                <dt>IP Address</dt>
+                                <dd>{{original.ip}}</dd>
+                                <dt>Uptime</dt>
+                                <dd>{{original.uptime | uptime}}</dd>
                             </dl>
-                        </div>
-
+                    </div>
+                    <div class="field-section" ng-show="activeSubItem=='Network Activity'">
+                            <dl class="dl-horizontal">
+                                <dt>Speed</dt>
+                                <dd>{{original.uplink.speed}}</dd>
+                                <dt>Duplex</dt>
+                                <dd>{{original.uplink.full_duplex ? "Full Duplex" : "Half Duplex"}}</dd>
+                                <dt>Down Pkts / Bytes</dt>
+                                <dd>{{original.uplink.rx_packets | pktsBytes}} / {{original.uplink.rx_bytes | pktsBytes}}</dd>
+                                <dt>Up Pkts / Bytes</dt>
+                                <dd>{{original.uplink.tx_packets | pktsBytes}} / {{original.uplink.tx_bytes | pktsBytes}}</dd>
+                                <dt>Activity</dt>
+                                <dd>{{original | deviceActivity | pktsBytes}} B/sec</dd>
+                            </dl>
+                        <h3>Radio</h3>
+                        <p>The following information reports on the activity, over the radio, from the device to users.</p>
+                        <dl class="dl-horizontal">
+                            <dt>Channel</dt>
+                            <dd>{{original['ng-channel']}}&nbsp;</dd>
+                            <dt>Transmit Power</dt>
+                            <dd>{{original['ng-tx_power']}} dBm (EIRP)</dd>
+                            <dt>TX Pkts / Bytes</dt>
+                            <dd>{{original.stat.tx_packets | pktsBytes}} / {{original.stat.tx_bytes | pktsBytes}}&nbsp;</dd>
+                            <dt>RX Pkts / Bytes</dt>
+                            <dd>{{original.stat.rx_packets | pktsBytes}} / {{original.stat.rx_bytes | pktsBytes}}&nbsp;</dd>
+                            <dt># of Users</dt>
+                            <dd>{{original.user_num_sta}}</dd>
+                        </dl>
                     </div>
                 </div>
             </div>
         </div>
-        </div>
     </div>
-
     <div class="update-controls" ng-show="isDirty()">
         <button class="btn btn-primary" ng-disabled="form.$invalid" ng-click="update()">Update</button>
         <button class="btn btn-link clear-form" ng-click="reset()">Discard Changes</button>

@@ -1,26 +1,18 @@
 'use strict';
 
-managedWifi.controller('NetworkController', ["$scope", "$location", "$routeParams", "NetworkService", "notificationService", "dialogService",
-    function NetworkController($scope, $location, $routeParams, networkService, notificationService, dialogService) {
+managedWifi.controller('GuestNetworkController', ["$scope", "$location", "$routeParams", "NetworkService", "notificationService", "dialogService",
+    function GuestNetworkController($scope, $location, $routeParams, networkService, notificationService, dialogService) {
         $scope.activeItem = 'Configuration';
-        
-        if($routeParams.tab === 'policies')
-        	$scope.activeSubItem = 'Guest';
-        else
-        	$scope.activeSubItem = 'Basic';
-        
+        $scope.activeSubItem = 'Basic';
         $scope.regExIpAddress = managedWifi.regExLib.ipAddress;
 
         $scope.isNew = $routeParams.id == undefined;
-        
-        $scope.isGuest = $routeParams.network_type == 'guestnetwork';
 
         $scope.showWepPassword = false;
         $scope.showWpaePassword = false;
         $scope.showWpapPassword = false;
 
         if(!$scope.isNew){
-        	if($scope.isGuest)
             networkService.getById($routeParams.id).then(function(network){
                 if(network.vlan != undefined) network.vlan = parseInt(network.vlan);
                 if(network.radius_port_1 != undefined) network.radius_port_1 = parseInt(network.radius_port_1);
@@ -30,33 +22,19 @@ managedWifi.controller('NetworkController', ["$scope", "$location", "$routeParam
 
             });
         } else {
-        	if(!$scope.isGuest) {
-	            $scope.original = {           		
-	                enabled: true,
-	                hide_ssid: false,
-	                is_guest: false,
-	                name: "New Network",
-	                security: "wpapsk",
-	                vlan_enabled: false,
-	                wpa_enc: "auto",
-	                wpa_mode: "auto"
-	            };
-        	}
-        	else {
-        		 $scope.original = {
-        	                enabled: true,
-        	                hide_ssid: false,
-        	                is_guest: true,
-        	                name: "New Guest Network",
-        	                security: "wpapsk",
-        	                vlan_enabled: false,
-        	                wpa_enc: "auto",
-        	                wpa_mode: "auto",
-        	                auth: "none",
-        	                redirect_enabled: false,
-        	                expire: ""
-        	            };
-        	}
+            $scope.original = {
+                enabled: true,
+                hide_ssid: false,
+                is_guest: true,
+                name: "New Guest Network",
+                security: "wpapsk",
+                vlan_enabled: false,
+                wpa_enc: "auto",
+                wpa_mode: "auto",
+                auth: "none",
+                redirect_enabled: false,
+                expire: ""
+            };
             $scope.network = angular.copy($scope.original);
         }
 
@@ -121,24 +99,6 @@ managedWifi.controller('NetworkController', ["$scope", "$location", "$routeParam
         }
 
         $scope.offLocationChangeStart = $scope.$on('$locationChangeStart', confirmRoute);
-
-
-        $scope.deleteNetwork = function(){
-            dialogService
-                .confirm({title: "Confirmation Required", msg: "Deleting this network is irreversible. Please click 'confim' to delete this network."})
-                .result.then(function(){
-                    networkService.delete($scope.original).then(
-                        function(){
-                            notificationService.success("networkDelete", $scope.original.name + " was deleted.");
-                            $location.replace("/networks");
-                            $location.url("/networks");
-                        },
-                        function(reason){
-                            notificationService.error("networkDelete", "An error occurred while attempting to delete this network");
-                        }
-                    )
-                });
-        };
 
     }
 ]);

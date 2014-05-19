@@ -6,8 +6,7 @@
 .idea/
 *.iml
 *.wpu
-*.floo
-*.flooignore
+*.floobits
 # maven build directories
 target/
 

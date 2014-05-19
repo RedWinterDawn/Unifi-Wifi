@@ -1,10 +1,10 @@
 'use strict';
 
-managedWifi.controller('AccessPointListController', ["$scope", "$location", "AccessPointService", "notificationService", "messagingService",
-    function AccessPointListController($scope, $location, accessPointService, notificationService, messagingService) {
+managedWifi.controller('AccessPointListController', ["$rootScope","$scope", "$location", "dialogService", "AccessPointService", "siteService", "notificationService", "messagingService",
+    function AccessPointListController($rootScope, $scope, $location, dialogService, accessPointService, siteService, notificationService, messagingService) {
 
         $scope.paginator = managedWifi.paginator('name');
-
+        
         var init = function (){
             accessPointService.getAll().then(
                 function(devices){
@@ -26,10 +26,37 @@ managedWifi.controller('AccessPointListController', ["$scope", "$location", "Acc
         };
         init();
 
+        $scope.upgradeDevice = function(accessPoint){
+            accessPointService.upgrade(accessPoint).then(function(){
+                notificationService.success("accessPointUpgrade", "The access point is upgrading");
+                init();
+            });
+        };
+        
+        $scope.addAccessPoints = function(){
+        	$location.url('/devices/new');
+        };
+        
+        $scope.redirect = function(accesspoint_id, tab){
+        	$location.url('/device/'+accesspoint_id+'/'+tab);
+        }
+
         $scope.adoptDevice = function(accessPoint){
             accessPointService.adopt(accessPoint).then(function(){
                 notificationService.success("accessPointAdopt", "The access point has been adopted");
                 init();
+            });
+        };
+        
+        $scope.forgetDevice = function(mac){
+            dialogService.confirm({
+                title: "Confirmation Required",
+                msg: "If you no longer wish to manage this AP, you may remove it. Note that all configurations and history with respect to this access point will be deleted as well. The device will be restored to its factory state."
+            }).result.then(function(){
+                accessPointService.delete(mac).then(function(){
+                    notificationService.success("accessPointDelete", mac + " was deleted.");
+                    init();
+                });
             });
         };
 

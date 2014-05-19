@@ -23,10 +23,13 @@ public class UnifiAccessPoint extends UnifiBase implements AccessPoint {
         List<String> assignedMacs = (List<String>) siteInfo.get("devices");
 
         List<Map<String, Object>> filteredDevices = new ArrayList<Map<String, Object>>();
-        for (Map<String, Object> device : allDevices){
-            for(String mac : assignedMacs)
-                if(device.get("mac").equals(mac))
-                    filteredDevices.add(device);
+        
+        if(assignedMacs != null) {
+          for (Map<String, Object> device : allDevices){
+              for(String mac : assignedMacs)
+                  if(device.get("mac").equals(mac))
+                      filteredDevices.add(device);
+          }
         }
 
         fullResponse.put("data", filteredDevices);

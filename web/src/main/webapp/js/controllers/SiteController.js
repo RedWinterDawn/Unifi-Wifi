@@ -4,10 +4,10 @@ managedWifi.controller('SiteController', ["$scope", "$location", "$routeParams",
     function SiteController($scope, $location, $routeParams, siteService, notificationService, dialogService) {
 
         $scope.activeItem = 'Details';
-        $scope.isNew = $routeParams.id == undefined;
+        $scope.isNew = $location.path().split("/")[2] == undefined;
 
         if(!$scope.isNew){
-            siteService.getById($routeParams.id).then(
+            siteService.getById(localStorage.site_id).then(
                 function(site){
                     site.macs = site.devices == undefined ? "" : site.devices.join("\n");
                     $scope.original = site;
@@ -25,20 +25,21 @@ managedWifi.controller('SiteController', ["$scope", "$location", "$routeParams",
         }
 
         $scope.update = function() {
-            $scope.site.devices = $scope.site.macs == undefined ? [] : $scope.site.macs.split("\n");
             if($scope.isNew) {
                 siteService.add($scope.site).then(
                     function(){
                         notificationService.success("siteAdd", "The site has been added");
                         $scope.offLocationChangeStart();
                         window.onbeforeunload = null;
-                        $location.url("/sites");
+                        siteService.selectSite($scope.site);
+                        $location.url("/devices");
                     },
                     function(reason){
                         notificationService.error("siteAdd", "An error occurred while attempting to add this site");
                     }
                 )
             } else {
+                $scope.site.devices = $scope.site.macs == undefined ? [] : $scope.site.macs.split("\n");
                 siteService.update($scope.site).then(
                     function(){
                         angular.copy($scope.site, $scope.original);
@@ -49,6 +50,19 @@ managedWifi.controller('SiteController', ["$scope", "$location", "$routeParams",
                     }
                 )
             }
+        };
+        
+        $scope.updateMac = function() {
+        	$scope.site.devices = $scope.site.macs == undefined ? [] : $scope.site.macs.split("\n");
+        	siteService.update($scope.site).then(
+                    function(){
+                        angular.copy($scope.site, $scope.original);
+                        notificationService.success("siteEdit", "The site has been updated");
+                    },
+                    function(reason){
+                        notificationService.error("siteEdit", "An error occurred while attempting to save this site");
+                    }
+                )
         };
 
         $scope.reset = function() {

@@ -1,7 +1,7 @@
 'use strict';
 
-managedWifi.controller('NetworksController', ["$scope", "$location", "NetworkService", "notificationService", "messagingService",
-    function NetworksController($scope, $location, networkService, notificationService, messagingService) {
+managedWifi.controller('NetworksController', ["$scope", "$location", "$routeParams", "NetworkService", "notificationService", "messagingService", "dialogService",
+    function NetworksController($scope, $location, $routeParams, networkService, notificationService, messagingService, dialogService) {
 
         $scope.paginator = managedWifi.paginator('name');
 
@@ -23,8 +23,37 @@ managedWifi.controller('NetworksController', ["$scope", "$location", "NetworkSer
         };
         init();
 
-        $scope.addNetwork = function(){
-            $location.url('/network/');
+        $scope.addNetwork = function(type){
+            $location.url('/networks/new'+type+'/');
+        };
+        
+        $scope.manageNetwork = function(network_id,type,tab){
+        	type = type ? 'guestnetwork' : 'network';
+            $location.url('/networks/'+type+'/'+network_id+'/'+tab);
+        };
+        
+        $scope.deleteNetwork = function(networkId){
+            dialogService
+                .confirm({title: "Confirmation Required", msg: "Deleting this network is irreversible. Please click 'confim' to delete this network."})
+                .result.then(function(){
+                	 networkService.getById(networkId).then(function(network){
+                         if(network.vlan != undefined) network.vlan = parseInt(network.vlan);
+                         if(network.radius_port_1 != undefined) network.radius_port_1 = parseInt(network.radius_port_1);
+                	
+		                    networkService.delete(network).then(
+		                        function(){
+		                            notificationService.success("networkDelete", network.name + " was deleted.");
+		                            $location.replace("/networks");
+		                            $location.url("/networks");
+		                            init();
+		                        },
+		                        function(reason){
+		                            notificationService.error("networkDelete", "An error occurred while attempting to delete this network");
+		                        }
+		                    )
+		                
+                	 });
+                });
         };
 
         var subToken = messagingService.subscribe(managedWifi.messageTopics.service.refreshComplete.networkService, init);

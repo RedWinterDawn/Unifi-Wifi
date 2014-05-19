@@ -1,11 +1,11 @@
 <div class="row-fluid page-title">
     <div class="span12">
 
-        <h1 class="content-title">Manage Connected Devices<span ng-show="accessPoint">for {{accessPoint}}</span></h1>
+        <h1 class="content-title">Manage Connected User Devices <span ng-show="accessPoint">For {{accessPoint}}</span></h1>
         <ul class="crumbs">
-            <li ng-show="accessPoint"><a href="#/devices">Access Point Devices</a></li>
+            <li ng-show="accessPoint"><a href="#/devices">Access Points</a></li>
             <li ng-show="accessPoint"><a ng-href="#/device/{{apId}}">Manage {{accessPoint}}</a></li>
-            <li ng-class="{'first': !accessPoint}"><a style="cursor:pointer;">Connected Devices</a></li>
+            <li ng-class="{'first': !accessPoint}"><a style="cursor:pointer;">Connected User Devices</a></li>
         </ul>
 
     </div>

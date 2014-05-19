@@ -18,17 +18,17 @@ public class Configuration {
 
 	private final Properties properties = new Properties();
 
-	private Configuration(String filename) {
+	private Configuration(final String filename) {
 		try (FileInputStream fileInputStream = new FileInputStream(new File(
 				filename))) {
 			properties.load(fileInputStream);
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			log.error("Could not load configuration", e);
 		}
 	}
 
 	private static void logConfiguration() {
-		log.info("CONFIGURATION");
+    log.info("CONFIGURATION");
 		log.info("web.CORS.origin={}", getHostForCORSFilter());
 		log.info("unifi.controller.URL={}", getControllerURL());
 		log.info("mongo.host={}", getMongoDBHost());
@@ -51,11 +51,11 @@ public class Configuration {
 
 	public static String getControllerURL() {
 		return INSTANCE.properties.getProperty("unifi.controller.URL",
-				"https://unifi:8443");
+        "https://localhost:8443");
 	}
 
 	public static String getMongoDBHost() {
-		return INSTANCE.properties.getProperty("mongo.host", "localhost");
+    return INSTANCE.properties.getProperty("mongo.host", "127.0.0.1");
 	}
 
 	public static int getMongoDBPort() {
@@ -89,7 +89,7 @@ public class Configuration {
 
 	public static String getOAuthRedirectURI() {
 		return INSTANCE.properties.getProperty("oauth.redirectURI",
-				"http://localhost:8000/web/index.html#/oauth2");
+				"http://localhost:8000/index.html#/oauth2");
 	}
 
 	public static String getOAuthClientID() {

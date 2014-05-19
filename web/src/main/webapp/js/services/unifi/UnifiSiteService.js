@@ -7,7 +7,8 @@ managedWifi.factory('unifiSiteService', ['$q', '$http', 'appSettings', 'messagin
         messagingService.publishSync(managedWifi.messageTopics.service.refreshComplete.siteService);
     });
 
-    return {
+    var ret = {
+    	currentSite: null,
         getAll: function () {
             var deferred = $q.defer();
             if(sites == null){
@@ -59,13 +60,19 @@ managedWifi.factory('unifiSiteService', ['$q', '$http', 'appSettings', 'messagin
                 });
             });
         },
+        
+        addNewSite: function(){
+        	$route.reload();
+        },
 
         selectSite: function(site){
+        	localStorage.site_id = site.site_id;
             return $http.post(appSettings.apiEndpoint+"/site/active", {site_id: site.site_id})
                 .then(function(){
-                    messagingService.publish(managedWifi.messageTopics.service.refresh);
-                }
-            );
-        }
+	                    messagingService.publish(managedWifi.messageTopics.service.refresh);
+	                }
+                )}
     };
+    
+    return ret;
 }]);

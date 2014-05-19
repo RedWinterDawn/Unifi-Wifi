@@ -1,6 +1,6 @@
 'use strict';
-managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "$cookies", "appSettings", "navigationService", "notificationService", "siteService", "messagingService", "loginService",
-    function MainMenuController($scope, $http, $location, $cookies, appSettings, navigationService, notificationService, siteService, messagingService, loginService) {
+managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "$routeParams", "$cookies", "appSettings", "navigationService", "notificationService", "siteService", "networkService", "messagingService", "dialogService", "loginService",
+    function MainMenuController($scope, $http, $location, $cookies, $routeParams, appSettings, navigationService, notificationService, siteService, networkService, messagingService, dialogService, loginService) {
         $scope.siteFilter = '';
         $scope.referrer = document.referrer;
 
@@ -21,7 +21,12 @@ managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "$c
 
         resizeSiteList();
 
-        var init = function(){
+        $scope.init = function(){
+            networkService.getAll().then(
+                function(networks){
+                    $scope.networks = networks;
+                }
+            );
             siteService.getAll().then(
                 function(sites){
                     notificationService.clear("loadSites");
@@ -36,7 +41,7 @@ managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "$c
                     notificationService.error("loadSites", "An error occurred while loading the sites for this account.");
                 }
             );
-
+            
             loginService.isAdmin().then(
                 function(isAdmin){
                     $scope.isAdmin = isAdmin;
@@ -45,7 +50,7 @@ managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "$c
         };
 
         loginService.isLoggedIn().then(function(){
-            init();
+            $scope.init();
             $scope.firstName = $cookies.firstName;
             $scope.lastName = $cookies.lastName;
             $scope.email = $cookies.email;
@@ -78,7 +83,7 @@ managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "$c
 
         $scope.navigate = function(route){
             if(route == null || route == '')
-                route = '/';
+            	route = '/';
             $location.url(route);
         };
 
@@ -92,6 +97,26 @@ managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "$c
                     notificationService.error("loadSite", "An error occurred while switching sites.");
                 }
             )
+        };
+
+        
+        $scope.deleteSite = function(site,sites){
+            dialogService.confirm({
+                title: "Confirmation Required",
+                msg: "Note that all configurations and history with respect to this site will be deleted. All associated devices will be restored to their factory state."
+            }).result.then(function(){
+                siteService.delete(site).then(function() {
+                	$scope.init();
+                    notificationService.success("siteDelete", site.friendly_name + " was deleted.");
+                    if(sites.length !== 0)
+                    	$scope.selectSite(sites[0]);
+                    else {
+                    	location.replace("#/newsite");
+                    	location.url("#/newsite");
+                    }
+                    	
+                });
+            });
         };
 
         var sitePropertiesToFilter = ['friendly_name', 'city', 'state', 'zip'];
@@ -112,6 +137,8 @@ managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "$c
 
             sort(sortField, sortReverse);
         };
+        
+        
 
         $scope.sortIcons = {
             friendly_name: 'icon-caret-down',
@@ -161,7 +188,7 @@ managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "$c
             window.location = "https://www.onjive.com/";
         };
 
-        var subToken = messagingService.subscribe(managedWifi.messageTopics.service.refreshComplete.siteService, init);
+        var subToken = messagingService.subscribe(managedWifi.messageTopics.service.refreshComplete.siteService, $scope.init);
         $scope.$on('$destroy', function() {
             messagingService.unsubscribe(subToken);
         });

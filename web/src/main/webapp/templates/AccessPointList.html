@@ -1,8 +1,8 @@
 <div class="row-fluid page-title">
     <div class="span12">
-        <h1 class="content-title">Manage Access Point Devices</h1>
+        <h1 class="content-title">Manage Access Points</h1>
         <ul class="crumbs">
-            <li><a style="cursor:pointer;">Access Point Devices</a></li>
+            <li><a style="cursor:pointer;">Access Points</a></li>
         </ul>
     </div>
 </div>
@@ -10,6 +10,9 @@
 <div class="row-fluid">
     <div class="span12">
         <div class="page-actions">
+            <ul>
+                <li><a ng-click="addAccessPoints()"><i class="icon-plus-sign"></i>Edit Access Points</a></li>
+            </ul>
         </div>
     </div>
 </div>
@@ -31,7 +34,9 @@
 <table class="table table-striped table-condensed">
 <thead>
 <tr>
+    <th></th>
     <th><a ng-click="paginator.setOrder('name')">Name<i ng-class="paginator | sortClass:'name'"></i></a></th>
+    <th><a ng-click="paginator.setOrder('model')">Model<i ng-class="paginator | sortClass:'model'"></i></a></th>
     <th><a ng-click="paginator.setOrder('mac')">MAC Address<i ng-class="paginator | sortClass:'mac'"></i></a></th>
     <th><a ng-click="paginator.setOrder('orderableIp')">IP Address<i ng-class="paginator | sortClass:'orderableIp'"></i></a></th>
     <th>
@@ -52,26 +57,34 @@
             </ul>
         </div>
     </th>
-    <th><a ng-click="paginator.setOrder('user_num_sta')"># of Devices<i ng-class="paginator | sortClass:'user_num_sta'"></i></a></th>
+    <th><a ng-click="paginator.setOrder('uptime')">Uptime<i ng-class="paginator | sortClass:'uptime'"></i></a></th>
+    <th><a ng-click="paginator.setOrder('user_num_sta')"># of Connected Devices<i ng-class="paginator | sortClass:'user_num_sta'"></i></a></th>
     <th><a ng-click="paginator.setOrder('tx_bytes')">Download<i ng-class="paginator | sortClass:'tx_bytes'"></i></a></th>
     <th><a ng-click="paginator.setOrder('rx_bytes')">Upload<i ng-class="paginator | sortClass:'rx_bytes'"></i></a></th>
     <th><a ng-click="paginator.setOrder('cfgversion')">Version<i ng-class="paginator | sortClass:'cfgversion'"></i></a></th>
+    <th><a>Network</a></th>
+    <th><a>Upgrade</a></th>
     <th class="no-hover"></th>
 </tr>
 </thead>
 <tbody>
 <tr ng-repeat="accessPoint in accessPoints | filter: filter | storeItemCount: paginator.updateTotalItems | orderBy: paginator.orderBy | slice:(paginator.currentPage-1)*20:20">
+    <td><a ng-click="forgetDevice(accessPoint.mac)" ng-show="accessPoint.adopted"><i class="icon-trash"></i></a></td>
     <td>{{accessPoint.name}}</td>
+    <td>{{accessPoint.model}}</td>
     <td>
         <a ng-show="accessPoint.state == 1" ng-href="#/device/{{accessPoint.id}}">{{accessPoint.mac}}</a>
         <span ng-hide="accessPoint.adopted">{{accessPoint.mac}}</span>
     </td>
     <td>{{accessPoint.ip}}</td>
     <td>{{accessPoint | deviceStatus}}</td>
+    <td>{{accessPoint.uptime | uptime}}</td>
     <td>{{accessPoint.user_num_sta}}</td>
     <td>{{accessPoint.tx_bytes | bytes}}</td>
     <td>{{accessPoint.rx_bytes | bytes}}</td>
     <td>{{accessPoint.version || ''}}</td>
+    <td><a ng-click="redirect(accessPoint.id, 'activity')" ng-show="accessPoint.state == 1">Activity</a></td>
+    <td><a ng-click="upgradeDevice(accessPoint)" ng-show="accessPoint.upgradable && accessPoint.state != 4"><i class="icon-upload"></i></a></td>
     <td>
         <div class="dropdown settings" ng-hide="accessPoint.state > 2"><a href="#" data-toggle="dropdown" class="dropdown-toggle icons"><i class="icon-cog"></i><i class="icon-caret-down"></i></a>
             <ul role="menu" aria-labelledby="dropdownMenu" class="dropdown-menu pull-right">
