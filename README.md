@@ -89,6 +89,7 @@ enabled=1
 
 run: yum install mongo-10gen mongo-10gen-server
 
+###One Way
 scp the Unifi Controller software version 3.1.3
 NOTE: The version must be 3.1.3 at this time no other version is supported by the UI
 
@@ -102,7 +103,11 @@ cd /opt/unifi/
 NOTE: /opt/unfi/bin/mongod needs to symlink to the installed mongod (usally /usr/bin/mongod)
 
 java -jar lib/ace.jar start &
-NOTE: needs to have the 
+NOTE: needs to have the `&` to start in the background
+
+####Another Way - using debian pkg
+https://community.ubnt.com/t5/UniFi-Beta/UniFi-3-1-10-RC-is-Released/m-p/739939#U739939
+Near the bottom are instructions
 
 go to https://<ipaddess>:8443
 
@@ -116,14 +121,18 @@ all other info not important set to whatever
 echo |openssl s_client -connect localhost:8443 2>&1 |sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' |keytool -import -trustcacerts -alias "managed wifi controller"   -keystore "$JAVA_HOME/jre/lib/security/cacerts"   -storepass changeit -noprompt
 ```
 
-expect: Certificate was added to the keystore
+expect: `Certificate was added to the keystore`
 
-cd /var/lib/tomcat6/webapps/
+`cd /var/lib/tomcat6/webapps/`
 
-wget <link copied from repo for the com.jiveapadapter web version <latest > jar>
-
+Pull latest snapshot from the Nexus repo. Search for: com.jive.apcontrolleradapter
+```
+wget "http://repo.ftw.jiveip.net/service/local/artifact/maven/redirect?r=snapshots&g=com.jive.apcontrolleradapter&a=web&v=1.0-SNAPSHOT&e=war"
+```
+Rename the downloaded file. If there already exists a folder named ROOT, remove it.
+```
 mv <downloaded file> ROOT.war
-
+```
 create file /etc/managed-wifi.config
 
 contents of file:
@@ -144,13 +153,15 @@ oauth.clientId=27abd5a4-9e81-4e4e-9ccf-f6e81df64d19
 oauth.password=i4egS4Cd59LWJiP6SnafL7nvJjg7cI
 portal-api.URL=https://api.jive.com/wifi
 ```
+Start tomcat
+```
 service tomcat6 start
-
-to verify tomcat started properly by running  tail on the logs.
+```
+to verify tomcat started properly by running tail on the logs.
 ```
 tail -f path/to/tomcat/files
 ```
-
+path is usually ```/usr/lib/tomcat/logs/catalina.out```
 
 
 # Getting the bastard running
