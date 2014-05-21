@@ -2,10 +2,13 @@
     <div class="span12">
         <h1 class="content-title" ng-show="!isGuest">{{isNew ? "Create New Network" : ("Manage " + network.name) }} </h1>
         <h1 class="content-title" ng-show="isGuest">{{isNew ? "Create New Guest Network" : ("Manage " + network.name) }} </h1>
-        <ul class="crumbs">
+        <ul class="crumbs" ng-show="isGuest">
             <li><a href="#/networks">Wireless Networks</a></li>
-            <li ng-show="!isGuest"><a style="cursor:pointer;">{{isNew ? "Create New Network" : ("Manage " + network.name) }}</a></li>
-            <li ng-show="isGuest"><a style="cursor:pointer;">{{isNew ? "Create New Guest Network" : ("Manage " + network.name) }}</a></li>
+            <li><a style="cursor:pointer;">{{isNew ? "Create New Guest Network" : ("Manage " + network.name) }}</a></li>
+        </ul>
+        <ul class="crumbs" ng-show="!isGuest">
+            <li><a href="#/networks">Wireless Networks</a></li>
+            <li><a style="cursor:pointer;">{{isNew ? "Create New Network" : ("Manage " + network.name) }}</a></li>
         </ul>
     </div>
 </div>
@@ -15,13 +18,23 @@
 <div class="row-fluid">
     <div class="span12">
         <div class="content">
-            <div class="container-fluid">
+            <div class="container-fluid"> 
                 <div class="row-fluid" ng-show="activeItem == 'Configuration'">
                     <div class="span12">
                         <ul class="nav nav-tabs">
-                            <li ng-class="activeSubItem == 'Basic' ? 'active' : ''"><a ng-click="activeSubItem = 'Basic'">Basic</a></li>
-                            <li ng-class="activeSubItem == 'Advanced' ? 'active' : ''"><a ng-click="activeSubItem = 'Advanced'">Advanced</a></li>
-                            <li ng-show="isGuest" ng-class="activeSubItem == 'Guest' ? 'active' : ''"><a ng-click="activeSubItem = 'Guest'">Guest Policies</a></li>
+                            <li ng-class="activeSubItem == 'Basic' ? 'active' : form.name.$invalid ? 'error' : '' ||
+                                                                                form.wepKey.$invalid ? 'error' : '' ||
+                                                                                form.wepIdx.$invalid ? 'error' : '' ||
+                                                                                form.wpapskKey.$invalid ? 'error' : '' ||
+                                                                                form.wpaeapIP.$invalid ? 'error' : '' ||
+                                                                                form.wpaeapPort.$invalid ? 'error' : '' ||
+                                                                                form.wpaeapPass.$invalid ? 'error' : ''"><a ng-click="activeSubItem = 'Basic'">Basic</a></li>
+                            <li ng-class="activeSubItem == 'Advanced' ? 'active' : form.vlan.$invalid ? 'error' : ''"><a ng-click="activeSubItem = 'Advanced'">Advanced</a></li>
+                            <li ng-show="isGuest" ng-class="activeSubItem == 'Guest' ? 'active' : form.promoUrl.$invalid ? 'error' : '' || 
+                                                                                                  form.guestPassword.$invalid ? 'error' : '' || 
+                                                                                                  form.terms.$invalid ? 'error' : '' || 
+                                                                                                  form.expire.$invalid ? 'error' : ''">
+                                                                                                  <a ng-click="activeSubItem = 'Guest'">Guest Policies</a></li>
                         </ul>
                         <div ng-show="activeSubItem=='Basic'">
                             <h3>Basic Settings</h3>

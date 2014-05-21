@@ -129,7 +129,10 @@ managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "$r
                 $scope.filteredSites = _.filter($scope.sites, function(site) {
                     return _.all(searchTerms, function(term) {
                         return _.any(sitePropertiesToFilter, function(prop) {
-                            return site[prop].toLowerCase().indexOf(term) > -1;
+                        	if(site[prop] != undefined)
+                        		return site[prop].toLowerCase().indexOf(term) > -1;
+                        	else
+                        		return false;
                         });
                     });
                 });

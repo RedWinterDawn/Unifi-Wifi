@@ -1,7 +1,7 @@
 'use strict';
 
-managedWifi.controller('AccessPointListController', ["$rootScope","$scope", "$location", "dialogService", "AccessPointService", "siteService", "notificationService", "messagingService",
-    function AccessPointListController($rootScope, $scope, $location, dialogService, accessPointService, siteService, notificationService, messagingService) {
+managedWifi.controller('AccessPointListController', ["$scope", "$location", "dialogService", "AccessPointService", "siteService", "notificationService", "messagingService",
+    function AccessPointListController($scope, $location, dialogService, accessPointService, siteService, notificationService, messagingService) {
 
         $scope.paginator = managedWifi.paginator('name');
         

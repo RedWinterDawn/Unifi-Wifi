@@ -40,9 +40,9 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
        );
 
     $scope.updateSite = function() {
-        siteService.update($scope.site).then(
+        siteService.update($scope.settings).then(
                 function(){
-                    angular.copy($scope.site, $scope.original);
+                    angular.copy($scope.settings, $scope.original);
                     notificationService.success("siteEdit", "The site has been updated");
                 },
                 function(reason){

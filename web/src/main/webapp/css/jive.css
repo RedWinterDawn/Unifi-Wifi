@@ -3829,6 +3829,11 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini {
 .nav-tabs>li>a:hover, .nav-tabs>li>a:focus {
 	border-color: #eee #eee #ddd
 }
+.nav-tabs>li.error {
+	box-shadow: inset 0px 0px 10px 0px red;
+	border-radius: 4px 4px 0 0;
+	position: relative
+}
 .nav-tabs>.active>a, .nav-tabs>.active>a:hover, .nav-tabs>.active>a:focus {
 	color: #555;
 	background-color: #fff;

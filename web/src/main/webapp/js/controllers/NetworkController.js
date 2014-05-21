@@ -20,7 +20,6 @@ managedWifi.controller('NetworkController', ["$scope", "$location", "$routeParam
         $scope.showWpapPassword = false;
 
         if(!$scope.isNew){
-        	if($scope.isGuest)
             networkService.getById($routeParams.id).then(function(network){
                 if(network.vlan != undefined) network.vlan = parseInt(network.vlan);
                 if(network.radius_port_1 != undefined) network.radius_port_1 = parseInt(network.radius_port_1);
