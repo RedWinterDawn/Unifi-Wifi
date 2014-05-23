@@ -7,14 +7,14 @@ managedWifi.controller('NetworksController', ["$scope", "$location", "$routePara
 
         var init = function(){
             networkService.getAll().then(
-                function(networks){
+                function(allNetworkData){
                     notificationService.clear("loadNetworks");
 
-                    networks.forEach(function(network){ // modify model to work with angular particulars
+                    allNetworkData.networks.forEach(function(network){ // modify model to work with angular particulars
                         network.id = network._id;
                     });
-                    $scope.networks = networks;
-                    $scope.paginator.updateTotalItems(networks.length);
+                    $scope.networks = allNetworkData.networks;
+                    $scope.paginator.updateTotalItems($scope.networks.length);
                 },
                 function(reason){
                     notificationService.error("loadNetworks", "An error occurred while loading networks.");

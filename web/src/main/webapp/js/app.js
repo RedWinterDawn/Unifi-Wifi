@@ -43,6 +43,12 @@ managedWifi.config(['$routeProvider', '$locationProvider', function ($routeProvi
 	            controller: 'UserController',
 	            resolve: managedWifi.resolveServiceAlias(["AccessPointUserService", "AccessPointService", "NetworkService"])
 	        })
+	        .when('/profiles',
+	        {
+	            templateUrl: 'templates/Profiles.html',
+	            controller: 'ProfilesController',
+	            resolve: managedWifi.resolveServiceAlias(["NetworkService"])
+	        })
 	        .when('/devices/new',
 	        {
 	            templateUrl: 'templates/Site.html',

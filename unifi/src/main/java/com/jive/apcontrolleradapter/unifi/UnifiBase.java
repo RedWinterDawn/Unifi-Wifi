@@ -88,7 +88,7 @@ public class UnifiBase {
 	    dbCollection = db.getCollection("site");
 	    query = new BasicDBObject("_id", new ObjectId(siteId));
 	    dbObject = dbCollection.findOne(query);
-	    if (dbObject == null)
+	    if (dbObject == null) //I wonder if this is ever not null as the site_id is not in the site collection
 		throw new ForbiddenException();
 
 	    siteName = dbObject.get("name") == null ? ""

@@ -1,5 +1,6 @@
 managedWifi.factory('unifiNetworkService', ['$q', '$http', 'appSettings', 'messagingService', function ($q, $http, appSettings, messagingService) {
 
+    var allNetworkData = {};
     var networks = null;
     var wlangroups = null;
     var usergroups = null;
@@ -9,10 +10,12 @@ managedWifi.factory('unifiNetworkService', ['$q', '$http', 'appSettings', 'messa
         networks = null;
         wlangroups = null;
         usergroups = null;
+        allNetworkData = {};
         messagingService.publishSync(managedWifi.messageTopics.service.refreshComplete.networkService);
     });
 
     return {
+        // Gets all the networks for a site.
         getAll: function () {
             var deferred = $q.defer();
 
@@ -21,6 +24,7 @@ managedWifi.factory('unifiNetworkService', ['$q', '$http', 'appSettings', 'messa
                 .then(
                     function(response) {
                         wlangroups = response.data.data;
+                        allNetworkData.wlangroups = wlangroups;
                     },
                     function(response) {
                         deferred.reject(response);
@@ -30,6 +34,7 @@ managedWifi.factory('unifiNetworkService', ['$q', '$http', 'appSettings', 'messa
                     $http({method: "POST", url: appSettings.apiEndpoint+"/network/groups/user"}).then(
                         function(response) {
                             usergroups = response.data.data;
+                            allNetworkData.usergroups = usergroups;
                         },
                         function(response) {
                             deferred.reject(response);
@@ -40,7 +45,8 @@ managedWifi.factory('unifiNetworkService', ['$q', '$http', 'appSettings', 'messa
                     $http({method: "POST", url: appSettings.apiEndpoint+"/network"}).then(
                         function(response) {
                             networks = response.data.data;
-                            deferred.resolve(networks);
+                            allNetworkData.networks = networks;
+                            deferred.resolve(allNetworkData);
                         },
                         function(response) {
                             deferred.reject(response);
@@ -48,9 +54,13 @@ managedWifi.factory('unifiNetworkService', ['$q', '$http', 'appSettings', 'messa
                     );
                 });
             } else {
-                deferred.resolve(networks);
+                deferred.resolve(allNetworkData);
             }
             return deferred.promise;
+        },
+
+        getByProfile: function(profile){
+
         },
 
         getById: function(id){

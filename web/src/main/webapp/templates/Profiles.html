@@ -1,0 +1,18 @@
+<div class="row-fluid">
+    <div class="span12">
+        <table class="table table-striped table-condensed">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th><a ng-click="paginator.setOrder('name')">Name(SSID)<i ng-class="paginator | sortClass:'name'"></a></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="profile in profiless | filter: filter | storeItemCount: paginator.updateTotalItems | orderBy: paginator.orderBy | slice:(paginator.currentPage-1)*20:20">
+                    <td><a ng-click=""><i class="icon-trash" ></i></a></td>
+                    <td><a ng-click="">{{profile.name}}</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
