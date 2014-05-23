@@ -36,42 +36,42 @@ public class UnifiBase {
         controllerHost = Configuration.getControllerURL();
     }
 
-    protected Map getData(String sessionId, String uri, Map message){
-        Client client= ClientBuilder.newClient();
-        WebTarget target = client.target(controllerHost + uri);
-        Response response = target
+    protected Map getData(final String sessionId, final String uri, final Map message){
+        final Client client= ClientBuilder.newClient();
+        final WebTarget target = client.target(controllerHost + uri);
+        final Response response = target
                 .request(MediaType.APPLICATION_JSON)
                 .cookie("unifises", sessionId)
                 .post(Entity.json(message == null ? "" : message));
 
-        Map fullResponse = response.readEntity(Map.class);
+        final Map fullResponse = response.readEntity(Map.class);
         return fullResponse;
     }
 
-    protected Map postFormData(String sessionId, String uri, javax.ws.rs.core.Form form){
-        Client client= ClientBuilder.newClient();
-        WebTarget target = client.target(controllerHost + uri);
-        Response response = target
+    protected Map postFormData(final String sessionId, final String uri, final javax.ws.rs.core.Form form){
+        final Client client= ClientBuilder.newClient();
+        final WebTarget target = client.target(controllerHost + uri);
+        final Response response = target
                 .request(MediaType.APPLICATION_FORM_URLENCODED)
                 .cookie("unifises", sessionId)
                 .post(Entity.form(form == null ? new Form() : form));
 
-        Map fullResponse = response.readEntity(Map.class);
+        final Map fullResponse = response.readEntity(Map.class);
         return fullResponse;
     }
 
-    protected Map<String, Object> getSessionInfo(String sessionId){
-        DB db = dbClient.getDB("ace");
-        DBCollection dbCollection = db.getCollection("cache_login");
-        BasicDBObject query = new BasicDBObject("cookie", sessionId);
-        DBObject session = dbCollection.findOne(query);
+    protected Map<String, Object> getSessionInfo(final String sessionId){
+        final DB db = dbClient.getDB("ace");
+        final DBCollection dbCollection = db.getCollection("cache_login");
+        final BasicDBObject query = new BasicDBObject("cookie", sessionId);
+        final DBObject session = dbCollection.findOne(query);
         if(session == null)
             throw new ForbiddenException();
         return session.toMap();
     }
 
-    protected Map<String, Object> getExtendedSiteInfo(String sessionId){
-        DB db = dbClient.getDB("ace");
+    protected Map<String, Object> getExtendedSiteInfo(final String sessionId){
+        final DB db = dbClient.getDB("ace");
 
         // get current site for session
         DBCollection dbCollection = db.getCollection("cache_login");
@@ -80,29 +80,34 @@ public class UnifiBase {
         if(dbObject == null)
             throw new ForbiddenException();
 
-        String siteId = dbObject.get("site_id").toString();
+	String siteName = "";
 
-        // get site name for uri to controller
-        dbCollection = db.getCollection("site");
-        query = new BasicDBObject("_id", new ObjectId(siteId));
-        dbObject = dbCollection.findOne(query);
-        if(dbObject == null)
-            throw new ForbiddenException();
+	if (dbObject.get("site_id") != null) {
+	    final String siteId = dbObject.get("site_id").toString();
+	    // get site name for uri to controller
+	    dbCollection = db.getCollection("site");
+	    query = new BasicDBObject("_id", new ObjectId(siteId));
+	    dbObject = dbCollection.findOne(query);
+	    if (dbObject == null)
+		throw new ForbiddenException();
 
-        String siteName = dbObject.get("name").toString();
+	    siteName = dbObject.get("name") == null ? ""
+		    : dbObject.get("name").toString();
 
-        dbCollection = db.getCollection("site_ext");
-        query = new BasicDBObject("site_id", siteId);
-        dbObject = dbCollection.findOne(query);
+	    dbCollection = db.getCollection("site_ext");
+	    query = new BasicDBObject("site_id", siteId);
+	    dbObject = dbCollection.findOne(query);
 
-        if(dbObject == null)
-            throw new NotFoundException("The site associated with your login could not be found");
+	    if (dbObject == null)
+		throw new NotFoundException(
+			"The site associated with your login could not be found");
 
-        dbCollection = db.getCollection("site_ext");
-        query = new BasicDBObject("site_id", siteId);
-        dbObject = dbCollection.findOne(query);
+	    dbCollection = db.getCollection("site_ext");
+	    query = new BasicDBObject("site_id", siteId);
+	    dbObject = dbCollection.findOne(query);
+	}
 
-        Map<String, Object> map = dbObject.toMap();
+        final Map<String, Object> map = dbObject.toMap();
         map.put("name", siteName);
 
         return map;

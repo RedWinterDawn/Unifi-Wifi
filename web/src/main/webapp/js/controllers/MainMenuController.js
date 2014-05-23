@@ -30,12 +30,19 @@ managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "$r
             siteService.getAll().then(
                 function(sites){
                     notificationService.clear("loadSites");
-
+                    
                     $scope.sites = sites;
-                    $scope.selectedSite = sites.filter(function(site) {
-                        return site.is_selected;
-                    })[0];
-                    $scope.filter();
+                    
+                    if(sites.length != 0){
+	                    $scope.selectedSite = sites.filter(function(site) {
+	                        return site.is_selected;
+	                    })[0];
+	                    $scope.filter();
+	                    if($scope.selectedSite == undefined){
+	                    	$scope.selectedSite = sites[0];
+	                    	sites[0].is_selected = true;
+	                    }
+                    }
                 },
                 function(reason){
                     notificationService.error("loadSites", "An error occurred while loading the sites for this account.");
@@ -106,15 +113,29 @@ managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "$r
                 msg: "Note that all configurations and history with respect to this site will be deleted. All associated devices will be restored to their factory state."
             }).result.then(function(){
                 siteService.delete(site).then(function() {
-                	$scope.init();
-                    notificationService.success("siteDelete", site.friendly_name + " was deleted.");
-                    if(sites.length !== 0)
-                    	$scope.selectSite(sites[0]);
-                    else {
-                    	location.replace("#/newsite");
-                    	location.url("#/newsite");
-                    }
-                    	
+                	siteService.getAll().then(function(sites){
+                            notificationService.clear("loadSites");
+                            
+                            $scope.sites = sites;
+                            
+                            notificationService.success("siteDelete", site.friendly_name + " was deleted.");
+                            
+                            if(sites.length != 0){
+        	                    $scope.selectedSite = sites.filter(function(site) {
+        	                        return site.is_selected;
+        	                    })[0];
+        	                    $scope.filter();
+        	                    if($scope.selectedSite == undefined){
+        	                    	$scope.selectedSite = sites[0];
+        	                    	sites[0].is_selected = true;
+        	                    	$scope.selectSite(sites[0]);
+        	                    }
+                            }
+                            else{
+                            	$location.url("/newsite");
+                            	location.reload();
+                            }
+                        });
                 });
             });
         };
