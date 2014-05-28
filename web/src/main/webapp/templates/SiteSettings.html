@@ -103,53 +103,53 @@
                                             </div>
                                             <div class="controls">
                                                 <label class="radio">
-                                                    <input type="radio" ng-model=network.auth value="none">No authentication
+                                                    <input type="radio" ng-model=settings.auth value="none">No authentication
                                                 </label>
                                                 <label class="radio">
-                                                    <input type="radio" ng-model="network.auth" value="password">Simple Password
+                                                    <input type="radio" ng-model="settings.auth" value="password">Simple Password
                                                 </label>
                                                <!--  <label class="radio">
                                                     <input type="radio" ng-model="network.auth" value="custom">External Portal Server
                                                 </label>--> 
                                                 <label class="radio">
-                                                    <input type="radio" ng-model="network.auth" value="tou">Custom Terms and Conditions
+                                                    <input type="radio" ng-model="settings.auth" value="tou">Custom Terms and Conditions
                                                 </label>
                                             </div>
                                         </div>
-                                        <div class="control-group" ng-class="form.custom_ip.$invalid ? 'error' : ''" ng-show="network.auth == 'custom'">
+                                        <div class="control-group" ng-class="form.custom_ip.$invalid ? 'error' : ''" ng-show="settings.auth == 'custom'">
                                             <div class="control-label">IP Address:</div>
                                             <div class="controls">
-                                                <input type="text" id="customIp" name="customIp" ng-model="network.custom_ip" ng-required="network.auth == 'custom'" valid-ip/>
+                                                <input type="text" id="customIp" name="customIp" ng-model="settings.custom_ip" ng-required="settings.auth == 'custom'" valid-ip/>
                                                 <i ng-hide="form.customIp.$invalid" class="icon-ok-sign active"></i>
                                                 <div ng-show="form.customIp.$invalid" class="tip help">Please provide an IP Address</div>
                                             </div>
                                         </div>
-                                        <div class="control-group" ng-show="network.auth == 'tou'">
+                                        <div class="control-group" ng-show="settings.auth == 'tou'">
                                             <div class="control-label">Company Name:</div>
                                             <div class="controls">
-                                                <input type="text" id="companyName" name="companyName" ng-model="network.companyName"/>
+                                                <input type="text" id="companyName" name="companyName" ng-model="settings.companyName"/>
                                             </div>
                                         </div>
-                                        <div class="control-group" ng-show="network.auth == 'tou'">
+                                        <div class="control-group" ng-show="settings.auth == 'tou'">
                                             <div class="control-label">Terms and Conditions:</div>
                                             <div class="controls">
-                                                <textarea type="text" id="terms" name="terms" ng-model="network.terms" ng-required="network.auth == 'tou'"></textarea>
+                                                <textarea type="text" id="terms" name="terms" ng-model="settings.terms" ng-required="settings.auth == 'tou'"></textarea>
                                                 <div ng-show="form.terms.$invalid" class="tip help">Please provide the terms and conditions</div>
                                             </div>
                                         </div>
-                                        <div class="control-group" ng-class="form.guestPassword.$invalid ? 'error' : ''" ng-show="network.auth == 'password'">
+                                        <div class="control-group" ng-class="form.guestPassword.$invalid ? 'error' : ''" ng-show="settings.auth == 'password'">
                                             <div class="control-label">Password</div>
                                             <div class="controls">
-                                                <input type="{{ showPassword ? 'text' : 'password' }}" id="guestPassword" name="guestPassword" ng-model="network.x_password" ng-required="network.auth == 'password'"/>
+                                                <input type="{{ showPassword ? 'text' : 'password' }}" id="guestPassword" name="guestPassword" ng-model="settings.x_password" ng-required="settings.auth == 'password'"/>
                                                 <label class="checkbox" style="display: inline-block;"><input type="checkbox" ng-model="showPassword">Show Password</label>
                                                 <i ng-hide="form.guestPassword.$invalid" class="icon-ok-sign active"></i>
                                                 <div ng-show="form.guestPassword.$invalid" class="tip help">Please provide a password</div>
                                             </div>
                                         </div>
-                                        <div class="control-group" ng-show="network.auth == 'password' || network.auth == 'none'" ng-class="form.expire.$invalid ? 'error' : ''">
+                                        <div class="control-group" ng-show="settings.auth == 'password' || settings.auth == 'none'" ng-class="form.expire.$invalid ? 'error' : ''">
                                             <div class="control-label">Expiration</div>
                                             <div class="controls">
-                                                <select name="expire" ng-model="network.expire" ng-required="network.auth == 'password' || network.auth == 'none'">
+                                                <select name="expire" ng-model="network.expire" ng-required="settings.auth == 'password' || settings.auth == 'none'">
                                                     <option value="480">8 hours</option>
                                                     <option value="1440">24 hours</option>
                                                     <option value="2880">2 days</option>
@@ -165,17 +165,17 @@
                                             <div class="control-label">Landing Page</div>
                                             <div class="controls">
                                                 <label class="radio">
-                                                    <input type="radio" ng-model="network.redirect_enabled" ng-value="false">Redirect to the original URL
+                                                    <input type="radio" ng-model="settings.redirect_enabled" ng-value="false">Redirect to the original URL
                                                 </label>
                                                 <label class="radio">
-                                                    <input type="radio" ng-model="network.redirect_enabled" ng-value="true">Redirect to promotional URL
+                                                    <input type="radio" ng-model="settings.redirect_enabled" ng-value="true">Redirect to promotional URL
                                                 </label>
                                             </div>
                                         </div>
-                                        <div class="control-group" ng-class="form.promoUrl.$invalid ? 'error' : ''" ng-show="network.redirect_enabled">
+                                        <div class="control-group" ng-class="form.promoUrl.$invalid ? 'error' : ''" ng-show="settings.redirect_enabled">
                                             <div class="control-label">Promotional URL</div>
                                             <div class="controls">
-                                                <input type="text" id="promoUrl" name="promoUrl" ng-model="network.redirect_url" ng-required="network.redirect_enabled"/>
+                                                <input type="text" id="promoUrl" name="promoUrl" ng-model="settings.redirect_url" ng-required="settings.redirect_enabled"/>
                                                 <i ng-hide="form.promoUrl.$invalid" class="icon-ok-sign active"></i>
                                                 <div ng-show="form.promoUrl.$invalid" class="tip help">Please provide a url</div>
                                             </div>

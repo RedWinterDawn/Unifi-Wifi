@@ -4,17 +4,10 @@ managedWifi.controller('NetworkController', ["$scope", "$location", "$routeParam
     function NetworkController($scope, $location, $routeParams, networkService, notificationService, dialogService) {
         $scope.activeItem = 'Configuration';
         
-        if($routeParams.tab === 'policies')
-        	$scope.activeSubItem = 'Guest';
-        else
-        	$scope.activeSubItem = 'Basic';
-        
         $scope.regExIpAddress = managedWifi.regExLib.ipAddress;
 
         $scope.isNew = $routeParams.id == undefined;
         
-        $scope.isGuest = $routeParams.network_type == 'guestnetwork';
-
         $scope.showWepPassword = false;
         $scope.showWpaePassword = false;
         $scope.showWpapPassword = false;
@@ -28,36 +21,21 @@ managedWifi.controller('NetworkController', ["$scope", "$location", "$routeParam
                 $scope.network = angular.copy($scope.original);
 
             });
-        } else {
-        	if(!$scope.isGuest) {
-	            $scope.original = {           		
-	                enabled: true,
-	                hide_ssid: false,
-	                is_guest: false,
-	                name: "New Network",
-	                security: "wpapsk",
-	                vlan_enabled: false,
-	                wpa_enc: "auto",
-	                wpa_mode: "auto"
-	            };
-        	}
-        	else {
-        		 $scope.original = {
-        	                enabled: true,
-        	                hide_ssid: false,
-        	                is_guest: true,
-        	                name: "New Guest Network",
-        	                security: "wpapsk",
-        	                vlan_enabled: false,
-        	                wpa_enc: "auto",
-        	                wpa_mode: "auto",
-        	                auth: "none",
-        	                redirect_enabled: false,
-        	                expire: ""
-        	            };
+
+			 $scope.original = {
+		                enabled: true,
+		                hide_ssid: false,
+		                is_guest: false,
+		                name: "New Guest Network",
+		                security: "wpapsk",
+		                vlan_enabled: false,
+		                wpa_enc: "auto",
+		                wpa_mode: "auto",
+		                auth: "none",
+		                redirect_enabled: false,
+		                expire: ""
+		            };
         		 
-        	}
-        	
             $scope.network = angular.copy($scope.original);
         }
 
