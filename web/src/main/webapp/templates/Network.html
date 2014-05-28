@@ -21,6 +21,7 @@
             <div class="control-group">
               <div class="controls">
                 <label class="checkbox" style="display: inline-block;"><input type="checkbox" ng-model="network.is_guest">Guest Network</label>
+                <div ng-hide="!network.is_guest">Guest Settings for all networks are in the Site Settings tab <a href="#/settings">here</a></div>
               </div>
              </div>
             <div class="container-fluid"> 
