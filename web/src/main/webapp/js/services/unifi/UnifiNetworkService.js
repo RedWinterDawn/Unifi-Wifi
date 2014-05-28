@@ -59,8 +59,20 @@ managedWifi.factory('unifiNetworkService', ['$q', '$http', 'appSettings', 'messa
             return deferred.promise;
         },
 
-        getByProfile: function(profile){
-
+        getProfileById: function(id){
+            if(wlangroups == null){
+                var self = this;
+                return this.getAll().then(function(data){
+                    return self.getProfileById(id);
+                })
+            }
+            var deferred = $q.defer();
+            var results = wlangroups.filter(function(profile){return profile._id == id});
+            if(results.length == 0)
+                deferred.reject('Profile not found');
+            else
+                deferred.resolve(results[0]);
+            return deferred.promise;
         },
 
         getById: function(id){

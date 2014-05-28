@@ -55,7 +55,9 @@ managedWifi.controller('NetworkController', ["$scope", "$location", "$routeParam
         	                redirect_enabled: false,
         	                expire: ""
         	            };
+        		 
         	}
+        	
             $scope.network = angular.copy($scope.original);
         }
 

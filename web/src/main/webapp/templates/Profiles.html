@@ -8,7 +8,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="profile in profiless | filter: filter | storeItemCount: paginator.updateTotalItems | orderBy: paginator.orderBy | slice:(paginator.currentPage-1)*20:20">
+                <tr ng-repeat="profile in profiles | filter: filter | storeItemCount: paginator.updateTotalItems | orderBy: paginator.orderBy | slice:(paginator.currentPage-1)*20:20">
                     <td><a ng-click=""><i class="icon-trash" ></i></a></td>
                     <td><a ng-click="">{{profile.name}}</a></td>
                 </tr>

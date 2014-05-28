@@ -9,23 +9,21 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
         
         siteSettingsService.getAll().then(
                 function(settings){
-                    $scope.original = settings.filter(function(setting){return setting.key == 'guest_access'})[0];
-                    if (!_.has($scope.original, 'expire')) $scope.original.expire = '4320';
-                    if ($scope.original.hotspotNoAuth === 'true') {
-                        $scope.original.auth = 'tou';
+                    $scope.originalSettings = settings.filter(function(setting){return setting.key == 'guest_access'})[0];
+                    if (!_.has($scope.original, 'expire')) $scope.originalSettings.expire = '4320';
+                    if ($scope.originalSettings.hotspotNoAuth === 'true') {
+                        $scope.originalSettings.auth = 'tou';
                     }
 
-                    $scope.settings = angular.copy($scope.original);
+                    $scope.settings = angular.copy($scope.originalSettings);
 
                     $scope.originalLimits = settings.filter(function(setting){return setting.key == 'limits'})[0];
                     $scope.limits = angular.copy($scope.originalLimits);
                     
                     siteService.getById($scope.original.site_id).then(
                             function(site){
-                                site.macs = site.devices == undefined ? "" : site.devices.join("\n");
-                                $scope.original = site;
-                                $scope.site = angular.copy($scope.original);
-                                $scope.settings = angular.copy($scope.original);
+                                $scope.originalSite = site;
+                                $scope.site = angular.copy($scope.originalSite);
                             },
                             function(reason){
                                 notificationService.error("loadSite", "An error occurred while attempting to retrieve this site's details");
@@ -65,7 +63,7 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
                 $scope.settings.auth = 'none';
             }
 
-            var termsModified = $scope.settings.terms !== $scope.original.terms || $scope.settings.companyName !== $scope.original.companyName;
+            var termsModified = $scope.settings.terms !== $scope.originalSettings.terms || $scope.settings.companyName !== $scope.originalSettings.companyName;
             var terms = $scope.settings.terms;
             var companyName = $scope.settings.companyName;
             var toComplete = 2;
@@ -87,7 +85,7 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
                     $scope.settings.auth = 'tou';
                 }
 
-                angular.copy($scope.settings, $scope.original);
+                angular.copy($scope.settings, $scope.originalSettings);
 
                 if (termsModified) {
                     siteSettingsService.updateTou(terms, companyName).then(function() {
@@ -122,7 +120,7 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
         };
 
         $scope.isDirty = function() {
-            var dirty = !angular.equals($scope.settings, $scope.original) || !angular.equals($scope.limits, $scope.originalLimits);
+            var dirty = !angular.equals($scope.site, $scope.originalSite) || !angular.equals($scope.limits, $scope.originalLimits) || !angular.equals($scope.settings, $scope.originalSettings);
 
             if (dirty) window.onbeforeunload = confirmExit;
             else window.onbeforeunload = null;
