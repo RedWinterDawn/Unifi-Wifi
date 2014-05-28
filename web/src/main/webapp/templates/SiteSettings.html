@@ -28,7 +28,7 @@
                             </div>
                             <div ng-show="activeItem=='Guest'">
                                 <h2>Guest Network Settings</h2>
-                                <h3>Restricted &amp; Allowed Subnets</h3>
+                                <h3>Guest Network Settings</h3>
                             </div>
                             <div ng-show="activeItem=='Access'">
                                 <h2>Access Control</h2>
@@ -95,164 +95,163 @@
                                     </div>
                                     
                                     <div class="field-section" ng-show="activeSubItem=='Guest'">
-                                    <div>
-                                        <div class="control-group">
-                                            <div class="control-label">
-                                                Authentication
-                                                <i class="icon-question-sign section-help" tooltip-placement="left" tooltip="If you already have your own hotspot authentication system, choose the [External Portal Server] option to defer to that system. Contact Jive Communications for more information on implementation details."></i>
+                                            <div class="control-group">
+                                                <div class="control-label">
+                                                    Authentication
+                                                    <i class="icon-question-sign section-help" tooltip-placement="left" tooltip="If you already have your own hotspot authentication system, choose the [External Portal Server] option to defer to that system. Contact Jive Communications for more information on implementation details."></i>
+                                                </div>
+                                                <div class="controls">
+                                                    <label class="radio">
+                                                        <input type="radio" ng-model=settings.auth value="none">No authentication
+                                                    </label>
+                                                    <label class="radio">
+                                                        <input type="radio" ng-model="settings.auth" value="password">Simple Password
+                                                    </label>
+                                                    <!--  <label class="radio">
+                                                        <input type="radio" ng-model="network.auth" value="custom">External Portal Server
+                                                    </label>-->
+                                                    <label class="radio">
+                                                        <input type="radio" ng-model="settings.auth" value="tou">Custom Terms and Conditions
+                                                    </label>
+                                                </div>
                                             </div>
-                                            <div class="controls">
-                                                <label class="radio">
-                                                    <input type="radio" ng-model=settings.auth value="none">No authentication
-                                                </label>
-                                                <label class="radio">
-                                                    <input type="radio" ng-model="settings.auth" value="password">Simple Password
-                                                </label>
-                                               <!--  <label class="radio">
-                                                    <input type="radio" ng-model="network.auth" value="custom">External Portal Server
-                                                </label>--> 
-                                                <label class="radio">
-                                                    <input type="radio" ng-model="settings.auth" value="tou">Custom Terms and Conditions
-                                                </label>
+                                            <div class="control-group" ng-class="form.custom_ip.$invalid ? 'error' : ''" ng-show="settings.auth == 'custom'">
+                                                <div class="control-label">IP Address:</div>
+                                                <div class="controls">
+                                                    <input type="text" id="customIp" name="customIp" ng-model="settings.custom_ip" ng-required="settings.auth == 'custom'" valid-ip/>
+                                                    <i ng-hide="form.customIp.$invalid" class="icon-ok-sign active"></i>
+                                                    <div ng-show="form.customIp.$invalid" class="tip help">Please provide an IP Address</div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="control-group" ng-class="form.custom_ip.$invalid ? 'error' : ''" ng-show="settings.auth == 'custom'">
-                                            <div class="control-label">IP Address:</div>
-                                            <div class="controls">
-                                                <input type="text" id="customIp" name="customIp" ng-model="settings.custom_ip" ng-required="settings.auth == 'custom'" valid-ip/>
-                                                <i ng-hide="form.customIp.$invalid" class="icon-ok-sign active"></i>
-                                                <div ng-show="form.customIp.$invalid" class="tip help">Please provide an IP Address</div>
+                                            <div class="control-group" ng-show="settings.auth == 'tou'">
+                                                <div class="control-label">Company Name:</div>
+                                                <div class="controls">
+                                                    <input type="text" id="companyName" name="companyName" ng-model="settings.companyName"/>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="control-group" ng-show="settings.auth == 'tou'">
-                                            <div class="control-label">Company Name:</div>
-                                            <div class="controls">
-                                                <input type="text" id="companyName" name="companyName" ng-model="settings.companyName"/>
+                                            <div class="control-group" ng-show="settings.auth == 'tou'">
+                                                <div class="control-label">Terms and Conditions:</div>
+                                                <div class="controls">
+                                                    <textarea type="text" id="terms" name="terms" ng-model="settings.terms" ng-required="settings.auth == 'tou'"></textarea>
+                                                    <div ng-show="form.terms.$invalid" class="tip help">Please provide the terms and conditions</div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="control-group" ng-show="settings.auth == 'tou'">
-                                            <div class="control-label">Terms and Conditions:</div>
-                                            <div class="controls">
-                                                <textarea type="text" id="terms" name="terms" ng-model="settings.terms" ng-required="settings.auth == 'tou'"></textarea>
-                                                <div ng-show="form.terms.$invalid" class="tip help">Please provide the terms and conditions</div>
+                                            <div class="control-group" ng-class="form.guestPassword.$invalid ? 'error' : ''" ng-show="settings.auth == 'password'">
+                                                <div class="control-label">Password</div>
+                                                <div class="controls">
+                                                    <input type="{{ showPassword ? 'text' : 'password' }}" id="guestPassword" name="guestPassword" ng-model="settings.x_password" ng-required="settings.auth == 'password'"/>
+                                                    <label class="checkbox" style="display: inline-block;"><input type="checkbox" ng-model="showPassword">Show Password</label>
+                                                    <i ng-hide="form.guestPassword.$invalid" class="icon-ok-sign active"></i>
+                                                    <div ng-show="form.guestPassword.$invalid" class="tip help">Please provide a password</div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="control-group" ng-class="form.guestPassword.$invalid ? 'error' : ''" ng-show="settings.auth == 'password'">
-                                            <div class="control-label">Password</div>
-                                            <div class="controls">
-                                                <input type="{{ showPassword ? 'text' : 'password' }}" id="guestPassword" name="guestPassword" ng-model="settings.x_password" ng-required="settings.auth == 'password'"/>
-                                                <label class="checkbox" style="display: inline-block;"><input type="checkbox" ng-model="showPassword">Show Password</label>
-                                                <i ng-hide="form.guestPassword.$invalid" class="icon-ok-sign active"></i>
-                                                <div ng-show="form.guestPassword.$invalid" class="tip help">Please provide a password</div>
+                                            <div class="control-group" ng-show="settings.auth == 'password' || settings.auth == 'none'" ng-class="form.expire.$invalid ? 'error' : ''">
+                                                <div class="control-label">Expiration</div>
+                                                <div class="controls">
+                                                    <select name="expire" ng-model="network.expire" ng-required="settings.auth == 'password' || settings.auth == 'none'">
+                                                        <option value="480">8 hours</option>
+                                                        <option value="1440">24 hours</option>
+                                                        <option value="2880">2 days</option>
+                                                        <option value="4320">3 days</option>
+                                                        <option value="5760">4 days</option>
+                                                        <option value="10080">7 days</option>
+                                                    </select>
+                                                    <i ng-hide="form.expire.$error.required" class="icon-ok-sign active"></i>
+                                                    <div ng-show="form.expire.$error.required" class="tip help">Please select an expiration period</div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="control-group" ng-show="settings.auth == 'password' || settings.auth == 'none'" ng-class="form.expire.$invalid ? 'error' : ''">
-                                            <div class="control-label">Expiration</div>
-                                            <div class="controls">
-                                                <select name="expire" ng-model="network.expire" ng-required="settings.auth == 'password' || settings.auth == 'none'">
-                                                    <option value="480">8 hours</option>
-                                                    <option value="1440">24 hours</option>
-                                                    <option value="2880">2 days</option>
-                                                    <option value="4320">3 days</option>
-                                                    <option value="5760">4 days</option>
-                                                    <option value="10080">7 days</option>
-                                                </select>
-                                                <i ng-hide="form.expire.$error.required" class="icon-ok-sign active"></i>
-                                                <div ng-show="form.expire.$error.required" class="tip help">Please select an expiration period</div>
+                                            <div class="control-group">
+                                                <div class="control-label">Landing Page</div>
+                                                <div class="controls">
+                                                    <label class="radio">
+                                                        <input type="radio" ng-model="settings.redirect_enabled" ng-value="false">Redirect to the original URL
+                                                    </label>
+                                                    <label class="radio">
+                                                        <input type="radio" ng-model="settings.redirect_enabled" ng-value="true">Redirect to promotional URL
+                                                    </label>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="control-group">
-                                            <div class="control-label">Landing Page</div>
-                                            <div class="controls">
-                                                <label class="radio">
-                                                    <input type="radio" ng-model="settings.redirect_enabled" ng-value="false">Redirect to the original URL
-                                                </label>
-                                                <label class="radio">
-                                                    <input type="radio" ng-model="settings.redirect_enabled" ng-value="true">Redirect to promotional URL
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="control-group" ng-class="form.promoUrl.$invalid ? 'error' : ''" ng-show="settings.redirect_enabled">
-                                            <div class="control-label">Promotional URL</div>
-                                            <div class="controls">
-                                                <input type="text" id="promoUrl" name="promoUrl" ng-model="settings.redirect_url" ng-required="settings.redirect_enabled"/>
-                                                <i ng-hide="form.promoUrl.$invalid" class="icon-ok-sign active"></i>
-                                                <div ng-show="form.promoUrl.$invalid" class="tip help">Please provide a url</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    
-                                    <div class="field-section" ng-show="activeItem=='Access'">
-                                        <div class="control-group">
-                                            <div class="control-label">Restricted Subnets</div>
-                                            <div class="controls">
-                                                <input type="text" ng-model="settings.restricted_subnet_1" valid-subnet/>
-                                                <input type="text" ng-model="settings.restricted_subnet_2" valid-subnet/>
-                                                <input type="text" ng-model="settings.restricted_subnet_3" valid-subnet/>
-                                                <input type="text" ng-model="settings.restricted_subnet_4" valid-subnet/>
+                                            <div class="control-group" ng-class="form.promoUrl.$invalid ? 'error' : ''" ng-show="settings.redirect_enabled">
+                                                <div class="control-label">Promotional URL</div>
+                                                <div class="controls">
+                                                    <input type="text" id="promoUrl" name="promoUrl" ng-model="settings.redirect_url" ng-required="settings.redirect_enabled"/>
+                                                    <i ng-hide="form.promoUrl.$invalid" class="icon-ok-sign active"></i>
+                                                    <div ng-show="form.promoUrl.$invalid" class="tip help">Please provide a url</div>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="control-group">
-                                            <div class="control-label">Allowed Subnets</div>
-                                            <div class="controls">
-                                                <input type="text" ng-model="settings.allowed_subnet_1" valid-subnet/>
-                                                <input type="text" ng-model="settings.allowed_subnet_2" valid-subnet/>
-                                                <input type="text" ng-model="settings.allowed_subnet_3" valid-subnet/>
-                                                <input type="text" ng-model="settings.allowed_subnet_4" valid-subnet/>
+                                        
+                                        
+                                        <div class="field-section" ng-show="activeItem=='Access'">
+                                            <div class="control-group">
+                                                <div class="control-label">Restricted Subnets</div>
+                                                <div class="controls">
+                                                    <input type="text" ng-model="settings.restricted_subnet_1" valid-subnet/>
+                                                    <input type="text" ng-model="settings.restricted_subnet_2" valid-subnet/>
+                                                    <input type="text" ng-model="settings.restricted_subnet_3" valid-subnet/>
+                                                    <input type="text" ng-model="settings.restricted_subnet_4" valid-subnet/>
+                                                </div>
+                                            </div>
+                                            <div class="control-group">
+                                                <div class="control-label">Allowed Subnets</div>
+                                                <div class="controls">
+                                                    <input type="text" ng-model="settings.allowed_subnet_1" valid-subnet/>
+                                                    <input type="text" ng-model="settings.allowed_subnet_2" valid-subnet/>
+                                                    <input type="text" ng-model="settings.allowed_subnet_3" valid-subnet/>
+                                                    <input type="text" ng-model="settings.allowed_subnet_4" valid-subnet/>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="field-section" ng-show="activeItem=='Limits'">
-                                        <div class="control-group">
-                                            <div class="control-label">Download Limit</div>
-                                            <div class="controls">
-                                                <label class="radio">
-                                                    <input type="radio" ng-model="limits.downRate_enabled" ng-value="false">Unlimited
-                                                </label>
-                                                <label class="radio">
-                                                    <input type="radio" ng-model="limits.downRate_enabled" ng-value="true">Limit
-                                                </label>
+                                        <div class="field-section" ng-show="activeItem=='Limits'">
+                                            <div class="control-group">
+                                                <div class="control-label">Download Limit</div>
+                                                <div class="controls">
+                                                    <label class="radio">
+                                                        <input type="radio" ng-model="limits.downRate_enabled" ng-value="false">Unlimited
+                                                    </label>
+                                                    <label class="radio">
+                                                        <input type="radio" ng-model="limits.downRate_enabled" ng-value="true">Limit
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="control-group" ng-class="form.downloadLimit.$invalid ? 'error' : ''" ng-show="limits.downRate_enabled">
+                                                <div class="control-label">Download Limit (Kbps) <i class="icon-question-sign section-help" tooltip-placement="top" tooltip="Average 32768 Kbps (4 MB/s) suggested. Limits below 8192 Kbps (1 MB/s) may result in poor performance."></i></div>
+                                                <div class="controls">
+                                                    <input type="number" id="downloadLimit" name="downloadLimit" min="-1" ng-model="limits.qos_rate_max_down" ng-required="limits.downRate_enabled" />
+                                                    <i ng-hide="form.downloadLimit.$invalid" class="icon-ok-sign active"></i>
+                                                    <div ng-show="form.downloadLimit.$invalid" class="tip help">Please provide a value</div>
+                                                </div>
+                                            </div>
+                                            <div class="control-group">
+                                                <div class="control-label">Upload Limit</div>
+                                                <div class="controls">
+                                                    <label class="radio">
+                                                        <input type="radio" ng-model="limits.upRate_enabled" ng-value="false">Unlimited
+                                                    </label>
+                                                    <label class="radio">
+                                                        <input type="radio" ng-model="limits.upRate_enabled" ng-value="true">Limit
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="control-group" ng-class="form.uploadLimit.$invalid ? 'error' : ''" ng-show="limits.upRate_enabled">
+                                                <div class="control-label">Upload Limit (Kbps) <i class="icon-question-sign section-help" tooltip-placement="top" tooltip="Average 8192 Kbps (1 MB/s) suggested. Limits below 2048 Kbps (256 KB/s) may result in poor performance."></i></div>
+                                                <div class="controls">
+                                                    <input type="number" id="uploadLimit" name="uploadLimit" min="-1" ng-model="limits.qos_rate_max_up" ng-required="limits.upRate_enabled" />
+                                                    <i ng-hide="form.uploadLimit.$invalid" class="icon-ok-sign active"></i>
+                                                    <div ng-show="form.uploadLimit.$invalid" class="tip help">Please provide a value</div>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="control-group" ng-class="form.downloadLimit.$invalid ? 'error' : ''" ng-show="limits.downRate_enabled">
-                                            <div class="control-label">Download Limit (Kbps) <i class="icon-question-sign section-help" tooltip-placement="top" tooltip="Average 32768 Kbps (4 MB/s) suggested. Limits below 8192 Kbps (1 MB/s) may result in poor performance."></i></div>
-                                            <div class="controls">
-                                                <input type="number" id="downloadLimit" name="downloadLimit" min="-1" ng-model="limits.qos_rate_max_down" ng-required="limits.downRate_enabled" />
-                                                <i ng-hide="form.downloadLimit.$invalid" class="icon-ok-sign active"></i>
-                                                <div ng-show="form.downloadLimit.$invalid" class="tip help">Please provide a value</div>
-                                            </div>
-                                        </div>
-                                        <div class="control-group">
-                                            <div class="control-label">Upload Limit</div>
-                                            <div class="controls">
-                                                <label class="radio">
-                                                    <input type="radio" ng-model="limits.upRate_enabled" ng-value="false">Unlimited
-                                                </label>
-                                                <label class="radio">
-                                                    <input type="radio" ng-model="limits.upRate_enabled" ng-value="true">Limit
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="control-group" ng-class="form.uploadLimit.$invalid ? 'error' : ''" ng-show="limits.upRate_enabled">
-                                            <div class="control-label">Upload Limit (Kbps) <i class="icon-question-sign section-help" tooltip-placement="top" tooltip="Average 8192 Kbps (1 MB/s) suggested. Limits below 2048 Kbps (256 KB/s) may result in poor performance."></i></div>
-                                            <div class="controls">
-                                                <input type="number" id="uploadLimit" name="uploadLimit" min="-1" ng-model="limits.qos_rate_max_up" ng-required="limits.upRate_enabled" />
-                                                <i ng-hide="form.uploadLimit.$invalid" class="icon-ok-sign active"></i>
-                                                <div ng-show="form.uploadLimit.$invalid" class="tip help">Please provide a value</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div></div>
+                                    </form>
+                                </div></div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="update-controls" ng-show="isDirty()">
+            <button class="btn btn-primary" ng-disabled="form.$invalid" ng-click="activeItem=='Details' ? updateSite() : update()">Update</button>
+            <button class="btn btn-link clear-form" ng-click="reset()">Discard Changes</button>
+        </div>
     </div>
-    <div class="update-controls" ng-show="isDirty()">
-        <button class="btn btn-primary" ng-disabled="form.$invalid" ng-click="activeItem=='Details' ? updateSite() : update()">Update</button>
-        <button class="btn btn-link clear-form" ng-click="reset()">Discard Changes</button>
-    </div>
-</div>
