@@ -11,9 +11,9 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
                 function(settings){
                     $scope.originalSettings = settings.filter(function(setting){return setting.key == 'guest_access'})[0];
                     if (!_.has($scope.original, 'expire')) $scope.originalSettings.expire = '4320';
-//                    if ($scope.originalSettings.hotspotNoAuth === 'true') {
-//                        $scope.originalSettings.auth = 'tou';
-//                    }
+                    if ($scope.originalSettings.hotspotNoAuth === 'true') {
+                        $scope.originalSettings.auth = 'tou';
+                    }
 
                     $scope.settings = angular.copy($scope.originalSettings);
 
