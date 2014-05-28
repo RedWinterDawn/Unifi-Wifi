@@ -61,7 +61,6 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
                 $scope.settings.auth_none = true;
                 $scope.settings.hotspotNoAuth = 'true';
                 $scope.settings.auth = 'none';
-                $scope.settings.show_tou = true;
             }
 
             var termsModified = $scope.settings.terms !== $scope.originalSettings.terms || $scope.settings.companyName !== $scope.originalSettings.companyName;
