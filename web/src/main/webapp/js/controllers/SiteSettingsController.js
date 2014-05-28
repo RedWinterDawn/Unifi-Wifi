@@ -38,9 +38,9 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
        );
 
     $scope.updateSite = function() {
-        siteService.update($scope.settings).then(
+        siteService.update($scope.site).then(
                 function(){
-                    angular.copy($scope.settings, $scope.original);
+                    angular.copy($scope.site, $scope.originalSite);
                     notificationService.success("siteEdit", "The site has been updated");
                 },
                 function(reason){
@@ -61,6 +61,7 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
                 $scope.settings.auth_none = true;
                 $scope.settings.hotspotNoAuth = 'true';
                 $scope.settings.auth = 'none';
+                $scope.settings.show_tou = true;
             }
 
             var termsModified = $scope.settings.terms !== $scope.originalSettings.terms || $scope.settings.companyName !== $scope.originalSettings.companyName;

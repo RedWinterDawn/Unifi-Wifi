@@ -148,7 +148,7 @@
                                             <div class="control-group" ng-show="settings.auth == 'password' || settings.auth == 'none'" ng-class="form.expire.$invalid ? 'error' : ''">
                                                 <div class="control-label">Expiration</div>
                                                 <div class="controls">
-                                                    <select name="expire" ng-model="network.expire" ng-required="settings.auth == 'password' || settings.auth == 'none'">
+                                                    <select name="expire" ng-model="setttings.expire" ng-required="settings.auth == 'password' || settings.auth == 'none'">
                                                         <option value="480">8 hours</option>
                                                         <option value="1440">24 hours</option>
                                                         <option value="2880">2 days</option>

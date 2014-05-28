@@ -3,6 +3,7 @@
 managedWifi.controller('NetworkController', ["$scope", "$location", "$routeParams", "NetworkService", "notificationService", "dialogService",
     function NetworkController($scope, $location, $routeParams, networkService, notificationService, dialogService) {
         $scope.activeItem = 'Configuration';
+        $scope.activeSubItem = 'Basic';
         
         $scope.regExIpAddress = managedWifi.regExLib.ipAddress;
 
@@ -26,7 +27,7 @@ managedWifi.controller('NetworkController', ["$scope", "$location", "$routeParam
 		                enabled: true,
 		                hide_ssid: false,
 		                is_guest: false,
-		                name: "New Guest Network",
+		                name: "New Network",
 		                security: "wpapsk",
 		                vlan_enabled: false,
 		                wpa_enc: "auto",

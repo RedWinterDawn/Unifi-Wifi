@@ -1,12 +1,12 @@
 <div class="row-fluid page-title">
     <div class="span12">
-        <h1 class="content-title" ng-show="!isGuest">{{isNew ? "Create New Network" : ("Manage " + network.name) }} </h1>
-        <h1 class="content-title" ng-show="isGuest">{{isNew ? "Create New Guest Network" : ("Manage " + network.name) }} </h1>
-        <ul class="crumbs" ng-show="isGuest">
+        <h1 class="content-title" ng-show="!network.is_guest">{{isNew ? "Create New Network" : ("Manage " + network.name) }} </h1>
+        <h1 class="content-title" ng-show="network.is_guest">{{isNew ? "Create New Guest Network" : ("Manage " + network.name) }} </h1>
+        <ul class="crumbs" ng-show="network.is_guest">
             <li><a href="#/networks">Wireless Networks</a></li>
             <li><a style="cursor:pointer;">{{isNew ? "Create New Guest Network" : ("Manage " + network.name) }}</a></li>
         </ul>
-        <ul class="crumbs" ng-show="!isGuest">
+        <ul class="crumbs" ng-show="!network.is_guest">
             <li><a href="#/networks">Wireless Networks</a></li>
             <li><a style="cursor:pointer;">{{isNew ? "Create New Network" : ("Manage " + network.name) }}</a></li>
         </ul>
@@ -19,9 +19,9 @@
     <div class="span12">
         <div class="content">
             <div class="control-group">
+              <div class="controls">
                <label for="name" class="control-label">Guest Network</label>
-               <div class="controls">
-                   <input type="checkbox" id="guestEnabled" name="guestEnabled" ng-model="network.is_guest" ng-value="true"/>
+                  <input type="checkbox" id="guestEnabled" name="guestEnabled" ng-model="network.is_guest" ng-value="true"/>
                </div>
             <div class="container-fluid"> 
                 <div class="row-fluid" ng-show="activeItem == 'Configuration'">
