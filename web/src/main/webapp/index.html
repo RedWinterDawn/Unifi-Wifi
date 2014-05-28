@@ -35,14 +35,14 @@
                     <div class="title"><i class="icon-signal"></i>WiFi</div>
                 </li>
                 <li class="brand" ng-bind="selectedSite.friendly_name" style="width:100px; text-align:center" ng-show="sites"></li>
-                <li class="dropdown" ng-class="isActive('Networks')" ng-show="sites"><a ng-click="navigate('networks')" data-toggle="dropdown">Wireless Networks</a></li>
-                <li class="dropdown" ng-class="isActive('Devices')" ng-show="sites"><a  ng-click="navigate('devices')" data-toggle="dropdown">Access Points</a></li>
-                <li class="dropdown" ng-class="isActive('Users')" ng-show="sites"><a ng-click="navigate('users')" data-toggle="dropdown">Connected User Devices</a></li>
-                <li class="dropdown" ng-class="isActive('Settings')" ng-show="sites"><a ng-click="navigate('settings')" data-toggle="dropdown">Site Settings</a></li>
+                <li class="dropdown" ng-class="isActive('Networks')" ng-show="sites" style="float:right"><a ng-click="navigate('networks')" data-toggle="dropdown">Wireless Networks</a></li>
+                <li class="dropdown" ng-class="isActive('Devices')" ng-show="sites" style="float:right"><a  ng-click="navigate('devices')" data-toggle="dropdown">Access Points</a></li>
+                <li class="dropdown" ng-class="isActive('Users')" ng-show="sites" style="float:right"><a ng-click="navigate('users')" data-toggle="dropdown">Connected User Devices</a></li>
+                <li class="dropdown" ng-class="isActive('Settings')" ng-show="sites" style="float:right"><a ng-click="navigate('settings')" data-toggle="dropdown">Site Settings</a></li>
             </ul>
             <div class="meta-menu">
-                <ul class="nav pull-right" ng-show="email">
-                    <li class="dropdown">
+                <ul class="nav pull-right" > <!-- ng-show="email"> -->
+                    <!-- <li class="dropdown">
                         <a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="icon-user"></i><span ng-bind="firstName + ' ' + lastName" /></a>
                         <ul class="dropdown-menu pull-right user-menu">
                             <li class="user-account">
@@ -60,7 +60,7 @@
                                 <button ng-click="logout()" class="btn pull-right">Sign Out</button>
                             </div>
                         </ul>
-                    </li>
+                    </li> -->
                     <li class="dropdown help-command"><a ng-click="navigate('help')"><i class="icon-question-sign"></i></a></li>
                     <li>
                         <div class="logo"></div>
