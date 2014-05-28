@@ -102,7 +102,7 @@ managedWifi.config(['$routeProvider', '$locationProvider', function ($routeProvi
 	         .when('/networks/new',
 	        {
 	            templateUrl: 'templates/Network.html',
-	            controller: 'NetworksController',
+	            controller: 'NetworkController',
 	            resolve: managedWifi.resolveServiceAlias("NetworkService")
 	        })
 	        .when('/networks/:id?',
