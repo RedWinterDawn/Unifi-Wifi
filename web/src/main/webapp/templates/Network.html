@@ -20,9 +20,9 @@
         <div class="content">
             <div class="control-group">
               <div class="controls">
-               <label for="name" class="control-label">Guest Network</label>
-                  <input type="checkbox" id="guestEnabled" name="guestEnabled" ng-model="network.is_guest" ng-value="true"/>
-               </div>
+                <label class="checkbox" style="display: inline-block;"><input type="checkbox" ng-model="network.is_guest">Guest Network</label>
+              </div>
+             </div>
             <div class="container-fluid"> 
                 <div class="row-fluid" ng-show="activeItem == 'Configuration'">
                     <div class="span12">
