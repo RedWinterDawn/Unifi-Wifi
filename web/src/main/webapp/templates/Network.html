@@ -30,11 +30,11 @@
                                                                                 form.wpaeapPort.$invalid ? 'error' : '' ||
                                                                                 form.wpaeapPass.$invalid ? 'error' : ''"><a ng-click="activeSubItem = 'Basic'">Basic</a></li>
                             <li ng-class="activeSubItem == 'Advanced' ? 'active' : form.vlan.$invalid ? 'error' : ''"><a ng-click="activeSubItem = 'Advanced'">Advanced</a></li>
-                            <li ng-show="isGuest" ng-class="activeSubItem == 'Guest' ? 'active' : form.promoUrl.$invalid ? 'error' : '' || 
+                            <!-- <li ng-show="isGuest" ng-class="activeSubItem == 'Guest' ? 'active' : form.promoUrl.$invalid ? 'error' : '' || 
                                                                                                   form.guestPassword.$invalid ? 'error' : '' || 
                                                                                                   form.terms.$invalid ? 'error' : '' || 
                                                                                                   form.expire.$invalid ? 'error' : ''">
-                                                                                                  <a ng-click="activeSubItem = 'Guest'">Guest Policies</a></li>
+                                                                                                  <a ng-click="activeSubItem = 'Guest'">Guest Policies</a></li> -->
                         </ul>
                         <div ng-show="activeSubItem=='Basic'">
                             <h3>Basic Settings</h3>
