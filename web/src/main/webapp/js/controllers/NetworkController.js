@@ -23,21 +23,23 @@ managedWifi.controller('NetworkController', ["$scope", "$location", "$routeParam
 
             });
 
-			 $scope.original = {
-		                enabled: true,
-		                hide_ssid: false,
-		                is_guest: false,
-		                name: "New Network",
-		                security: "wpapsk",
-		                vlan_enabled: false,
-		                wpa_enc: "auto",
-		                wpa_mode: "auto",
-		                auth: "none",
-		                redirect_enabled: false,
-		                expire: ""
-		            };
-        		 
             $scope.network = angular.copy($scope.original);
+        }
+        else{
+        	$scope.original = {
+	                enabled: true,
+	                hide_ssid: false,
+	                is_guest: false,
+	                name: "New Network",
+	                security: "wpapsk",
+	                vlan_enabled: false,
+	                wpa_enc: "auto",
+	                wpa_mode: "auto",
+	                auth: "none",
+	                redirect_enabled: false,
+	                expire: ""
+	            };
+        	$scope.network = angular.copy($scope.original);
         }
 
         $scope.update = function() {
