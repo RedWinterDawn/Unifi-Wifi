@@ -20,7 +20,7 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
                     $scope.originalLimits = settings.filter(function(setting){return setting.key == 'limits'})[0];
                     $scope.limits = angular.copy($scope.originalLimits);
                     
-                    siteService.getById($scope.original.site_id).then(
+                    siteService.getById($scope.settings.site_id).then(
                             function(site){
                                 $scope.originalSite = site;
                                 $scope.site = angular.copy($scope.originalSite);
