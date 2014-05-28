@@ -81,9 +81,9 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
 
             siteSettingsService.update($scope.settings).then(function() {
                 completed++;
-                if ($scope.settings.hotspotNoAuth === 'true') {
-                    $scope.settings.auth = 'tou';
-                }
+//                if ($scope.settings.hotspotNoAuth === 'true') {
+//                    $scope.settings.auth = 'tou';
+//                }
 
                 angular.copy($scope.settings, $scope.originalSettings);
 
