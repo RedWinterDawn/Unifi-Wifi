@@ -24,12 +24,11 @@ managedWifi.controller('NetworksController', ["$scope", "$location", "$routePara
         init();
 
         $scope.addNetwork = function(type){
-            $location.url('/networks/new'+type+'/');
+            $location.url('/networks/new/');
         };
         
-        $scope.manageNetwork = function(network_id,type,tab){
-        	type = type ? 'guestnetwork' : 'network';
-            $location.url('/networks/'+type+'/'+network_id+'/'+tab);
+        $scope.manageNetwork = function(network_id){
+            $location.url('/networks/'+network_id);
         };
         
         $scope.deleteNetwork = function(networkId){
