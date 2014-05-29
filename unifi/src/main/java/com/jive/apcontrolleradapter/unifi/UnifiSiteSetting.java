@@ -70,13 +70,10 @@ public class UnifiSiteSetting extends UnifiBase implements SiteSetting {
 
          Map<String, Object> siteInfo = getExtendedSiteInfo(sessionId);
         String siteName = (String) siteInfo.get("name");
-        String fileToReplace = "/opt/unifi/data/sites/" + siteName + "/portal/index.html";
+        String fileToReplace = "/usr/lib/unifi/data/sites/" + siteName + "/portal/index.html";
         File file = new File(fileToReplace);
 
-        String[] cmdSudo = {"/bin/bash","-c","sudo -s"};
         String[] cmd = {"/bin/bash","-c","sudo chmod -R 777 /usr/lib/unifi"};
-        Process pbSudo = Runtime.getRuntime().exec(cmdSudo);
-        pbSudo.waitFor();
         Process pb = Runtime.getRuntime().exec(cmd);
         pb.waitFor();
         String line;
