@@ -73,7 +73,7 @@ public class UnifiSiteSetting extends UnifiBase implements SiteSetting {
         String fileToReplace = "/opt/unifi/data/sites/" + siteName + "/portal/index.html";
         File file = new File(fileToReplace);
 
-        String[] cmd = {"/bin/bash","-c","chmod -R 777 /usr/lib/unifi"};
+        String[] cmd = {"/bin/bash","-c","sudo chmod -R 777 /usr/lib/unifi"};
         Process pb = Runtime.getRuntime().exec(cmd);
         pb.waitFor();
         String line;
