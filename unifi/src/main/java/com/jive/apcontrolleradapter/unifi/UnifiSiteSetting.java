@@ -112,7 +112,7 @@ public class UnifiSiteSetting extends UnifiBase implements SiteSetting {
             wrote = "false";
         }
 
-        return "deleted: " + deleted + " wrote: " + wrote + " log: " + output + outErr;
+    return "deleted: " + deleted + " wrote: " + wrote + " log: "; // + output + outErr;
     }
 
     @Override
