@@ -10,7 +10,6 @@
             <li><a href="#/networks">Wireless Networks</a></li>
             <li><a style="cursor:pointer;">{{isNew ? "Create New Network" : ("Manage " + network.name) }}</a></li>
         </ul>
-        <h3>Changes to this page will cause each Access Point to provision. See status of Access Points on <a href="#/devices">here</a></h3>
     </div>
 </div>
 <div class="page-actions">
@@ -19,6 +18,7 @@
 <div class="row-fluid">
     <div class="span12">
         <div class="content">
+                  <div>Changes to this page will cause each Access Point to provision. See status of Access Points on <a href="#/devices">here</a></div>
             <div class="control-group">
               <div class="controls">
                 <label class="checkbox" style="display: inline-block;"><input type="checkbox" ng-model="network.is_guest">Guest Network</label>
