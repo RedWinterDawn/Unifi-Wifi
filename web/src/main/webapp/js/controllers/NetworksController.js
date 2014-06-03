@@ -17,7 +17,7 @@ managedWifi.controller('NetworksController', ["$scope", "$location", "$routePara
                     $scope.paginator.updateTotalItems($scope.networks.length);
                 },
                 function(reason){
-                    notificationService.error("loadNetworks", "An error occurred while loading networks.");
+                    //notificationService.error("loadNetworks", "An error occurred while loading networks.");
                 }
             );
         };

@@ -32,7 +32,7 @@ managedWifi.controller('SiteController', ["$scope", "$location", "$routeParams",
                         $scope.offLocationChangeStart();
                         window.onbeforeunload = null;
                         siteService.selectSite($scope.site);
-                        $location.url("/devices");
+                        $location.url("/networks");
                     },
                     function(reason){
                         notificationService.error("siteAdd", "An error occurred while attempting to add this site");
