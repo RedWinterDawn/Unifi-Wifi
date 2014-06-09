@@ -58,8 +58,8 @@ managedWifi.config(['$routeProvider', '$locationProvider', function ($routeProvi
 	        .when('/devices/new',
 	        {
 	            templateUrl: 'templates/Site.html',
-	            controller: 'SiteController',
-	            resolve: managedWifi.resolveServiceAlias(["SiteService"])
+	            controller: 'SiteSettingsController',
+	            resolve: managedWifi.resolveServiceAlias(["SiteSettingsService"])
 	        })
 	        .when('/help',
 	        {
@@ -90,7 +90,7 @@ managedWifi.config(['$routeProvider', '$locationProvider', function ($routeProvi
 	        .when('/newsite',
 	        {
 	            templateUrl: 'templates/NewSite.html',
-	            controller: 'SiteController',
+	            controller: 'NewSiteController',
 	            resolve: managedWifi.resolveServiceAlias(["SiteService"])
 	        })
 	         .when('/networks',

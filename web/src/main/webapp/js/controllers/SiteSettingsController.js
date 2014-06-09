@@ -119,6 +119,20 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
             });
         };
 
+         $scope.updateMac = function() {
+            $scope.site.devices = $scope.site.macs == undefined ? [] : $scope.site.macs.split("\n");
+            siteService.update($scope.site).then(
+                    function(){
+                        angular.copy($scope.site, $scope.original);
+                        notificationService.success("siteEdit", "The site has been updated");
+                        location.url("/devices");
+                    },
+                    function(reason){
+                        notificationService.error("siteEdit", "An error occurred while attempting to save this site");
+                    }
+                )
+        };
+
         $scope.reset = function() {
             $scope.settings = angular.copy($scope.original);
             $scope.limits = angular.copy($scope.originalLimits);

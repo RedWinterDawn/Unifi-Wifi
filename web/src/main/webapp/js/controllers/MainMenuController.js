@@ -132,6 +132,7 @@ managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "$r
         	                    }
                             }
                             else{
+                                localStorage.site_id = null;
                             	$location.url("/newsite");
                             	location.reload();
                             }

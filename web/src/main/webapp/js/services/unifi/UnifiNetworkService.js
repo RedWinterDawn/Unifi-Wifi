@@ -159,6 +159,7 @@ managedWifi.factory('unifiNetworkService', ['$q', '$http', 'appSettings', 'messa
                     networks = networks.filter(function(existingNetwork){
                        return existingNetwork._id != network._id;
                     });
+                    allNetworkData.networks = networks;
                     deferred.resolve();
                 },
                 function(){

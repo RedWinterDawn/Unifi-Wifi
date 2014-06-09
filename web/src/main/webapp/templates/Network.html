@@ -18,30 +18,30 @@
 <div class="row-fluid">
     <div class="span12">
         <div class="content">
-                  <div style="padding-bottom: 20px;">Changes to this page will cause each Access Point to provision. See status of Access Points on <a href="#/devices">here</a></div>
+            <div style="padding-bottom: 20px;">Changes to this page will cause each Access Point to provision. See status of Access Points on <a href="#/devices">here</a></div>
             <div class="control-group">
-              <div class="controls">
-                <label class="checkbox" style="display: inline-block;"><input type="checkbox" ng-model="network.is_guest">Guest Network</label>
-                <div ng-hide="!network.is_guest">Guest Settings for all networks are in <a href="#/settings">Site Settings</a></div>
-              </div>
-             </div>
-            <div class="container-fluid"> 
+                <div class="controls">
+                    <label class="checkbox" style="display: inline-block;"><input type="checkbox" ng-model="network.is_guest">Guest Network</label>
+                    <div ng-hide="!network.is_guest">Guest Settings for all networks are in <a href="#/settings">Site Settings</a></div>
+                </div>
+            </div>
+            <div class="container-fluid">
                 <div class="row-fluid" ng-show="activeItem == 'Configuration'">
                     <div class="span12">
                         <ul class="nav nav-tabs">
                             <li ng-class="activeSubItem == 'Basic' ? 'active' : form.name.$invalid ? 'error' : '' ||
-                                                                                form.wepKey.$invalid ? 'error' : '' ||
-                                                                                form.wepIdx.$invalid ? 'error' : '' ||
-                                                                                form.wpapskKey.$invalid ? 'error' : '' ||
-                                                                                form.wpaeapIP.$invalid ? 'error' : '' ||
-                                                                                form.wpaeapPort.$invalid ? 'error' : '' ||
-                                                                                form.wpaeapPass.$invalid ? 'error' : ''"><a ng-click="activeSubItem = 'Basic'">Basic</a></li>
+                                form.wepKey.$invalid ? 'error' : '' ||
+                                form.wepIdx.$invalid ? 'error' : '' ||
+                                form.wpapskKey.$invalid ? 'error' : '' ||
+                                form.wpaeapIP.$invalid ? 'error' : '' ||
+                                form.wpaeapPort.$invalid ? 'error' : '' ||
+                            form.wpaeapPass.$invalid ? 'error' : ''"><a ng-click="activeSubItem = 'Basic'">Basic</a></li>
                             <li ng-class="activeSubItem == 'Advanced' ? 'active' : form.vlan.$invalid ? 'error' : ''"><a ng-click="activeSubItem = 'Advanced'">Advanced</a></li>
-                            <!-- <li ng-show="isGuest" ng-class="activeSubItem == 'Guest' ? 'active' : form.promoUrl.$invalid ? 'error' : '' || 
-                                                                                                  form.guestPassword.$invalid ? 'error' : '' || 
-                                                                                                  form.terms.$invalid ? 'error' : '' || 
-                                                                                                  form.expire.$invalid ? 'error' : ''">
-                                                                                                  <a ng-click="activeSubItem = 'Guest'">Guest Policies</a></li> -->
+                            <!-- <li ng-show="isGuest" ng-class="activeSubItem == 'Guest' ? 'active' : form.promoUrl.$invalid ? 'error' : '' ||
+                                form.guestPassword.$invalid ? 'error' : '' ||
+                                form.terms.$invalid ? 'error' : '' ||
+                                form.expire.$invalid ? 'error' : ''">
+                            <a ng-click="activeSubItem = 'Guest'">Guest Policies</a></li> -->
                         </ul>
                         <div ng-show="activeSubItem=='Basic'">
                             <h3>Basic Settings</h3>
@@ -103,9 +103,9 @@
                                             <label class="radio">
                                                 <input type="radio" ng-model="network.security" value="wpapsk">WPA-Personal
                                             </label>
-                                            <label class="radio">
+                                            <!-- <label class="radio">
                                                 <input type="radio" ng-model="network.security" value="wpaeap">WPA-Enterprise
-                                            </label>
+                                            </label> -->
                                         </div>
                                     </div>
                                     <div class="control-group" ng-show="network.security == 'wep'" ng-class="form.wepKey.$invalid ? 'error' : ''">
