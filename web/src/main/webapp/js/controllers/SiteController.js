@@ -58,6 +58,7 @@ managedWifi.controller('SiteController', ["$scope", "$location", "$routeParams",
                     function(){
                         angular.copy($scope.site, $scope.original);
                         notificationService.success("siteEdit", "The site has been updated");
+                        location.url("/devices");
                     },
                     function(reason){
                         notificationService.error("siteEdit", "An error occurred while attempting to save this site");

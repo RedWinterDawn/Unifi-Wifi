@@ -10,13 +10,13 @@ managedWifi.controller('RefreshDataController',["$scope", "$timeout", "messaging
             $scope.lastRefreshed = moment().format('h:mm:ss a');
             refreshTimer = $timeout(function(){
                 messagingService.publish(managedWifi.messageTopics.service.refresh);
-            }, 30000);
+            }, 20000);
         };
         loginService.isLoggedIn().then(init);
 
         $scope.refreshData = function(){
             messagingService.publishSync(managedWifi.messageTopics.service.refresh);
-            init()
+            init();
         };
 
         var subToken = messagingService.subscribe(managedWifi.messageTopics.service.refreshComplete.all, init);

@@ -113,7 +113,7 @@
                 <ul class="nav nav-pills nav-stacked">
                     <li id="site_{{site.site_id}}" class="page-actions" ng-class="selectedSite.site_id == site.site_id ? 'active' : ''" >
                             <a class="delete-site" ng-click="deleteSite(site,sites)"><i class="icon-trash" ></i></a>
-                            <a ng-click="selectSite(site)">
+                            <a ng-click="selectSite(site)" class="btn btn-primary">
                                 <h4 ng-bind="selectedSite.friendly_name" class="media-heading"></h4>
                                 <small ng-bind-template="{{site.city}}, {{site.state}} {{site.zip}}"></small>
                             </a>

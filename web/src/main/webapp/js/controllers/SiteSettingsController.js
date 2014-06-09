@@ -15,6 +15,9 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
                         $scope.originalSettings.auth = 'tou';
                     }
 
+                    if(!_.has($scope.original, 'redirect_enabled'))
+<                       $scope.originalSettings.redirect_enabled = false;
+
                     $scope.settings = angular.copy($scope.originalSettings);
 
                     $scope.originalLimits = settings.filter(function(setting){return setting.key == 'limits'})[0];

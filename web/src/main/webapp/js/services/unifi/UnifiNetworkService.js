@@ -120,17 +120,33 @@ managedWifi.factory('unifiNetworkService', ['$q', '$http', 'appSettings', 'messa
             var firstGroup = wlangroups == null ? [] : wlangroups.filter(function(group){return group.attr_no_edit == undefined;});
             if(firstGroup.length > 0)
                 network.wlangroup_id = firstGroup[0]._id;
-            network.usergroup_id = usergroups[0]._id;
-            var deferred = $q.defer();
-            service.webServicePutForm("/network", network).then(
-                function(response) {
-                    networks.push(response.data.data[0]);
-                    deferred.resolve();
-                },
-                function(response) {
-                    deferred.reject(response);
-                }
-            );
+            if(usergroups == null || usergroups.length == 0){
+                this.getAll().then(function(allNetworkData){
+                    network.usergroup_id = usergroups[0]._id;
+                    var deferred = $q.defer();
+                    service.webServicePutForm("/network", network).then(
+                        function(response) {
+                            networks.push(response.data.data[0]);
+                            deferred.resolve();
+                        },
+                        function(response) {
+                            deferred.reject(response);
+                        }
+                    );
+                })
+            }
+            else{
+                network.usergroup_id = usergroups[0]._id;
+                var deferred = $q.defer();
+                service.webServicePutForm("/network", network).then(
+                    function(response) {
+                        networks.push(response.data.data[0]);
+                        deferred.resolve();
+                    },
+                    function(response) {
+                        deferred.reject(response);
+                    }
+                );
             return deferred.promise;
         },
 

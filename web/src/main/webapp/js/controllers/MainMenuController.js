@@ -23,8 +23,8 @@ managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "$r
 
         $scope.init = function(){
             networkService.getAll().then(
-                function(networks){
-                    $scope.networks = networks;
+                function(allNetworkData){
+                    $scope.networks = allNetworkData.networks;
                 }
             );
             siteService.getAll().then(

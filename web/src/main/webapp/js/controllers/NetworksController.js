@@ -1,7 +1,7 @@
 'use strict';
 
-managedWifi.controller('NetworksController', ["$scope", "$location", "$routeParams", "NetworkService", "notificationService", "messagingService", "dialogService",
-    function NetworksController($scope, $location, $routeParams, networkService, notificationService, messagingService, dialogService) {
+managedWifi.controller('NetworksController', ["$scope", "$location", "$routeParams", "NetworkService", "notificationService", "messagingService", "dialogService", "siteService",
+    function NetworksController($scope, $location, $routeParams, networkService, notificationService, messagingService, dialogService, siteService) {
 
         $scope.paginator = managedWifi.paginator('name');
 

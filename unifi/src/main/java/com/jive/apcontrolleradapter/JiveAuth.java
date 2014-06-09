@@ -70,6 +70,7 @@ public class JiveAuth implements Auth{
         form.param("client_id", clientID);
         form.param("redirect_uri", redirectURI);
         form.param("grant_type", "authorization_code");
+        form.param("scope", "pbx.profile");
         form.param("code", code);
 
         Response response = target.request(MediaType.APPLICATION_FORM_URLENCODED)
