@@ -16,7 +16,7 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
                     }
 
                     if(!_.has($scope.original, 'redirect_enabled'))
-<                       $scope.originalSettings.redirect_enabled = false;
+                        $scope.originalSettings.redirect_enabled = false;
 
                     $scope.settings = angular.copy($scope.originalSettings);
 

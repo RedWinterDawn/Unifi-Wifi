@@ -147,6 +147,7 @@ managedWifi.factory('unifiNetworkService', ['$q', '$http', 'appSettings', 'messa
                         deferred.reject(response);
                     }
                 );
+            }
             return deferred.promise;
         },
 
