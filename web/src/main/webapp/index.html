@@ -62,7 +62,7 @@
                     <div class="title"><i class="icon-signal"></i>WiFi</div>
                 </li>
                 <li class="brand" ng-bind="selectedSite.friendly_name" style="width:450px; text-align:left" ng-show="sites"></li>
-                <li class="dropdown" ng-class="isActive('Settings')" ng-show="sites" style="float:right"><a ng-click="navigate('settings')" data-toggle="dropdown">Site Settings</a></li>
+                <li class="dropdown" ng-class="isActive('Settings')" ng-show="sites" style="float:right"><a ng-click="navigate('settings')" data-toggle="dropdown">Location Settings</a></li>
                 <li class="dropdown" ng-class="isActive('Users')" ng-show="sites" style="float:right"><a ng-click="navigate('users')" data-toggle="dropdown">Connected User Devices</a></li>
                 <li class="dropdown" ng-class="isActive('Devices')" ng-show="sites" style="float:right"><a  ng-click="navigate('devices')" data-toggle="dropdown">Access Points</a></li>
                 <li class="dropdown" ng-class="isActive('Networks')" ng-show="sites" style="float:right"><a ng-click="navigate('networks')" data-toggle="dropdown">Wireless Networks</a></li>
@@ -81,10 +81,10 @@
     </div>
     <div class="main-sidebar" ng-controller="MainMenuController">
         <div style="position: relative; width: 100%;">
-            <h2 style="margin-left: 10px; float: left;">SITES</h2>
-            <a href="#/newsite" class="btn btn-primary" style="margin: 14px 20px; float: right;">
+            <h2 style="margin-left: 10px; float: left; font-size:27px; margin-bottom: 0px;">LOCATIONS</h2>
+            <a href="#/newsite" class="btn btn-primary" style="margin: 14px 10px; width: 86%;">
                 <i class="icon-plus"></i>
-                Add Site</a>
+                Add Location</a>
         </div>
         <div class="no-select">
             <input ng-model="siteFilter" ng-click="cancel($event)" ng-focus="cancel($event)" ng-change="filter()" type="text" placeholder="Search by name" class="search input-xs ng-pristine ng-valid" style="width: 90%; border: 1px solid lightgrey; margin: 0 5px 5px 5px;">

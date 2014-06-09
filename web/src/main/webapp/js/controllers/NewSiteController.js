@@ -1,7 +1,7 @@
 'use strict';
 
-managedWifi.controller('SiteController', ["$scope", "$location", "$routeParams", "SiteService", "notificationService", "dialogService",
-    function SiteController($scope, $location, $routeParams, siteService, notificationService, dialogService) {
+managedWifi.controller('NewSiteController', ["$scope", "$location", "$routeParams", "SiteService", "notificationService", "dialogService",
+    function NewSiteController($scope, $location, $routeParams, siteService, notificationService, dialogService) {
 
         $scope.activeItem = 'Details';
         $scope.isNew = $location.path().split("/")[2] == undefined;

@@ -1,6 +1,6 @@
 <div class="row-fluid page-title">
     <div class="span12">
-        <h1 class="content-title">Site Access Points </h1>
+        <h1 class="content-title">Location Access Points </h1>
         <ul class="crumbs">
             <li><a href="#/devices">Access Points</a></li>
             <li><a style="cursor:pointer;">Manage {{original.friendly_name}}</a></li>
@@ -15,8 +15,8 @@
             <div class="container-fluid">
                 <div class="row-fluid">
                     <div class="span12">
-                            <h2>Site Access Point MACs</h2>
-                            <p>Provide the list of device MACs for this site. Provide each on their own line.</p>
+                            <h2>Location Access Point MACs</h2>
+                            <p>Provide the list of device MACs for this Location. Provide each on their own line.</p>
                         <div class="row-fluid">
                             <div class="span8 offset2">
                                 <form name="form" class="form-horizontal" novalidate>
@@ -24,11 +24,11 @@
                                     <div class="field-section">
                                         <div class="control-group">
                                             <label for="macs" class="control-label">
-                                                Site Access Point MACs
-                                                <div class="tip help">provide each MAC address on a seperate line</div>
+                                                Location Access Point MACs
+                                                <div class="tip help">provide each MAC address on a seperate line including <b>: </b>'s</div>
                                             </label>
                                             <div class="controls">
-                                                <textarea id="macs" placeholder="Provide a name..." ng-model="site.macs" rows="15"></textarea>
+                                                <textarea id="macs" placeholder="Provide macs..." ng-model="site.macs" rows="15"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -42,6 +42,6 @@
     </div>
     <div class="update-controls" ng-show="isDirty()">
         <button class="btn btn-primary" ng-disabled="form.$invalid" ng-click="updateMac()">Add</button>
-        <button class="btn btn-link clear-form" ng-hide="isNew" ng-click="reset()">Discard Changes</button>
+        <button class="btn btn-link clear-form" ng-click="reset()">Discard Changes</button>
     </div>
 </div>

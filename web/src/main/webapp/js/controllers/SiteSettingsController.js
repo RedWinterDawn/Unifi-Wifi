@@ -123,9 +123,9 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
             $scope.site.devices = $scope.site.macs == undefined ? [] : $scope.site.macs.split("\n");
             siteService.update($scope.site).then(
                     function(){
-                        angular.copy($scope.site, $scope.original);
+                        angular.copy($scope.site, $scope.originalSite);
                         notificationService.success("siteEdit", "The site has been updated");
-                        location.url("/devices");
+                        $location.url("/devices");
                     },
                     function(reason){
                         notificationService.error("siteEdit", "An error occurred while attempting to save this site");
@@ -136,6 +136,7 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
         $scope.reset = function() {
             $scope.settings = angular.copy($scope.original);
             $scope.limits = angular.copy($scope.originalLimits);
+            $scope.site = angular.copy($scope.originalSite);
         };
 
         $scope.isDirty = function() {

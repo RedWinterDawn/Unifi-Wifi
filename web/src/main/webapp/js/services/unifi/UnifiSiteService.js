@@ -66,7 +66,6 @@ managedWifi.factory('unifiSiteService', ['$q', '$http', 'appSettings', 'messagin
         },
 
         selectSite: function(site){
-        	localStorage.site_id = site.site_id;
             return $http.post(appSettings.apiEndpoint+"/site/active", {site_id: site.site_id})
                 .then(function(){
 	                    messagingService.publish(managedWifi.messageTopics.service.refresh);
