@@ -57,13 +57,12 @@
             </ul>
         </div>
     </th>
+    <th>Actions</th>
     <th><a ng-click="paginator.setOrder('uptime')">Uptime<i ng-class="paginator | sortClass:'uptime'"></i></a></th>
     <th><a ng-click="paginator.setOrder('user_num_sta')"># of Connected Devices<i ng-class="paginator | sortClass:'user_num_sta'"></i></a></th>
     <th><a ng-click="paginator.setOrder('tx_bytes')">Download<i ng-class="paginator | sortClass:'tx_bytes'"></i></a></th>
     <th><a ng-click="paginator.setOrder('rx_bytes')">Upload<i ng-class="paginator | sortClass:'rx_bytes'"></i></a></th>
     <th><a ng-click="paginator.setOrder('cfgversion')">Version<i ng-class="paginator | sortClass:'cfgversion'"></i></a></th>
-    <th><a>Network</a></th>
-    <th><a>Upgrade</a></th>
     <th class="no-hover"></th>
 </tr>
 </thead>
@@ -78,18 +77,22 @@
     </td>
     <td>{{accessPoint.ip}}</td>
     <td>{{accessPoint | deviceStatus}}</td>
+    <td>
+        <ul role="menu" aria-labelledby="dropdownMenu" class="dropdown-menu pull-right">
+            <li ng-show="accessPoint.upgradable && accessPoint.state != 4"><a ng-click="upgradeDevice(accessPoint)">Update</li>
+            <li ng-show="accessPoint.state == 1"><a ng-href="#/device/{{accessPoint.id}}">Edit</a></li>
+            <li ng-show="accessPoint.state == 2"><a ng-click="adoptDevice(accessPoint)">Adopt</a></li>
+        </ul>
+    </td>
     <td>{{accessPoint.uptime | uptime}}</td>
     <td>{{accessPoint.user_num_sta}}</td>
     <td>{{accessPoint.tx_bytes | bytes}}</td>
     <td>{{accessPoint.rx_bytes | bytes}}</td>
     <td>{{accessPoint.version || ''}}</td>
-    <td><a ng-click="redirect(accessPoint.id, 'activity')" ng-show="accessPoint.state == 1">Activity</a></td>
-    <td><a ng-click="upgradeDevice(accessPoint)" ng-show="accessPoint.upgradable && accessPoint.state != 4"><i class="icon-upload"></i></a></td>
-    <td>
         <div class="dropdown settings" ng-hide="accessPoint.state > 2"><a href="#" data-toggle="dropdown" class="dropdown-toggle icons"><i class="icon-cog"></i><i class="icon-caret-down"></i></a>
-            <ul role="menu" aria-labelledby="dropdownMenu" class="dropdown-menu pull-right">
-                <li ng-show="accessPoint.state == 1"><a ng-href="#/device/{{accessPoint.id}}">Edit Device</a></li>
-                <li ng-show="accessPoint.state == 2"><a ng-click="adoptDevice(accessPoint)">Adopt Device</a></li>
+            
+                
+                
             </ul>
         </div>
     </td>
