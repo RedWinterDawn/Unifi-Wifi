@@ -3,15 +3,13 @@
 managedWifi.controller('SiteController', ["$scope", "$location", "$routeParams", "SiteService", "notificationService", "dialogService",
     function SiteController($scope, $location, $routeParams, siteService, notificationService, dialogService) {
 
-        $scope.activeItem = 'Details';
         $scope.isNew = $location.path().split("/")[2] == undefined;
 
         $scope.original = {
-            friendly_name: "New Site"
+            friendly_name: "New Location"
         };
         $scope.site = angular.copy($scope.original);
         
-
         $scope.update = function() {
             siteService.add($scope.site).then(
                 function(){
@@ -27,8 +25,6 @@ managedWifi.controller('SiteController', ["$scope", "$location", "$routeParams",
             )
         };
         
-       
-
         $scope.reset = function() {
             $scope.site = angular.copy($scope.original);
         };

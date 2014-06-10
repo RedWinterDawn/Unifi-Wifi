@@ -3,7 +3,7 @@
         <h1 class="content-title">Location Access Points </h1>
         <ul class="crumbs">
             <li><a href="#/devices">Access Points</a></li>
-            <li><a style="cursor:pointer;">Manage {{original.friendly_name}}</a></li>
+            <li><a style="cursor:pointer;">Manage {{originalSite.friendly_name}}</a></li>
         </ul>
     </div>
 </div>
@@ -24,8 +24,7 @@
                                     <div class="field-section">
                                         <div class="control-group">
                                             <label for="macs" class="control-label">
-                                                Location Access Point MACs
-                                                <div class="tip help">provide each MAC address on a seperate line including <b>: </b>'s</div>
+                                                <div class="tip help">add each MAC address on a seperate line including <b>: </b>'s</div>
                                             </label>
                                             <div class="controls">
                                                 <textarea id="macs" placeholder="Provide macs..." ng-model="site.macs" rows="15"></textarea>
