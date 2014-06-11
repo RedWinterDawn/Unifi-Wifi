@@ -1,6 +1,6 @@
 'use strict';
-managedWifi.controller('MainMenuController',["$scope", "$timeout", "$http", "$location", "$routeParams", "$cookies", "appSettings", "navigationService", "notificationService", "siteService", "networkService", "messagingService", "dialogService", "loginService",
-    function MainMenuController($scope, $timeout, $http, $location, $cookies, $routeParams, appSettings, navigationService, notificationService, siteService, networkService, messagingService, dialogService, loginService) {
+managedWifi.controller('MainMenuController',["$scope", "$timeout", "$http", "$location", "$routeParams", "$cookies", "appSettings", "navigationService", "notificationService", "siteService", "networkService", "messagingService", "dialogService", "loginService", "AccessPointService",
+    function MainMenuController($scope, $timeout, $http, $location, $cookies, $routeParams, appSettings, navigationService, notificationService, siteService, networkService, messagingService, dialogService, loginService, accessPointService) {
         $scope.siteFilter = '';
         $scope.referrer = document.referrer;
 
@@ -111,49 +111,53 @@ managedWifi.controller('MainMenuController',["$scope", "$timeout", "$http", "$lo
         };
 
         
-        $scope.deleteSite = function(site,sites){
+         $scope.deleteSite = function(site,sites){
             dialogService.confirm({
                 title: "Confirmation Required",
-                msg: "Note that all configurations and history with respect to this site will be deleted. All associated devices will be restored to their factory state."
-            }).result.then(function(){
+                msg: "Make sure all access points are deleted from this site before clicking 'Confirm'. Note that all configurations and history with respect to this site will be deleted."
+                }).result.then(function(){
 
                 var devices = site.macs.split("\n");
-                
-                device.forEach(function (device){
-                    accessPointService.delete(mac).then(function(){
-                        notificationService.success("accessPointDelete", mac + " was deleted.");
-                    });
-                }); 
+                $scope.sites = sites.filter(function(site){return site.site_id != site.site_id;});
 
-                siteService.delete(site).then(function() {
-                	siteService.getAll().then(function(sites){
-                            notificationService.clear("loadSites");
-                            
-                            $scope.sites = sites;
 
-                            notificationService.success("siteDelete", site.friendly_name + " was deleted.");
-                            
-                            if(sites.length != 0){
-        	                    $scope.selectedSite = sites.filter(function(site) {
-        	                        return site.is_selected;
-        	                    })[0];
-        	                    $scope.filter();
-        	                    if($scope.selectedSite == undefined){
-        	                    	$scope.selectedSite = sites[0];
-        	                    	sites[0].is_selected = true;
-        	                    	$scope.selectSite(sites[0]);
-        	                    }
-                            }
-                            else{
-                            	$location.url("/newsite");
-                            	location.reload();
-                            }
+
+                if($scope.sites.length != 0){
+                    $scope.selectedSite = $scope.sites.filter(function(site) {
+                        return site.is_selected;
+                    })[0];
+                    $scope.filter();
+                    if($scope.selectedSite == undefined){
+                        $scope.selectedSite = $scope.sites[0];
+                        $scope.sites[0].is_selected = true;
+                        $scope.selectSite($scope.sites[0]);
+                    }
+                }
+
+               devices.forEach(function (mac){
+                    accessPointService.delete(mac);
                         });
-                });
-                
 
-                
-            });
+                $scope.removeSite(site);
+
+                });
+        };
+
+        $scope.removeSite = function(site){
+            $timeout(function(){siteService.delete(site).then(function() {
+                siteService.getAll().then(function(sites){
+                    notificationService.clear("loadSites");
+
+                    $scope.sites = sites;
+
+                    notificationService.success("siteDelete", site.friendly_name + " was deleted.");
+
+                    if(sites.length == 0){
+                        $location.url("/newsite");
+                        location.reload();
+                    }
+                });
+            });}, 10000);
         };
 
         var sitePropertiesToFilter = ['friendly_name', 'city', 'state', 'zip'];

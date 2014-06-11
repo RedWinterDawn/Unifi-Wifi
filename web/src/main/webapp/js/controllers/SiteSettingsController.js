@@ -10,7 +10,8 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
         siteSettingsService.getAll().then(
                 function(settings){
                     $scope.originalSettings = settings.filter(function(setting){return setting.key == 'guest_access'})[0];
-		    $scope.originalSettingsMgmt = settings.filter(function(setting){return setting.key == 'mgmt'})[0];
+		            $scope.originalSettingsMgmt = settings.filter(function(setting){return setting.key == 'mgmt'})[0];
+                    
                     if (!_.has($scope.originalSettings, 'expire')) $scope.originalSettings.expire = '4320';
                     if ($scope.originalSettings.hotspotNoAuth === 'true') {
                         $scope.originalSettings.auth = 'tou';
@@ -24,7 +25,7 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
                     $scope.originalLimits = settings.filter(function(setting){return setting.key == 'limits'})[0];
                     $scope.limits = angular.copy($scope.originalLimits);
 
-		    $scope.settingsMgmt = angular.copy($scope.originalSettingsMgmt);
+		            $scope.settingsMgmt = angular.copy($scope.originalSettingsMgmt);
                     
                     siteService.getById($scope.settings.site_id).then(
                             function(site){
@@ -43,18 +44,18 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
                 }
        );
 
-    $scope.updateSite = function() {
-        siteService.update($scope.site).then(
-                function(){
-                    angular.copy($scope.site, $scope.originalSite);
-                    notificationService.success("siteEdit", "The site has been updated");
-                    siteService.selectSite($scope.site);
-                },
-                function(reason){
-                    notificationService.error("siteEdit", "An error occurred while attempting to save this site");
-                }
-            );
-    };
+        $scope.updateSite = function() {
+            siteService.update($scope.site).then(
+                    function(){
+                        angular.copy($scope.site, $scope.originalSite);
+                        notificationService.success("siteEdit", "The site has been updated");
+                        siteService.selectSite($scope.site);
+                    },
+                    function(reason){
+                        notificationService.error("siteEdit", "An error occurred while attempting to save this site");
+                    }
+                );
+        };
 
         
         

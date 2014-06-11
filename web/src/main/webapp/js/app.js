@@ -158,6 +158,11 @@ managedWifi.factory('networkService', ['$cookies','$injector', function($cookies
     return $injector.get(prefix+"NetworkService");
 }]);
 
+managedWifi.factory('AccessPointService', ['$cookies','$injector', function($cookies, $injector) {
+    var useMockServices = $cookies.useMockServices != undefined ? $cookies.useMockServices : false;
+    var prefix = useMockServices == "true" ? "mock" : "unifi";
+    return $injector.get(prefix+"AccessPointService");
+}]);
 
 managedWifi.factory('loginService', ['$cookies','$injector', function($cookies, $injector) {
     var useMockServices = $cookies.useMockServices != undefined ? $cookies.useMockServices : false;
