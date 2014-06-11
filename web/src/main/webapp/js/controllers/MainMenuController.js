@@ -1,6 +1,6 @@
 'use strict';
-managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "$routeParams", "$cookies", "appSettings", "navigationService", "notificationService", "siteService", "networkService", "messagingService", "dialogService", "loginService",
-    function MainMenuController($scope, $http, $location, $cookies, $routeParams, appSettings, navigationService, notificationService, siteService, networkService, messagingService, dialogService, loginService) {
+managedWifi.controller('MainMenuController',["$scope", "$timeout", "$http", "$location", "$routeParams", "$cookies", "appSettings", "navigationService", "notificationService", "siteService", "networkService", "messagingService", "dialogService", "loginService",
+    function MainMenuController($scope, $timeout, $http, $location, $cookies, $routeParams, appSettings, navigationService, notificationService, siteService, networkService, messagingService, dialogService, loginService) {
         $scope.siteFilter = '';
         $scope.referrer = document.referrer;
 
@@ -22,11 +22,6 @@ managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "$r
         resizeSiteList();
 
         $scope.init = function(){
-            networkService.getAll().then(
-                function(allNetworkData){
-                    $scope.networks = allNetworkData.networks;
-                }
-            );
             siteService.getAll().then(
                 function(sites){
                     notificationService.clear("loadSites");
@@ -43,11 +38,20 @@ managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "$r
 	                    	sites[0].is_selected = true;
 	                    }
                     }
+
                 },
                 function(reason){
                     notificationService.error("loadSites", "An error occurred while loading the sites for this account.");
                 }
             );
+
+            if($scope.selectedSite != undefined){
+                networkService.getAll().then(
+                    function(allNetworkData){
+                        $scope.networks = allNetworkData.networks;
+                    }
+                );
+            }
             
             loginService.isAdmin().then(
                 function(isAdmin){
@@ -112,12 +116,21 @@ managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "$r
                 title: "Confirmation Required",
                 msg: "Note that all configurations and history with respect to this site will be deleted. All associated devices will be restored to their factory state."
             }).result.then(function(){
+
+                var devices = site.macs.split("\n");
+                
+                device.forEach(function (device){
+                    accessPointService.delete(mac).then(function(){
+                        notificationService.success("accessPointDelete", mac + " was deleted.");
+                    });
+                }); 
+
                 siteService.delete(site).then(function() {
                 	siteService.getAll().then(function(sites){
                             notificationService.clear("loadSites");
                             
                             $scope.sites = sites;
-                            
+
                             notificationService.success("siteDelete", site.friendly_name + " was deleted.");
                             
                             if(sites.length != 0){
@@ -137,6 +150,9 @@ managedWifi.controller('MainMenuController',["$scope", "$http", "$location", "$r
                             }
                         });
                 });
+                
+
+                
             });
         };
 
