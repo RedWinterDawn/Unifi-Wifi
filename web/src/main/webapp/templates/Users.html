@@ -43,8 +43,7 @@
         <table class="table table-striped table-condensed">
             <thead>
             <tr>
-                <th><a ng-click="paginator.setOrder('hostname')">Hostname<i ng-class="paginator | sortClass:'hostname'"></i></a></th>
-                <th><a ng-click="paginator.setOrder('mac')">MAC Address<i ng-class="paginator | sortClass:'mac'"></i></a></th>
+                <th><a ng-click="paginator.setOrder('hostname')">Name/MAC Address<i ng-class="paginator | sortClass:'hostname'"></i></a></th>
                 <th>
                     <div class="dropdown"><a href="#" role="button" data-toggle="dropdown" class="dropdown-toggle" ng-class="filter.essid ? 'active' : null">Network<i class="icon-filter"></i></a>
                         <ul role="menu" class="dropdown-menu">
@@ -79,6 +78,7 @@
                         </ul>
                     </div>
                 </th>
+		<th><a>Actions</a></th>
                 <th><a ng-click="paginator.setOrder('orderableIp')">IP<i ng-class="paginator | sortClass:'orderableIp'"></i></a></th>
                 <th ng-show="showAuthorized">
                     <div class="dropdown"><a href="#" role="button" data-toggle="dropdown" class="dropdown-toggle" ng-class="filter.authorized ? 'active' : null">Authorization<i class="icon-filter"></i></a>
@@ -115,7 +115,6 @@
                         </ul>
                     </div>
                 </th>
-                <th><a ng-click="paginator.setOrder('rssi')">Signal<i ng-class="paginator | sortClass:'rssi'"></i></a></th>
                 <th><a ng-click="paginator.setOrder('tx_bytes')">Download<i ng-class="paginator | sortClass:'tx_bytes'"></i></a></th>
                 <th><a ng-click="paginator.setOrder('rx_bytes')">Upload<i ng-class="paginator | sortClass:'rx_bytes'"></i></a></th>
                 <th><a ng-click="paginator.setOrder('uptime')">Uptime<i ng-class="paginator | sortClass:'uptime'"></i></a></th>
@@ -124,29 +123,21 @@
             </thead>
             <tbody>
             <tr ng-repeat="user in users | filter: filter | storeItemCount: paginator.updateTotalItems | orderBy: paginator.orderBy | slice:(paginator.currentPage-1)*20:20">
-                <td>{{user.hostname}}</td>
-                <td><a ng-href="#/user/{{user.id}}">{{user.mac}}</a></td>
+                <td><a ng-href="#/user/{{user.id}}">{{user.hostname || user.mac}}</a></td>
                 <td>{{user.essid}}</td>
                 <td ng-show="showApMac">{{user.ap}}</td>
                 <td>{{user.is_connected ? "Connected" : "Disconnected"}}</td>
-                <td>{{user.ip}}</td>
+                <td>
+                     <a class="btn btn-primary" style="line-height:10px; text-align: center" ng-click="blockUser(user)">{{user.blocked ? 'Unblock' : 'Block'}}</a>
+                     <a class="btn btn-primary" style="line-height:10px" ng-show="user.is_guest" ng-click="authorizeUser(user)">{{user.authorized ? 'Unauthorize' : 'Authorize'}}</a>
+                </td>
+		<td>{{user.ip}}</td>
                 <td ng-show="showAuthorized">{{user.is_guest ? user.authorized  ?  "User" : "Unauthorized" : "Guest"}}</td>
                 <td ng-show="showBlocked">{{user.blocked ? "Blocked" : "Unblocked"}}</td>
-                <td>{{user.rssi | signal}}</td>
                 <td>{{user.tx_bytes | bytes}}</td>
                 <td>{{user.rx_bytes | bytes}}</td>
                 <td>{{user.uptime | uptime}}</td>
-                <td>
-                    <div class="dropdown settings"><a href="#" data-toggle="dropdown" class="dropdown-toggle icons"><i
-                            class="icon-cog"></i><i class="icon-caret-down"></i></a>
-                        <ul role="menu" aria-labelledby="dropdownMenu" class="dropdown-menu pull-right">
-                            <li><a ng-click="blockUser(user)">{{user.blocked ? 'Unblock' : 'Block'}} User</a></li>
-                            <li ng-show="user.is_guest"><a ng-click="authorizeUser(user)">{{user.authorized ? 'Unauthorize' : 'Authorize'}} User</a></li>
-                        </ul>
-                    </div>
-                </td>
             </tr>
-
             </tbody>
         </table>
         <div class="pull-right">Showing {{(paginator.currentPage-1)*20}}-{{ paginator.currentPage*20 > paginator.totalItems ? paginator.totalItems : paginator.currentPage*20}} of {{paginator.totalItems}} </div>

@@ -40,9 +40,9 @@
                                     <dt>Uptime</dt>
                                     <dd>{{original.uptime | uptime}} &nbsp;</dd>
                                     <dt>Connected AP</dt>
-                                    <dd><a ng-href="#/device/{{original.apId}}" ng-show="{{original.ap}}">{{original.ap}}</a><span ng-hide="{{original.ap}}">not connected</span></dd>
+                                    <dd><a ng-href="#/device/{{original.apId}}">{{original.ap}}</a><span ng-hide="{{original.ap == undefined}}">not connected</span></dd>
                                     <dt>Connected Network</dt>
-                                    <dd><a ng-href="#/network/{{original.networkId}}" ng-show="{{original.essid}}">{{original.essid}}</a><span ng-hide="{{original.essid}}">not connected</span></dd>
+                                    <dd><a ng-href="#/networks/{{original.networkId}}">{{original.essid}}</a><span ng-hide="{{original.essid == undefined}}">not connected</span></dd>
                                 </dl>
                             </div>
                         </div>

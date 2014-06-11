@@ -19,9 +19,9 @@
                 <div class="row-fluid" ng-show="activeItem == 'Settings'">
                     <div class="span12">
                         <ul class="nav nav-tabs">
+			    <li ng-class="activeSubItem == 'Config' ? 'active' : ''"><a ng-click="activeSubItem = 'Config'">Config</a></li>
                             <li ng-class="activeSubItem == 'Overview' ? 'active' : ''"><a ng-click="activeSubItem = 'Overview'">Overview</a></li>
                             <li ng-class="activeSubItem == 'Network Activity' ? 'active' : ''"><a ng-click="activeSubItem = 'Network Activity'">Network Activity</a></li>
-                            <li ng-class="activeSubItem == 'Config' ? 'active' : ''"><a ng-click="activeSubItem = 'Config'">Config</a></li>
                         </ul>
                         <div ng-show="activeSubItem=='Overview'">
                             <h3>Overview</h3>
@@ -30,13 +30,8 @@
                             <h3>Basic Settings</h3>
                             <p>Configure the settings for this access point. Depending on the settings choosen, additional tabs/options will become available for further configuration.</p>
                         </div>
-                        <div ng-show="activeSubItem=='Network Activity'">
-                            <h3>Uplink</h3>
-                            <p>The following information reports on the activity, over the wire, from the device to your wired network.</p>
-                        </div>
-                        <div class="row-fluid"><div class="span8 offset2">
-                            <form name="form" class="form-horizontal" novalidate>
-                                <div class="field-section" ng-show="activeSubItem=='Config'">
+                       	    <div class="field-section" ng-show="activeSubItem=='Config'">
+                            	<form name="form" class="form-horizontal" novalidate>
                                     <div class="control-group">
                                         <label for="alias" class="control-label">Name Device</label>
                                         <div class="controls">
@@ -102,10 +97,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </form>
-                        </div></div>
-                    </div>
+                           	</form>
+                           </div>
                     <div class="field-section" ng-show="activeSubItem=='Overview'">
                             <dl class="dl-horizontal">
                                 <dt>MAC Address</dt>
@@ -121,7 +114,9 @@
                             </dl>
                     </div>
                     <div class="field-section" ng-show="activeSubItem=='Network Activity'">
-                            <dl class="dl-horizontal">
+                                <h3 style="margin-top: 0px;">Uplink</h3>
+                            <p>The following information reports on the activity, over the wire, from the device to your wired network.</p> 
+			   <dl class="dl-horizontal">
                                 <dt>Speed</dt>
                                 <dd>{{original.uplink.speed}}</dd>
                                 <dt>Duplex</dt>
@@ -145,7 +140,7 @@
                             <dt>RX Pkts / Bytes</dt>
                             <dd>{{original.stat.rx_packets | pktsBytes}} / {{original.stat.rx_bytes | pktsBytes}}&nbsp;</dd>
                             <dt># of Users</dt>
-                            <dd>{{original.user_num_sta}}</dd>
+                            <dd>{{original.user_num_sta||0}}</dd>
                         </dl>
                     </div>
                 </div>

@@ -22,9 +22,9 @@ managedWifi.controller('NotificationController',["$scope", "$timeout", "messagin
         };
 
         messagingService.subscribe(managedWifi.messageTopics.ui.notify, addMsg);
-        messagingService.subscribe(managedWifi.messageTopics.system.error, function(exception){
-            addMsg("", {type: 'error', msg: 'An unexpected error occurred.'});
-        });
+//        messagingService.subscribe(managedWifi.messageTopics.system.error, function(exception){
+  //          addMsg("", {type: 'error', msg: 'An unexpected error occurred.'});
+    //    });
 
         $scope.closeAlert = function(msg) {
             $scope.alerts = $scope.alerts.filter(function(notice){return notice!=msg;});

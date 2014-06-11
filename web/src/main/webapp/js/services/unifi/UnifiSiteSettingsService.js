@@ -38,7 +38,8 @@ managedWifi.factory('unifiSiteSettingsService', ['$q', '$http', 'appSettings', '
                         $http.get(appSettings.apiEndpoint+"/site-setting").then(
                             function(response) {
                                 settings = settings.concat(response.data.data.filter(function(setting){return setting.key == 'guest_access';}));
-                                deferred.resolve(settings);
+                                settings = settings.concat(response.data.data.filter(function(setting){return setting.key == 'mgmt';}));
+				deferred.resolve(settings);
                             },
                             function(response) {
                                 deferred.reject(response);

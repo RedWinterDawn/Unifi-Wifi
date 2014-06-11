@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="lib/select2/select2.css">
     <link rel="stylesheet" href="css/jive.css">
     <link rel="stylesheet" href="css/managed-wifi.css">
+    <link rel="shortcut icon" href="assets/favicon.ico">
 </head>
 <body class="loading">
 
@@ -82,11 +83,11 @@
     <div class="main-sidebar" ng-controller="MainMenuController">
         <div style="position: relative; width: 100%;">
             <h2 style="margin-left: 10px; float: left; font-size:27px; margin-bottom: 0px;">LOCATIONS</h2>
-            <a href="#/newsite" class="btn btn-primary" style="margin: 14px 10px; width: 86%;">
-                <i class="icon-plus"></i>
-                Add Location</a>
         </div>
         <div class="no-select">
+	    <a href="#/newsite" class="btn btn-primary" style="width: 85.5%; position: relative; margin: 0 5px 5px 5px">
+                <i class="icon-plus"></i>
+                Add Location</a>
             <input ng-model="siteFilter" ng-click="cancel($event)" ng-focus="cancel($event)" ng-change="filter()" type="text" placeholder="Search by name" class="search input-xs ng-pristine ng-valid" style="width: 90%; border: 1px solid lightgrey; margin: 0 5px 5px 5px;">
             <div style="border-top: 1px solid lightgrey; border-bottom: 1px solid lightgrey; padding-left: 5px;">
                 Sort By:
@@ -201,9 +202,10 @@
 <script src="js/controllers/ProfilesController.js"></script>
 <script src="js/controllers/ProfileController.js"></script>
 <script src="js/controllers/SiteSettingsController.js"></script>
-<script src="js/controllers/SitesController.js"></script>
+<script src="js/controllers/NewSiteController.js"></script>
 <script src="js/controllers/SiteController.js"></script>
 <script src="js/controllers/ErrorController.js"></script>
+
 
 </body>
 </html>

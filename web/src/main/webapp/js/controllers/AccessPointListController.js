@@ -9,12 +9,13 @@ managedWifi.controller('AccessPointListController', ["$scope", "$location", "dia
             accessPointService.getAll().then(
                 function(devices){
                     notificationService.clear("loadDevices");
-                    devices.forEach(function(device){ // modify model to work with angular particulars
+		    devices.forEach(function(device){ // modify model to work with angular particulars
                         device.orderableIp = managedWifi.createOrderableIp(device.ip);
                         device.searchables = managedWifi.createSearchables(device, ['name', 'mac', 'ip']);
                         device.user_num_sta = device['user-num_sta'];
                         device.id = device._id;
                         delete device['user-num_sta'];
+			if(device.version != undefined){device.version = device.version.substring(0,6);}
                     });
                     $scope.accessPoints = devices;
                     $scope.paginator.updateTotalItems(devices.length);
@@ -25,6 +26,7 @@ managedWifi.controller('AccessPointListController', ["$scope", "$location", "dia
             );
         };
         init();
+	init();
 
         $scope.upgradeDevice = function(accessPoint){
             accessPointService.upgrade(accessPoint).then(function(){
@@ -43,7 +45,7 @@ managedWifi.controller('AccessPointListController', ["$scope", "$location", "dia
 
         $scope.adoptDevice = function(accessPoint){
             accessPointService.adopt(accessPoint).then(function(){
-                notificationService.success("accessPointAdopt", "The access point has been adopted");
+                notificationService.success("accessPointAdopt", "The access point is being adopted");
                 init();
             });
         };

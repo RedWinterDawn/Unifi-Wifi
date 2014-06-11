@@ -10,18 +10,21 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
         siteSettingsService.getAll().then(
                 function(settings){
                     $scope.originalSettings = settings.filter(function(setting){return setting.key == 'guest_access'})[0];
-                    if (!_.has($scope.original, 'expire')) $scope.originalSettings.expire = '4320';
+		    $scope.originalSettingsMgmt = settings.filter(function(setting){return setting.key == 'mgmt'})[0];
+                    if (!_.has($scope.originalSettings, 'expire')) $scope.originalSettings.expire = '4320';
                     if ($scope.originalSettings.hotspotNoAuth === 'true') {
                         $scope.originalSettings.auth = 'tou';
                     }
 
-                    if(!_.has($scope.original, 'redirect_enabled'))
+                    if(!_.has($scope.originalSettings, 'redirect_enabled'))
                         $scope.originalSettings.redirect_enabled = false;
 
                     $scope.settings = angular.copy($scope.originalSettings);
 
                     $scope.originalLimits = settings.filter(function(setting){return setting.key == 'limits'})[0];
                     $scope.limits = angular.copy($scope.originalLimits);
+
+		    $scope.settingsMgmt = angular.copy($scope.originalSettingsMgmt);
                     
                     siteService.getById($scope.settings.site_id).then(
                             function(site){

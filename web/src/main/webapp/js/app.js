@@ -111,7 +111,7 @@ managedWifi.config(['$routeProvider', '$locationProvider', function ($routeProvi
 	            controller: 'NetworkController',
 	            resolve: managedWifi.resolveServiceAlias("NetworkService")
 	        })
-	        .otherwise({redirectTo: "#/newsite"});
+	        .otherwise({redirectTo: "/networks"});
 	    $locationProvider.html5Mode(false);
 }])
 .run(["$location", "$cookies", "notificationService", "jiveLoginService", 'siteService', function($location, $cookies, notificationService, loginService, siteService){

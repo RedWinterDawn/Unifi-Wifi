@@ -3,7 +3,7 @@
 managedWifi.controller('AccessPointController', ["$scope", "$location", "$routeParams", "AccessPointService", "notificationService", "dialogService",
     function AccessPointController($scope, $location, $routeParams, accessPointService, notificationService, dialogService) {
         $scope.activeItem = 'Settings';
-        $scope.activeSubItem = 'Overview';
+        $scope.activeSubItem = 'Config';
         
         if($routeParams.tab == 'activity')
         	$scope.activeSubItem = 'Network Activity';

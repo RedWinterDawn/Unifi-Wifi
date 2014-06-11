@@ -120,10 +120,11 @@ managedWifi.factory('unifiNetworkService', ['$q', '$http', 'appSettings', 'messa
             var firstGroup = wlangroups == null ? [] : wlangroups.filter(function(group){return group.attr_no_edit == undefined;});
             if(firstGroup.length > 0)
                 network.wlangroup_id = firstGroup[0]._id;
-            if(usergroups == null || usergroups.length == 0){
+            var deferred = $q.defer();
+	    if(usergroups == null || usergroups.length == 0){
                 this.getAll().then(function(allNetworkData){
                     network.usergroup_id = usergroups[0]._id;
-                    var deferred = $q.defer();
+                    deferred = $q.defer();
                     service.webServicePutForm("/network", network).then(
                         function(response) {
                             networks.push(response.data.data[0]);
@@ -137,7 +138,7 @@ managedWifi.factory('unifiNetworkService', ['$q', '$http', 'appSettings', 'messa
             }
             else{
                 network.usergroup_id = usergroups[0]._id;
-                var deferred = $q.defer();
+                deferred = $q.defer();
                 service.webServicePutForm("/network", network).then(
                     function(response) {
                         networks.push(response.data.data[0]);
