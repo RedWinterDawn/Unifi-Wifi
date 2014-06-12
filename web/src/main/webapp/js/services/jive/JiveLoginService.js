@@ -9,7 +9,7 @@ managedWifi.factory('jiveLoginService', ['$q', '$http', '$cookies', '$location',
             function(response) {
                 sessionId = response.data.sessionId;
                 $cookies.unifises = sessionId;
-                $cookies.isAdmin = response.data.permissionLevel == "Platform-Admin" || response.data.permissionLevel == "Platform-Customer-Service";
+                $cookies.isAdmin = response.data.permissionLevel == "Platform-Admin" || response.data.permissionLevel == "Administrator" || response.data.permissionLevel == "Platform-Customer-Service";
                 $cookies.firstName = response.data.firstName;
                 $cookies.lastName = response.data.lastName;
                 $cookies.email = response.data.email;

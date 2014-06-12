@@ -37,6 +37,7 @@ public class UnifiLogin extends UnifiBase implements Login {
             throw new ForbiddenException();
 
         return "Platform-Admin".equalsIgnoreCase((String) dbObject.get("permissionLevel"))
+                || "Administrator".equalsIgnoreCase((String) dbObject.get("permissionLevel"))
         		|| "Platform-Customer-Service".equalsIgnoreCase((String) dbObject.get("permissionLevel"));
     }
 

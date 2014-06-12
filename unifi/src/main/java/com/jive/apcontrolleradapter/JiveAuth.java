@@ -99,6 +99,7 @@ public class JiveAuth implements Auth{
             for (Map<String, String> user : users){
                 if("Platform-Admin".equalsIgnoreCase(user.get("permissionLvl")) 
                 		|| "Platform-Customer-Service".equalsIgnoreCase(user.get("permissionLvl"))
+                        ||"Administrator".equalsIgnoreCase(user.get("permissionLvl"))
                 		|| account.equals(user.get("pbxId"))){
                     results.put("permissionLevel", user.get("permissionLvl"));
                     results.put("firstName", user.get("firstName"));
