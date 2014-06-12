@@ -84,6 +84,7 @@ public class UnifiSite extends UnifiBase implements Site {
         final Map<String, Object> session = getSessionInfo(sessionId);
 
         if (!("Platform-Admin".equalsIgnoreCase((String) session.get("permissionLevel"))
+                || "Administrator".equalsIgnoreCase((String) session.get("permissionLevel"))
         		|| "Platform-Customer-Service".equalsIgnoreCase((String) session.get("permissionLevel"))
         		))
             throw new ForbiddenException();
