@@ -81,9 +81,10 @@
         </div>
     </div>
     <div class="main-sidebar" ng-controller="MainMenuController">
-        <div style="position: relative; width: 100%;">
+        <div sng-controller="RefreshDataController" style="position: relative; width: 100%;">
             <h2 style="margin-left: 10px; float: left; font-size:27px; margin-bottom: 0px;">LOCATIONS</h2>
-        </div>
+		<div style="text-align: right; padding-top: 20px; padding-right: 10px;"><big><i class="icon-refresh" ng-click="refreshData()"></i></big></div>
+	</div>
         <div class="no-select">
 	    <a href="#/newsite" class="btn btn-primary" style="width: 85.5%; position: relative; margin: 0 5px 5px 5px">
                 <i class="icon-plus"></i>

@@ -1,6 +1,6 @@
 'use strict';
-managedWifi.controller('MainMenuController',["$scope", "$timeout", "$http", "$location", "$routeParams", "$cookies", "appSettings", "navigationService", "notificationService", "siteService", "networkService", "messagingService", "dialogService", "loginService",
-    function MainMenuController($scope, $timeout, $http, $location, $cookies, $routeParams, appSettings, navigationService, notificationService, siteService, networkService, messagingService, dialogService, loginService) {
+managedWifi.controller('MainMenuController',["$scope", "$timeout", "$http", "$location", "$routeParams", "$cookies", "appSettings", "navigationService", "notificationService", "siteService", "networkService", "messagingService", "dialogService", "loginService", "AccessPointService",
+    function MainMenuController($scope, $timeout, $http, $location, $cookies, $routeParams, appSettings, navigationService, notificationService, siteService, networkService, messagingService, dialogService, loginService, accessPointService) {
         $scope.siteFilter = '';
         $scope.referrer = document.referrer;
 
@@ -116,14 +116,17 @@ managedWifi.controller('MainMenuController',["$scope", "$timeout", "$http", "$lo
                 title: "Confirmation Required",
                 msg: "Note that all configurations and history with respect to this site will be deleted. All associated devices will be restored to their factory state."
             }).result.then(function(){
+		var devices = [];
 
-                var devices = site.macs.split("\n");
+		if(site.macs != undefined)
+                    devices = site.macs.split("\n");
                 
-                device.forEach(function (device){
+                devices.forEach(function (mac){
                     accessPointService.delete(mac).then(function(){
                         notificationService.success("accessPointDelete", mac + " was deleted.");
                     });
-                }); 
+               }); 
+
 
                 siteService.delete(site).then(function() {
                     siteService.getAll().then(function(sites){
