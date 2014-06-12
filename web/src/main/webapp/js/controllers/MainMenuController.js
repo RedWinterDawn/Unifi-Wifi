@@ -1,5 +1,5 @@
 'use strict';
-managedWifi.controller('MainMenuController',["$scope", "$timeout", "$http", "$location", "$routeParams", "$cookies", "appSettings", "navigationService", "notificationService", "siteService", "networkService", "messagingService", "dialogService", "loginService", "AccessPointService",
+managedWifi.controller('MainMenuController', ["$scope", "$timeout", "$http", "$location", "$routeParams", "$cookies", "appSettings", "navigationService", "notificationService", "siteService", "networkService", "messagingService", "dialogService", "loginService", "AccessPointService",
     function MainMenuController($scope, $timeout, $http, $location, $cookies, $routeParams, appSettings, navigationService, notificationService, siteService, networkService, messagingService, dialogService, loginService, accessPointService) {
         $scope.siteFilter = '';
         $scope.referrer = document.referrer;
@@ -21,46 +21,46 @@ managedWifi.controller('MainMenuController',["$scope", "$timeout", "$http", "$lo
 
         resizeSiteList();
 
-        $scope.init = function(){
+        $scope.init = function() {
             siteService.getAll().then(
-                function(sites){
+                function(sites) {
                     notificationService.clear("loadSites");
-                    
+
                     $scope.sites = sites;
-                    
-                    if(sites.length != 0){
+
+                    if (sites.length != 0) {
                         $scope.selectedSite = sites.filter(function(site) {
                             return site.is_selected;
                         })[0];
                         $scope.filter();
-                        if($scope.selectedSite == undefined){
+                        if ($scope.selectedSite == undefined) {
                             $scope.selectedSite = sites[0];
                             sites[0].is_selected = true;
                         }
                     }
 
                 },
-                function(reason){
+                function(reason) {
                     notificationService.error("loadSites", "An error occurred while loading the sites for this account.");
                 }
             );
 
-            if($scope.selectedSite != undefined){
+            if ($scope.selectedSite != undefined) {
                 networkService.getAll().then(
-                    function(allNetworkData){
+                    function(allNetworkData) {
                         $scope.networks = allNetworkData.networks;
                     }
                 );
             }
-            
+
             loginService.isAdmin().then(
-                function(isAdmin){
+                function(isAdmin) {
                     $scope.isAdmin = isAdmin;
                 }
             )
         };
 
-        loginService.isLoggedIn().then(function(){
+        loginService.isLoggedIn().then(function() {
             $scope.init();
             $scope.firstName = $cookies.firstName;
             $scope.lastName = $cookies.lastName;
@@ -68,7 +68,7 @@ managedWifi.controller('MainMenuController',["$scope", "$timeout", "$http", "$lo
             $scope.emailHash = $cookies.emailHash;
         });
 
-        $scope.$on("$routeChangeSuccess", function(angularEvent, current, previous){
+        $scope.$on("$routeChangeSuccess", function(angularEvent, current, previous) {
             $scope.activeMainNav = navigationService.getActiveMainNav(current.controller);
             $scope.activeSubNav = navigationService.getActiveSubNav(current.controller);
         });
@@ -77,85 +77,91 @@ managedWifi.controller('MainMenuController',["$scope", "$timeout", "$http", "$lo
             return killEvent(e);
         };
 
-        $scope.isActive = function (navElement){
+        $scope.isActive = function(navElement) {
             return $scope.activeMainNav == navElement || $scope.activeSubNav == navElement ? "active" : "";
         };
 
-        $scope.logout = function(){
+        $scope.logout = function() {
             loginService.logout().then(
-                function(){
+                function() {
                     window.location.href = "https://www.onjive.com/auth/logout";
                 },
-                function(reason){
+                function(reason) {
                     notificationService.error("login", "An error occurred while logging you out.");
                 }
             );
         };
 
-        $scope.navigate = function(route){
-            if(route == null || route == '')
+        $scope.navigate = function(route) {
+            if (route == null || route == '')
                 route = '/';
             $location.url(route);
         };
 
-        $scope.selectSite = function(site){
+        $scope.selectSite = function(site) {
             siteService.selectSite(site).then(
-                function(){
+                function() {
                     $scope.selectedSite = site;
                     location.reload();
                 },
-                function(){
+                function() {
                     notificationService.error("loadSite", "An error occurred while switching sites.");
                 }
             )
         };
 
-        
         $scope.deleteSite = function(site,sites){
-            dialogService.confirm({
-                title: "Confirmation Required",
-                msg: "Note that all configurations and history with respect to this site will be deleted. All associated devices will be restored to their factory state."
-            }).result.then(function(){
-		var devices = [];
 
-		if(site.macs != undefined)
-                    devices = site.macs.split("\n");
-                
-                devices.forEach(function (mac){
-                    accessPointService.delete(mac).then(function(){
-                        notificationService.success("accessPointDelete", mac + " was deleted.");
-                    });
-               }); 
+            accessPointService.getAll().then(function(devices){
 
+                // Don't let the site be deleted until all access points have been removed.
+                if(devices.length > 0){
+                    dialogService.confirm({
+                    title: "Confirmation Required",
+                    msg: "All Access Points must be removed from this location before you can remove it."
+                    }).result.then(function(){ $location.url("/devices"); });
+                }
 
-                siteService.delete(site).then(function() {
-                    siteService.getAll().then(function(sites){
-                            notificationService.clear("loadSites");
-                            
-                            $scope.sites = sites;
+                else{ 
+                    dialogService.confirm({
+                        title: "Confirmation Required",
+                        msg: "Note that all configurations and history with respect to this site will be deleted."
+                    }).result.then(function(){
 
-                            notificationService.success("siteDelete", site.friendly_name + " was deleted.");
-                            
-                            if(sites.length != 0){
-                                $scope.selectedSite = sites.filter(function(site) {
-                                    return site.is_selected;
-                                })[0];
-                                $scope.filter();
-                                if($scope.selectedSite == undefined){
-                                    $scope.selectedSite = sites[0];
-                                    sites[0].is_selected = true;
-                                    $scope.selectSite(sites[0]);
-                                }
-                            }
-                            else{
-                                $location.url("/newsite");
-                                location.reload();
-                            }
+                        devices.forEach(function (device){
+                            accessPointService.delete(device.mac).then(function(){
+                                //notificationService.success("accessPointDelete", device.mac + " was deleted.");
+                            });
                         });
-                });
-                
 
-                
+
+                        siteService.delete(site).then(function() {
+                            siteService.getAll().then(function(sites){
+                                notificationService.clear("loadSites");
+
+                                $scope.sites = sites;
+
+                                notificationService.success("siteDelete", site.friendly_name + " was deleted.");
+
+                                if(sites.length != 0){
+                                    $scope.selectedSite = sites.filter(function(site) {
+                                        return site.is_selected;
+                                    })[0];
+                                    $scope.filter();
+                                    if($scope.selectedSite == undefined){
+                                        $scope.selectedSite = sites[0];
+                                        sites[0].is_selected = true;
+                                        $scope.selectSite(sites[0]);
+                                    }
+                                }
+                                else{
+                                    $location.url("/newsite");
+                                    location.reload();
+                                }
+                            });
+                        });
+                    });
+                }
             });
         };
 
@@ -169,7 +175,7 @@ managedWifi.controller('MainMenuController',["$scope", "$timeout", "$http", "$lo
                 $scope.filteredSites = _.filter($scope.sites, function(site) {
                     return _.all(searchTerms, function(term) {
                         return _.any(sitePropertiesToFilter, function(prop) {
-                            if(site[prop] != undefined)
+                            if (site[prop] != undefined)
                                 return site[prop].toLowerCase().indexOf(term) > -1;
                             else
                                 return false;
@@ -180,8 +186,8 @@ managedWifi.controller('MainMenuController',["$scope", "$timeout", "$http", "$lo
 
             sort(sortField, sortReverse);
         };
-        
-        
+
+
 
         $scope.sortIcons = {
             friendly_name: 'icon-caret-down',
