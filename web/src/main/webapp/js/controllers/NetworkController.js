@@ -1,7 +1,7 @@
 'use strict';
 
-managedWifi.controller('NetworkController', ["$scope", "$location", "$routeParams", "NetworkService", "notificationService", "dialogService",
-    function NetworkController($scope, $location, $routeParams, networkService, notificationService, dialogService) {
+managedWifi.controller('NetworkController', ["$scope", "$location", "$routeParams", "NetworkService", "notificationService", "dialogService", "SiteSettingsService",
+    function NetworkController($scope, $location, $routeParams, networkService, notificationService, dialogService, siteSettingsSerivce) {
         $scope.activeItem = 'Configuration';
         $scope.activeSubItem = 'Basic';
         
@@ -41,6 +41,12 @@ managedWifi.controller('NetworkController', ["$scope", "$location", "$routeParam
 	            };
         	$scope.network = angular.copy($scope.original);
         }
+
+        siteSettingsSerivce.getAll().then(
+            function(settings){
+                $scope.guestSettings = settings.filter(function(setting){return setting.key == 'guest_access'})[0];
+            }
+        )
 
         $scope.update = function() {
             if($scope.isNew)

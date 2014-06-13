@@ -48,21 +48,17 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
             siteService.update($scope.site).then(
                     function(){
                         angular.copy($scope.site, $scope.originalSite);
-                        notificationService.success("siteEdit", "The site has been updated");
                         siteService.selectSite($scope.site);
                     },
                     function(reason){
                         notificationService.error("siteEdit", "An error occurred while attempting to save this site");
                     }
                 );
-        };
-
         
         $scope.isNew = $routeParams.id == undefined;
-
-        $scope.update = function() {
-            if ($scope.settings.auth === 'tou') {
+	
             	$scope.settings.portal_enabled=true;
+            if ($scope.settings.auth === 'tou') {
                 $scope.settings.portal_customized = true;
                 $scope.settings.payment_enabled = false;
                 $scope.settings.voucher_enabled = false;

@@ -209,6 +209,92 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="field-section">
+                                    <div class="control-group">
+                                        <div class="control-label">
+                                            Authentication
+                                            <i class="icon-question-sign section-help" tooltip-placement="left" tooltip="If you already have your own hotspot authentication system, choose the [External Portal Server] option to defer to that system. Contact Jive Communications for more information on implementation details."></i>
+                                        </div>
+                                        <div class="controls">
+                                            <label class="radio">
+                                                <input type="radio" ng-model="settings.auth" value="none">No authentication
+                                            </label>
+                                            <label class="radio">
+                                                <input type="radio" ng-model="settings.auth" value="password">Simple Password
+                                            </label>
+                                            <!--  <label class="radio">
+                                                <input type="radio" ng-model="network.auth" value="custom">External Portal Server
+                                            </label>-->
+                                            <label class="radio">
+                                                <input type="radio" ng-model="settings.auth" value="tou">Custom Terms and Conditions
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="control-group" ng-class="form.custom_ip.$invalid ? 'error' : ''" ng-show="settings.auth == 'custom'">
+                                        <div class="control-label">IP Address:</div>
+                                        <div class="controls">
+                                            <input type="text" id="customIp" name="customIp" ng-model="settings.custom_ip" ng-required="settings.auth == 'custom'" valid-ip/>
+                                            <i ng-hide="form.customIp.$invalid" class="icon-ok-sign active"></i>
+                                            <div ng-show="form.customIp.$invalid" class="tip help">Please provide an IP Address</div>
+                                        </div>
+                                    </div>
+                                    <div class="control-group" ng-show="settings.auth == 'tou'">
+                                        <div class="control-label">Company Name:</div>
+                                        <div class="controls">
+                                            <input type="text" id="companyName" name="companyName" ng-model="settings.companyName"/>
+                                        </div>
+                                    </div>
+                                    <div class="control-group" ng-show="settings.auth == 'tou'">
+                                        <div class="control-label">Terms and Conditions:</div>
+                                        <div class="controls">
+                                            <textarea type="text" id="terms" name="terms" ng-model="settings.terms" ng-required="settings.auth == 'tou'"></textarea>
+                                            <div ng-show="form.terms.$invalid" class="tip help">Please provide the terms and conditions</div>
+                                        </div>
+                                    </div>
+                                    <div class="control-group" ng-class="form.guestPassword.$invalid ? 'error' : ''" ng-show="settings.auth == 'password'">
+                                        <div class="control-label">Password</div>
+                                        <div class="controls">
+                                            <input type="{{ showPassword ? 'text' : 'password' }}" id="guestPassword" name="guestPassword" ng-model="settings.x_password" ng-required="settings.auth == 'password'"/>
+                                            <label class="checkbox" style="display: inline-block;"><input type="checkbox" ng-model="showPassword">Show Password</label>
+                                            <i ng-hide="form.guestPassword.$invalid" class="icon-ok-sign active"></i>
+                                            <div ng-show="form.guestPassword.$invalid" class="tip help">Please provide a password</div>
+                                        </div>
+                                    </div>
+                                    <div class="control-group" ng-show="settings.auth == 'password' || settings.auth == 'none'" ng-class="form.expire.$invalid ? 'error' : ''">
+                                        <div class="control-label">Expiration</div>
+                                        <div class="controls">
+                                            <select name="expire" ng-model="settings.expire" ng-required="settings.auth == 'password' || settings.auth == 'none'">
+                                                <option value="480">8 hours</option>
+                                                <option value="1440">24 hours</option>
+                                                <option value="2880">2 days</option>
+                                                <option value="4320">3 days</option>
+                                                <option value="5760">4 days</option>
+                                                <option value="10080">7 days</option>
+                                            </select>
+                                            <i ng-hide="form.expire.$error.required" class="icon-ok-sign active"></i>
+                                            <div ng-show="form.expire.$error.required" class="tip help">Please select an expiration period</div>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <div class="control-label">Landing Page</div>
+                                        <div class="controls">
+                                            <label class="radio">
+                                                <input type="radio" ng-model="settings.redirect_enabled" ng-value="false">Redirect to the original URL
+                                            </label>
+                                            <label class="radio">
+                                                <input type="radio" ng-model="settings.redirect_enabled" ng-value="true">Redirect to promotional URL
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="control-group" ng-class="form.promoUrl.$invalid ? 'error' : ''" ng-show="settings.redirect_enabled">
+                                        <div class="control-label">Promotional URL</div>
+                                        <div class="controls">
+                                            <input type="text" id="promoUrl" name="promoUrl" ng-model="settings.redirect_url" ng-required="settings.redirect_enabled"/>
+                                            <i ng-hide="form.promoUrl.$invalid" class="icon-ok-sign active"></i>
+                                            <div ng-show="form.promoUrl.$invalid" class="tip help">Please provide a url</div>
+                                        </div>
+                                    </div>
+                                </div>
                             </form>
                         </div></div>
                     </div>
