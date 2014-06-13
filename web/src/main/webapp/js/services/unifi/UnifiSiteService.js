@@ -49,8 +49,8 @@ managedWifi.factory('unifiSiteService', ['$q', '$http', 'appSettings', 'messagin
         add: function(site){
             return $http.put(appSettings.apiEndpoint+"/site", site).then(function(response) {
                 site.site_id = response.data;
-                sites.push(site)
-            });
+                sites.push(site);
+	    });
         },
 
         delete: function(site){

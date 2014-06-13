@@ -87,6 +87,12 @@ managedWifi.config(['$routeProvider', '$locationProvider', function ($routeProvi
 	            controller: 'SiteSettingsController',
 	            resolve: managedWifi.resolveServiceAlias(["SiteSettingsService", "SiteService"])
 	        })
+	        .when('/settings/:tab?',
+	        {
+	            templateUrl: 'templates/SiteSettings.html',
+	            controller: 'SiteSettingsController',
+	            resolve: managedWifi.resolveServiceAlias(["SiteSettingsService", "SiteService"])
+	        })
 	        .when('/newsite',
 	        {
 	            templateUrl: 'templates/NewSite.html',

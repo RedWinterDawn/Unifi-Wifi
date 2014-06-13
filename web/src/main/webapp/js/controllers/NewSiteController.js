@@ -8,10 +8,13 @@ managedWifi.controller('NewSiteController', ["$scope", "$location", "$routeParam
         $scope.site = angular.copy($scope.original);
 
         $scope.settings = {
-                portal_enabled: true
-            };
+                portal_enabled: true,
+        	redirect_enabled: false,
+		expire: 4320 
+	};
         
 	$scope.create = function() {
+	    siteSettingsService.update($scope.settings);
             siteService.add($scope.site).then(
                 function(){
                     siteSettingsService.update($scope.settings);
@@ -19,7 +22,7 @@ managedWifi.controller('NewSiteController', ["$scope", "$location", "$routeParam
                     $scope.offLocationChangeStart();
                     window.onbeforeunload = null;
                     siteService.selectSite($scope.site);
-                    $location.url("/networks");
+                    $location.url("/devices");
                 },
                 function(reason){
                     notificationService.error("siteAdd", "An error occurred while attempting to add this site");

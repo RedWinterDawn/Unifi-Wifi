@@ -4,8 +4,14 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
     function SiteSettingsController($scope, $location, $routeParams, siteService, siteSettingsService, notificationService, dialogService) {
         $scope.activeItem = 'Details';
         $scope.activeSubItem = 'Access';
-        $scope.regExIpAddress = managedWifi.regExLib.ipAddress;
+        
+	if($routeParams.tab == 'guest')
+	    $scope.activeItem = 'Guest';
+
+	$scope.regExIpAddress = managedWifi.regExLib.ipAddress;
         $scope.showPassword = false;
+
+	
         
         siteSettingsService.getAll().then(
                 function(settings){

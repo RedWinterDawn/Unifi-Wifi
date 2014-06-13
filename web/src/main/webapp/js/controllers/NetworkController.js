@@ -1,7 +1,7 @@
 'use strict';
 
 managedWifi.controller('NetworkController', ["$scope", "$location", "$routeParams", "NetworkService", "notificationService", "dialogService", "SiteSettingsService",
-    function NetworkController($scope, $location, $routeParams, networkService, notificationService, dialogService, siteSettingsSerivce) {
+    function NetworkController($scope, $location, $routeParams, networkService, notificationService, dialogService, siteSettingsService) {
         $scope.activeItem = 'Configuration';
         $scope.activeSubItem = 'Basic';
         
@@ -42,7 +42,7 @@ managedWifi.controller('NetworkController', ["$scope", "$location", "$routeParam
         	$scope.network = angular.copy($scope.original);
         }
 
-        siteSettingsSerivce.getAll().then(
+        siteSettingsService.getAll().then(
             function(settings){
                 $scope.guestSettings = settings.filter(function(setting){return setting.key == 'guest_access'})[0];
             }
@@ -55,7 +55,7 @@ managedWifi.controller('NetworkController', ["$scope", "$location", "$routeParam
                         notificationService.success("networkAdd", $scope.network.name + " has been added");
                         $scope.offLocationChangeStart();
                         window.onbeforeunload = null;
-                        $location.url("/networks");
+                        $scope.network.is_guest ? $location.url("/settings/guest") : $location.url("/networks");
                     },
                     function(reason){
                         notificationService.error("networkAdd", "An error occurred while attempting to add network");
@@ -72,6 +72,10 @@ managedWifi.controller('NetworkController', ["$scope", "$location", "$routeParam
                     }
                 );
         };
+	
+	$scope.redirect = function(page) {
+	    $location.url('/settings/'+page);
+	};
 
         $scope.reset = function() {
             $scope.network = angular.copy($scope.original);
