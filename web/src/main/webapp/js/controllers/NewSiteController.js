@@ -21,8 +21,15 @@ managedWifi.controller('NewSiteController', ["$scope", "$location", "$routeParam
                     notificationService.success("siteAdd", "The site has been added");
                     $scope.offLocationChangeStart();
                     window.onbeforeunload = null;
-                    siteService.selectSite($scope.site);
-                    $location.url("/devices");
+                    siteService.selectSite(site).then(
+                        function() {
+                            $scope.selectedSite = site;
+                            location.reload();
+                        },
+                        function() {
+                            notificationService.error("loadSite", "An error occurred while switching sites.");
+                        }
+                    )
                 },
                 function(reason){
                     notificationService.error("siteAdd", "An error occurred while attempting to add this site");
