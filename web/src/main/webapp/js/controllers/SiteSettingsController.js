@@ -58,7 +58,6 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
         };
 
         
-        
         $scope.isNew = $routeParams.id == undefined;
 
         $scope.update = function() {

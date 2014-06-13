@@ -1,15 +1,20 @@
 'use strict';
 
-managedWifi.controller('NewSiteController', ["$scope", "$location", "$routeParams", "SiteService", "notificationService", "dialogService",
-    function NewSiteController($scope, $location, $routeParams, siteService, notificationService, dialogService) {
+managedWifi.controller('NewSiteController', ["$scope", "$location", "$routeParams", "SiteService", "notificationService", "dialogService", "SiteSettingsService",
+    function NewSiteController($scope, $location, $routeParams, siteService, notificationService, dialogService, siteSettingsService) {
         $scope.original = {
             friendly_name: "New Location"
         };
         $scope.site = angular.copy($scope.original);
+
+        $scope.settings = {
+                portal_enabled: true
+            };
         
-	$scope.update = function() {
+	$scope.create = function() {
             siteService.add($scope.site).then(
                 function(){
+                    siteSettingsService.update($scope.settings);
                     notificationService.success("siteAdd", "The site has been added");
                     $scope.offLocationChangeStart();
                     window.onbeforeunload = null;

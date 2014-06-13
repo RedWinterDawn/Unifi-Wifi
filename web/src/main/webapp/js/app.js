@@ -91,7 +91,7 @@ managedWifi.config(['$routeProvider', '$locationProvider', function ($routeProvi
 	        {
 	            templateUrl: 'templates/NewSite.html',
 	            controller: 'NewSiteController',
-	            resolve: managedWifi.resolveServiceAlias(["SiteService"])
+	            resolve: managedWifi.resolveServiceAlias(["SiteSettingsService","SiteService"])
 	        })
 	         .when('/networks',
 	        {
