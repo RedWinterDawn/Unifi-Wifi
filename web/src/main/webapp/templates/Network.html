@@ -37,11 +37,6 @@
                                 form.wpaeapPort.$invalid ? 'error' : '' ||
                             form.wpaeapPass.$invalid ? 'error' : ''"><a ng-click="activeSubItem = 'Basic'">Basic</a></li>
                             <li ng-class="activeSubItem == 'Advanced' ? 'active' : form.vlan.$invalid ? 'error' : ''"><a ng-click="activeSubItem = 'Advanced'">Advanced</a></li>
-                            <!-- <li ng-show="isGuest" ng-class="activeSubItem == 'Guest' ? 'active' : form.promoUrl.$invalid ? 'error' : '' ||
-                                form.guestPassword.$invalid ? 'error' : '' ||
-                                form.terms.$invalid ? 'error' : '' ||
-                                form.expire.$invalid ? 'error' : ''">
-                            <a ng-click="activeSubItem = 'Guest'">Guest Policies</a></li> -->
                         </ul>
                         <div ng-show="activeSubItem=='Basic'">
                             <h3>Basic Settings</h3>
@@ -58,110 +53,202 @@
                         <div class="row-fluid"><div class="span8 offset2">
                             <form name="form" class="form-horizontal" novalidate>
                                 <div class="field-section" ng-show="activeSubItem=='Basic'">
-                                    <div class="control-group" ng-class="form.name.$invalid ? 'error' : ''">
-                                        <label for="name" class="control-label">
-                                            Network name (SSID)<i class="icon-asterisk required"></i>
-                                        </label>
-                                        <div class="controls">
-                                            <input type="text" id="name" name="name" placeholder="Provide a name..." ng-model="network.name" required>
-                                            <i ng-hide="form.name.$error.required" class="icon-ok-sign active"></i>
-                                            <div ng-show="form.name.$error.required" class="tip help">Name is required</div>
+                                    <div class="row">
+                                        <div class="span4">
+                                            <div class="control-group" ng-class="form.name.$invalid ? 'error' : ''">
+                                                <label for="name" class="control-label">
+                                                    Network name (SSID)<i class="icon-asterisk required"></i>
+                                                </label>
+                                                <div class="controls">
+                                                    <input type="text" id="name" name="name" placeholder="Provide a name..." ng-model="network.name" required>
+                                                    <i ng-hide="form.name.$error.required" class="icon-ok-sign active"></i>
+                                                    <div ng-show="form.name.$error.required" class="tip help">Name is required</div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="control-group">
+                                                <div class="control-label">Broadcast SSID</div>
+                                                <div class="controls">
+                                                    <label class="radio">
+                                                        <input type="radio" ng-model="network.hide_ssid" ng-value="false">Enabled
+                                                    </label>
+                                                    <label class="radio">
+                                                        <input type="radio" ng-model="network.hide_ssid" ng-value="true">Disabled
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="control-group">
+                                                <div class="control-label">Status</div>
+                                                <div class="controls">
+                                                    <label class="radio">
+                                                        <input type="radio" ng-model="network.enabled" ng-value="true">Enabled
+                                                    </label>
+                                                    <label class="radio">
+                                                        <input type="radio" ng-model="network.enabled" ng-value="false">Disabled
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="control-group">
+                                                <div class="control-label">Security</div>
+                                                <div class="controls">
+                                                    <label class="radio">
+                                                        <input type="radio" ng-model="network.security" value="open">Open
+                                                    </label>
+                                                    <label class="radio">
+                                                        <input type="radio" ng-model="network.security" value="wep">WEP
+                                                    </label>
+                                                    <label class="radio">
+                                                        <input type="radio" ng-model="network.security" value="wpapsk">WPA-Personal
+                                                    </label>
+                                                    <!-- <label class="radio">
+                                                        <input type="radio" ng-model="network.security" value="wpaeap">WPA-Enterprise
+                                                    </label> -->
+                                                </div>
+                                            </div>
+                                            <div class="control-group" ng-show="network.security == 'wep'" ng-class="form.wepKey.$invalid ? 'error' : ''">
+                                                <div class="control-label">WEP Key</div>
+                                                <div class="controls">
+                                                    <input type="{{ showWepPassword ? 'text' : 'password' }}" id="wepKey" name="wepKey" ng-model="network.x_wep" ng-required="network.security == 'wep'" ng-minlength="8" />
+                                                    <label class="checkbox" style="display: inline-block;"><input type="checkbox" ng-model="showWepPassword">Show Password</label>
+                                                    <i ng-hide="form.wepKey.$invalid" class="icon-ok-sign active"></i>
+                                                    <div ng-show="form.wepKey.$invalid" class="tip help">Please provide a passkey of at least length 8</div>
+                                                </div>
+                                            </div>
+                                            <div class="control-group" ng-show="network.security == 'wep'" ng-class="form.wepIdx.$invalid ? 'error' : ''">
+                                                <div class="control-label">WEP Key Index</div>
+                                                <div class="controls">
+                                                    <select name="wepIdx" ng-model="network.wep_idx" ng-required="network.security == 'wep'">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                    </select>
+                                                    <i ng-hide="form.wepIdx.$error.required" class="icon-ok-sign active"></i>
+                                                    <div ng-show="form.wepIdx.$error.required" class="tip help">A key index is required</div>
+                                                </div>
+                                            </div>
+                                            <div class="control-group" ng-show="network.security == 'wpapsk'" ng-class="form.wpapskKey.$invalid ? 'error' : ''">
+                                                <div class="control-label">Security Key</div>
+                                                <div class="controls">
+                                                    <input type="{{ showWpapPassword ? 'text' : 'password' }}" id="wpapskKey" name="wpapskKey" ng-model="network.x_passphrase" ng-required="network.security == 'wpapsk'" ng-minlength="8" />
+                                                    <label class="checkbox" style="display: inline-block;"><input type="checkbox" ng-model="showWpapPassword">Show Password</label>
+                                                    <i ng-hide="form.wpapskKey.$invalid" class="icon-ok-sign active"></i>
+                                                    <div ng-show="form.wpapskKey.$invalid" class="tip help">Please provide a passkey of at least length 8</div>
+                                                </div>
+                                            </div>
+                                            <div class="control-group" ng-show="network.security == 'wpaeap'" ng-class="form.wpaeapIP.$invalid ? 'error' : ''">
+                                                <div class="control-label">RADIUS Server IP</div>
+                                                <div class="controls">
+                                                    <input type="text" id="wpaeapIP" name="wpaeapIP" ng-model="network.radius_ip_1" ng-required="network.security == 'wpaeap'" valid-ip />
+                                                    <i ng-hide="form.wpaeapIP.$invalid" class="icon-ok-sign active"></i>
+                                                    <div ng-show="form.wpaeapIP.$invalid" class="tip help">Please provide a valid IP address</div>
+                                                </div>
+                                            </div>
+                                            <div class="control-group" ng-show="network.security == 'wpaeap'" ng-class="form.wpaeapPort.$invalid ? 'error' : ''">
+                                                <div class="control-label">RADIUS Server Port</div>
+                                                <div class="controls">
+                                                    <input type="number" id="wpaeapPort" name="wpaeapPort" ng-model="network.radius_port_1" ng-required="network.security == 'wpaeap'" ng-pattern="/[\d]/" />
+                                                    <i ng-hide="form.wpaeapPort.$invalid" class="icon-ok-sign active"></i>
+                                                    <div ng-show="form.wpaeapPort.$invalid" class="tip help">Please provide a valid port number</div>
+                                                </div>
+                                            </div>
+                                            <div class="control-group" ng-show="network.security == 'wpaeap'" ng-class="form.wpaeapPass.$invalid ? 'error' : ''">
+                                                <div class="control-label">Security Key</div>
+                                                <div class="controls">
+                                                    <input type="{{ showWpaePassword ? 'text' : 'password' }}" id="wpaeapPass" name="wpaeapPass" ng-model="network.x_radius_secret_1" ng-required="network.security == 'wpaeap'" ng-minlength="8" />
+                                                    <label class="checkbox" style="display: inline-block;"><input type="checkbox" ng-model="showWpaePassword">Show Password</label>
+                                                    <i ng-hide="form.wpaeapPass.$invalid" class="icon-ok-sign active"></i>
+                                                    <div ng-show="form.wpaeapPass.$invalid" class="tip help">Please provide a passkey of at least length 8</div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    
-                                    <div class="control-group">
-                                        <div class="control-label">Broadcast SSID</div>
-                                        <div class="controls">
-                                            <label class="radio">
-                                                <input type="radio" ng-model="network.hide_ssid" ng-value="false">Enabled
-                                            </label>
-                                            <label class="radio">
-                                                <input type="radio" ng-model="network.hide_ssid" ng-value="true">Disabled
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="control-group">
-                                        <div class="control-label">Status</div>
-                                        <div class="controls">
-                                            <label class="radio">
-                                                <input type="radio" ng-model="network.enabled" ng-value="true">Enabled
-                                            </label>
-                                            <label class="radio">
-                                                <input type="radio" ng-model="network.enabled" ng-value="false">Disabled
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="control-group">
-                                        <div class="control-label">Security</div>
-                                        <div class="controls">
-                                            <label class="radio">
-                                                <input type="radio" ng-model="network.security" value="open">Open
-                                            </label>
-                                            <label class="radio">
-                                                <input type="radio" ng-model="network.security" value="wep">WEP
-                                            </label>
-                                            <label class="radio">
-                                                <input type="radio" ng-model="network.security" value="wpapsk">WPA-Personal
-                                            </label>
-                                            <!-- <label class="radio">
-                                                <input type="radio" ng-model="network.security" value="wpaeap">WPA-Enterprise
-                                            </label> -->
-                                        </div>
-                                    </div>
-                                    <div class="control-group" ng-show="network.security == 'wep'" ng-class="form.wepKey.$invalid ? 'error' : ''">
-                                        <div class="control-label">WEP Key</div>
-                                        <div class="controls">
-                                            <input type="{{ showWepPassword ? 'text' : 'password' }}" id="wepKey" name="wepKey" ng-model="network.x_wep" ng-required="network.security == 'wep'" ng-minlength="8" />
-                                            <label class="checkbox" style="display: inline-block;"><input type="checkbox" ng-model="showWepPassword">Show Password</label>
-                                            <i ng-hide="form.wepKey.$invalid" class="icon-ok-sign active"></i>
-                                            <div ng-show="form.wepKey.$invalid" class="tip help">Please provide a passkey of at least length 8</div>
-                                        </div>
-                                    </div>
-                                    <div class="control-group" ng-show="network.security == 'wep'" ng-class="form.wepIdx.$invalid ? 'error' : ''">
-                                        <div class="control-label">WEP Key Index</div>
-                                        <div class="controls">
-                                            <select name="wepIdx" ng-model="network.wep_idx" ng-required="network.security == 'wep'">
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                            </select>
-                                            <i ng-hide="form.wepIdx.$error.required" class="icon-ok-sign active"></i>
-                                            <div ng-show="form.wepIdx.$error.required" class="tip help">A key index is required</div>
-                                        </div>
-                                    </div>
-                                    <div class="control-group" ng-show="network.security == 'wpapsk'" ng-class="form.wpapskKey.$invalid ? 'error' : ''">
-                                        <div class="control-label">Security Key</div>
-                                        <div class="controls">
-                                            <input type="{{ showWpapPassword ? 'text' : 'password' }}" id="wpapskKey" name="wpapskKey" ng-model="network.x_passphrase" ng-required="network.security == 'wpapsk'" ng-minlength="8" />
-                                            <label class="checkbox" style="display: inline-block;"><input type="checkbox" ng-model="showWpapPassword">Show Password</label>
-                                            <i ng-hide="form.wpapskKey.$invalid" class="icon-ok-sign active"></i>
-                                            <div ng-show="form.wpapskKey.$invalid" class="tip help">Please provide a passkey of at least length 8</div>
-                                        </div>
-                                    </div>
-                                    <div class="control-group" ng-show="network.security == 'wpaeap'" ng-class="form.wpaeapIP.$invalid ? 'error' : ''">
-                                        <div class="control-label">RADIUS Server IP</div>
-                                        <div class="controls">
-                                            <input type="text" id="wpaeapIP" name="wpaeapIP" ng-model="network.radius_ip_1" ng-required="network.security == 'wpaeap'" valid-ip />
-                                            <i ng-hide="form.wpaeapIP.$invalid" class="icon-ok-sign active"></i>
-                                            <div ng-show="form.wpaeapIP.$invalid" class="tip help">Please provide a valid IP address</div>
-                                        </div>
-                                    </div>
-                                    <div class="control-group" ng-show="network.security == 'wpaeap'" ng-class="form.wpaeapPort.$invalid ? 'error' : ''">
-                                        <div class="control-label">RADIUS Server Port</div>
-                                        <div class="controls">
-                                            <input type="number" id="wpaeapPort" name="wpaeapPort" ng-model="network.radius_port_1" ng-required="network.security == 'wpaeap'" ng-pattern="/[\d]/" />
-                                            <i ng-hide="form.wpaeapPort.$invalid" class="icon-ok-sign active"></i>
-                                            <div ng-show="form.wpaeapPort.$invalid" class="tip help">Please provide a valid port number</div>
-                                        </div>
-                                    </div>
-                                    <div class="control-group" ng-show="network.security == 'wpaeap'" ng-class="form.wpaeapPass.$invalid ? 'error' : ''">
-                                        <div class="control-label">Security Key</div>
-                                        <div class="controls">
-                                            <input type="{{ showWpaePassword ? 'text' : 'password' }}" id="wpaeapPass" name="wpaeapPass" ng-model="network.x_radius_secret_1" ng-required="network.security == 'wpaeap'" ng-minlength="8" />
-                                            <label class="checkbox" style="display: inline-block;"><input type="checkbox" ng-model="showWpaePassword">Show Password</label>
-                                            <i ng-hide="form.wpaeapPass.$invalid" class="icon-ok-sign active"></i>
-                                            <div ng-show="form.wpaeapPass.$invalid" class="tip help">Please provide a passkey of at least length 8</div>
+                                        <div class="span4">
+                                            <div class="field-section" ng-show="network.is_guest">
+                                                <div class="control-group">
+                                                    <div class="control-label">
+                                                        Authentication
+                                                        <i class="icon-question-sign section-help" tooltip-placement="left" tooltip="If you already have your own hotspot authentication system, choose the [External Portal Server] option to defer to that system. Contact Jive Communications for more information on implementation details."></i>
+                                                    </div>
+                                                    <div class="controls">
+                                                        <label class="radio">
+                                                            <input disabled type="radio" ng-model="guestSettings.auth" value="none">No authentication
+                                                        </label>
+                                                        <label class="radio">
+                                                            <input disabled type="radio" ng-model="guestSettings.auth" value="password">Simple Password
+                                                        </label>
+                                                        <!--  <label class="radio">
+                                                            <input type="radio" ng-model="network.auth" value="custom">External Portal Server
+                                                        </label>-->
+                                                        <label class="radio">
+                                                            <input type="radio" disabled  ng-model="guestSettings.auth" value="tou">Custom Terms and Conditions
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="control-group" ng-class="form.custom_ip.$invalid ? 'error' : ''" ng-show="guestSettings.auth == 'custom'">
+                                                    <div class="control-label">IP Address:</div>
+                                                    <div class="controls">
+                                                        <input type="text" id="customIp" name="customIp" disabled ng-model="guestSettings.custom_ip" ng-required="guestSettings.auth == 'custom'" valid-ip/>
+                                                        <i ng-hide="form.customIp.$invalid" class="icon-ok-sign active"></i>
+                                                        <div ng-show="form.customIp.$invalid" class="tip help">Please provide an IP Address</div>
+                                                    </div>
+                                                </div>
+                                                <div class="control-group" ng-show="guestSettings.auth == 'tou'">
+                                                    <div class="control-label">Company Name:</div>
+                                                    <div class="controls">
+                                                        <input type="text" id="companyName" name="companyName" disabled ng-model="guestSettings.companyName"/>
+                                                    </div>
+                                                </div>
+                                                <div class="control-group" ng-show="guestSettings.auth == 'tou'">
+                                                    <div class="control-label">Terms and Conditions:</div>
+                                                    <div class="controls">
+                                                        <textarea type="text" id="terms" disabled name="terms" ng-model="guestSettings.terms" ng-required="guestSettings.auth == 'tou'"></textarea>
+                                                        <div ng-show="form.terms.$invalid" class="tip help">Please provide the terms and conditions</div>
+                                                    </div>
+                                                </div>
+                                                <div class="control-group" ng-class="form.guestPassword.$invalid ? 'error' : ''" ng-show="guestSettings.auth == 'password'">
+                                                    <div class="control-label">Password</div>
+                                                    <div class="controls">
+                                                        <input type="{{ showPassword ? 'text' : 'password' }}" disabled id="guestPassword" name="guestPassword" ng-model="guestSettings.x_password" ng-required="settings.auth == 'password'"/>
+                                                        <label class="checkbox" style="display: inline-block;"><input type="checkbox" ng-model="showPassword">Show Password</label>
+                                                        <i ng-hide="form.guestPassword.$invalid" class="icon-ok-sign active"></i>
+                                                        <div ng-show="form.guestPassword.$invalid" class="tip help">Please provide a password</div>
+                                                    </div>
+                                                </div>
+                                                <div class="control-group" ng-show="guestSettings.auth == 'password' || guestSettings.auth == 'none'" ng-class="form.expire.$invalid ? 'error' : ''">
+                                                    <div class="control-label">Expiration</div>
+                                                    <div class="controls">
+                                                        <select name="expire" ng-model="guestSettings.expire" disabled  ng-required="guestSettings.auth == 'password' || guestSettings.auth == 'none'">
+                                                            <option value="480">8 hours</option>
+                                                            <option value="1440">24 hours</option>
+                                                            <option value="2880">2 days</option>
+                                                            <option value="4320">3 days</option>
+                                                            <option value="5760">4 days</option>
+                                                            <option value="10080">7 days</option>
+                                                        </select>
+                                                        <i ng-hide="form.expire.$error.required" class="icon-ok-sign active"></i>
+                                                        <div ng-show="form.expire.$error.required" class="tip help">Please select an expiration period</div>
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    <div class="control-label">Landing Page</div>
+                                                    <div class="controls">
+                                                        <label class="radio">
+                                                            <input type="radio" disabled ng-model="guestSettings.redirect_enabled" ng-value="false">Redirect to the original URL
+                                                        </label>
+                                                        <label class="radio">
+                                                            <input type="radio" disabled ng-model="guestSettings.redirect_enabled" ng-value="true">Redirect to promotional URL
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="control-group" ng-class="form.promoUrl.$invalid ? 'error' : ''" ng-show="guestSettings.redirect_enabled">
+                                                    <div class="control-label">Promotional URL</div>
+                                                    <div class="controls">
+                                                        <input type="text" id="promoUrl" name="promoUrl" disabled ng-model="guestSettings.redirect_url" ng-required="guestSettings.redirect_enabled"/>
+                                                        <i ng-hide="form.promoUrl.$invalid" class="icon-ok-sign active"></i>
+                                                        <div ng-show="form.promoUrl.$invalid" class="tip help">Please provide a url</div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -206,92 +293,6 @@
                                             <label class="radio">
                                                 <input type="radio" ng-model="network.wpa_enc" value="ccmp">AES/CCMP Only
                                             </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="field-section">
-                                    <div class="control-group">
-                                        <div class="control-label">
-                                            Authentication
-                                            <i class="icon-question-sign section-help" tooltip-placement="left" tooltip="If you already have your own hotspot authentication system, choose the [External Portal Server] option to defer to that system. Contact Jive Communications for more information on implementation details."></i>
-                                        </div>
-                                        <div class="controls">
-                                            <label class="radio">
-                                                <input type="radio" ng-model="settings.auth" value="none">No authentication
-                                            </label>
-                                            <label class="radio">
-                                                <input type="radio" ng-model="settings.auth" value="password">Simple Password
-                                            </label>
-                                            <!--  <label class="radio">
-                                                <input type="radio" ng-model="network.auth" value="custom">External Portal Server
-                                            </label>-->
-                                            <label class="radio">
-                                                <input type="radio" ng-model="settings.auth" value="tou">Custom Terms and Conditions
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="control-group" ng-class="form.custom_ip.$invalid ? 'error' : ''" ng-show="settings.auth == 'custom'">
-                                        <div class="control-label">IP Address:</div>
-                                        <div class="controls">
-                                            <input type="text" id="customIp" name="customIp" ng-model="settings.custom_ip" ng-required="settings.auth == 'custom'" valid-ip/>
-                                            <i ng-hide="form.customIp.$invalid" class="icon-ok-sign active"></i>
-                                            <div ng-show="form.customIp.$invalid" class="tip help">Please provide an IP Address</div>
-                                        </div>
-                                    </div>
-                                    <div class="control-group" ng-show="settings.auth == 'tou'">
-                                        <div class="control-label">Company Name:</div>
-                                        <div class="controls">
-                                            <input type="text" id="companyName" name="companyName" ng-model="settings.companyName"/>
-                                        </div>
-                                    </div>
-                                    <div class="control-group" ng-show="settings.auth == 'tou'">
-                                        <div class="control-label">Terms and Conditions:</div>
-                                        <div class="controls">
-                                            <textarea type="text" id="terms" name="terms" ng-model="settings.terms" ng-required="settings.auth == 'tou'"></textarea>
-                                            <div ng-show="form.terms.$invalid" class="tip help">Please provide the terms and conditions</div>
-                                        </div>
-                                    </div>
-                                    <div class="control-group" ng-class="form.guestPassword.$invalid ? 'error' : ''" ng-show="settings.auth == 'password'">
-                                        <div class="control-label">Password</div>
-                                        <div class="controls">
-                                            <input type="{{ showPassword ? 'text' : 'password' }}" id="guestPassword" name="guestPassword" ng-model="settings.x_password" ng-required="settings.auth == 'password'"/>
-                                            <label class="checkbox" style="display: inline-block;"><input type="checkbox" ng-model="showPassword">Show Password</label>
-                                            <i ng-hide="form.guestPassword.$invalid" class="icon-ok-sign active"></i>
-                                            <div ng-show="form.guestPassword.$invalid" class="tip help">Please provide a password</div>
-                                        </div>
-                                    </div>
-                                    <div class="control-group" ng-show="settings.auth == 'password' || settings.auth == 'none'" ng-class="form.expire.$invalid ? 'error' : ''">
-                                        <div class="control-label">Expiration</div>
-                                        <div class="controls">
-                                            <select name="expire" ng-model="settings.expire" ng-required="settings.auth == 'password' || settings.auth == 'none'">
-                                                <option value="480">8 hours</option>
-                                                <option value="1440">24 hours</option>
-                                                <option value="2880">2 days</option>
-                                                <option value="4320">3 days</option>
-                                                <option value="5760">4 days</option>
-                                                <option value="10080">7 days</option>
-                                            </select>
-                                            <i ng-hide="form.expire.$error.required" class="icon-ok-sign active"></i>
-                                            <div ng-show="form.expire.$error.required" class="tip help">Please select an expiration period</div>
-                                        </div>
-                                    </div>
-                                    <div class="control-group">
-                                        <div class="control-label">Landing Page</div>
-                                        <div class="controls">
-                                            <label class="radio">
-                                                <input type="radio" ng-model="settings.redirect_enabled" ng-value="false">Redirect to the original URL
-                                            </label>
-                                            <label class="radio">
-                                                <input type="radio" ng-model="settings.redirect_enabled" ng-value="true">Redirect to promotional URL
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="control-group" ng-class="form.promoUrl.$invalid ? 'error' : ''" ng-show="settings.redirect_enabled">
-                                        <div class="control-label">Promotional URL</div>
-                                        <div class="controls">
-                                            <input type="text" id="promoUrl" name="promoUrl" ng-model="settings.redirect_url" ng-required="settings.redirect_enabled"/>
-                                            <i ng-hide="form.promoUrl.$invalid" class="icon-ok-sign active"></i>
-                                            <div ng-show="form.promoUrl.$invalid" class="tip help">Please provide a url</div>
                                         </div>
                                     </div>
                                 </div>
