@@ -27,7 +27,7 @@ managedWifi.factory('unifiAccessPointUserService', ['$q', '$http', 'appSettings'
                                 jive.mergeRecursive(user, activeUser);
                         })
                     });
-                    return deferred.resolve(users);
+                    return deferred.resolve(response.data.data);
                 },
                 function(response) {
                     deferred.reject(response);
