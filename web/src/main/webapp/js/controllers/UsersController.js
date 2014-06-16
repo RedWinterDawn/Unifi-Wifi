@@ -43,6 +43,28 @@ managedWifi.controller('UsersController', ["$scope", "$location", "$routeParams"
                             notificationService.error("loadUsers", "An error occurred while loading users.");
                         }
                     );
+
+                    accessPointUserService.getActive().then(
+                        function(activeUsers){
+                            notificationService.clear("loadUsers");
+
+                            activeUsers.forEach(function(activeUser){
+                                var accessPoint = accessPoints.filter(function(ap){return ap.mac == user.ap_mac;});
+                                if(accessPoint.length > 0)
+                                    user.ap = accessPoint[0].name == undefined ? accessPoint[0].mac : accessPoint[0].name;
+                                activeUser.orderableIp = managedWifi.createOrderableIp(user.ip);
+                                activeUser.searchables = managedWifi.createSearchables(user, ['hostname', 'mac', 'ip']);
+                                activeUser.is_connected = user.ip != undefined;
+                                activeUser.id = user._id;
+                            });
+                            $scope.activeUsers = activeUsers;
+                            $scope.activeUserNetworks = users.pluck('essid').distinct();
+                            $scope.paginator.updateTotalItems(activeUsers.length);
+                        }
+                        function(reason){
+                            notificationService.error("loadUsers", "An error occurred while loading users.");
+                        }
+                    );
                 },
                 function(reason){
                     notificationService.error("loadUsers", "An error occurred while loading users.");

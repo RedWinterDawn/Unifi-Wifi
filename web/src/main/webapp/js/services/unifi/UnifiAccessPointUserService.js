@@ -39,6 +39,24 @@ managedWifi.factory('unifiAccessPointUserService', ['$q', '$http', 'appSettings'
         return deferred.promise;
     };
 
+     service.getAllActive =  function () {
+        var deferred = $q.defer();
+
+        if(users == null){
+            $http({method: "POST", url: appSettings.apiEndpoint+"/user/active"}).then(
+                function(response) {
+                    users = response.data.data;
+                    deferred.resolve(response.data.data);
+                },
+                function(response) {
+                    deferred.reject(response);
+                }
+            )
+        }
+
+        return deferred.promise;
+    };
+
     service.getById = function(id){
         if(users == null){
             var self = this;

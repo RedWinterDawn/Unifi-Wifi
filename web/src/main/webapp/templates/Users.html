@@ -29,7 +29,10 @@
                         <li><input type="checkbox" id="apMacColumn" ng-model="showApMac"><label for="apMacColumn">Device</label></li>
                     </ul>
                 </div>
-
+                <div>
+                    <input type="radio" id="activeUsers" ng-model="showActiveUsers"><label for="activeUsers">Active Users</label>
+                    <input type="radio" id="allUsers" ng-model="showAllUsers"><label for="allUsers">All Users</label>
+                </div>
                 <div class="search-extensions">
                     <input type="text" placeholder="Search by name, MAC or IP..." ng-model="filter.searchables" class="search pull-right">
                 </div>
