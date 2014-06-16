@@ -31,6 +31,13 @@
 	-moz-box-sizing: border-box;
 	box-sizing: border-box
 }
+.spin {
+	transform:rotate(360deg);
+-webkit-transform:rotate(360deg);
+}
+.icon-refresh {
+	transition: all .9s ease;
+}
 article, aside, details, figcaption, figure, footer, header, hgroup, nav, section {
 	display: block
 }

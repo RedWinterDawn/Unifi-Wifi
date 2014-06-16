@@ -14,28 +14,28 @@ managedWifi.controller('NewSiteController', ["$scope", "$location", "$routeParam
 	};
         
 	$scope.create = function() {
-	    siteSettingsService.update($scope.settings);
             siteService.add($scope.site).then(
                 function(){
-                    siteSettingsService.update($scope.settings);
                     notificationService.success("siteAdd", "The site has been added");
                     $scope.offLocationChangeStart();
                     window.onbeforeunload = null;
-                    siteService.selectSite(site).then(
-                        function() {
-                            $scope.selectedSite = site;
-                            location.reload();
-                        },
-                        function() {
-                            notificationService.error("loadSite", "An error occurred while switching sites.");
-                        }
-                    )
-                },
+                    siteSettingsService.update($scope.settings).then(
+		   		 siteService.selectSite($scope.site).then(
+                        		function() {
+                            			$scope.selectedSite = $scope.site;
+                            			location.href = "#/devices";
+                        		},
+                        		function() {
+                            			notificationService.error("loadSite", "An error occurred while switching sites.");
+                        		}
+                    		)
+				)
+                	},
                 function(reason){
                     notificationService.error("siteAdd", "An error occurred while attempting to add this site");
                 }
-            )
-        };
+        )
+	};
         
         $scope.reset = function() {
             $scope.site = angular.copy($scope.original);

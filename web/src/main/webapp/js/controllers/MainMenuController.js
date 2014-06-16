@@ -112,7 +112,7 @@ managedWifi.controller('MainMenuController', ["$scope", "$timeout", "$http", "$l
 
         $scope.deleteSite = function(site,sites){
 
-            accessPointService.getAll().then(function(devices){
+            accessPointService.getBySiteId(site.site_id).then(function(devices){
 
                 // Don't let the site be deleted until all access points have been removed.
                 if(devices.length > 0){

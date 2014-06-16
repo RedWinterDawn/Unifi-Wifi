@@ -36,10 +36,12 @@ managedWifi.controller('NetworkController', ["$scope", "$location", "$routeParam
 	                wpa_enc: "auto",
 	                wpa_mode: "auto",
 	                auth: "none",
-	                redirect_enabled: false,
-	                expire: ""
 	            };
-        	$scope.network = angular.copy($scope.original);
+        	$scope.guestSettings = {
+			redirect_enabled: false,
+			expire: 4320
+		}
+		$scope.network = angular.copy($scope.original);
         }
 
         siteSettingsService.getAll().then(

@@ -209,26 +209,17 @@
                                                         <div ng-show="form.terms.$invalid" class="tip help">Please provide the terms and conditions</div>
                                                     </div>
                                                 </div>
-                                                <div class="control-group" ng-class="form.guestPassword.$invalid ? 'error' : ''" ng-show="guestSettings.auth == 'password'">
-                                                    <div class="control-label">Password</div>
-                                                    <div class="controls">
-                                                        <input type="{{ showPassword ? 'text' : 'password' }}" disabled id="guestPassword" name="guestPassword" ng-model="guestSettings.x_password" ng-required="settings.auth == 'password'"/>
-                                                        <label class="checkbox" style="display: inline-block;"><input type="checkbox" ng-model="showPassword">Show Password</label>
-                                                        <div ng-show="form.guestPassword.$invalid" class="tip help">Please provide a password</div>
-                                                    </div>
-                                                </div>
-                                                <div class="control-group" ng-show="guestSettings.auth == 'password' || guestSettings.auth == 'none'" ng-class="form.expire.$invalid ? 'error' : ''">
+                                                <div class="control-group" ng-show="guestSettings.auth == 'password' || guestSettings.auth == 'none'">
                                                     <div class="control-label">Expiration</div>
                                                     <div class="controls">
                                                         <select name="expire" ng-model="guestSettings.expire" disabled  ng-required="guestSettings.auth == 'password' || guestSettings.auth == 'none'">
-                                                            <option value="480">8 hours</option>
+                                                            <option value="480" selected="selected">8 hours</option>
                                                             <option value="1440">24 hours</option>
                                                             <option value="2880">2 days</option>
                                                             <option value="4320">3 days</option>
                                                             <option value="5760">4 days</option>
                                                             <option value="10080">7 days</option>
                                                         </select>
-                                                        <div ng-show="form.expire.$error.required" class="tip help">Please select an expiration period</div>
                                                     </div>
                                                 </div>
                                                 <div class="control-group">
@@ -246,7 +237,7 @@
                                                     <div class="control-label">Promotional URL</div>
                                                     <div class="controls">
                                                         <input type="text" id="promoUrl" name="promoUrl" disabled ng-model="guestSettings.redirect_url" ng-required="guestSettings.redirect_enabled"/>
-                                                        <div ng-show="form.promoUrl.$invalid" class="tip help">Please provide a url</div>
+                                                        <div ng-show="form.promoUrl.$invalid" class="tip help">Please provide a url including 'http://'</div>
                                                     </div>
                                                 </div>
                                             </div>

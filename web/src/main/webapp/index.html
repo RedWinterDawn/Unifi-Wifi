@@ -10,6 +10,15 @@
         <link rel="stylesheet" href="css/jive.css">
         <link rel="stylesheet" href="css/managed-wifi.css">
         <link rel="shortcut icon" href="assets/favicon.ico">
+   	<script type="text/javascript" src="//code.jquery.com/jquery-2.1.0.js"></script>
+	<script type="text/javascript">
+		$(window).load(function(){
+			$('.icon-refresh').click(function () {
+    				$(this).toggleClass('spin');
+		});
+			}); 
+
+	</script>	 
     </head>
     <body class="loading">
         <div ng-controller="NotificationController" class="waiting-notification" ng-cloak ng-show="alerts.length>0">
@@ -79,7 +88,7 @@
         <div class="main-sidebar" ng-controller="MainMenuController">
             <div ng-controller="RefreshDataController" style="position: relative; width: 100%;">
                 <h2 style="margin-left: 10px; float: left; font-size:27px; margin-bottom: 0px;">LOCATIONS</h2>
-                <div ng-click="refreshData()" style="text-align: right; padding-top: 20px; padding-right: 10px;"><big><i class="icon-refresh" ng-click="refreshData()"></i></big></div>
+                <div style="text-align: right; padding-top: 20px; padding-right: 10px;"><big><i class="icon-refresh" ng-click="refreshData()"></i></big></div>
             </div>
             <div class="no-select">
                 <a href="#/newsite" class="btn btn-primary" style="width: 85.5%; position: relative; margin: 0 5px 5px 5px">

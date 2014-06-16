@@ -39,9 +39,25 @@ managedWifi.factory('unifiAccessPointService', ['$q', '$http', 'appSettings', 'm
             var deferred = $q.defer();
             var results = accessPoints.filter(function(accessPoint){return accessPoint._id == id});
             if(results.length == 0)
-                deferred.reject("Access point not found");
+                deferred.resolve(results);
             else
                 deferred.resolve(results[0]);
+            return deferred.promise;
+        },
+
+ 	getBySiteId: function(id){
+            if(accessPoints == null){
+                var self = this;
+                return this.getAll().then(function(data){
+                    return self.getBySiteId(id);
+                })
+            }
+            var deferred = $q.defer();
+            var results = accessPoints.filter(function(accessPoint){return accessPoint.site_id == id});
+            if(results.length == 0)
+                deferred.resolve(results);
+            else
+                deferred.resolve(results);
             return deferred.promise;
         },
 
