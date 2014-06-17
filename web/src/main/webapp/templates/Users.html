@@ -29,9 +29,13 @@
                         <li><input type="checkbox" id="apMacColumn" ng-model="showApMac"><label for="apMacColumn">Device</label></li>
                     </ul>
                 </div>
-                <div>
-                    <input type="radio" id="activeUsers" ng-model="showActiveUsers"><label for="activeUsers">Active Users</label>
-                    <input type="radio" id="allUsers" ng-model="showAllUsers"><label for="allUsers">All Users</label>
+                <div class="controls">
+		<!-- <label class="radio">
+                        <input type="radio" ng-model="showUsers" ng-value="activeUsers">Active Users
+                    </label>
+                    <label class="radio">
+                        <input type="radio" ng-model="showUsers" ng-value="users">All Users
+                    </label>-->
                 </div>
                 <div class="search-extensions">
                     <input type="text" placeholder="Search by name, MAC or IP..." ng-model="filter.searchables" class="search pull-right">
@@ -43,7 +47,7 @@
 
 <div class="row-fluid">
     <div class="span12">
-        <table class="table table-striped table-condensed">
+        <table class="tablei table-striped table-condensed">
             <thead>
             <tr>
                 <th><a ng-click="paginator.setOrder('hostname')">Name/MAC Address<i ng-class="paginator | sortClass:'hostname'"></i></a></th>
@@ -128,18 +132,18 @@
             <tr ng-repeat="user in users | filter: filter | storeItemCount: paginator.updateTotalItems | orderBy: paginator.orderBy | slice:(paginator.currentPage-1)*20:20">
                 <td><a ng-href="#/user/{{user.id}}">{{user.hostname || user.mac}}</a></td>
                 <td>{{user.essid}}</td>
-                <td ng-show="showApMac">{{user.ap}}</td>
+<!--                <td ng-show="showApMac">{{user.ap}}</td>
                 <td>{{user.is_connected ? "Connected" : "Disconnected"}}</td>
                 <td>
                      <a class="btn btn-primary" style="line-height:10px; text-align: center" ng-click="blockUser(user)">{{user.blocked ? 'Unblock' : 'Block'}}</a>
                      <a class="btn btn-primary" style="line-height:10px" ng-show="user.is_guest" ng-click="authorizeUser(user)">{{user.authorized ? 'Unauthorize' : 'Authorize'}}</a>
                 </td>
-		<td>{{user.ip}}</td>
+		<td>{{user.ip || ''}}</td>
                 <td ng-show="showAuthorized">{{user.is_guest ? user.authorized  ?  "User" : "Unauthorized" : "Guest"}}</td>
                 <td ng-show="showBlocked">{{user.blocked ? "Blocked" : "Unblocked"}}</td>
                 <td>{{user.tx_bytes | bytes}}</td>
                 <td>{{user.rx_bytes | bytes}}</td>
-                <td>{{user.uptime | uptime}}</td>
+                <td>{{user.uptime | uptime}}</td>-->
             </tr>
             </tbody>
         </table>

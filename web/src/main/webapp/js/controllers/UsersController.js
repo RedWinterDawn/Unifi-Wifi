@@ -11,6 +11,8 @@ managedWifi.controller('UsersController', ["$scope", "$location", "$routeParams"
             $scope.showApMac = true;
             $scope.filter['ap_mac'] = $routeParams.mac;
         }
+
+//	$scope.showUsers = 'active';
         
         var init = function(){
             accessPointService.getAll().then(
@@ -30,10 +32,11 @@ managedWifi.controller('UsersController', ["$scope", "$location", "$routeParams"
                                 var accessPoint = accessPoints.filter(function(ap){return ap.mac == user.ap_mac;});
                                 if(accessPoint.length > 0)
                                     user.ap = accessPoint[0].name == undefined ? accessPoint[0].mac : accessPoint[0].name;
-                                user.orderableIp = managedWifi.createOrderableIp(user.ip);
+                                user.orderableIp = user.ip == undefined ? '' : managedWifi.createOrderableIp(user.ip);
                                 user.searchables = managedWifi.createSearchables(user, ['hostname', 'mac', 'ip']);
                                 user.is_connected = user.ip != undefined;
                                 user.id = user._id;
+				user.essid = user.essid==undefined ? '' : user.essid;
                             });
                             $scope.users = users;
                             $scope.networks = users.pluck('essid').distinct();
@@ -44,27 +47,27 @@ managedWifi.controller('UsersController', ["$scope", "$location", "$routeParams"
                         }
                     );
 
-                    accessPointUserService.getActive().then(
+/*                    accessPointUserService.getAllActive().then(
                         function(activeUsers){
                             notificationService.clear("loadUsers");
 
                             activeUsers.forEach(function(activeUser){
-                                var accessPoint = accessPoints.filter(function(ap){return ap.mac == user.ap_mac;});
+                                var accessPoint = accessPoints.filter(function(ap){return ap.mac == activeUser.ap_mac;});
                                 if(accessPoint.length > 0)
-                                    user.ap = accessPoint[0].name == undefined ? accessPoint[0].mac : accessPoint[0].name;
-                                activeUser.orderableIp = managedWifi.createOrderableIp(user.ip);
-                                activeUser.searchables = managedWifi.createSearchables(user, ['hostname', 'mac', 'ip']);
-                                activeUser.is_connected = user.ip != undefined;
-                                activeUser.id = user._id;
+                                    activeUser.ap = accessPoint[0].name == undefined ? accessPoint[0].mac : accessPoint[0].name;
+                                activeUser.orderableIp = managedWifi.createOrderableIp(activeUser.ip);
+                                activeUser.searchables = managedWifi.createSearchables(activeUser, ['hostname', 'mac', 'ip']);
+                                activeUser.is_connected = activeUser.ip != undefined;
+                                activeUser.id = activeUser._id;
                             });
                             $scope.activeUsers = activeUsers;
-                            $scope.activeUserNetworks = users.pluck('essid').distinct();
+                            $scope.activeUserNetworks = activeUsers.pluck('essid').distinct();
                             $scope.paginator.updateTotalItems(activeUsers.length);
-                        }
+                        },
                         function(reason){
                             notificationService.error("loadUsers", "An error occurred while loading users.");
                         }
-                    );
+                    );*/
                 },
                 function(reason){
                     notificationService.error("loadUsers", "An error occurred while loading users.");

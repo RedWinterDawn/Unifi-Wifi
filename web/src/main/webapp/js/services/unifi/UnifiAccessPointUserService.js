@@ -14,20 +14,22 @@ managedWifi.factory('unifiAccessPointUserService', ['$q', '$http', 'appSettings'
             $http({method: "POST", url: appSettings.apiEndpoint+"/user"}).then(
                 function(response) {
                     users = response.data.data;
-                    return $http({method: "POST", url: appSettings.apiEndpoint+"/user/active"})
+                  // deferred.resolve(users);
+		return $http({method: "POST", url: appSettings.apiEndpoint+"/user/active"})
                 },
                 function(response) {
                     deferred.reject(response);
                 }
             ).then (
                 function(response) {
-                    response.data.data.forEach(function(activeUser){
-                        users.forEach(function(user){
-                            if(activeUser.user_id == user._id)
-                                jive.mergeRecursive(user, activeUser);
-                        })
-                    });
-                    return deferred.resolve(response.data.data);
+              //      response.data.data.forEach(function(activeUser){
+                //        users.forEach(function(user){
+                  //          if(activeUser.user_id == user._id)
+                    //            jive.mergeRecursive(user, activeUser);
+//                        })
+                   // });
+		var con = response.data.data.concat(users);
+                    return deferred.resolve(con);
                 },
                 function(response) {
                     deferred.reject(response);
