@@ -94,8 +94,8 @@
                 <td><i class="{{network.hide_ssid ? null : 'icon-check'}}"></i></td>
                 <td>{{network.enabled ? 'Enabled' : 'Disabled'}}</td>
                 <td>{{network.is_guest ? 'Guest Network' : 'Private Network'}}</td>
-                <td><a ng-click="manageNetwork(network.id, network.is_guest,'policies')"><i class="{{network.auth=='tou' ? 'icon-check' : null}}"></i></a></td>
-                <td><a ng-click="manageNetwork(network.id, network.is_guest,'policies')"><i class="{{network.redirect_enabled ? 'icon-check' : null}}"></i></a></td>
+                <td><a ng-href="#/settings/guest"><i class="{{guestSettings.auth=='password' ? 'icon-check' : null}}"></i></a></td>
+                <td><a ng-href="#/settings/guest"><i class="{{guestSettings.redirect_enabled ? 'icon-check' : null}}"></i></a></td>
                 <td>{{network.security}}</td>
                 <td><a ng-click="manageNetwork(network.id, network.is_guest,'')"><i class="icon-gear"></i></a>
             </tr>

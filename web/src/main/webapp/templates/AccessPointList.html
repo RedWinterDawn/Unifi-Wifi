@@ -67,7 +67,7 @@
 <tr ng-repeat="accessPoint in accessPoints | filter: filter | storeItemCount: paginator.updateTotalItems | orderBy: paginator.orderBy | slice:(paginator.currentPage-1)*20:20">
     <td><a ng-click="forgetDevice(accessPoint.mac)" ng-show="accessPoint.adopted"><i class="icon-trash"></i></a></td>
     <td>
-	<a ng-href="#/device/{{accessPoint.id}}">{{accessPoint.name || accessPoint.mac}}</a>
+	<a ng-href="#/device/{{accessPoint.id}}">{{accessPoint.name}}/{{accessPoint.mac}}</a>
     </td>
     <td>{{accessPoint.model}}</td>
     <td>{{accessPoint.ip}}</td>

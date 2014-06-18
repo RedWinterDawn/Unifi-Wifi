@@ -1,7 +1,7 @@
 'use strict';
 
-managedWifi.controller('NetworksController', ["$scope", "$location", "$routeParams", "NetworkService", "notificationService", "messagingService", "dialogService", "siteService",
-    function NetworksController($scope, $location, $routeParams, networkService, notificationService, messagingService, dialogService, siteService) {
+managedWifi.controller('NetworksController', ["$scope", "$location", "$routeParams", "NetworkService", "notificationService", "messagingService", "dialogService", "siteService", "SiteSettingsService",
+    function NetworksController($scope, $location, $routeParams, networkService, notificationService, messagingService, dialogService, siteService, siteSettingsService) {
 
         $scope.paginator = managedWifi.paginator('name');
 
@@ -15,6 +15,12 @@ managedWifi.controller('NetworksController', ["$scope", "$location", "$routePara
                     });
                     $scope.networks = allNetworkData.networks;
                     $scope.paginator.updateTotalItems($scope.networks.length);
+        
+		    siteSettingsService.getAll().then(
+                         function(settings){
+                		$scope.guestSettings = settings.filter(function(setting){return setting.key == 'guest_access'})[0];
+              	   	 } 
+       		    )	   
                 },
                 function(reason){
                     //notificationService.error("loadNetworks", "An error occurred while loading networks.");

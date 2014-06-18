@@ -119,12 +119,8 @@
                                             <label class="radio">
                                                 <input type="radio" ng-model="settings.auth"  value="password">Simple Password and Terms and Conditions
                                             </label>
-                                            <!--  <label class="radio">
-                                                <input type="radio" ng-model="network.auth" value="custom">External Portal Server
-                                            </label>-->
-                                            <label class="checkbox" style="display: inline-block;"><input type="checkbox" ng-model="settings.auth2" ng-disabled="settings.auth != 'password'" ng-true-value="tou" ng-false-value="">Custom Terms and Conditions</label>
-                                        </div>
-                                    </div>
+                                    	</div>
+				    </div>
                                     <div class="control-group" ng-class="form.custom_ip.$invalid ? 'error' : ''" ng-show="settings.auth == 'custom'">
                                         <div class="control-label">IP Address:</div>
                                         <div class="controls">
@@ -133,23 +129,23 @@
                                             <div ng-show="form.customIp.$invalid" class="tip help">Please provide an IP Address</div>
                                         </div>
                                     </div>
-                                    <div class="control-group" ng-show="settings.auth2 == 'tou' && settings.auth == 'password'">
+                                    <div class="control-group" ng-show="settings.auth == 'password'">
                                         <div class="control-label">Company Name:</div>
                                         <div class="controls">
                                             <input type="text" id="companyName" name="companyName" ng-model="settings.companyName"/>
                                         </div>
                                     </div>
-                                    <div class="control-group" ng-show="settings.auth2 == 'tou' && settings.auth == 'password'">
+                                    <div class="control-group" ng-show="settings.auth == 'password'">
                                         <div class="control-label">Terms and Conditions:</div>
                                         <div class="controls">
-                                            <textarea type="text" id="terms" name="terms" ng-model="settings.terms" ng-required="settings.auth2 == 'tou'"></textarea>
+                                            <textarea type="text" id="terms" name="terms" ng-model="settings.terms" ng-required="settings.auth == 'password'"></textarea>
                                             <div ng-show="form.terms.$invalid" class="tip help">Please provide the terms and conditions</div>
                                         </div>
                                     </div>
                                     <div class="control-group" ng-class="form.guestPassword.$invalid ? 'error' : ''" ng-show="settings.auth == 'password'">
                                         <div class="control-label">Password</div>
                                         <div class="controls">
-                                            <input type="{{ showPassword ? 'text' : 'password' }}" id="guestPassword" name="guestPassword" ng-model="settings.x_password" ng-required="settings.auth2 == 'password'"/>
+                                            <input type="{{ showPassword ? 'text' : 'password' }}" id="guestPassword" name="guestPassword" ng-model="settings.x_password" ng-required="settings.auth == 'password'"/>
                                             <label class="checkbox" style="display: inline-block;"><input type="checkbox" ng-model="showPassword">Show Password</label>
                                             <i ng-hide="form.guestPassword.$invalid" class="icon-ok-sign active"></i>
                                             <div ng-show="form.guestPassword.$invalid" class="tip help">Please provide a password</div>
