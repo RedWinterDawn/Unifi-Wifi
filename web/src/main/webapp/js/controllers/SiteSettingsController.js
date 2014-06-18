@@ -20,7 +20,7 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
                     
                     if (!_.has($scope.originalSettings, 'expire')) $scope.originalSettings.expire = '4320';
                     if ($scope.originalSettings.hotspotNoAuth === 'true') {
-                        $scope.originalSettings.auth = 'tou';
+                        $scope.originalSettings.auth2 = 'tou';
                     }
 
                     if(!_.has($scope.originalSettings, 'redirect_enabled'))
@@ -63,16 +63,14 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
         
         $scope.isNew = $routeParams.id == undefined;
 	
-            	$scope.settings.portal_enabled=true;
-	 if ($scope.settings.auth === 'tou') {
+         $scope.settings.portal_enabled=true;
+	 if ($scope.settings.auth2 === 'tou') {
                 $scope.settings.portal_customized = true;
                 $scope.settings.payment_enabled = false;
                 $scope.settings.voucher_enabled = false;
                 $scope.settings.auth_none = true;
-                $scope.settings.hotspotNoAuth = 'true';
-                $scope.settings.auth = 'none';
+               // $scope.settings.hotspotNoAuth = 'true';
             }
-
             var termsModified = $scope.settings.terms !== $scope.originalSettings.terms || $scope.settings.companyName !== $scope.originalSettings.companyName;
             var terms = $scope.settings.terms;
             var companyName = $scope.settings.companyName;
@@ -91,9 +89,9 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
 
             siteSettingsService.update($scope.settings).then(function() {
                 completed++;
-                if ($scope.settings.hotspotNoAuth === 'true') {
-                    $scope.settings.auth = 'tou';
-                }
+                //if ($scope.settings.hotspotNoAuth === 'true') {
+                  //  $scope.settings.auth = 'tou';
+               // }
 
                 angular.copy($scope.settings, $scope.originalSettings);
 

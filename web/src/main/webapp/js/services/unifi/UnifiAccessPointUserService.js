@@ -29,7 +29,8 @@ managedWifi.factory('unifiAccessPointUserService', ['$q', '$http', 'appSettings'
 //                        })
                    // });
 		var con = response.data.data.concat(users);
-                    return deferred.resolve(con);
+        	users = con; 
+	           return deferred.resolve(con);
                 },
                 function(response) {
                     deferred.reject(response);

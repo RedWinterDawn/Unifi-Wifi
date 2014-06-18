@@ -26,16 +26,15 @@
                     <ul class="dropdown-menu filters">
                         <li><input type="checkbox" id="authorizedColumn" ng-model="showAuthorized"><label for="authorizedColumn">Authorization</label></li>
                         <li><input type="checkbox" id="blockedColumn" ng-model="showBlocked"><label for="blockedColumn">Blocked</label></li>
-                        <li><input type="checkbox" id="apMacColumn" ng-model="showApMac"><label for="apMacColumn">Device</label></li>
                     </ul>
-                </div>
-                <div class="controls">
-		<!-- <label class="radio">
-                        <input type="radio" ng-model="showUsers" ng-value="activeUsers">Active Users
+		</div>
+		<div class="btn-group">
+		<label class="radio">
+                        <input type="radio" ng-model="showUsers" ng-click="filterUsers('active')" value="active">Active Users
                     </label>
                     <label class="radio">
-                        <input type="radio" ng-model="showUsers" ng-value="users">All Users
-                    </label>-->
+                        <input type="radio" ng-model="showUsers"  ng-click="filterUsers('all')" value="all">All Users
+                    </label>
                 </div>
                 <div class="search-extensions">
                     <input type="text" placeholder="Search by name, MAC or IP..." ng-model="filter.searchables" class="search pull-right">
@@ -67,7 +66,7 @@
                         </ul>
                     </div>
                 </th>
-                <th ng-show="showApMac"><a ng-click="paginator.setOrder('ap')">Device<i ng-class="paginator | sortClass:'ap'"></i></a></th>
+                <th><a ng-click="paginator.setOrder('ap')">Access Point<i ng-class="paginator | sortClass:'ap'"></i></a></th>
                 <th>
                     <div class="dropdown"><a href="#" role="button" data-toggle="dropdown" class="dropdown-toggle" ng-class="filter.is_connected ? 'active' : null">Status<i class="icon-filter"></i></a>
                         <ul role="menu" class="dropdown-menu">
@@ -86,7 +85,7 @@
                     </div>
                 </th>
 		<th><a>Actions</a></th>
-                <th><a ng-click="paginator.setOrder('orderableIp')">IP<i ng-class="paginator | sortClass:'orderableIp'"></i></a></th>
+                <th><a ng-click="paginator.setOrder('orderableIp')">IP Address<i ng-class="paginator | sortClass:'orderableIp'"></i></a></th>
                 <th ng-show="showAuthorized">
                     <div class="dropdown"><a href="#" role="button" data-toggle="dropdown" class="dropdown-toggle" ng-class="filter.authorized ? 'active' : null">Authorization<i class="icon-filter"></i></a>
                         <ul role="menu" class="dropdown-menu">
@@ -132,7 +131,7 @@
             <tr ng-repeat="user in users | filter: filter | storeItemCount: paginator.updateTotalItems | orderBy: paginator.orderBy | slice:(paginator.currentPage-1)*20:20">
                 <td><a ng-href="#/user/{{user.id}}">{{user.hostname || user.mac}}</a></td>
                 <td>{{user.essid}}</td>
-<!--                <td ng-show="showApMac">{{user.ap}}</td>
+                <td>{{user.ap}}</td>
                 <td>{{user.is_connected ? "Connected" : "Disconnected"}}</td>
                 <td>
                      <a class="btn btn-primary" style="line-height:10px; text-align: center" ng-click="blockUser(user)">{{user.blocked ? 'Unblock' : 'Block'}}</a>
@@ -143,7 +142,7 @@
                 <td ng-show="showBlocked">{{user.blocked ? "Blocked" : "Unblocked"}}</td>
                 <td>{{user.tx_bytes | bytes}}</td>
                 <td>{{user.rx_bytes | bytes}}</td>
-                <td>{{user.uptime | uptime}}</td>-->
+                <td>{{user.uptime | uptime}}</td>
             </tr>
             </tbody>
         </table>
