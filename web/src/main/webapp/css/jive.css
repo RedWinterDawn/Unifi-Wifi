@@ -5790,6 +5790,33 @@ ul.title-menu>li>a i {
 	border-radius: 5px;
 	float: right
 }
+.button-actions {
+	*zoom = 1;
+}
+.button-actions>ul {
+	list-style: none;
+	margin-left: -10px;
+	margin-bottom: 0;
+	float: left
+}
+.button-actions>ul>li {
+	display: inline-block;
+	margin-right: 0
+}
+.button-actions>ul>li>a {
+	font-size: 15px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	display: block
+}
+.button-actions>ul>li>a>i {
+	margin-right: 3px
+}
+.button-actions>ul>li>a:hover {
+	background-color: #5299da;
+	color: #fff
+}
 .page-actions>ul>li .dropdown>a i {
 	margin-right: 3px
 }
