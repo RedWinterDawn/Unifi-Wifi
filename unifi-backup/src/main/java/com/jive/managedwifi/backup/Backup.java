@@ -58,6 +58,8 @@ public class Backup {
 		arguments.add("-o");
 		arguments.add(filesavepath + DateTime.now().toString() + ".unf");
 
+		log.debug(arguments.toString());
+
 		procCall(arguments);
 	}
 
@@ -66,8 +68,10 @@ public class Backup {
 		List<String> arguments = Lists.newArrayList();
 		arguments.addAll(baseArguments);
 		arguments.add("--data");
-		arguments.add("json={'days':'" + days + "' 'cmd':'backup'}");
+		arguments.add("json={'days':'"+days+"', 'cmd':'backup'}");
 		arguments.add(baseurl + "/api/cmd/system");
+
+		log.debug(arguments.toString());
 
 		String json = procCall(arguments);
 		String path = "";
@@ -99,6 +103,8 @@ public class Backup {
 		arguments.add("password=" + password);
 		arguments.add(baseurl + "/login");
 
+		log.debug(arguments.toString());
+
 		procCall(arguments);
 	}
 
@@ -108,6 +114,8 @@ public class Backup {
 		arguments.addAll(baseArguments);
 
 		arguments.add(baseurl + "/logout");
+
+		log.debug(arguments.toString());
 
 		procCall(arguments);
 	}
