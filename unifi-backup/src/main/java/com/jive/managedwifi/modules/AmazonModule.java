@@ -1,4 +1,4 @@
-package com.jive.managedwifi.backup;
+package com.jive.managedwifi.modules;
 
 import java.io.InputStream;
 import java.util.Properties;
@@ -13,16 +13,15 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import com.google.inject.name.Named;
 import com.google.inject.name.Names;
+import com.jive.managedwifi.backup.Launcher;
 
 @Slf4j
-public class BackupModule extends AbstractModule {
+public class AmazonModule extends AbstractModule {
 
 	private BlobStoreContext blobContext;
 
 	@Override
 	protected void configure() {
-		
-		install(new UnifiModule());
 
 		Properties prop = new Properties();
 		InputStream input = Launcher.class.getClassLoader()
@@ -39,6 +38,8 @@ public class BackupModule extends AbstractModule {
 				prop.getProperty("accessKey"));
 		bind(String.class).annotatedWith(Names.named("provider")).toInstance(
 				prop.getProperty("provider"));
+		bind(String.class).annotatedWith(Names.named("path")).toInstance(
+				prop.getProperty("path"));
 	}
 
 	@Provides

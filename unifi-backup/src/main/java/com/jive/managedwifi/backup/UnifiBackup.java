@@ -16,7 +16,7 @@ import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
 @Slf4j
-public class Backup {
+public class UnifiBackup {
 
 	private String username;
 	private String password;
@@ -26,7 +26,7 @@ public class Backup {
 	private List<String> baseArguments;
 
 	@Inject
-	public Backup(@Named("cookie") String cookie,
+	public UnifiBackup(@Named("cookie") String cookie,
 			@Named("username") String username,
 			@Named("password") String password,
 			@Named("baseurl") String baseurl,
