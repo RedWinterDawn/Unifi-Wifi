@@ -17,7 +17,7 @@ public interface Auth {
     public String getLoginUri(@PathParam("account") String account);
 
     @GET
-    @Path("authorize/{account}/{code}")
+    @Path("authorize/{account}/{access_token}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Map authorize(@PathParam("account") String account, @PathParam("code") String code);
+    public Map authorize(@PathParam("account") String account, @PathParam("access_token") String access_token);
 }

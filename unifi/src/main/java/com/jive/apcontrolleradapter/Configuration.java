@@ -84,7 +84,7 @@ public class Configuration {
 
 	public static String getOAuthURL() {
 		return INSTANCE.properties.getProperty("oauth.URL",
-				"https://auth.jive.com/oauth2");
+				"https://auth.jive.com/oauth2/v2");
 	}
 
 	public static String getOAuthRedirectURI() {

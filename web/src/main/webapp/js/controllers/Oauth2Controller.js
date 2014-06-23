@@ -1,7 +1,7 @@
 'use strict';
 
 managedWifi.controller('Oauth2Controller',["$scope", "$http", "$location", "$modal", "$routeParams", "notificationService", "jiveLoginService",
-    function Oauth2Controller($scope, $http, $location, $modal, $routeParams, notificationService, loginService) {
+     {
         $scope.credentials = {};
 
         $modal.open({
@@ -24,8 +24,8 @@ managedWifi.controller('Oauth2Controller',["$scope", "$http", "$location", "$mod
         }
 
         var params = managedWifi.parseQuery();
-        if(params.code && params.state){
-            loginService.oauthReceive(params.code, params.state).then(loginService.isAdmin).then(
+        if(params.access_token && params.state){
+            loginService.oauthReceive(params.access_token, params.state).then(loginService.isAdmin).then(
                 function(response){
                     var location = managedWifi.getLocation(window.location.href);
                     window.location.href = location.pathname + "#/devices";

@@ -46,8 +46,9 @@ public class JiveAuth implements Auth{
             client.target(baseURL + "/grant")
             .queryParam("client_id", clientID)
             .queryParam("redirect_uri", redirectURI)
-            .queryParam("response_type", "code")
-            .queryParam("state", account);
+            .queryParam("response_type", "token")
+            .queryParam("inflightrequest", account);
+            .queryParam("scope", "pbx.v1.profile");
 
 //        Response response = target.request().header("Authorization", "Basic " + props.getProperty("oauthBasicAuth")).get();
         Response response = target.request().get();
@@ -62,26 +63,26 @@ public class JiveAuth implements Auth{
     }
 
     @Override
-    public Map authorize(String account, String code) {
+    public Map authorize(String account, String accessToken) {
         Client client= ClientBuilder.newClient();
-        WebTarget target = client.target(baseURL + "/token");
+        // WebTarget target = client.target(baseURL + "/token");
 
-        javax.ws.rs.core.Form form = new javax.ws.rs.core.Form();
-        form.param("client_id", clientID);
-        form.param("redirect_uri", redirectURI);
-        form.param("grant_type", "authorization_code");
-        form.param("scope", "pbx.profile");
-        form.param("code", code);
+        // javax.ws.rs.core.Form form = new javax.ws.rs.core.Form();
+        // form.param("client_id", clientID);
+        // form.param("redirect_uri", redirectURI);
+        // form.param("grant_type", "authorization_code");
+        // form.param("scope", "pbx.v1.profile");
+        // form.param("code", code);
 
-        Response response = target.request(MediaType.APPLICATION_FORM_URLENCODED)
-            .accept(MediaType.APPLICATION_JSON)
-            .header("Authorization", "Basic " + encodedCredentials)
-            .post(Entity.form(form))
-            ;
-        if(response.getStatusInfo().getStatusCode() != 200)
-            throw new ForbiddenException("Unable to authorize");
+        // Response response = target.request(MediaType.APPLICATION_FORM_URLENCODED)
+        //     .accept(MediaType.APPLICATION_JSON)
+        //     .header("Authorization", "Basic " + encodedCredentials)
+        //     .post(Entity.form(form))
+        //     ;
+        // if(response.getStatusInfo().getStatusCode() != 200)
+        //     throw new ForbiddenException("Unable to authorize");
 
-        String accessToken = (String) response.readEntity(Map.class).get("access_token");
+        //String accessToken = (String) response.readEntity(Map.class).get("access_token");
         target = client.target(portalAPIBaseURL + "/user/");
         response = target.request().header("Authorization", "Bearer "+accessToken).get();
 
