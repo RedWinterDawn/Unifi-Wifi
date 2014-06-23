@@ -74,11 +74,11 @@ public class UnifiBackup {
 
 		String json = procCall(arguments);
 
-		ObjectMapper mapper = new ObjectMapper();
-		BackupResponse response = mapper.readValue(json, BackupResponse.class);
-		
-		
-		return response.getData().get(0).getUrl();
+//		ObjectMapper mapper = new ObjectMapper();
+//		BackupResponse response = mapper.readValue(json, BackupResponse.class);
+//		
+//		return response.getData().get(0).getUrl();
+		return "";
 	}
 
 	private void unifiLogin() throws IOException {
