@@ -9,26 +9,29 @@ import org.jclouds.ContextBuilder;
 import org.jclouds.blobstore.BlobStore;
 import org.jclouds.blobstore.BlobStoreContext;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.io.Resources;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import com.google.inject.name.Named;
 import com.google.inject.name.Names;
-import com.jive.managedwifi.backup.Launcher;
+import com.jive.jackson.ConstructorPropertiesAnnotationIntrospector;
 
 @Slf4j
 public class AmazonModule extends AbstractModule {
 
-	private BlobStore blobStore;
+	private BlobStore blobStore = null;
 
 	@Override
 	protected void configure() {
-		
-		Properties prop = new Properties();
-		InputStream input = Launcher.class.getClassLoader()
-				.getResourceAsStream("aws.properties");
+
+		final Properties prop = new Properties();
+		InputStream input;
 		try {
+			input = Resources.getResource("aws.properties").openStream();
+
 			prop.load(input);
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			log.warn("Error loading aws.properties");
 		}
 
@@ -40,27 +43,28 @@ public class AmazonModule extends AbstractModule {
 				prop.getProperty("provider"));
 		bind(String.class).annotatedWith(Names.named("path")).toInstance(
 				prop.getProperty("path"));
+
 	}
-//	 /**
-//	    * so that we can inject RestContext<S3Client, S3AsyncClient>
-//	    */
-//	   @SuppressWarnings("unchecked")
-//	   @Singleton
-//	   @Provides
-//	   RestContext<S3Client, S3AsyncClient>
-//	provideBaseContext(RestContext<AWSS3Client, AWSS3AsyncClient> in) {
-//	      return (RestContext)in;
-//	   }
 
 	@Provides
-	public BlobStore getContext(@Named("accessKey") String accessKey, @Named("secretKey") String secretKey,
-			@Named("provider") String provider) {
+	public BlobStore getContext(@Named("accessKey") final String accessKey,
+			@Named("secretKey") final String secretKey,
+			@Named("provider") final String provider) {
 
-		if (blobStore == null)
+		if (this.blobStore == null)
 			this.blobStore = ContextBuilder.newBuilder(provider)
 					.credentials(accessKey, secretKey)
 					.buildView(BlobStoreContext.class).getBlobStore();
-		
+
 		return this.blobStore;
+	}
+
+	@Provides
+	public ObjectMapper getMapper() {
+
+		final ObjectMapper mapper = new ObjectMapper();
+		ConstructorPropertiesAnnotationIntrospector.install(mapper);
+
+		return mapper;
 	}
 }
