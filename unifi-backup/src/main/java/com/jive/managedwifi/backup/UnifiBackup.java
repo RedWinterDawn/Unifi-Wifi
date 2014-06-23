@@ -8,9 +8,8 @@ import lombok.extern.slf4j.Slf4j;
 
 import org.apache.commons.io.IOUtils;
 import org.joda.time.DateTime;
-import org.json.JSONException;
-import org.json.JSONObject;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Lists;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
@@ -74,20 +73,12 @@ public class UnifiBackup {
 		log.debug(arguments.toString());
 
 		String json = procCall(arguments);
-		String path = "";
 
-		JSONObject jsonObject = null;
-
-		try {
-			jsonObject = new JSONObject(json);
-			jsonObject = new JSONObject(jsonObject.getJSONArray("data").get(0)
-					.toString());
-			path = jsonObject.getString("url");
-		} catch (JSONException e) {
-			log.warn("Error in building jsonobject from unifi response {}", e);
-		}
-
-		return path;
+		ObjectMapper mapper = new ObjectMapper();
+		BackupResponse response = mapper.readValue(json, BackupResponse.class);
+		
+		
+		return response.getData().get(0).getUrl();
 	}
 
 	private void unifiLogin() throws IOException {

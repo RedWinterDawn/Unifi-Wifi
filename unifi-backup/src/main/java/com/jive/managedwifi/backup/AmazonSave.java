@@ -1,13 +1,15 @@
 package com.jive.managedwifi.backup;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FilenameFilter;
 
 import lombok.extern.slf4j.Slf4j;
 
 import org.apache.commons.io.FilenameUtils;
-import org.jclouds.blobstore.BlobStoreContext;
-import org.jclouds.blobstore.InputStreamMap;
+import org.jclouds.blobstore.BlobStore;
+import org.jclouds.blobstore.domain.Blob;
 
 import com.google.inject.Guice;
 import com.google.inject.Inject;
@@ -29,11 +31,11 @@ public class AmazonSave {
 		this.amazonPath = amazonPath;
 	}
 
-	public void StoreFile() {
+	public void StoreFile() throws FileNotFoundException {
 
-		BlobStoreContext context = injector.getInstance(BlobStoreContext.class);
+		BlobStore blobStore = injector.getInstance(BlobStore.class);
 		
-		InputStreamMap bucket = context.createInputStreamMap("jive-managed-wifi");
+		//InputStreamMap bucket = context.createInputStreamMap("jive-managed-wifi");
 		
 		File file = new File(unifiPath);
 		File[] filesInDir = file.listFiles(new FilenameFilter() {
@@ -43,12 +45,17 @@ public class AmazonSave {
 				return FilenameUtils.getExtension(name).equals("unf");
 			}
 		});
-
-		bucket.putFile(amazonPath+filesInDir[0].getName(), new File(filesInDir[0].toString()));
+		
+		File backupFile = filesInDir[0];
+		
+		Blob blob = blobStore.blobBuilder(backupFile.toString())
+                .payload(new FileInputStream(backupFile.toString()))
+                .contentLength(backupFile.getTotalSpace())
+                .build();
+		
+		blobStore.putBlob(amazonPath+filesInDir[0].getName(), blob);
 		
 		if(filesInDir[0].delete())
 			log.debug("File was deleted");
-		
-		context.close();
 	}
 }
