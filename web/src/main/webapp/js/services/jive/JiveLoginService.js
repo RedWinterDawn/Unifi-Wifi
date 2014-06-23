@@ -5,7 +5,7 @@ managedWifi.factory('jiveLoginService', ['$q', '$http', '$cookies', '$location',
 
     var oauthReceive = function(code, account){
         var deferred = $q.defer();
-        $http.get(appSettings.loginEndpoint + "oauth/authorize/" + account + "/" + code).then(
+        $http.get(appSettings.loginEndpoint + "oauth/v2/authorize/" + account + "/" + code).then(
             function(response) {
                 sessionId = response.data.sessionId;
                 $cookies.unifises = sessionId;
@@ -51,7 +51,7 @@ managedWifi.factory('jiveLoginService', ['$q', '$http', '$cookies', '$location',
         if(account==null)
             deferred.reject();
 
-        $http({method: "GET", url: appSettings.loginEndpoint + "oauth/login-uri/"+account}).then(
+        $http({method: "GET", url: appSettings.loginEndpoint + "oauth/v2/login-uri/"+account}).then(
             function(response) {
                 window.location = response.data;
                 deferred.resolve();

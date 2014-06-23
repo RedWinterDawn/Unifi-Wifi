@@ -65,7 +65,6 @@ public class JiveAuth implements Auth{
     @Override
     public Map authorize(String account, String accessToken) {
         Client client= ClientBuilder.newClient();
-        WebTarget target = client.target(baseURL + "/token");
 
         // javax.ws.rs.core.Form form = new javax.ws.rs.core.Form();
         // form.param("client_id", clientID);
@@ -83,7 +82,7 @@ public class JiveAuth implements Auth{
         //     throw new ForbiddenException("Unable to authorize");
 
         //String accessToken = (String) response.readEntity(Map.class).get("access_token");
-        target = client.target(portalAPIBaseURL + "/user/");
+        WebTarget target = client.target(portalAPIBaseURL + "/user/");
         Response response = target.request().header("Authorization", "Bearer "+accessToken).get();
 
         Map<String, Object> results = new HashMap<String, Object>();

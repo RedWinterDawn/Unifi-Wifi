@@ -89,7 +89,7 @@ public class Configuration {
 
 	public static String getOAuthRedirectURI() {
 		return INSTANCE.properties.getProperty("oauth.redirectURI",
-				"http://localhost:8000/index.html#/oauth2");
+				"http://localhost:8000/index.html#/oauth2/v2");
 	}
 
 	public static String getOAuthClientID() {

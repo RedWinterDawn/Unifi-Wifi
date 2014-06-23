@@ -8,7 +8,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-@Path("/oauth/")
+@Path("/oauth/v2/")
 @Produces(MediaType.TEXT_PLAIN)
 public interface Auth {
     @GET

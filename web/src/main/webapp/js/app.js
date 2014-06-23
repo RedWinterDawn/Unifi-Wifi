@@ -71,7 +71,7 @@ managedWifi.config(['$routeProvider', '$locationProvider', function ($routeProvi
 	            templateUrl: 'templates/Blank.html',
 	            controller: 'LoginController'
 	        })
-	        .when('/oauth2/:code?',
+	        .when('/oauth2/v2/:code?',
 	        {
 	            templateUrl: 'templates/Blank.html',
 	            controller: 'Oauth2Controller'
@@ -124,11 +124,11 @@ managedWifi.config(['$routeProvider', '$locationProvider', function ($routeProvi
     if($location.search().mock != undefined)
         $cookies.useMockServices = $location.search().mock;
 
-    if($location.url() == "/oauth2")
+    if($location.url() == "/oauth2/v2")
         return;
 
     if(managedWifi.parseQuery().pbxid != null){
-        $location.url('/oauth2');
+        $location.url('/oauth2/v2');
         return;
     }
 
