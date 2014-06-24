@@ -57,6 +57,7 @@ public class JiveAuth implements Auth {
 		if (response.getStatusInfo().getStatusCode() == 303) {
 			final String location = (String) response.getHeaders().getFirst(
 					"Location");
+			log.info("Location = {}", location);
 			if (location != null && !location.equals(""))
 				return location;
 		}
