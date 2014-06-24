@@ -88,7 +88,8 @@ public class JiveAuth implements Auth {
 
 		// String accessToken = (String)
 		// response.readEntity(Map.class).get("access_token");
-		log.debug("Access Token {}", accessToken);
+		log.info("Access Token {}", accessToken);
+		log.info("portalAPIBaseURL {}", portalAPIBaseURL);
 		final WebTarget target = client.target(portalAPIBaseURL + "/user/");
 		final Response response = target.request()
 				.header("Authorization", "Bearer " + accessToken).get();
