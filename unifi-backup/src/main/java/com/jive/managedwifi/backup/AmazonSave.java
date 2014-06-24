@@ -7,48 +7,57 @@ import java.io.FilenameFilter;
 
 import lombok.extern.slf4j.Slf4j;
 
-import org.apache.commons.io.FilenameUtils;
 import org.jclouds.blobstore.BlobStore;
 import org.jclouds.blobstore.domain.Blob;
 
+import com.google.common.io.Files;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
 @Slf4j
 public class AmazonSave {
-	
-	private BlobStore blobStore;
-	private String unifiPath;
-	private String amazonPath;
-	
+
+	private final BlobStore blobStore;
+	private final String unifiPath;
+	private final String amazonPath;
+
 	@Inject
-	public AmazonSave(BlobStore blobStore, @Named("filesavepath") String unifiPath, @Named("path") String amazonPath){
+	public AmazonSave(final BlobStore blobStore,
+			@Named("filesavepath") final String unifiPath,
+			@Named("path") final String amazonPath) {
 		this.blobStore = blobStore;
 		this.unifiPath = unifiPath;
 		this.amazonPath = amazonPath;
 	}
 
-	public void StoreFile() throws FileNotFoundException {
-		
-		File file = new File(unifiPath);
-		File[] filesInDir = file.listFiles(new FilenameFilter() {
-			
+	public void StoreFile() {
+
+		final File file = new File(unifiPath);
+		final File[] filesInDir = file.listFiles(new FilenameFilter() {
+
 			@Override
-			public boolean accept(File dir, String name) {
-				return FilenameUtils.getExtension(name).equals("unf");
+			public boolean accept(final File dir, final String name) {
+				return Files.getFileExtension(name).equals("unf");
 			}
 		});
-		
-		File backupFile = filesInDir[0];
-		
-		Blob blob = blobStore.blobBuilder(amazonPath+backupFile.getName())
-                .payload(new FileInputStream(backupFile))
-                .contentLength(backupFile.length())
-                .build();
-		
-		blobStore.putBlob("jive-managed-wifi", blob);
-		
-		if(filesInDir[0].delete())
+
+		final File backupFile = filesInDir[0];
+
+		Blob blob = null;
+		try {
+			blob = blobStore.blobBuilder(amazonPath + backupFile.getName())
+					.payload(new FileInputStream(backupFile))
+					.contentLength(backupFile.length()).build();
+		} catch (final FileNotFoundException e) {
+			log.debug("{} not found", backupFile);
+		}
+
+		if (blob != null) {
+			log.debug("Blob was stored");
+			blobStore.putBlob("jive-managed-wifi", blob);
+		}
+
+		if (filesInDir[0].delete())
 			log.debug("File was deleted");
 	}
 }

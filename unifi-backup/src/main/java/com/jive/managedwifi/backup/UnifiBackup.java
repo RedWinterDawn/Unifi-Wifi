@@ -1,16 +1,16 @@
 package com.jive.managedwifi.backup;
 
 import java.io.IOException;
-import java.io.StringWriter;
+import java.io.InputStreamReader;
 import java.util.List;
 
 import lombok.extern.slf4j.Slf4j;
 
-import org.apache.commons.io.IOUtils;
 import org.joda.time.DateTime;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Lists;
+import com.google.common.io.CharStreams;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
@@ -125,11 +125,11 @@ public class UnifiBackup {
 			log.warn("login command interrupted {}", e);
 		}
 
-		final StringWriter writer = new StringWriter();
-		IOUtils.copy(proc.getInputStream(), writer);
+		final String result = CharStreams.toString(new InputStreamReader(proc
+				.getInputStream()));
 
-		log.debug(writer.toString());
+		log.debug(result);
 
-		return writer.toString();
+		return result;
 	}
 }
