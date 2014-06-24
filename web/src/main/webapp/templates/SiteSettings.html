@@ -33,6 +33,7 @@
                             <div ng-show="activeItem=='Access'">
                                 <h2>Access Control</h2>
                                 <h3>Restricted &amp; Allowed Subnets</h3>
+                                <p>Enter in any subnets that you don’t want guests to be able to access.</p>
                             </div>
                             <div ng-show="activeItem=='Limits'">
                                 <h2>Traffic Limits</h2>
@@ -110,7 +111,7 @@
                                     <div class="control-group">
                                         <div class="control-label">
                                             Authentication
-                                            <i class="icon-question-sign section-help" tooltip-placement="left" tooltip="If you already have your own hotspot authentication system, choose the [External Portal Server] option to defer to that system. Contact Jive Communications for more information on implementation details."></i>
+                                            <i class="icon-question-sign section-help" tooltip-placement="left" tooltip="No authentication - When this option is selected, guests are not required to log in, but must accept the Terms of Use. Simple Password - When this option is selected, guests are required to enter the simple password and accept the Terms of Use."></i>
                                         </div>
                                         <div class="controls">
                                             <label class="radio">
@@ -129,16 +130,18 @@
                                             <div ng-show="form.customIp.$invalid" class="tip help">Please provide an IP Address</div>
                                         </div>
                                     </div>
-                                    <div class="control-group" ng-show="settings.auth == 'password'">
+                                    <div class="control-group">
                                         <div class="control-label">Company Name:</div>
+                                        <i class="icon-question-sign section-help" tooltip-placement="left" tooltip="Uses the name entered in the predefined Terms and Conditions."></i>
                                         <div class="controls">
                                             <input type="text" id="companyName" name="companyName" ng-model="settings.companyName"/>
                                         </div>
                                     </div>
-                                    <div class="control-group" ng-show="settings.auth == 'password'">
+                                    <div class="control-group">
                                         <div class="control-label">Terms and Conditions:</div>
+                                        <i class="icon-question-sign section-help" tooltip-placement="left" tooltip="Alter for custom Terms and Conditions"></i>
                                         <div class="controls">
-                                            <textarea type="text" id="terms" name="terms" ng-model="settings.terms" ng-required="settings.auth == 'password'"></textarea>
+                                            <textarea type="text" id="terms" name="terms" ng-model="settings.terms" ng-required="settings.auth == 'password' || settings.auth == 'none'"></textarea>
                                             <div ng-show="form.terms.$invalid" class="tip help">Please provide the terms and conditions</div>
                                         </div>
                                     </div>

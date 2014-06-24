@@ -61,16 +61,15 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
                     }
                 );
         
-        $scope.isNew = $routeParams.id == undefined;
-	
-         $scope.settings.portal_enabled=true;
-	 if ($scope.settings.auth2 === 'tou') {
-                $scope.settings.portal_customized = true;
-                $scope.settings.payment_enabled = false;
-                $scope.settings.voucher_enabled = false;
-                $scope.settings.auth_none = true;
-               // $scope.settings.hotspotNoAuth = 'true';
-            }
+            $scope.isNew = $routeParams.id == undefined;
+
+            $scope.settings.portal_enabled=true;
+            $scope.settings.portal_customized = true;
+            $scope.settings.payment_enabled = false;
+            $scope.settings.voucher_enabled = false;
+            $scope.settings.auth_none = true;
+           // $scope.settings.hotspotNoAuth = 'true';
+
             var termsModified = $scope.settings.terms !== $scope.originalSettings.terms || $scope.settings.companyName !== $scope.originalSettings.companyName;
             var terms = $scope.settings.terms;
             var companyName = $scope.settings.companyName;

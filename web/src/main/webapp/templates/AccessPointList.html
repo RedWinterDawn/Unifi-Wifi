@@ -73,9 +73,13 @@
     <td>{{accessPoint.ip}}</td>
     <td>{{accessPoint | deviceStatus}}</td>
     <td>
-	<a class="btn btn-primary" style="line-height:10px" ng-show="accessPoint.upgradable && accessPoint.state != 4" ng-click="upgradeDevice(accessPoint)">Update</a>
-        <a class="btn btn-primary" style="line-height:10px" ng-show="accessPoint.state == 1" ng-href="#/device/{{accessPoint.id}}">Details</a>
-        <a class="btn btn-primary" style="line-height:10px" ng-show="accessPoint.state == 2" ng-click="adoptDevice(accessPoint)">Adopt</a>
+        <div class="page-actions">
+            <ul>
+                <li><a class="button-actions" ng-click="upgradeDevice(accessPoint)" ng-show="accessPoint.upgradable && accessPoint.state != 4"><i class=""></i>Update</a></li>
+                <li><a class="button-actions" ng-href="#/device/{{accessPoint.id}}" ng-show="accessPoint.state == 1"><i class=""></i>Details</a></li>
+                <li><a class="button-actions" ng-click="adoptDevice(accessPoint)" ng-show="accessPoint.state == 2"><i class=""></i>Adopt</a></li>
+            </ul>
+        </div>
     </td>
     <td>{{accessPoint.uptime | uptime}}</td>
     <td>{{accessPoint.user_num_sta}}</td>

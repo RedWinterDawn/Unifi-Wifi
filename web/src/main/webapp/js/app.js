@@ -71,7 +71,7 @@ managedWifi.config(['$routeProvider', '$locationProvider', function ($routeProvi
 	            templateUrl: 'templates/Blank.html',
 	            controller: 'LoginController'
 	        })
-	        .when('/oauth2/v2/:code?',
+	        .when('/oauth2/:code?',
 	        {
 	            templateUrl: 'templates/Blank.html',
 	            controller: 'Oauth2Controller'
