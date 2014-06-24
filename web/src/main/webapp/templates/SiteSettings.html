@@ -144,6 +144,15 @@
                                             <textarea type="text" id="terms" name="terms" ng-model="settings.terms" ng-required="settings.auth == 'password' || settings.auth == 'none'"></textarea>
                                             <div ng-show="form.terms.$invalid" class="tip help">Please provide the terms and conditions</div>
                                         </div>
+                                        <div>
+                                            <div class="page-actions">
+                                                <ul>
+                                                    <li><a ng-click="resetTerms()"><i class=""></i>Reset</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                        </div>
                                     </div>
                                     <div class="control-group" ng-class="form.guestPassword.$invalid ? 'error' : ''" ng-show="settings.auth == 'password'">
                                         <div class="control-label">Password</div>

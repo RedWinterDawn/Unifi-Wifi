@@ -135,6 +135,10 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
                 )
         };
 
+        $scope.resetTerms = function() {
+            $scope.settings.terms = $scope.settings.originalTerms;
+        }
+
         $scope.reset = function() {
             $scope.settings = angular.copy($scope.original);
             $scope.limits = angular.copy($scope.originalLimits);
