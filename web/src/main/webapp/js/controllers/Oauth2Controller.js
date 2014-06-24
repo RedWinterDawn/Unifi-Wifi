@@ -1,7 +1,7 @@
 'use strict';
 
 managedWifi.controller('Oauth2Controller',["$scope", "$http", "$location", "$modal", "$routeParams", "notificationService", "jiveLoginService",
-     {
+      function Oauth2Controller($scope, $http, $location, $modal, $routeParams, notificationService, loginService) {
         $scope.credentials = {};
 
         $modal.open({

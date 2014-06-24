@@ -12,12 +12,15 @@ import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Response;
 
+import lombok.extern.slf4j.Slf4j;
+
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import com.jive.apcontrolleradapter.unifi.UnifiLogin;
 import com.jive.apcontrolleradapter.webapi.Auth;
 
+@Slf4j
 public class JiveAuth implements Auth {
 
 	private final String baseURL;
@@ -47,8 +50,8 @@ public class JiveAuth implements Auth {
 				.queryParam("response_type", "token")
 				.queryParam("inflightrequest", account)
 				.queryParam("scope", "pbx.v1.profile");
-		System.out.println(client.toString());
-		System.out.println(target.request().toString());
+		log.warn("Client: {}", client.toString());
+		log.warn("Request: {}", target.request().toString());
 		// Response response = target.request().header("Authorization", "Basic "
 		// + props.getProperty("oauthBasicAuth")).get();
 		final Response response = target.request().get();
