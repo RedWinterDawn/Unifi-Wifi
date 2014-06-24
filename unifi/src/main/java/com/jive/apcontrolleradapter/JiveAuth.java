@@ -50,8 +50,7 @@ public class JiveAuth implements Auth {
 				.queryParam("response_type", "token")
 				.queryParam("inflightrequest", account)
 				.queryParam("scope", "pbx.v1.profile");
-		log.warn("Client: {}", client.toString());
-		log.warn("Request: {}", target.request().toString());
+		log.warn("Request: {}", target.getUri());
 		// Response response = target.request().header("Authorization", "Basic "
 		// + props.getProperty("oauthBasicAuth")).get();
 		final Response response = target.request().get();
