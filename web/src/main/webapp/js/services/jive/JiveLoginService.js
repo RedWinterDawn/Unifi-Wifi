@@ -51,40 +51,14 @@ managedWifi.factory('jiveLoginService', ['$q', '$http', '$cookies', '$location',
         if(account==null)
             deferred.reject();
 
-        var baseUrl = "https://api.jive.com/wifi";
+        var baseUrl = "https://auth.jive.com/oauth2/v2";
         var clientId = "27abd5a4-9e81-4e4e-9ccf-f6e81df64d19";
         var password = "i4egS4Cd59LWJiP6SnafL7nvJjg7cI";
-        var redirectUri = "https://wifi.jive.com/index.html#/oauth2";
-        var responseType = "token";
-        var scope = "pbx.v1.profile";
+        var redirectUri = "https:%2F%2Fwifi.jive.com%2Findex.html%23%2Foauth2";
 
-        $http({method: "GET", 
-               url: baseUrl + "/grant"
-               params: { client_id: clientId, 
-                         redirect_uri: redirectUri, 
-                         response_type: responseType, 
-                         inflightRequest: account, 
-                         scope: "pbx.v1.profile"}
-        }).then(
-            function(response) {
-                window.location = response.data;
-                deferred.resolve();
-            },
-            function(response) {
-                deferred.reject();
-            }
-        );
+        var uri = baseUrl + "/grant" + "?client_id=" + clientId + "&inflightRequest=" + account + "&redirect_uri=" + redirectUri + "&response_type=token%20scope=pbx.v1.profile"; 
+        window.location.href = uri;
 
-        // $http({method: "GET", url: appSettings.loginEndpoint + "oauth/v2/login-uri/"+account}).then(
-        //     function(response) {
-        //         window.location = response.data;
-        //         deferred.resolve();
-        //     },
-        //     function(response) {
-        //         deferred.reject();
-
-        //     }
-        // );
         return deferred.promise;
     };
 
