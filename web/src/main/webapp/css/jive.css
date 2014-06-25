@@ -5795,7 +5795,6 @@ ul.title-menu>li>a i {
 }
 .button-actions>ul {
 	list-style: none;
-	margin-left: -10px;
 	margin-bottom: 0;
 	float: left
 }
@@ -5811,12 +5810,11 @@ ul.title-menu>li>a i {
 	display: block
 }
 .button-actions>ul>li>a>i {
-	
+	padding: 5px;
 }
 .button-actions>ul>li>a:hover {
 	background-color: #5299da;
 	color: #fff;
-	padding: 5px;
 }
 .page-actions>ul>li .dropdown>a i {
 	margin-right: 3px
