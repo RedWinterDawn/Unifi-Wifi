@@ -41,31 +41,32 @@ public class JiveAuth implements Auth {
 				.encodeBase64String((clientID + ":" + password).getBytes());
 	}
 
-	@Override
-	public String getLoginUri(final String account) {
-		final Client client = ClientBuilder.newClient();
-		final WebTarget target = client.target(baseURL + "/grant")
-				.queryParam("client_id", clientID)
-				.queryParam("redirect_uri", redirectURI)
-				.queryParam("response_type", "token")
-				.queryParam("inflightrequest", account)
-				.queryParam("scope", "pbx.v1.profile");
-		log.info("Request: {}", target.getUri());
-		// Response response = target.request().header("Authorization", "Basic "
-		// + props.getProperty("oauthBasicAuth")).get();
-		final Response response = target.request().get();
-		if (response.getStatusInfo().getStatusCode() == 303) {
-			final String location = (String) response.getHeaders().getFirst(
-					"Location");
-			log.info("Location = {}", location);
-			if (location != null && !location.equals(""))
-				return location;
-		}
+	// @Override
+	// public String getLoginUri(final String account) {
+	// 	final Client client = ClientBuilder.newClient();
+	// 	final WebTarget target = client.target(baseURL + "/grant")
+	// 			.queryParam("client_id", clientID)
+	// 			.queryParam("redirect_uri", redirectURI)
+	// 			.queryParam("response_type", "token")
+	// 			.queryParam("inflightRequest", account)
+	// 			.queryParam("scope", "pbx.v1.profile");
+	// 	log.info("Request: {}", target.getUri());
+	// 	// Response response = target.request().header("Authorization", "Basic "
+	// 	// + props.getProperty("oauthBasicAuth")).get();
+	// 	final Response response = target.request().get();
+	// 	if (response.getStatusInfo().getStatusCode() == 200) {
+	// 		// final String location = (String) response.getHeaders().getFirst(
+	// 		// "Location");
+	// 		// log.info("Location = {}", location);
+	// 		// if (location != null && !location.equals(""))
+	// 		// return location;
+	// 		return "";
+	// 	}
 
-		System.out.println(response.readEntity(String.class));
-		throw new InternalServerErrorException(
-				"Unable to connect to OAuth provider");
-	}
+	// 	System.out.println(response.readEntity(String.class));
+	// 	throw new InternalServerErrorException(
+	// 			"Unable to connect to OAuth provider");
+	// }
 
 	@Override
 	public Map authorize(final String account, final String accessToken) {
