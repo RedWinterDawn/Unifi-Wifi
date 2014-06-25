@@ -33,7 +33,7 @@
                 <div class="span3"></div>
                 <div class="button-actions">
                     <ul>
-                        <li><a ng-show="network.is_guest" ng-click="redirect('guest')"><i class="icon-pencil"></i>Edit Location Guest Settings</a>
+                        <li><a style="7px 10px" ng-show="network.is_guest" ng-click="redirect('guest')"><i class="icon-pencil"></i>Edit Location Guest Settings</a>
                         </li>
                     </ul>
                 </div>
@@ -202,25 +202,25 @@
                                                     <div class="control-group" ng-show="guestSettings.auth == 'custom'">
                                                         <div class="control-label">IP Address:</div>
                                                         <div class="controls">
-                                                            <input disabled type="text" ng-model="guestSettings.custom_ip" valid-ip/>
+                                                            <input disabled style="color: #aaa" type="text" ng-model="guestSettings.custom_ip" valid-ip/>
                                                         </div>
                                                     </div>
                                                     <div class="control-group" ng-show="guestSettings.auth == 'password'">
                                                         <div class="control-label">Company Name:</div>
                                                         <div class="controls">
-                                                            <input disabled type="text" ng-model="guestSettings.companyName" />
+                                                            <input disabled style="color: #aaa" type="text" ng-model="guestSettings.companyName" />
                                                         </div>
                                                     </div>
                                                     <div class="control-group" ng-show="guestSettings.auth == 'password'">
                                                         <div class="control-label">Terms and Conditions:</div>
                                                         <div class="controls">
-                                                            <textarea disabled type="text" ng-model="guestSettings.terms"></textarea>
+                                                            <textarea disabled style="color: #aaa" type="text" ng-model="guestSettings.terms"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="control-group" ng-show="guestSettings.auth == 'password' || guestSettings.auth == 'none'">
                                                         <div class="control-label">Expiration</div>
                                                         <div class="controls">
-                                                            <select disabled name="expire" ng-model="guestSettings.expire" ng-required="guestSettings.auth == 'password' || guestSettings.auth == 'none'">
+                                                            <select disabled style="color: #aaa" name="expire" ng-model="guestSettings.expire" ng-required="guestSettings.auth == 'password' || guestSettings.auth == 'none'">
                                                                 <option value="480">8 hours</option>
                                                                 <option value="1440">24 hours</option>
                                                                 <option value="2880">2 days</option>
@@ -244,7 +244,7 @@
                                                     <div class="control-group" ng-show="guestSettings.redirect_enabled">
                                                         <div class="control-label">Promotional URL</div>
                                                         <div class="controls">
-                                                            <input disabled type="text" ng-model="guestSettings.redirect_url" />
+                                                            <input disabled style="color: #aaa" type="text" ng-model="guestSettings.redirect_url" />
                                                         </div>
                                                     </div>
                                                 </div>

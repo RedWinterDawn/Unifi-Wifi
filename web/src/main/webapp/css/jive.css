@@ -5811,11 +5811,12 @@ ul.title-menu>li>a i {
 	display: block
 }
 .button-actions>ul>li>a>i {
-	margin-right: 3px
+	
 }
 .button-actions>ul>li>a:hover {
 	background-color: #5299da;
-	color: #fff
+	color: #fff;
+	padding: 5px;
 }
 .page-actions>ul>li .dropdown>a i {
 	margin-right: 3px
