@@ -181,10 +181,10 @@
                     <td>{{user.ap}}</td>
                     <td>{{user.is_connected ? "Connected" : "Disconnected"}}</td>
                     <td>
-                        <div class="page-actions">
+                        <div class="button-actions">
                             <ul>
-                                <li><a class="button-actions" ng-click="blockUser(user)"><i class=""></i>{{user.blocked ? 'Unblock' : 'Block'}}</a></li>
-                                <li><a class="button-actions" ng-click="authorizeUser(user)"><i class=""></i>{{user.authorized ? 'Unauthorize' : 'Authorize'}}</a></li>
+                                <li><a ng-click="blockUser(user)"><i class="icon-eye-close"></i>{{user.blocked ? 'Unblock' : 'Block'}}</a></li>
+                                <li><a ng-click="authorizeUser(user)"><i class="icon-warning-sign"></i>{{user.authorized ? 'Unauthorize' : 'Authorize'}}</a></li>
                             </ul>
                         </div>
                     </td>
