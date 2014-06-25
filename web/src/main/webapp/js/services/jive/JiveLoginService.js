@@ -3,9 +3,9 @@ managedWifi.factory('jiveLoginService', ['$q', '$http', '$cookies', '$location',
     var sessionId = null;
     var isAdminCache = null;
 
-    var oauthReceive = function(code, account){
+    var oauthReceive = function(access_token, account){
         var deferred = $q.defer();
-        $http.get(appSettings.loginEndpoint + "oauth/v2/authorize/" + account + "/" + code).then(
+        $http.get(appSettings.loginEndpoint + "oauth/v2/authorize/" + account + "/" + access_token).then(
             function(response) {
                 sessionId = response.data.sessionId;
                 $cookies.unifises = sessionId;
@@ -14,6 +14,7 @@ managedWifi.factory('jiveLoginService', ['$q', '$http', '$cookies', '$location',
                 $cookies.lastName = response.data.lastName;
                 $cookies.email = response.data.email;
                 $cookies.emailHash = response.data.emailHash;
+                $cookies.accessToken = access_token;
                 deferred.resolve();
             },
             function(response) {
@@ -49,16 +50,12 @@ managedWifi.factory('jiveLoginService', ['$q', '$http', '$cookies', '$location',
         var deferred = $q.defer();
 
         if(account==null)
-            deferred.reject();
-
-        var baseUrl = "https://auth.jive.com/oauth2/v2";
-        var clientId = "27abd5a4-9e81-4e4e-9ccf-f6e81df64d19";
-        var password = "i4egS4Cd59LWJiP6SnafL7nvJjg7cI";
-        var redirectUri = "https:%2F%2Fwifi.jive.com%2Findex.html%23%2Foauth2";
-
-        var uri = baseUrl + "/grant" + "?client_id=" + clientId + "&inflightRequest=" + account + "&redirect_uri=" + redirectUri + "&response_type=token%20scope=pbx.v1.profile"; 
-        window.location.href = uri;
-
+           deferred.reject();
+        else 
+            deferred.resolve();
+            
+        window.location.href = "https://auth.jive.com/oauth2/v2/grant?client_id=27abd5a4-9e81-4e4e-9ccf-f6e81df64d19&inflightRequest="+account+"&redirect_uri=https:%2F%2Fwifi.jive.com%2Findex.html%23%2Foauth2&response_type=token&scope=pbx.v1.profile";
+         
         return deferred.promise;
     };
 

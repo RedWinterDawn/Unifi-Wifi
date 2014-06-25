@@ -14,8 +14,8 @@ managedWifi.controller('Oauth2Controller',["$scope", "$http", "$location", "$mod
         if(account != null){
             loginService.isLoggedIn().then(
                 function(){
-                    loginService.logout();
-                    loginService.login(account);
+                    // loginService.logout();
+                    // loginService.login(account);
                 },
                 function(){
                     loginService.login(account);
@@ -24,8 +24,8 @@ managedWifi.controller('Oauth2Controller',["$scope", "$http", "$location", "$mod
         }
 
         var params = managedWifi.parseQuery();
-        if(params.access_token && params.state){
-            loginService.oauthReceive(params.access_token, params.state).then(loginService.isAdmin).then(
+        if(params.access_token && params.inflightRedirect){
+            loginService.oauthReceive(params.access_token, params.inflightRedirect).then(loginService.isAdmin).then(
                 function(response){
                     var location = managedWifi.getLocation(window.location.href);
                     window.location.href = location.pathname + "#/devices";

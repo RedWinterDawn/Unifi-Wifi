@@ -11,10 +11,6 @@ import javax.ws.rs.core.MediaType;
 @Path("/oauth/v2/")
 @Produces(MediaType.TEXT_PLAIN)
 public interface Auth {
-    // @GET
-    // @Path("login-uri/{account}")
-    // @Produces(MediaType.TEXT_PLAIN)
-    // public String getLoginUri(@PathParam("account") String account);
 
     @GET
     @Path("authorize/{account}/{access_token}")
