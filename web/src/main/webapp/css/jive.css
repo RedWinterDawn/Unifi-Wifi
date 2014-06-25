@@ -5796,7 +5796,8 @@ ul.title-menu>li>a i {
 .button-actions>ul {
 	list-style: none;
 	margin-bottom: 0;
-	float: left
+	float: left;
+	margin-right: 0;
 }
 .button-actions>ul>li {
 	display: inline-block;
@@ -5808,9 +5809,10 @@ ul.title-menu>li>a i {
 	-moz-border-radius: 5px;
 	border-radius: 5px;
 	display: block
+	padding: 5px;
 }
 .button-actions>ul>li>a>i {
-	padding: 5px;
+	
 }
 .button-actions>ul>li>a:hover {
 	background-color: #5299da;

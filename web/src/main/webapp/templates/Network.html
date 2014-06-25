@@ -27,7 +27,7 @@
                 <div class="span3 control-group">
                     <div class="controls">
                         <label class="checkbox" style="display: inline-block; margin-left:20px">
-                            <input type="checkbox" ng-model="network.is_guest">Guest Network</label>
+                            <input type="checkbox" ng-click="guest()" ng-model="network.is_guest">Guest Network</label>
                     </div>
                 </div>
                 <div class="span3"></div>
@@ -107,17 +107,17 @@
                                                         </label>
                                                     </div>
                                                 </div>
-                                                <div class="control-group">
+                                                <div ng-class="network.is_guest ? style='color: #aaa' : ''" class="control-group" >
                                                     <div class="control-label">Security</div>
                                                     <div class="controls">
                                                         <label class="radio">
-                                                            <input type="radio" ng-model="network.security" value="open">Open
+                                                            <input type="radio" ng-model="network.security" ng-disabled="network.is_guest" value="open">Open
                                                         </label>
                                                         <label class="radio">
-                                                            <input type="radio" ng-model="network.security" value="wep">WEP
+                                                            <input type="radio" ng-model="network.security" ng-disabled="network.is_guest" value="wep">WEP
                                                         </label>
                                                         <label class="radio">
-                                                            <input type="radio" ng-model="network.security" value="wpapsk">WPA-Personal
+                                                            <input type="radio" ng-model="network.security" ng-disabled="network.is_guest" value="wpapsk">WPA-Personal
                                                         </label>
                                                         <!-- <label class="radio">
                                                             <input type="radio" ng-model="network.security" value="wpaeap">WPA-Enterprise

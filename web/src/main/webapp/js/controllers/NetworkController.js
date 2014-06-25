@@ -74,6 +74,10 @@ managedWifi.controller('NetworkController', ["$scope", "$location", "$routeParam
                     }
                 );
         };
+
+    $scope.guest = function() {
+        $scope.network.security = "open";
+    };
 	
 	$scope.redirect = function(page) {
 	    $location.url('/settings/'+page);
