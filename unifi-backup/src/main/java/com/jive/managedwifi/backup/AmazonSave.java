@@ -32,6 +32,7 @@ public class AmazonSave {
 
 	public void StoreFile() {
 
+		// Find unifi backup file
 		final File file = new File(unifiPath);
 		final File[] filesInDir = file.listFiles(new FilenameFilter() {
 
@@ -41,7 +42,7 @@ public class AmazonSave {
 			}
 		});
 
-		final File backupFile = filesInDir[0];
+		final File backupFile = filesInDir[filesInDir.length - 1];
 
 		Blob blob = null;
 		try {
@@ -57,7 +58,8 @@ public class AmazonSave {
 			blobStore.putBlob("jive-managed-wifi", blob);
 		}
 
-		if (filesInDir[0].delete())
-			log.debug("File was deleted");
+		if (filesInDir.length > 1)
+			if (filesInDir[0].delete())
+				log.debug("File was deleted");
 	}
 }
