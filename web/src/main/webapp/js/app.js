@@ -118,47 +118,30 @@ managedWifi.config(['$routeProvider', '$locationProvider',
 		function($location, $cookies, notificationService, loginService, siteService) {
 			if ($location.search().mock != undefined)
 				$cookies.useMockServices = $location.search().mock;
-			
-			if (managedWifi.parseQuery().access_token != null) {
-				
-				loginService.isAdmin().then(
-						function(isAdmin) {
-							siteService.getAll().then(
-								function(sites) {
-									if (sites.length == 0)
-										$location.url(isAdmin ? '/newsite' : '/error')
-								}
-							);
-						}
-					);
-				return;
-			}
-			
-			
-			if (managedWifi.parseQuery().pbxid != null) {
-				$location.url('/oauth2');
-				return;
-			}
-			
-//			loginService.isLoggedIn().then(
-//				function() {
-//					loginService.isAdmin().then(
-//						function(isAdmin) {
-//							siteService.getAll().then(
-//								function(sites) {
-//									if (sites.length == 0)
-//										$location.url(isAdmin ? '/newsite' : '/error')
-//								}
-//							);
-//						}
-//					)
-//				},
-//				function() {
-//					notificationService.error("login", "We're sorry, but an error occurred while authorizing your login. You may reload this page and try again.")
-//				}
-//			);
-		}
-	]);
+		
+    if(managedWifi.parseQuery().pbxid != null){
+        $location.url('/oauth2');
+        return;
+    }
+
+    loginService.isLoggedIn().then(
+        function(){
+            loginService.isAdmin().then(
+                function(isAdmin){
+                    siteService.getAll().then(
+                        function(sites){
+                            if(sites.length == 0)
+                                $location.url(isAdmin ? '/newsite' : '/error')
+                        }
+                    );
+                }
+            )
+        },
+        function(){
+//            notificationService.error("login", "We're sorry, but an error occurred while authorizing your login. You may reload this page and try again.")
+        }
+    );
+}]);
 
 managedWifi.factory('siteService', ['$cookies', '$injector',
 	function($cookies, $injector) {

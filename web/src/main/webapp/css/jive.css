@@ -5797,7 +5797,7 @@ ul.title-menu>li>a i {
 	list-style: none;
 	margin-bottom: 0;
 	float: left;
-	margin-right: 0;
+	margin-left: 0;
 }
 .button-actions>ul>li {
 	display: inline-block;
@@ -5808,7 +5808,7 @@ ul.title-menu>li>a i {
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
-	display: block
+	display: block;
 	padding: 5px;
 }
 .button-actions>ul>li>a>i {

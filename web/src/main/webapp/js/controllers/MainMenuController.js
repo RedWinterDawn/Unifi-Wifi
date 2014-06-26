@@ -41,7 +41,7 @@ managedWifi.controller('MainMenuController', ["$scope", "$timeout", "$http", "$l
 
                 },
                 function(reason) {
-                    notificationService.error("loadSites", "An error occurred while loading the sites for this account.");
+//                    notificationService.error("loadSites", "An error occurred while loading the sites for this account.");
                 }
             );
 

@@ -74,7 +74,12 @@ managedWifi.controller('NetworkController', ["$scope", "$location", "$routeParam
                     }
                 );
         };
-
+$scope.getColor = function() { 
+	if($scope.network.is_guest)
+		return '#aaa';
+	else
+		return 'black';
+}
     $scope.guest = function() {
         $scope.network.security = "open";
     };
