@@ -2,7 +2,8 @@
 
 var managedWifi = angular.module('managedWifi', ['ui.bootstrap', 'ngRoute', 'ngCookies']);
 
-// used for resolving services, whether they be mocks or device/controller specific implementations
+// used for resolving services, whether they be mocks or device/controller
+// specific implementations
 managedWifi.resolveServiceAlias = function(names) {
 	var obj = {};
 	if (angular.isString(names)) names = [names];
@@ -67,7 +68,7 @@ managedWifi.config(['$routeProvider', '$locationProvider',
 			})
 			.when('/oauth2&:code?', {
 				templateUrl: 'templates/Blank.html',
-				controller: 'Oauth2Controller'
+				controller: 'PortalApiController'
 			})
 			.when('/oauth2/:code?', {
 				templateUrl: 'templates/Blank.html',
@@ -117,46 +118,45 @@ managedWifi.config(['$routeProvider', '$locationProvider',
 		function($location, $cookies, notificationService, loginService, siteService) {
 			if ($location.search().mock != undefined)
 				$cookies.useMockServices = $location.search().mock;
-
-			if ($location.url() == "/oauth2")
-				return;
-
-			if ($cookies.accessToken != null) {
+			
+			if (managedWifi.parseQuery().access_token != null) {
+				
 				loginService.isAdmin().then(
-					function(isAdmin) {
-						siteService.getAll().then(
-							function(sites) {
-								if (sites.length == 0)
-									$location.url(isAdmin ? '/newsite' : '/error')
-							}
-						);
-					},
-					function() {
-						notificationService.error("login", "We're sorry, error while loading your information");
-					}
-				);
-			} else if (managedWifi.parseQuery().pbxid != null) {
+						function(isAdmin) {
+							siteService.getAll().then(
+								function(sites) {
+									if (sites.length == 0)
+										$location.url(isAdmin ? '/newsite' : '/error')
+								}
+							);
+						}
+					);
+				return;
+			}
+			
+			
+			if (managedWifi.parseQuery().pbxid != null) {
 				$location.url('/oauth2');
 				return;
-			} else {
-				loginService.isLoggedIn().then(
-					function() {
-						loginService.isAdmin().then(
-							function(isAdmin) {
-								siteService.getAll().then(
-									function(sites) {
-										if (sites.length == 0)
-											$location.url(isAdmin ? '/newsite' : '/error')
-									}
-								);
-							}
-						)
-					},
-					function() {
-						notificationService.error("login", "We're sorry, but an error occurred while authorizing your login. You may reload this page and try again.")
-					}
-				);
 			}
+			
+//			loginService.isLoggedIn().then(
+//				function() {
+//					loginService.isAdmin().then(
+//						function(isAdmin) {
+//							siteService.getAll().then(
+//								function(sites) {
+//									if (sites.length == 0)
+//										$location.url(isAdmin ? '/newsite' : '/error')
+//								}
+//							);
+//						}
+//					)
+//				},
+//				function() {
+//					notificationService.error("login", "We're sorry, but an error occurred while authorizing your login. You may reload this page and try again.")
+//				}
+//			);
 		}
 	]);
 

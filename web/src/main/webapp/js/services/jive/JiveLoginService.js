@@ -24,6 +24,7 @@ managedWifi.factory('jiveLoginService', ['$q', '$http', '$cookies', '$location',
         return deferred.promise;
     };
 
+    // Find out if user is admin
     var isAdmin = function (){
         var deferred = $q.defer();
 
@@ -46,6 +47,7 @@ managedWifi.factory('jiveLoginService', ['$q', '$http', '$cookies', '$location',
         return deferred.promise;
     };
 
+    //get access token
     var login = function (account){
         var deferred = $q.defer();
 
@@ -61,7 +63,7 @@ managedWifi.factory('jiveLoginService', ['$q', '$http', '$cookies', '$location',
 
     var isLoggedIn= function (){
         var deferred = $q.defer();
-        if($cookies.unifises == null)
+        if($cookies.accessToken == null)
             deferred.reject();
         else
             deferred.resolve();
