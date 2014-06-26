@@ -42,7 +42,7 @@ public class AmazonSave {
 			}
 		});
 
-		final File backupFile = filesInDir[filesInDir.length - 1];
+		final File backupFile = filesInDir[0];
 
 		Blob blob = null;
 		try {
@@ -59,7 +59,7 @@ public class AmazonSave {
 		}
 
 		if (filesInDir.length > 1)
-			if (filesInDir[0].delete())
+			if (filesInDir[filesInDir.length - 1].delete())
 				log.debug("File was deleted");
 	}
 }
