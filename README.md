@@ -90,8 +90,8 @@ enabled=1
 run: yum install mongo-10gen mongo-10gen-server
 
 ####One Way
-scp the Unifi Controller software version 3.1.3
-NOTE: The version must be 3.1.3 at this time no other version is supported by the UI
+scp the Unifi Controller software version 3.2.1
+NOTE: The version 3.2.1 is the latest tested supported by the UI
 
 unzip the file e.g.: unzip UniFi.unix.zip
 
@@ -108,6 +108,7 @@ NOTE: needs to have the `&` to start in the background
 ####Another Way - using debian pkg
 https://community.ubnt.com/t5/UniFi-Beta/UniFi-3-1-10-RC-is-Released/m-p/739939#U739939
 Near the bottom are instructions
+
 
 go to https://<ipaddess>:8443
 
@@ -127,7 +128,7 @@ expect: `Certificate was added to the keystore`
 
 Pull latest snapshot from the Nexus repo. Search for: com.jive.apcontrolleradapter
 ```
-wget "http://repo.ftw.jiveip.net/service/local/artifact/maven/redirect?r=snapshots&g=com.jive.apcontrolleradapter&a=web&v=1.0-SNAPSHOT&e=war"
+wget "http://repo.ftw.jiveip.net/service/local/artifact/maven/redirect?r=snapshots&g=com.jive.managedwifi&a=web&v=1.0-SNAPSHOT&e=war"
 ```
 Rename the downloaded file. If there already exists a folder named ROOT, remove it.
 ```
@@ -164,13 +165,13 @@ tail -f path/to/tomcat/files
 path is usually ```/usr/lib/tomcat/logs/catalina.out```
 
 
-# Getting the bastard running
+# Getting the bastard running locally
 The process to get Managed Wifi up and running is slightly involved. The steps here might not be complete, so if you figure something out, PLEASE add it to the README.
 
 
 Add the following line to `/etc/hosts`
 ```
-10.120.255.70 unifi
+10.104.0.199 unifi
 ```
 
 Make sure that you're using JRE 1.7.0 at the very least.
@@ -213,10 +214,28 @@ portal-api.URL=https://api.jive.com/wifi
 
 Next, you have to set up an SSH tunnel to the managed wifi Mongo DB on the Unifi host. Your public key needs to added to the server (talk to devops):
 ```
-ssh admin@172.20.9.70 -L 27117:localhost:27117
+ssh admin@unifi -L 27117:localhost:27117
 ```
+
+In eclipse in your server change HTTP/1.1 to 8000 and in modules edit the path to be nothing.
 
 You should now be able to start the server in Eclipse (you have to make a Tomcat server for it). Then, you might be able to go to http://localhost:8000/index.html?pbxid=0127d974-f9f3-0704-2dee-000100420001#/oauth2
 
 
 Good luck.
+
+# Auto Backup of Unifi Controller
+
+Located on server: `/usr/bin/unifi-backup.jar`
+
+Setup as a cron job to run everyday at 1am
+
+Files are stored on server at: `/usr/lib/unifi_backup/`
+
+Files and in S3 at `jive-managed-wifi`
+
+# To Restore Unifi Controller
+
+In the "Admin" panel of the UI, click "Choose File". Wait for it to upload then click "Confirm".
+
+It takes a while to complete and you may have to restart the controller on the server.
