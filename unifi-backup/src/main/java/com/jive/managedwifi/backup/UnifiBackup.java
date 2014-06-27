@@ -59,7 +59,8 @@ public class UnifiBackup {
 		arguments.addAll(baseArguments);
 		arguments.add(baseurl + backupFilePath);
 		arguments.add("-o");
-		arguments.add(filesavepath + DateTime.now().toString() + ".unf");
+		arguments.add(filesavepath
+				+ DateTime.now().toString("dd-MM-yyyy.HH:mm:ss") + ".unf");
 
 		log.debug(arguments.toString());
 

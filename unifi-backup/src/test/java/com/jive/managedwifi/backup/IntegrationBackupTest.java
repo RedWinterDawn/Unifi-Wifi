@@ -16,7 +16,8 @@ public class IntegrationBackupTest {
 	@Test
 	public void stressIntegrationTest() throws IOException {
 
-		Injector injector = Guice.createInjector(new AmazonModule(), new UnifiModule());
+		final Injector injector = Guice.createInjector(new AmazonModule(),
+				new UnifiModule());
 
 		for (int i = 0; i < 25; i++) {
 			final UnifiBackup backupUnifi = injector
@@ -25,7 +26,7 @@ public class IntegrationBackupTest {
 					.getInstance(AmazonSave.class);
 
 			backupUnifi.unifiBackup();
-			amazonSave.StoreFile();
+			amazonSave.storeFile();
 		}
 
 	}

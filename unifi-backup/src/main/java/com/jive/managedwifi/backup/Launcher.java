@@ -18,6 +18,6 @@ public class Launcher {
 		final AmazonSave amazonSave = injector.getInstance(AmazonSave.class);
 
 		backupUnifi.unifiBackup();
-		amazonSave.StoreFile();
+		amazonSave.storeFile();
 	}
 }
