@@ -164,6 +164,7 @@
                             </ul>
                         </div>
                     </th>
+		    <th><a>Signal</a></th>
                     <th><a ng-click="paginator.setOrder('tx_bytes')">Download<i ng-class="paginator | sortClass:'tx_bytes'"></i></a>
                     </th>
                     <th><a ng-click="paginator.setOrder('rx_bytes')">Upload<i ng-class="paginator | sortClass:'rx_bytes'"></i></a>
@@ -181,17 +182,18 @@
                     <td>{{user.ap}}</td>
                     <td>{{user.is_connected ? "Connected" : "Disconnected"}}</td>
                     <td>
-                        <div class="button-actions">
+                        <div class="button-actions" style="white-space: normal">
                             <ul>
-                                <li><a ng-click="blockUser(user)"><i class="icon-eye-close"></i>{{user.blocked ? 'Unblock' : 'Block'}}</a></li>
-                                <li><a ng-click="authorizeUser(user)"><i class="icon-warning-sign"></i>{{user.authorized ? 'Unauthorize' : 'Authorize'}}</a></li>
+                                <li><a style="white-space: nowrap" ng-click="blockUser(user)"><i class="icon-eye-close"></i>{{user.blocked ? 'Unblock' : 'Block'}}</a></li>
+                                <li><a  style="white-space: nowrap" ng-show="user.is_guest" ng-click="authorizeUser(user)"><i class="icon-warning-sign"></i>{{user.authorized ? 'Unauthorize' : 'Authorize'}}</a></li>
                             </ul>
                         </div>
                     </td>
                     <td>{{user.ip || ''}}</td>
                     <td ng-show="showAuthorized">{{user.is_guest ? user.authorized ? "User" : "Unauthorized" : "Guest"}}</td>
                     <td ng-show="showBlocked">{{user.blocked ? "Blocked" : "Unblocked"}}</td>
-                    <td>{{user.tx_bytes | bytes}}</td>
+                    <td>{{user.rssi | signal}} ({{user.signal}} dBm)</td>
+		    <td>{{user.tx_bytes | bytes}}</td>
                     <td>{{user.rx_bytes | bytes}}</td>
                     <td>{{user.uptime | uptime}}</td>
                 </tr>

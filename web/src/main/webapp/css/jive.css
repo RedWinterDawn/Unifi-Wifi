@@ -5790,8 +5790,19 @@ ul.title-menu>li>a i {
 	border-radius: 5px;
 	float: right
 }
+.trash {
+	*zoom = 1;
+	padding: 0px 3px;
+        border-radius: 5px;
+        display: block;	
+}
+.trash:hover {
+        background-color: #5299da;
+        color: #fff;
+}
 .button-actions {
 	*zoom = 1;
+	white-space: nowrap;
 }
 .button-actions>ul {
 	list-style: none;
@@ -5812,7 +5823,7 @@ ul.title-menu>li>a i {
 	padding: 5px;
 }
 .button-actions>ul>li>a>i {
-	
+	margin-right: 3px;
 }
 .button-actions>ul>li>a:hover {
 	background-color: #5299da;

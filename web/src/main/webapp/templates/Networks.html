@@ -81,7 +81,6 @@
                         </ul>
                     </div>
                 </th>
-                 <th><a>Terms & Conditions</a></th>
                  <th><a>Redirect</a></th>
                 <th><a ng-click="paginator.setOrder('security')">Security<i ng-class="paginator | sortClass:'security'"></i></a></th>
             </tr>
@@ -89,20 +88,14 @@
             <tbody>
             <tr ng-repeat="network in networks | filter: filter | storeItemCount: paginator.updateTotalItems | orderBy: paginator.orderBy | slice:(paginator.currentPage-1)*20:20">
                 <td>
-                    <div class="button-actions">
-                        <ul>
-                            <li><a ng-click="deleteNetwork(network.id)"><i class="icon-trash" ></i></a>
-                            </li>
-                        </ul>
-                    </div>
+                	<a class="trash" ng-click="deleteNetwork(network.id)"><i class="icon-trash" ></i></a>
                 </td>
                 <td><a ng-click="manageNetwork(network.id, network.is_guest,'')">{{network.name}}</a></td>
                 <td><i class="{{network.hide_ssid ? null : 'icon-check'}}"></i></td>
                 <td>{{network.enabled ? 'Enabled' : 'Disabled'}}</td>
                 <td>{{network.is_guest ? 'Guest Network' : 'Private Network'}}</td>
-                <td><a ng-href="#/settings/guest"><i class="{{guestSettings.auth=='password' ? 'icon-check' : null}}"></i></a></td>
-                <td><a ng-href="#/settings/guest"><i class="{{guestSettings.redirect_enabled ? 'icon-check' : null}}"></i></a></td>
-                <td>{{network.security}}</td>
+                <td><a ng-href="#/settings/guest"><i class="{{guestSettings.redirect_enabled && network.is_guest ? 'icon-check' : null}}"></i></a></td>
+                <td ng-bind="network.is_guest ? guestSettings.auth : network.security"></td>
             </tr>
 
             </tbody>
