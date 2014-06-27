@@ -4,8 +4,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FilenameFilter;
-import java.util.Arrays;
-import java.util.List;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -58,20 +56,20 @@ public class AmazonSave {
 	public void storeFile() {
 
 		// Get all .unf files in dir
-		final List<File> filesInDir = Arrays.asList(new File(unifiPath)
+		final File[] filesInDir = new File(unifiPath)
 				.listFiles(new FilenameFilter() {
 
 					@Override
 					public boolean accept(final File dir, final String name) {
 						return Files.getFileExtension(name).equals("unf");
 					}
-				}));
+				});
 
-		File backupFile = filesInDir.get(0);
+		File backupFile = filesInDir[0];
 
-		// Delete all file not the latest backup
-		for (final File file : filesInDir) {
-			backupFile = compareFiles(file, backupFile);
+		// Delete all files not the latest backup
+		for (int i = 1; i < filesInDir.length; i++) {
+			backupFile = compareFiles(filesInDir[i], backupFile);
 		}
 
 		Blob blob = null;
