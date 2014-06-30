@@ -4090,7 +4090,7 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini {
 	display: block;
 	padding: 10px 20px 10px;
 	margin-left: 0px;
-	font-size: 20px;
+	font-size: 150%;
 	font-weight: 200;
 	color: #fff;
 	text-shadow: 0 1px 0 #9cc92c
@@ -5527,7 +5527,7 @@ body, html {
 	overflow: scroll;
 }
 body {
-	font-size: 14px;
+	font-size: 80%;
 	line-height: 18px;
 	color: #454545;
 	background-color: #fbfbfb;

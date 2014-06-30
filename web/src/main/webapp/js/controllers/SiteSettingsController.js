@@ -22,6 +22,8 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
                     if ($scope.originalSettings.hotspotNoAuth === 'true') {
                         $scope.originalSettings.auth2 = 'tou';
                     }
+                    if (!_.has($scope.originalSettings, 'originalTerms'))
+                        $scope.originalSettings.originalTerms = "By accessing the wireless network, you acknowledge that you're of legal age, you have read and understood and agree to be bound by this agreement\nThe wireless network service is provided by the property owners and is completely at their discretion. Your access to the network may be blocked, suspended, or terminated at any time for any reason.\nYou agree not to use the wireless network for any purpose that is unlawful and take full responsibility of your acts.\nThe wireless network is provided &quot;as is&quot; without warranties of any kind, either expressed or implied."
 
                     if(!_.has($scope.originalSettings, 'redirect_enabled'))
                         $scope.originalSettings.redirect_enabled = false;
@@ -42,8 +44,6 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
                                 notificationService.error("loadSite", "An error occurred while attempting to retrieve this site's details");
                             }
                         );
-                    
-                    
                 },
                 function(reason){
                     notificationService.error("loadSiteSettings", "An error occurred while loading this site's settings.");
