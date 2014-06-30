@@ -37,10 +37,7 @@ managedWifi.controller('NetworkController', ["$scope", "$location", "$routeParam
 	                wpa_mode: "auto",
 	                auth: "none",
 	            };
-        	$scope.guestSettings = {
-			redirect_enabled: false,
-			expire: 4320
-		}
+        }
 		$scope.network = angular.copy($scope.original);
         }
 
@@ -48,17 +45,17 @@ managedWifi.controller('NetworkController', ["$scope", "$location", "$routeParam
             function(settings){
                 $scope.guestSettings = settings.filter(function(setting){return setting.key == 'guest_access'})[0];
 
-                if (!_.has($scope.originalSettings, 'expire')) $scope.originalSettings.expire = '4320';
-                if ($scope.originalSettings.hotspotNoAuth === 'true') {
-                    $scope.originalSettings.auth2 = 'tou';
+                if (!_.has($scope.guestSettings, 'expire')) $scope.guestSettings.expire = '4320';
+                if ($scope.guestSettings.hotspotNoAuth === 'true') {
+                    $scope.guestSettings.auth2 = 'tou';
                 }
-                if (!_.has($scope.originalSettings, 'originalTerms'))
-                    $scope.originalSettings.originalTerms = "By accessing the wireless network, you acknowledge that you're of legal age, you have read and understood and agree to be bound by this agreement\nThe wireless network service is provided by the property owners and is completely at their discretion. Your access to the network may be blocked, suspended, or terminated at any time for any reason.\nYou agree not to use the wireless network for any purpose that is unlawful and take full responsibility of your acts.\nThe wireless network is provided &quot;as is&quot; without warranties of any kind, either expressed or implied."
+                if (!_.has($scope.guestSettings, 'originalTerms'))
+                    $scope.guestSettings.originalTerms = "By accessing the wireless network, you acknowledge that you're of legal age, you have read and understood and agree to be bound by this agreement\nThe wireless network service is provided by the property owners and is completely at their discretion. Your access to the network may be blocked, suspended, or terminated at any time for any reason.\nYou agree not to use the wireless network for any purpose that is unlawful and take full responsibility of your acts.\nThe wireless network is provided &quot;as is&quot; without warranties of any kind, either expressed or implied."
 
-                if(!_.has($scope.originalSettings, 'redirect_enabled'))
-                    $scope.originalSettings.redirect_enabled = false;
+                if(!_.has($scope.guestSettings, 'redirect_enabled'))
+                    $scope.guestSettings.redirect_enabled = false;
             }
-        )
+        );
 
         $scope.update = function() {
             if($scope.isNew)
@@ -84,12 +81,12 @@ managedWifi.controller('NetworkController', ["$scope", "$location", "$routeParam
                     }
                 );
         };
-$scope.getColor = function() { 
-	if($scope.network.is_guest)
-		return '#aaa';
-	else
-		return 'black';
-}
+    $scope.getColor = function() { 
+    	if($scope.network.is_guest)
+    		return '#aaa';
+    	else
+    		return 'black';
+    }
     $scope.guest = function() {
         $scope.network.security = "open";
     };
