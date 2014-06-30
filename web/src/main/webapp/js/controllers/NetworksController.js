@@ -19,7 +19,7 @@ managedWifi.controller('NetworksController', ["$scope", "$location", "$routePara
 		    siteSettingsService.getAll().then(
                          function(settings){
                 		$scope.guestSettings = settings.filter(function(setting){return setting.key == 'guest_access'})[0];
-              	   	 } 
+			 } 
        		    )	   
                 },
                 function(reason){

@@ -81,8 +81,9 @@
                         </ul>
                     </div>
                 </th>
-                 <th><a>Redirect</a></th>
                 <th><a ng-click="paginator.setOrder('security')">Security<i ng-class="paginator | sortClass:'security'"></i></a></th>
+                <th><a>Redirect</a></th>
+		<th><a>Guest Password</a></th>
             </tr>
             </thead>
             <tbody>
@@ -94,9 +95,10 @@
                 <td><i class="{{network.hide_ssid ? null : 'icon-check'}}"></i></td>
                 <td>{{network.enabled ? 'Enabled' : 'Disabled'}}</td>
                 <td>{{network.is_guest ? 'Guest Network' : 'Private Network'}}</td>
+                <td ng-bind="network.security"></td>
                 <td><a ng-href="#/settings/guest"><i class="{{guestSettings.redirect_enabled && network.is_guest ? 'icon-check' : null}}"></i></a></td>
-                <td ng-bind="network.is_guest ? guestSettings.auth : network.security"></td>
-            </tr>
+            	<td><a ng-href="#/settings/guest"><i ng-class="network.is_guest && guestSettings.auth=='password' ? 'icon-check' : null" ></i></a></td>
+	      </tr>
 
             </tbody>
         </table>
