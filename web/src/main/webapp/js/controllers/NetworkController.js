@@ -39,7 +39,6 @@ managedWifi.controller('NetworkController', ["$scope", "$location", "$routeParam
 	            };
         }
 		$scope.network = angular.copy($scope.original);
-        }
 
         siteSettingsService.getAll().then(
             function(settings){
