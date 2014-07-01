@@ -7,6 +7,7 @@ var managedWifi = angular.module('managedWifi', ['ui.bootstrap', 'ngRoute', 'ngC
 managedWifi.resolveServiceAlias = function(names) {
 	var obj = {};
 	if (angular.isString(names)) names = [names];
+	console.log("resolveServiceAlias");
 
 	names.forEach(function(name) {
 		obj[name] = ['$injector', '$cookies',
@@ -63,14 +64,17 @@ managedWifi.config(['$routeProvider', '$locationProvider',
 				controller: 'HelpController'
 			})
 			.when('/login', {
+				console.log("/login");
 				templateUrl: 'templates/Blank.html',
 				controller: 'LoginController'
 			})
 			.when('/oauth2&:code?', {
+				console.log("/oauth2&:code?");
 				templateUrl: 'templates/Blank.html',
 				controller: 'PortalApiController'
 			})
 			.when('/oauth2/:code?', {
+				console.log("/oauth2/:code?");
 				templateUrl: 'templates/Blank.html',
 				controller: 'Oauth2Controller'
 			})
@@ -118,8 +122,11 @@ managedWifi.config(['$routeProvider', '$locationProvider',
 		function($location, $cookies, notificationService, loginService, siteService) {
 			if ($location.search().mock != undefined)
 				$cookies.useMockServices = $location.search().mock;
+
+			console.log("app.js");
 		
     if(managedWifi.parseQuery().pbxid != null){
+    	console.log("pbxid exists");
         $location.url('/oauth2');
         return;
     }

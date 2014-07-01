@@ -2,14 +2,18 @@ managedWifi.factory('unifiLoginService', ['$q', '$http', 'appSettings', function
 
     var loggedIn;
     var isLoggedIn = function (){
+        console.log("unifiLoginService");
         var deferred = $q.defer();
         if(loggedIn == true){
             deferred.resolve();
             return deferred.promise;
         }
 
+        console.log("unifiLoginService");
         $http({method: "POST", url: appSettings.loginEndpoint+"/api/s/default/stat/sta"}).then(
+            console.log(appSettings.loginEndpoint+"/api/s/default/stat/sta");
             function(data) {
+                console.log(data);
                 if(data.status == 200){
                     loggedIn = true;
                     deferred.resolve();
@@ -26,6 +30,8 @@ managedWifi.factory('unifiLoginService', ['$q', '$http', 'appSettings', function
 
     return {
         login: function (username, password) {
+            console.log("unifiLoginService");
+            console.log(username + ":" + password);
             var deferred = $q.defer();
 
             var headers = {
@@ -34,6 +40,7 @@ managedWifi.factory('unifiLoginService', ['$q', '$http', 'appSettings', function
             };
             $http({method: "POST", url: appSettings.loginEndpoint+"/login", data: "username="+encodeURIComponent(username)+"&password="+encodeURIComponent(password)+"&login=Login", headers: headers }).then(
                 function(data) {
+                    console.log(data);
                     isLoggedIn().then(function(){deferred.resolve();}, function(){deferred.reject();});
                 },
                 function() {
@@ -45,6 +52,7 @@ managedWifi.factory('unifiLoginService', ['$q', '$http', 'appSettings', function
         },
 
         logout: function(){
+            console.log("unifiLoginService");
             return $http({method: "GET", url: appSettings.loginEndpoint+"/logout"}).then(function(){loggedIn=false;});
         },
 
