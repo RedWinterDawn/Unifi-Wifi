@@ -39,7 +39,7 @@ managedWifi.factory('jiveLoginService', ['$q', '$http', '$cookies', '$location',
              console.log("isAdminCache " + isAdminCache);
             $http.get(appSettings.loginEndpoint + (sessionId == null ? $cookies.unifises : sessionId) + "/login").then(
                 function(response) {
-                    console.log(rsponse);
+                    console.log(response);
                     isAdminCache = response.data == "true";
                     deferred.resolve(isAdminCache);
                 },

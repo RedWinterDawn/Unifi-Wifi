@@ -16,20 +16,23 @@ import lombok.extern.slf4j.Slf4j;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
+import com.jive.apcontrolleradapter.unifi.UnifiBase;
 import com.jive.apcontrolleradapter.unifi.UnifiLogin;
 import com.jive.apcontrolleradapter.webapi.Auth;
 
 @Slf4j
-public class JiveAuth implements Auth {
+public class JiveAuth extends UnifiBase implements Auth {
 
 	private final String portalAPIBaseURL;
 
-	public JiveAuth() {
+	public JiveAuth() throws IOException {
 		portalAPIBaseURL = Configuration.getPortalAPIBaseURL();
 	}
 
 	@Override
 	public Map authorize(final String account, final String accessToken) {
+		log.debug("Authorizing account: {} with token: {}", account,
+				accessToken);
 		final Client client = ClientBuilder.newClient();
 		final WebTarget target = client.target(portalAPIBaseURL + "/user/");
 		final Response response = target.request()
@@ -45,6 +48,7 @@ public class JiveAuth implements Auth {
 					"Unable to initialize login service");
 		}
 
+		log.debug("Response {}", response.getStatus());
 		if (response.getStatusInfo().getStatusCode() == 200) {
 			final List<Map<String, String>> users = (List<Map<String, String>>) response
 					.readEntity(Map.class).get("users");
@@ -72,6 +76,10 @@ public class JiveAuth implements Auth {
 					"Unable to retrieve user information from portals api");
 
 		final String sessionId = unifiLogin.login();
+
+		// Map account and accessToken to sessionId
+		sessionIdTable.put(account, accessToken, sessionId);
+
 		unifiLogin.setActiveAccount(sessionId, account);
 		unifiLogin.setPermissionLevel(sessionId,
 				(String) results.get("permissionLevel"));

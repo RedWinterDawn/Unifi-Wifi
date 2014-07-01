@@ -1,19 +1,11 @@
 package com.jive.apcontrolleradapter.unifi;
 
 import java.io.IOException;
-import java.util.AbstractMap;
-import java.util.Map;
 
 import javax.ws.rs.ForbiddenException;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.Entity;
-import javax.ws.rs.client.Invocation;
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.NewCookie;
-import javax.ws.rs.core.Response;
 
 import com.jive.apcontrolleradapter.webapi.Login;
 import com.mongodb.BasicDBObject;
@@ -22,101 +14,85 @@ import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
 
 public class UnifiLogin extends UnifiBase implements Login {
-    public UnifiLogin() throws IOException {
-    }
+	public UnifiLogin() throws IOException {
+	}
 
-    @Override
-    public Boolean isPlatformAdmin(String sessionId) {
-        DB db = dbClient.getDB("ace");
+	@Override
+	public Boolean isPlatformAdmin(final String sessionId) {
+		final DB db = dbClient.getDB("ace");
 
-        // get current site for session
-        DBCollection dbCollection = db.getCollection("cache_login");
-        BasicDBObject query = new BasicDBObject("cookie", sessionId);
-        DBObject dbObject = dbCollection.findOne(query);
-        if(dbObject == null)
-            throw new ForbiddenException();
+		// get current site for session
+		final DBCollection dbCollection = db.getCollection("cache_login");
+		final BasicDBObject query = new BasicDBObject("cookie", sessionId);
+		final DBObject dbObject = dbCollection.findOne(query);
+		if (dbObject == null)
+			throw new ForbiddenException();
 
-        return "Platform-Admin".equalsIgnoreCase((String) dbObject.get("permissionLevel"))
-                || "Administrator".equalsIgnoreCase((String) dbObject.get("permissionLevel"))
-        		|| "Platform-Customer-Service".equalsIgnoreCase((String) dbObject.get("permissionLevel"));
-    }
+		return "Platform-Admin".equalsIgnoreCase((String) dbObject
+				.get("permissionLevel"))
+				|| "Administrator".equalsIgnoreCase((String) dbObject
+						.get("permissionLevel"))
+				|| "Platform-Customer-Service"
+						.equalsIgnoreCase((String) dbObject
+								.get("permissionLevel"));
+	}
 
-    @Override
-    public void logout(@PathParam("unifises") String sessionId) {
-        Client client= ClientBuilder.newClient();
-        client.target(controllerHost + "/logout").request().cookie("unifises", sessionId).get();
-    }
+	@Override
+	public String login() {
+		return baseUnifiLogin();
+	}
 
-    @Override
-    public void setPermissionLevel(String sessionId, String permissionLevel) {
-        DB db = dbClient.getDB("ace");
+	@Override
+	public void logout(@PathParam("unifises") final String sessionId) {
+		final Client client = ClientBuilder.newClient();
+		client.target(controllerHost + "/logout").request()
+				.cookie("unifises", sessionId).get();
+	}
 
-        // get current site for session
-        DBCollection dbCollection = db.getCollection("cache_login");
-        BasicDBObject query = new BasicDBObject("cookie", sessionId);
-        DBObject dbObject = dbCollection.findOne(query);
-        if(dbObject == null)
-            throw new ForbiddenException();
+	@Override
+	public void setPermissionLevel(final String sessionId,
+			final String permissionLevel) {
+		final DB db = dbClient.getDB("ace");
 
-        BasicDBObject update = new BasicDBObject("$set", new BasicDBObject("permissionLevel", permissionLevel));
-        dbCollection.update(dbObject, update);
-    }
+		// get current site for session
+		final DBCollection dbCollection = db.getCollection("cache_login");
+		final BasicDBObject query = new BasicDBObject("cookie", sessionId);
+		final DBObject dbObject = dbCollection.findOne(query);
+		if (dbObject == null)
+			throw new ForbiddenException();
 
-    @Override
-    public String login() {
-        AbstractMap.SimpleEntry<String, String> firstAdminLogin = getFirstAdminLogin();
+		final BasicDBObject update = new BasicDBObject("$set",
+				new BasicDBObject("permissionLevel", permissionLevel));
+		dbCollection.update(dbObject, update);
+	}
 
-        javax.ws.rs.core.Form form = new javax.ws.rs.core.Form();
-        form.param("username", firstAdminLogin.getKey());
-        form.param("password", firstAdminLogin.getValue());
-        form.param("login", "login");
+	@Override
+	public void setActiveAccount(final String sessionId, final String account) {
+		final String siteId = getSiteIdForAccount(account);
+		final DB db = dbClient.getDB("ace");
 
-        Client client= ClientBuilder.newClient();
-        WebTarget target = client.target(controllerHost + "/login");
-        Invocation.Builder builder = target.request(MediaType.APPLICATION_FORM_URLENCODED);
-        Response response = builder.post(Entity.form(form));
-        Map<String, NewCookie> cookies = response.getCookies();
-        return cookies.get("unifises").getValue();
-    }
+		// get current site for session
+		final DBCollection dbCollection = db.getCollection("cache_login");
+		final BasicDBObject query = new BasicDBObject("cookie", sessionId);
+		final DBObject dbObject = dbCollection.findOne(query);
+		if (dbObject == null)
+			throw new ForbiddenException();
 
-    @Override
-    public void setActiveAccount(String sessionId, String account) {
-        String siteId = getSiteIdForAccount(account);
-        DB db = dbClient.getDB("ace");
+		final BasicDBObject updateValues = new BasicDBObject();
+		updateValues.put("site_id", siteId);
+		updateValues.put("account_id", account);
+		final BasicDBObject update = new BasicDBObject("$set", updateValues);
+		dbCollection.update(dbObject, update);
+	}
 
-        // get current site for session
-        DBCollection dbCollection = db.getCollection("cache_login");
-        BasicDBObject query = new BasicDBObject("cookie", sessionId);
-        DBObject dbObject = dbCollection.findOne(query);
-        if(dbObject == null)
-            throw new ForbiddenException();
+	private String getSiteIdForAccount(final String account) {
+		final DB db = dbClient.getDB("ace");
 
-        BasicDBObject updateValues = new BasicDBObject();
-        updateValues.put("site_id", siteId);
-        updateValues.put("account_id", account);
-        BasicDBObject update = new BasicDBObject("$set", updateValues);
-        dbCollection.update(dbObject, update);
-    }
+		// get current site for session
+		final DBCollection dbCollection = db.getCollection("site_ext");
+		final BasicDBObject query = new BasicDBObject("account_id", account);
+		final DBObject dbObject = dbCollection.findOne(query);
+		return dbObject == null ? null : (String) dbObject.get("site_id");
+	}
 
-    private String getSiteIdForAccount(String account){
-        DB db = dbClient.getDB("ace");
-
-        // get current site for session
-        DBCollection dbCollection = db.getCollection("site_ext");
-        BasicDBObject query = new BasicDBObject("account_id", account);
-        DBObject dbObject = dbCollection.findOne(query);
-        return dbObject == null ? null : (String) dbObject.get("site_id");
-    }
-
-    private java.util.AbstractMap.SimpleEntry<String, String> getFirstAdminLogin(){
-        DB db = dbClient.getDB("ace");
-
-        // get current site for session
-        DBCollection dbCollection = db.getCollection("admin");
-        DBObject query = new BasicDBObject("name", "admin");
-        DBObject dbObject = dbCollection.findOne(query);
-        if(dbObject == null)
-            throw new ForbiddenException();
-        return new AbstractMap.SimpleEntry<String, String>("admin",dbObject.get("x_password").toString());
-    }
 }

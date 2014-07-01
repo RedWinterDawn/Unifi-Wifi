@@ -64,17 +64,14 @@ managedWifi.config(['$routeProvider', '$locationProvider',
 				controller: 'HelpController'
 			})
 			.when('/login', {
-				console.log("/login");
 				templateUrl: 'templates/Blank.html',
 				controller: 'LoginController'
 			})
 			.when('/oauth2&:code?', {
-				console.log("/oauth2&:code?");
 				templateUrl: 'templates/Blank.html',
 				controller: 'PortalApiController'
 			})
 			.when('/oauth2/:code?', {
-				console.log("/oauth2/:code?");
 				templateUrl: 'templates/Blank.html',
 				controller: 'Oauth2Controller'
 			})
