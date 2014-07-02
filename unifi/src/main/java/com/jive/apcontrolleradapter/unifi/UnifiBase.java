@@ -55,7 +55,7 @@ public class UnifiBase {
 				.post(Entity.json(message == null ? "" : message));
 
 		log.debug("getData() status {}", response.getStatus());
-		log.debug("getData() {}", response.readEntity(Map.class).data.meta.msg);
+		log.debug("getData() {}", response.readEntity(Map.class).get("meta"));
 
 		// Status is 200 even when login.Object {data: Array[0], meta: Object}
 		// data: Array[0]
@@ -65,7 +65,8 @@ public class UnifiBase {
 		// rc: "error"
 
 		// Relog into unifi is response status bad
-		if (response.readEntity(Map.class).data.meta.msg.equals("api.err.LoginRequired")) {
+		if (response.readEntity(Map.class).get("meta")
+				.equals("api.err.LoginRequired")) {
 			String account = "";
 			String accessToken = "";
 
