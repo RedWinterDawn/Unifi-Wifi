@@ -1,4 +1,4 @@
-package com.jive.apcontrolleradapter.unifi;
+package com.jive.managedwifi.unifi;
 
 import java.io.IOException;
 import java.util.AbstractMap;
@@ -24,7 +24,7 @@ import org.bson.types.ObjectId;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
 import com.google.common.collect.Table.Cell;
-import com.jive.apcontrolleradapter.Configuration;
+import com.jive.managedwifi.Configuration;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
