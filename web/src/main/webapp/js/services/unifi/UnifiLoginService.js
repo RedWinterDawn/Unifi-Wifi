@@ -11,8 +11,8 @@ managedWifi.factory('unifiLoginService', ['$q', '$http', 'appSettings', function
 
         console.log("unifiLoginService");
         $http({method: "POST", url: appSettings.loginEndpoint+"/api/s/default/stat/sta"}).then(
-            console.log(appSettings.loginEndpoint+"/api/s/default/stat/sta");
             function(data) {
+                console.log(appSettings.loginEndpoint+"/api/s/default/stat/sta");
                 console.log(data);
                 if(data.status == 200){
                     loggedIn = true;

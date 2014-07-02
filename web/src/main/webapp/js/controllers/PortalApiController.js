@@ -1,6 +1,6 @@
 'use strict'
 
-managedWifi.controller('PortalApiController', ["$scope", "$http", "$location", "$modal", "jiveLoginService", "notificationService"
+managedWifi.controller('PortalApiController', ["$scope", "$http", "$location", "$modal", "jiveLoginService", "notificationService",
 	function PortalApiController($scope, $http, $location, $modal, loginService, notificationService) {
 	
     console.log("PortalApiController");

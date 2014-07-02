@@ -54,9 +54,18 @@ public class UnifiBase {
 				.cookie("unifises", sessionId)
 				.post(Entity.json(message == null ? "" : message));
 
-		log.debug("getData status {}", response.getStatus());
+		log.debug("getData() status {}", response.getStatus());
+		log.debug("getData() {}", response.readEntity(Map.class).data.meta.msg);
+
+		// Status is 200 even when login.Object {data: Array[0], meta: Object}
+		// data: Array[0]
+		// length: 0
+		// meta: Object
+		// msg: "api.err.LoginRequired"
+		// rc: "error"
+
 		// Relog into unifi is response status bad
-		if (response.getStatus() == 401) {
+		if (response.readEntity(Map.class).data.meta.msg.equals("api.err.LoginRequired")) {
 			String account = "";
 			String accessToken = "";
 
@@ -141,8 +150,7 @@ public class UnifiBase {
 		String accessToken = "";
 
 		// look up pbxid and access_token by old sessionId
-		for (final Cell<String, String, String> cell : sessionIdTable
-				.cellSet()) {
+		for (final Cell<String, String, String> cell : sessionIdTable.cellSet()) {
 			if (cell.getValue() == sessionId) {
 				account = cell.getRowKey();
 				accessToken = cell.getColumnKey();
