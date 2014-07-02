@@ -65,8 +65,7 @@ public class UnifiBase {
 		// rc: "error"
 
 		// Relog into unifi is response status bad
-		if (response.readEntity(Map.class).get("meta")
-				.equals("api.err.LoginRequired")) {
+		if (false) {
 			String account = "";
 			String accessToken = "";
 
