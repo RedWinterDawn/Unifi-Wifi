@@ -7,7 +7,7 @@
         </filter-class>
     <init-param>
       <param-name>javax.ws.rs.Application</param-name>
-      <param-value>com.jive.managedwifi.web.api</param-value>
+      <param-value>com.jive.managedwifi.webapi</param-value>
     </init-param>
   </filter>
   <filter-mapping>

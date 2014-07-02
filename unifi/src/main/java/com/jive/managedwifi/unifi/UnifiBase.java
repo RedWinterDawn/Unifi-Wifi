@@ -81,7 +81,7 @@ public class UnifiBase {
 			e.printStackTrace();
 		}
 
-		log.debug(data.getMetas().get(0).getMsg());
+		log.debug(data.getMetas().get(0).getRc());
 
 		// Relog into unifi is response status bad
 		if (response.getStatus() == 401) {
