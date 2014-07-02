@@ -62,7 +62,13 @@ For non-platform-admin users, the passed in pbxid will be validated against the 
 
 In order to automatically provision an access point to a specific site, the MAC addresses of the access points for a particular site will need to be provided to the application. This is done under the Site Settings for the site.
 
-Deploy New Fresh Instance
+Instances Setup in AWS
+=========================
+- Managed-Wifi-Testing-3.1.10
+
+- Managed Wifi Dev 2 - running 3.2.1
+
+Deploy New Fresh Instance (Talk to Phil)
 ================================
 This is only for production and is not formatted the best. Be wary of what follows a little.
 
@@ -97,10 +103,10 @@ unzip the file e.g.: unzip UniFi.unix.zip
 
 mv UniFi unifi
 
-mv unifi /opt/
+mv unifi /usr/lib
 
-cd /opt/unifi/
-NOTE: /opt/unfi/bin/mongod needs to symlink to the installed mongod (usally /usr/bin/mongod)
+cd /usr/lib/unifi/
+NOTE: /usr/lib/unifi/bin/mongod needs to symlink to the installed mongod (usally /usr/bin/mongod)
 
 java -jar lib/ace.jar start &
 NOTE: needs to have the `&` to start in the background
@@ -109,7 +115,7 @@ NOTE: needs to have the `&` to start in the background
 https://community.ubnt.com/t5/UniFi-Beta/UniFi-3-1-10-RC-is-Released/m-p/739939#U739939
 Near the bottom are instructions
 
-
+####After Unifi Controller is installed
 go to https://<ipaddess>:8443
 
 setup the unifi controller
@@ -119,14 +125,14 @@ password: Jive123
 all other info not important set to whatever
 
 ```
-echo |openssl s_client -connect localhost:8443 2>&1 |sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' |keytool -import -trustcacerts -alias "managed wifi controller"   -keystore "$JAVA_HOME/jre/lib/security/cacerts"   -storepass changeit -noprompt
+echo |openssl s_client -connect localhost:8443 2>&1 |sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo keytool -import -trustcacerts -alias "managed wifi controller"   -keystore "$JAVA_HOME/jre/lib/security/cacerts"   -storepass changeit -noprompt
 ```
 
 expect: `Certificate was added to the keystore`
 
-`cd /var/lib/tomcat6/webapps/`
+`cd /var/lib/tomcat7/webapps/`
 
-Pull latest snapshot from the Nexus repo. Search for: com.jive.managedwifi
+Pull latest snapshot from the Nexus repo. Search for: managedwifi
 ```
 wget "http://repo.ftw.jiveip.net/service/local/artifact/maven/redirect?r=snapshots&g=com.jive.managedwifi&a=web&v=1.0-SNAPSHOT&e=war"
 ```
@@ -156,29 +162,34 @@ portal-api.URL=https://api.jive.com/wifi
 ```
 Start tomcat
 ```
-service tomcat6 start
+service tomcat7 start
 ```
 to verify tomcat started properly by running tail on the logs.
 ```
 tail -f path/to/tomcat/files
 ```
-path is usually ```/usr/lib/tomcat/logs/catalina.out```
+path is usually ```/usr/lib/tomcat7/logs/catalina.out```
 
 
 # Getting the bastard running locally
 The process to get Managed Wifi up and running is slightly involved. The steps here might not be complete, so if you figure something out, PLEASE add it to the README.
 
+Download and install the [Unifi Controller](https://drive.google.com/a/getjive.com/folderview?id=0B5Kvp5GWsxgxVWJsdzFlenA3WlE&usp=sharing)
 
 Add the following line to `/etc/hosts`
 ```
-10.104.0.199 unifi
+127.0.0.1 unifi
 ```
 
 Make sure that you're using JRE 1.7.0 at the very least.
 
+Open the Unifi app. It may say start-up failed but thats a lie.
+
 Go to `unifi:8080`. This will redirect you to the unifi login page.
 username: `admin`
 password: `Jive123`
+
+All other information is put whatever.
 
 Run the following to get the unifi SSL cert trusted
 ```
@@ -187,7 +198,7 @@ echo | openssl s_client -connect unifi:8443 2>&1 |sed -ne '/-BEGIN CERTIFICATE-/
 
 It should output `Certificate was added to the keystore`
 
-If you get the error that you already have a key name < managed wifi controller >, simply change the name to whatever in the command.
+If you get the error that you already have a key name < managed wifi controller >, simply change the name to whatever in the command. If you get the error `keytool error: java.lang.Exception: Input not an X.509 certificate` that `$JAVA_HOME/jre/lib/security/cacerts` is the correct path.
 
 create file /etc/managed-wifi.config with the contents like so:
 
@@ -212,6 +223,11 @@ oauth.password=i4egS4Cd59LWJiP6SnafL7nvJjg7cI
 portal-api.URL=https://api.jive.com/wifi
 ```
 
+Find `JiveLoginService.js`
+Replace `wifi.jive.com` in the redirect_url path to `localhost:8000`
+
+
+If you are connecting to the servers Unifi Controller also do:
 Next, you have to set up an SSH tunnel to the managed wifi Mongo DB on the Unifi host. Your public key needs to added to the server (talk to devops):
 ```
 ssh admin@unifi -L 27117:localhost:27117
@@ -230,9 +246,9 @@ Located on server: `/usr/bin/unifi-backup.jar`
 
 Setup as a cron job to run everyday at 1am
 
-Files are stored on server at: `/usr/lib/unifi_backup/`
+Most recent file stored on server at: `/usr/lib/unifi_backup/`
 
-Files and in S3 at `jive-managed-wifi`
+All files are in S3 at `jive-managed-wifi`
 
 # To Restore Unifi Controller
 
