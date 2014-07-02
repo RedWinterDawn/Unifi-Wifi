@@ -102,7 +102,10 @@ managedWifi.controller('MainMenuController', ["$scope", "$timeout", "$http", "$l
             siteService.selectSite(site).then(
                 function() {
                     $scope.selectedSite = site;
-                    location.reload();
+                    if(location.hash.split('/')[1] == 'user') {
+                        $location.url("/users");
+                        $location.replace("/users");
+                    }
                 },
                 function() {
                     notificationService.error("loadSite", "An error occurred while switching sites.");

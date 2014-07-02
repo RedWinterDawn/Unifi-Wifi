@@ -128,9 +128,31 @@ public class UnifiBase {
 		final DBCollection dbCollection = db.getCollection("cache_login");
 		final BasicDBObject query = new BasicDBObject("cookie", sessionId);
 		final DBObject session = dbCollection.findOne(query);
-		if (session == null)
-			throw new ForbiddenException();
+		if (session == null) {
+			final String newSessionId = renewSessionId(sessionId);
+			getSessionInfo(newSessionId);
+		}
+
 		return session.toMap();
+	}
+
+	private String renewSessionId(final String sessionId) {
+		String account = "";
+		String accessToken = "";
+
+		// look up pbxid and access_token by old sessionId
+		for (final Cell<String, String, String> cell : sessionIdTable
+				.cellSet()) {
+			if (cell.getValue() == sessionId) {
+				account = cell.getRowKey();
+				accessToken = cell.getColumnKey();
+				break;
+			}
+		}
+		// set sessionId in table
+		final String newSessionId = baseUnifiLogin();
+		sessionIdTable.put(account, accessToken, newSessionId);
+		return newSessionId;
 	}
 
 	protected Map<String, Object> getExtendedSiteInfo(final String sessionId) {
@@ -140,8 +162,10 @@ public class UnifiBase {
 		DBCollection dbCollection = db.getCollection("cache_login");
 		BasicDBObject query = new BasicDBObject("cookie", sessionId);
 		DBObject dbObject = dbCollection.findOne(query);
-		if (dbObject == null)
-			throw new ForbiddenException();
+		if (dbObject == null) {
+			final String newSessionId = renewSessionId(sessionId);
+			getExtendedSiteInfo(newSessionId);
+		}
 
 		String siteName = "";
 
