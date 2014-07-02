@@ -56,7 +56,9 @@ public class UnifiBase {
 
 		log.debug("getData() status {}", response.getStatus());
 		log.debug(response.readEntity(Map.class).get("meta").toString()
-				.split("=")[2]);
+				.split("=")[0]);
+		log.debug(response.readEntity(Map.class).get("meta").toString()
+				.split("=")[1]);
 		// Relog into unifi is response status bad
 		if (response.getStatus() == 401) {
 			String account = "";
