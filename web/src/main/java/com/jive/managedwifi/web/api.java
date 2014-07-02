@@ -1,4 +1,4 @@
-package com.jive.apcontrolleradapter.web;
+package com.jive.managedwifi.web;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -6,14 +6,14 @@ import java.util.Set;
 
 import javax.ws.rs.core.Application;
 
-import com.jive.apcontrolleradapter.JiveAuth;
-import com.jive.apcontrolleradapter.unifi.UnifiAccessPoint;
-import com.jive.apcontrolleradapter.unifi.UnifiCmd;
-import com.jive.apcontrolleradapter.unifi.UnifiDeviceUser;
-import com.jive.apcontrolleradapter.unifi.UnifiLogin;
-import com.jive.apcontrolleradapter.unifi.UnifiSite;
-import com.jive.apcontrolleradapter.unifi.UnifiSiteSetting;
-import com.jive.apcontrolleradapter.unifi.UnifiWlanNetwork;
+import com.jive.managedwifi.JiveAuth;
+import com.jive.managedwifi.unifi.UnifiAccessPoint;
+import com.jive.managedwifi.unifi.UnifiCmd;
+import com.jive.managedwifi.unifi.UnifiDeviceUser;
+import com.jive.managedwifi.unifi.UnifiLogin;
+import com.jive.managedwifi.unifi.UnifiSite;
+import com.jive.managedwifi.unifi.UnifiSiteSetting;
+import com.jive.managedwifi.unifi.UnifiWlanNetwork;
 
 public class api extends Application {
     private static final Set<Class<?>> CLASSES;

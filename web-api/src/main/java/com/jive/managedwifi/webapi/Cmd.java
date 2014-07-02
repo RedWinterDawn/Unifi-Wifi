@@ -1,4 +1,4 @@
-package com.jive.apcontrolleradapter.webapi;
+package com.jive.managedwifi.webapi;
 
 import java.util.Map;
 

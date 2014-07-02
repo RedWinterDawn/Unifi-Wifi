@@ -1,4 +1,4 @@
-package com.jive.apcontrolleradapter.unifi;
+package com.jive.managedwifi.unifi;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -7,7 +7,7 @@ import java.util.Map;
 
 import javax.ws.rs.core.Form;
 
-import com.jive.apcontrolleradapter.webapi.AccessPoint;
+import com.jive.managedwifi.webapi.AccessPoint;
 
 public class UnifiAccessPoint extends UnifiBase implements AccessPoint {
 

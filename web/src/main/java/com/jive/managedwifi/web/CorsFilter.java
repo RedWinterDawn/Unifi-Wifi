@@ -1,4 +1,4 @@
-package com.jive.apcontrolleradapter.web;
+package com.jive.managedwifi.web;
 
 import java.io.IOException;
 import java.util.ArrayList;

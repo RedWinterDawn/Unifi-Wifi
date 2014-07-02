@@ -1,4 +1,4 @@
-package com.jive.apcontrolleradapter;
+package com.jive.managedwifi;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -16,9 +16,9 @@ import lombok.extern.slf4j.Slf4j;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
-import com.jive.apcontrolleradapter.unifi.UnifiBase;
-import com.jive.apcontrolleradapter.unifi.UnifiLogin;
-import com.jive.apcontrolleradapter.webapi.Auth;
+import com.jive.managedwifi.unifi.UnifiBase;
+import com.jive.managedwifi.unifi.UnifiLogin;
+import com.jive.managedwifi.webapi.Auth;
 
 @Slf4j
 public class JiveAuth extends UnifiBase implements Auth {

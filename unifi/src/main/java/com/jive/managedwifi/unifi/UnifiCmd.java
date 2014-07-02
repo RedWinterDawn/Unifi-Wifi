@@ -1,4 +1,4 @@
-package com.jive.apcontrolleradapter.unifi;
+package com.jive.managedwifi.unifi;
 
 import java.io.IOException;
 import java.text.MessageFormat;
@@ -19,7 +19,7 @@ import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Response;
 
-import com.jive.apcontrolleradapter.webapi.Cmd;
+import com.jive.managedwifi.webapi.Cmd;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;

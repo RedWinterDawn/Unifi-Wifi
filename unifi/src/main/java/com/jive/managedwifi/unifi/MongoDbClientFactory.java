@@ -1,8 +1,8 @@
-package com.jive.apcontrolleradapter.unifi;
+package com.jive.managedwifi.unifi;
 
 import java.io.IOException;
 
-import com.jive.apcontrolleradapter.Configuration;
+import com.jive.managedwifi.Configuration;
 import com.mongodb.MongoClient;
 
 public class MongoDbClientFactory {
