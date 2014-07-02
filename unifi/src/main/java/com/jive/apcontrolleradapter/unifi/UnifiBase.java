@@ -55,7 +55,8 @@ public class UnifiBase {
 				.post(Entity.json(message == null ? "" : message));
 
 		log.debug("getData() status {}", response.getStatus());
-		log.debug("getData() {}", response.readEntity(Map.class).get("meta"));
+		log.debug("getData() {}", response.readEntity(Map.class).get("meta")
+				.toString());
 
 		// Status is 200 even when login.Object {data: Array[0], meta: Object}
 		// data: Array[0]
