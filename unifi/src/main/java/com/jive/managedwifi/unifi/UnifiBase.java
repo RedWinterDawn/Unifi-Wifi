@@ -143,6 +143,8 @@ public class UnifiBase {
 	}
 
 	private String renewSessionId(final String sessionId) {
+		log.debug("getExtendedSiteInfo() get new sessionId");
+		log.debug("sessionId: {}", sessionId);
 		String account = "";
 		String accessToken = "";
 
@@ -161,6 +163,7 @@ public class UnifiBase {
 	}
 
 	protected Map<String, Object> getExtendedSiteInfo(final String sessionId) {
+		log.debug("Getting extended site info");
 		final DB db = dbClient.getDB("ace");
 
 		// get current site for session
@@ -173,7 +176,7 @@ public class UnifiBase {
 		}
 
 		String siteName = "";
-
+		log.debug("extended site info site_id: {}", dbObject.get("site_id"));
 		if (dbObject.get("site_id") != null) {
 			final String siteId = dbObject.get("site_id").toString();
 			// get site name for uri to controller
