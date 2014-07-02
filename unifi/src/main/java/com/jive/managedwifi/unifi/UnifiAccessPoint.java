@@ -11,34 +11,40 @@ import com.jive.managedwifi.webapi.AccessPoint;
 
 public class UnifiAccessPoint extends UnifiBase implements AccessPoint {
 
-    public UnifiAccessPoint() throws IOException {
-    }
+	public UnifiAccessPoint() throws IOException {
+	}
 
-    @Override
-    public Map<String, List<Map<String, Object>>> getAll(String sessionId) {
-        Map<String, Object> siteInfo = getExtendedSiteInfo(sessionId);
+	@Override
+	public Map<String, List<Map<String, Object>>> getAll(final String sessionId) {
+		final Map<String, Object> siteInfo = getExtendedSiteInfo(sessionId);
 
-        Map<String, List<Map<String, Object>>> fullResponse = getData(sessionId, String.format("/api/s/%s/stat/device", siteInfo.get("name")), null);
-        List<Map<String, Object>> allDevices = fullResponse.get("data");
-        List<String> assignedMacs = (List<String>) siteInfo.get("devices");
+		final Map<String, List<Map<String, Object>>> fullResponse = getData(
+				sessionId,
+				String.format("/api/s/%s/stat/device", siteInfo.get("name")),
+				null);
+		final List<Map<String, Object>> allDevices = fullResponse.get("data");
+		final List<String> assignedMacs = (List<String>) siteInfo
+				.get("devices");
 
-        List<Map<String, Object>> filteredDevices = new ArrayList<Map<String, Object>>();
-        
-        if(assignedMacs != null) {
-          for (Map<String, Object> device : allDevices){
-              for(String mac : assignedMacs)
-                  if(device.get("mac").equals(mac))
-                      filteredDevices.add(device);
-          }
-        }
+		final List<Map<String, Object>> filteredDevices = new ArrayList<Map<String, Object>>();
 
-        fullResponse.put("data", filteredDevices);
-        return fullResponse;
-    }
+		if (assignedMacs != null) {
+			for (final Map<String, Object> device : allDevices) {
+				for (final String mac : assignedMacs)
+					if (device.get("mac").equals(mac))
+						filteredDevices.add(device);
+			}
+		}
 
-    @Override
-    public Map update(String sessionId, String deviceId, Form device) {
-        Map<String, Object> siteInfo = getExtendedSiteInfo(sessionId);
-        return postFormData(sessionId, String.format("/api/s/%s/upd/device/%s", siteInfo.get("name"), deviceId), device);
-    }
+		fullResponse.put("data", filteredDevices);
+		return fullResponse;
+	}
+
+	@Override
+	public Map update(final String sessionId, final String deviceId,
+			final Form device) {
+		final Map<String, Object> siteInfo = getExtendedSiteInfo(sessionId);
+		return postFormData(sessionId, String.format("/api/s/%s/upd/device/%s",
+				siteInfo.get("name"), deviceId), device);
+	}
 }

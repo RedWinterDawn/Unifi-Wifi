@@ -1,9 +1,9 @@
-package com.jive.apcontrolleradapter.unifi;
+package com.jive.managedwifi.unifi;
 
 import java.io.IOException;
 import java.util.Map;
 
-import com.jive.apcontrolleradapter.webapi.WlanNetwork;
+import com.jive.managedwifi.webapi.WlanNetwork;
 
 public class UnifiWlanNetwork extends UnifiBase implements WlanNetwork {
 

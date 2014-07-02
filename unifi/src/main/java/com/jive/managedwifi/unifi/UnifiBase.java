@@ -21,6 +21,9 @@ import lombok.extern.slf4j.Slf4j;
 
 import org.bson.types.ObjectId;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
 import com.google.common.collect.Table.Cell;
@@ -54,7 +57,32 @@ public class UnifiBase {
 				.cookie("unifises", sessionId)
 				.post(Entity.json(message == null ? "" : message));
 
-		log.debug("getData status {}", response.getStatus());
+		log.debug("getData() status {}", response.getStatus());
+
+		final ObjectMapper mapper = new ObjectMapper();
+
+		final String responseString = response.readEntity(Map.class)
+				.get("meta").toString();
+
+		log.debug(responseString);
+
+		ResponseData data = null;
+
+		try {
+			data = mapper.readValue(responseString, ResponseData.class);
+		} catch (final JsonParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (final JsonMappingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (final IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		log.debug(data.getMetas().get(0).getRc());
+
 		// Relog into unifi is response status bad
 		if (response.getStatus() == 401) {
 			String account = "";
@@ -141,8 +169,7 @@ public class UnifiBase {
 		String accessToken = "";
 
 		// look up pbxid and access_token by old sessionId
-		for (final Cell<String, String, String> cell : sessionIdTable
-				.cellSet()) {
+		for (final Cell<String, String, String> cell : sessionIdTable.cellSet()) {
 			if (cell.getValue() == sessionId) {
 				account = cell.getRowKey();
 				accessToken = cell.getColumnKey();

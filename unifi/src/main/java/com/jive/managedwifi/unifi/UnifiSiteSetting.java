@@ -1,10 +1,12 @@
-package com.jive.apcontrolleradapter.unifi;
+package com.jive.managedwifi.unifi;
 
-import com.jive.apcontrolleradapter.webapi.SiteSetting;
+import com.jive.managedwifi.webapi.SiteSetting;
+
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 
 import javax.ws.rs.core.Form;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;

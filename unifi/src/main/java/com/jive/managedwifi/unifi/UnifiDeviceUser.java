@@ -1,10 +1,10 @@
-package com.jive.apcontrolleradapter.unifi;
+package com.jive.managedwifi.unifi;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.jive.apcontrolleradapter.webapi.DeviceUser;
+import com.jive.managedwifi.webapi.DeviceUser;
 
 public class UnifiDeviceUser extends UnifiBase implements DeviceUser {
 

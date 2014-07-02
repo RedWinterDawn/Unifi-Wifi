@@ -1,4 +1,4 @@
-package com.jive.apcontrolleradapter.unifi;
+package com.jive.managedwifi.unifi;
 
 import java.util.Random;
 

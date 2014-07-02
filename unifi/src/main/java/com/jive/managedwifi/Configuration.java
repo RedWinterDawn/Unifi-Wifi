@@ -1,4 +1,4 @@
-package com.jive.apcontrolleradapter;
+package com.jive.managedwifi;
 
 import java.io.File;
 import java.io.FileInputStream;

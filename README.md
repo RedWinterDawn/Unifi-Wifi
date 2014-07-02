@@ -126,7 +126,7 @@ expect: `Certificate was added to the keystore`
 
 `cd /var/lib/tomcat6/webapps/`
 
-Pull latest snapshot from the Nexus repo. Search for: com.jive.apcontrolleradapter
+Pull latest snapshot from the Nexus repo. Search for: com.jive.managedwifi
 ```
 wget "http://repo.ftw.jiveip.net/service/local/artifact/maven/redirect?r=snapshots&g=com.jive.managedwifi&a=web&v=1.0-SNAPSHOT&e=war"
 ```
