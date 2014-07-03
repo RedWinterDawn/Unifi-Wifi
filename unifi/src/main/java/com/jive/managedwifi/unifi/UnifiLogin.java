@@ -57,50 +57,12 @@ public class UnifiLogin extends UnifiBase implements Login {
 	@Override
 	public void setPermissionLevel(final String sessionId,
 			final String permissionLevel) {
-		log.debug("setPermissionLevel()");
-		final DB db = dbClient.getDB("ace");
-
-		// get current site for session
-		final DBCollection dbCollection = db.getCollection("cache_login");
-		final BasicDBObject query = new BasicDBObject("cookie", sessionId);
-		final DBObject dbObject = dbCollection.findOne(query);
-		if (dbObject == null) {
-			log.debug("dbObject is null");
-			throw new ForbiddenException();
-		}
-
-		final BasicDBObject update = new BasicDBObject("$set",
-				new BasicDBObject("permissionLevel", permissionLevel));
-		dbCollection.update(dbObject, update);
+		baseSetPermissionLevel(sessionId, permissionLevel);
 	}
 
 	@Override
 	public void setActiveAccount(final String sessionId, final String account) {
-		final String siteId = getSiteIdForAccount(account);
-		final DB db = dbClient.getDB("ace");
-
-		// get current site for session
-		final DBCollection dbCollection = db.getCollection("cache_login");
-		final BasicDBObject query = new BasicDBObject("cookie", sessionId);
-		final DBObject dbObject = dbCollection.findOne(query);
-		if (dbObject == null)
-			throw new ForbiddenException();
-
-		final BasicDBObject updateValues = new BasicDBObject();
-		updateValues.put("site_id", siteId);
-		updateValues.put("account_id", account);
-		final BasicDBObject update = new BasicDBObject("$set", updateValues);
-		dbCollection.update(dbObject, update);
-	}
-
-	private String getSiteIdForAccount(final String account) {
-		final DB db = dbClient.getDB("ace");
-
-		// get current site for session
-		final DBCollection dbCollection = db.getCollection("site_ext");
-		final BasicDBObject query = new BasicDBObject("account_id", account);
-		final DBObject dbObject = dbCollection.findOne(query);
-		return dbObject == null ? null : (String) dbObject.get("site_id");
+		baseSetActiveAccount(sessionId, account);
 	}
 
 }
