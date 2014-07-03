@@ -28,7 +28,7 @@ public class ServicesHealthCheck implements HealthCheck {
 		}
 
 		log.debug("Health check failed :(");
-		return Response.status(404).build();
+		return Response.status(500).build();
 	}
 
 	private boolean checkPortalApi() {
@@ -60,7 +60,7 @@ public class ServicesHealthCheck implements HealthCheck {
 
 		log.debug("Unifi Controller responded with {}", response.getStatus());
 
-		if (response.getStatus() == 200)
+		if (response.getStatus() == 200 || response.getStatus() == 302)
 			return true;
 
 		return false;
