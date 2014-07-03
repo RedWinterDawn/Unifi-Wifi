@@ -128,11 +128,11 @@ managedWifi.filter('deviceStatus', function(){
         if (accessPoint.state == 1) {
             state = "Connected";
             if (!accessPoint.isolated)
-                if (d.type == "wire") {
-                    if (d.max_speed != d.speed || !d.full_duplex) {
-                        state += " (" + d.speed + " " + (d.full_duplex ? "FDX" : "HDX") + ")";
-                    }
-                } else
+                // if (d.type == "wire") {
+                //     if (d.max_speed != d.speed || !d.full_duplex) {
+                //         state += " (" + d.speed + " " + (d.full_duplex ? "FDX" : "HDX") + ")";
+                //     }
+                // } else
                 if (d.type == "wireless") state += " (wireless)";
             if (accessPoint.version_incompatible) state += " (needs upgrade)"
         } else if (accessPoint.state == 0) state = "Disconnected";
