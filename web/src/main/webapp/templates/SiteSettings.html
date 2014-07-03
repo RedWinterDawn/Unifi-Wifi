@@ -188,8 +188,8 @@
                                     <div class="control-group" ng-class="form.promoUrl.$invalid ? 'error' : ''" ng-show="settings.redirect_enabled">
                                         <div class="control-label">Promotional URL</div>
                                         <div class="controls">
-                                            <input type="text" id="promoUrl" name="promoUrl" ng-model="settings.redirect_url" ng-required="settings.redirect_enabled"/>
-                                            <div ng-show="form.promoUrl.$invalid" class="tip help">Please provide a urli including 'http://'</div>
+                                            <input type="text" id="promoUrl" name="promoUrl" placeholder="Begin with 'http://'" ng-model="settings.redirect_url" ng-required="settings.redirect_enabled"/>
+                                            <div ng-show="form.promoUrl.$invalid" class="tip help">Please provide a url beginning with <big>'http://'</big></div>
                                         </div>
                                     </div>
                                 </div>

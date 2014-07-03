@@ -7,7 +7,7 @@ import java.util.Set;
 import javax.ws.rs.core.Application;
 
 import com.jive.managedwifi.JiveAuth;
-import com.jive.managedwifi.healthcheck.HealthCheckImpl;
+import com.jive.managedwifi.unifi.ServicesHealthCheck;
 import com.jive.managedwifi.unifi.UnifiAccessPoint;
 import com.jive.managedwifi.unifi.UnifiCmd;
 import com.jive.managedwifi.unifi.UnifiDeviceUser;
@@ -29,7 +29,7 @@ public class api extends Application {
 		tmp.add(UnifiLogin.class);
 		tmp.add(JiveAuth.class);
 		tmp.add(CorsFilter.class);
-		tmp.add(HealthCheckImpl.class);
+		tmp.add(ServicesHealthCheck.class);
 
 		CLASSES = Collections.unmodifiableSet(tmp);
 	}
