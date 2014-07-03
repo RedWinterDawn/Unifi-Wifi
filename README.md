@@ -170,6 +170,12 @@ tail -f path/to/tomcat/files
 ```
 path is usually ```/usr/lib/tomcat7/logs/catalina.out```
 
+#####Fixing Custom Terms and Conditions
+`visudo` - add `Defaults        !authenticate` and `root    ALL=NOPASSWD: ALL` and tomcatuser`ALL=NOPASSWD: ALL`
+         - comment out `root   ALL=(ALL:ALL) ALL` and `Defaults requiretty`
+
+Make sure the path to the unifi controller is correct in UnifiSiteSettings.java - Lines 81 and 86.
+
 
 # Getting the bastard running locally
 The process to get Managed Wifi up and running is slightly involved. The steps here might not be complete, so if you figure something out, PLEASE add it to the README.
