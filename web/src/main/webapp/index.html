@@ -1,44 +1,48 @@
 <!doctype html>
 <html lang="en" ng-app="managedWifi">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="//use.typekit.net/weu0tnb.js"></script>
-        <script type="text/javascript">try{ Typekit.load(); } catch(e) { }</script>
-        <title>WiFi Management- Jive</title>
-        <link rel="stylesheet" href="lib/select2/select2.css">
-        <link rel="stylesheet" href="css/jive.css">
-        <link rel="stylesheet" href="css/managed-wifi.css">
-        <link rel="shortcut icon" href="assets/favicon.ico">
-   	<script type="text/javascript" src="//code.jquery.com/jquery-2.1.0.js"></script>
-	<script type="text/javascript">
-		$(window).load(function(){
-			$('.icon-refresh').click(function () {
-    				$(this).toggleClass('spin');
-		});
-			}); 
 
-	</script>	 
-    </head>
-    <body class="loading">
-        <div ng-controller="NotificationController" class="waiting-notification" ng-cloak ng-show="alerts.length>0">
-            <div ng-repeat="alert in alerts">
-                <div class="notificationMessage"
-                    ng-class="alert.type=='success' ? 'success-example' : alert.type=='error' ? 'failure-example' : ''"
-                    >
-                    <i class="icon-remove" ng-click="closeAlert(alert)" ng-hide="alert.type=='processing'"></i>
-                    <i class="icon-spinner icon-spin" ng-show="alert.type=='processing'"></i>
-                    <i class="icon-ok" ng-show="alert.type=='success'"></i>
-                    <i class="icon-warning-sign" ng-show="alert.type=='error'"></i>
-                    <i ng-bind="alert.msg"></i>
-                </div>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="//use.typekit.net/weu0tnb.js"></script>
+    <script type="text/javascript">
+    try {
+        Typekit.load();
+    } catch (e) {}
+    </script>
+    <title>WiFi Management- Jive</title>
+    <link rel="stylesheet" href="lib/select2/select2.css">
+    <link rel="stylesheet" href="css/jive.css">
+    <link rel="stylesheet" href="css/managed-wifi.css">
+    <link rel="shortcut icon" href="assets/favicon.ico">
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.1.0.js"></script>
+    <script type="text/javascript">
+    $(window).load(function() {
+         $('.icon-refresh').click(function() {
+             //$(this).toggleClass('spin');
+         });
+    });
+    </script>
+</head>
+
+<body class="loading">
+    <div ng-controller="NotificationController" class="waiting-notification" ng-cloak ng-show="alerts.length>0">
+        <div ng-repeat="alert in alerts">
+            <div class="notificationMessage" ng-class="alert.type=='success' ? 'success-example' : alert.type=='error' ? 'failure-example' : ''">
+                <i class="icon-remove" ng-click="closeAlert(alert)" ng-hide="alert.type=='processing'"></i>
+                <i class="icon-spinner icon-spin" ng-show="alert.type=='processing'"></i>
+                <i class="icon-ok" ng-show="alert.type=='success'"></i>
+                <i class="icon-warning-sign" ng-show="alert.type=='error'"></i>
+                <i ng-bind="alert.msg"></i>
             </div>
         </div>
-        <header ng-controller="MainMenuController">
-            <nav class="navbar">
-                <div class="navbar-inner">
-                    <div class="meta-menu">
-                        <ul class="nav pull-right" > <!-- ng-show="email"> -->
+    </div>
+    <header ng-controller="MainMenuController">
+        <nav class="navbar">
+            <div class="navbar-inner">
+                <div class="meta-menu">
+                    <ul class="nav pull-right">
+                        <!-- ng-show="email"> -->
                         <!-- <li class="dropdown">
                             <a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="icon-user"></i><span ng-bind="firstName + ' ' + lastName" /></a>
                             <ul class="dropdown-menu pull-right user-menu">
@@ -57,27 +61,33 @@
                                 </div>
                             </ul>
                         </li> -->
-                        <li class="dropdown help-command"><a ng-click="navigate('help')"><i class="icon-question-sign"></i></a></li>
+                        <li class="dropdown help-command"><a ng-click="navigate('help')"><i class="icon-question-sign"></i></a>
+                        </li>
                         <li>
                             <div class="logo"></div>
                         </li>
                     </ul>
                 </div>
                 <ul class="nav">
-                    <li><a style="padding: 8px; font-size:23px;" ng-click="returnHome()"><i class="icon-home"></i></a></li>
+                    <li><a style="padding: 8px; font-size:23px;" ng-click="returnHome()"><i class="icon-home"></i></a>
+                    </li>
                     <li>
                         <div class="title"><i class="icon-signal"></i>WiFi</div>
                     </li>
                     <li class="brand" ng-bind="selectedSite.friendly_name" style="width:450px; text-align:left" ng-show="sites"></li>
-                    <li class="dropdown" ng-class="isActive('Settings')" ng-show="sites" style="float:right"><a ng-click="navigate('settings')" data-toggle="dropdown">Location Settings</a></li>
-                    <li class="dropdown" ng-class="isActive('Users')" ng-show="sites" style="float:right"><a ng-click="navigate('users')" data-toggle="dropdown">Connected User Devices</a></li>
-                    <li class="dropdown" ng-class="isActive('Devices')" ng-show="sites" style="float:right"><a  ng-click="navigate('devices')" data-toggle="dropdown">Access Points</a></li>
-                    <li class="dropdown" ng-class="isActive('Networks')" ng-show="sites" style="float:right"><a ng-click="navigate('networks')" data-toggle="dropdown">Wireless Networks</a></li>
+                    <li class="dropdown" ng-class="isActive('Settings')" ng-show="sites" style="float:right"><a ng-click="navigate('settings')" data-toggle="dropdown">Location Settings</a>
+                    </li>
+                    <li class="dropdown" ng-class="isActive('Users')" ng-show="sites" style="float:right"><a ng-click="navigate('users')" data-toggle="dropdown">Connected User Devices</a>
+                    </li>
+                    <li class="dropdown" ng-class="isActive('Devices')" ng-show="sites" style="float:right"><a ng-click="navigate('devices')" data-toggle="dropdown">Access Points</a>
+                    </li>
+                    <li class="dropdown" ng-class="isActive('Networks')" ng-show="sites" style="float:right"><a ng-click="navigate('networks')" data-toggle="dropdown">Wireless Networks</a>
+                    </li>
                 </ul>
             </div>
         </nav>
     </header>
-    <div class="workspace" >
+    <div class="workspace">
         <div class="content-container">
             <div class="content-wrapper">
                 <div class="container-fluid">
@@ -88,12 +98,15 @@
         <div class="main-sidebar" ng-controller="MainMenuController">
             <div ng-controller="RefreshDataController" style="position: relative; width: 100%;">
                 <h2 style="margin-left: 10px; float: left; font-size:27px; margin-bottom: 0px;">LOCATIONS</h2>
-                <div style="text-align: right; padding-top: 20px; padding-right: 10px;"><big><i class="icon-refresh" ng-click="refreshData()"></i></big></div>
+                <div style="text-align: right; padding-top: 20px; padding-right: 10px;">
+                    <big><i class="icon-refresh" ng-click="refreshData()"></i>
+                    </big>
+                </div>
             </div>
             <div class="no-select">
                 <a href="#/newsite" class="btn btn-primary" style="width: 85.5%; position: relative; margin: 0 5px 5px 5px">
-                <i class="icon-plus"></i>
-                Add Location</a>
+                    <i class="icon-plus"></i>
+                    Add Location</a>
                 <input ng-model="siteFilter" ng-click="cancel($event)" ng-focus="cancel($event)" ng-change="filter()" type="text" placeholder="Search by name" class="search input-xs ng-pristine ng-valid" style="width: 90%; border: 1px solid lightgrey; margin: 0 5px 5px 5px;">
                 <div style="border-top: 1px solid lightgrey; border-bottom: 1px solid lightgrey; padding-left: 5px;">
                     Sort By:
@@ -118,16 +131,16 @@
             <div class="scrollable">
                 <div class="pbx-account" ng-repeat="site in filteredSites" ng-class="siteClass('{{site}}')">
                     <ul class="nav nav-pills nav-stacked">
-                        <li id="site_{{site.site_id}}" class="page-actions" ng-class="selectedSite.site_id == site.site_id ? 'active' : ''" >
+                        <li id="site_{{site.site_id}}" class="page-actions" ng-class="selectedSite.site_id == site.site_id ? 'active' : ''">
                             <a class="delete-site" ng-click="deleteSite(site,sites)"><i class="icon-trash" ></i></a>
                             <a ng-click="selectSite(site)">
-                            <h4 ng-bind="site.friendly_name" class="media-heading"></h4>
-                            <small ng-bind-template="{{site.city}}, {{site.state}} {{site.zip}}"></small>
+                                <h4 ng-bind="site.friendly_name" class="media-heading"></h4>
+                                <small ng-bind-template="{{site.city}}, {{site.state}} {{site.zip}}"></small>
                             </a>
                         </li>
                     </ul>
                 </div>
-                
+
             </div>
         </div>
     </div>
@@ -136,10 +149,12 @@
             <div class="row-fluid">
                 <div class="span12">
                     <div class="status">
-                        Data current as of <span ng-bind="lastRefreshed"></span>
+                        Data current as of
+                        <span ng-bind="lastRefreshed"></span>
                         <i class="icon-refresh" ng-click="refreshData()"></i>
                     </div>
-                    <div class="copy">&copy; 2013 Jive Communications, Inc<a href="http://www.jive.com">jive.com</a></div>
+                    <div class="copy">&copy; 2013 Jive Communications, Inc<a href="http://www.jive.com">jive.com</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -203,4 +218,5 @@
     <script src="js/controllers/ErrorController.js"></script>
     <script src="js/controllers/PortalApiController.js"></script>
 </body>
+
 </html>
