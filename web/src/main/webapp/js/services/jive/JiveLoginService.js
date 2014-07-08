@@ -13,6 +13,7 @@ managedWifi.factory('jiveLoginService', ['$q', '$http', '$cookies', '$location',
                 console.log(response);
                 sessionId = response.data.sessionId;
                 $cookies.unifises = sessionId;
+                $cookies.account = account;
                 $cookies.isAdmin = response.data.permissionLevel == "Platform-Admin" || response.data.permissionLevel == "Administrator" || response.data.permissionLevel == "Platform-Customer-Service";
                 $cookies.firstName = response.data.firstName;
                 $cookies.lastName = response.data.lastName;
