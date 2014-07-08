@@ -26,11 +26,13 @@ public class UnifiSiteSetting extends UnifiBase implements SiteSetting {
 	}
 
 	@Override
-	public Map getSetting(final String sessionId) {
-		final Map<String, Object> siteInfo = getExtendedSiteInfo(sessionId);
+	public Map getSetting(final String sessionId, final String account,
+			final String token) {
+		final Map<String, Object> siteInfo = getExtendedSiteInfo(sessionId,
+				account, token);
 		final Map name = getData(sessionId,
 				String.format("/api/s/%s/get/setting", siteInfo.get("name")),
-				null);
+				null, account, token);
 
 		final ArrayList<LinkedHashMap<String, String>> values = (ArrayList<LinkedHashMap<String, String>>) name
 				.get("data");
@@ -57,9 +59,10 @@ public class UnifiSiteSetting extends UnifiBase implements SiteSetting {
 	}
 
 	@Override
-	public Map updateSetting(final String sessionId, final Form settings)
-			throws IOException {
-		final Map<String, Object> siteInfo = getExtendedSiteInfo(sessionId);
+	public Map updateSetting(final String sessionId, final Form settings,
+			final String account, final String token) throws IOException {
+		final Map<String, Object> siteInfo = getExtendedSiteInfo(sessionId,
+				account, token);
 		return postFormData(
 				sessionId,
 				String.format("/api/s/%s/set/setting/guest_access",
@@ -67,8 +70,9 @@ public class UnifiSiteSetting extends UnifiBase implements SiteSetting {
 	}
 
 	@Override
-	public String updateTou(final String sessionId, final Map form)
-			throws IOException, InterruptedException {
+	public String updateTou(final String sessionId, final Map form,
+			final String account, final String token) throws IOException,
+			InterruptedException {
 		/*
 		 * Note to maintainers:
 		 * 
@@ -76,7 +80,8 @@ public class UnifiSiteSetting extends UnifiBase implements SiteSetting {
 		 * out: Defaults requiretty 2. root ALL=NOPASSWD: ALL
 		 */
 
-		final Map<String, Object> siteInfo = getExtendedSiteInfo(sessionId);
+		final Map<String, Object> siteInfo = getExtendedSiteInfo(sessionId,
+				account, token);
 		final String siteName = (String) siteInfo.get("name");
 		final String fileToReplace = "/usr/lib/unifi/data/sites/" + siteName
 				+ "/portal/index.html";
@@ -132,8 +137,9 @@ public class UnifiSiteSetting extends UnifiBase implements SiteSetting {
 
 	@Override
 	public Map updateLimits(final String sessionId, final String userGroupId,
-			final Form limits) {
-		final Map<String, Object> siteInfo = getExtendedSiteInfo(sessionId);
+			final Form limits, final String account, final String token) {
+		final Map<String, Object> siteInfo = getExtendedSiteInfo(sessionId,
+				account, token);
 		return postFormData(
 				sessionId,
 				String.format("/api/s/%s/upd/usergroup/%s",

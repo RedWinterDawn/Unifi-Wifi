@@ -10,16 +10,19 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
-@Path("/{unifises}/cmd/")
+@Path("/{unifises}/{account}/{token}/cmd/")
 @Produces(MediaType.APPLICATION_JSON)
 public interface Cmd {
 
-    @POST
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("{type}")
-    public Map executeCmd(@PathParam("unifises") String sessionId, @PathParam("type") String type, Map message);
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("{type}")
+	public Map executeCmd(@PathParam("unifises") final String sessionId,
+			@PathParam("type") final String type, final Map message,
+			@PathParam("account") final String account,
+			@PathParam("token") final String token);
 
-    @GET
-    @Path("email-alerts")
-    public void emailAlerts(@QueryParam("interval") int intervalInSeconds);
+	@GET
+	@Path("email-alerts")
+	public void emailAlerts(@QueryParam("interval") final int intervalInSeconds);
 }

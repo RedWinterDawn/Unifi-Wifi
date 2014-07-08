@@ -21,9 +21,6 @@ import lombok.extern.slf4j.Slf4j;
 
 import org.bson.types.ObjectId;
 
-import com.google.common.collect.HashBasedTable;
-import com.google.common.collect.Table;
-import com.google.common.collect.Table.Cell;
 import com.jive.managedwifi.Configuration;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
@@ -36,18 +33,14 @@ public class UnifiBase {
 	protected static MongoClient dbClient;
 	protected static String controllerHost;
 	protected static Properties props;
-	protected static Table<String, String, String> sessionIdTable; // account,
-																	// accessToken,
-																	// sessionId
 
 	public UnifiBase() throws IOException {
 		dbClient = MongoDbClientFactory.getDbClient();
 		controllerHost = Configuration.getControllerURL();
-		sessionIdTable = HashBasedTable.create();
 	}
 
 	protected Map getData(final String sessionId, final String uri,
-			final Map message) {
+			final Map message, final String token, final String account) {
 		final Client client = ClientBuilder.newClient();
 		final WebTarget target = client.target(controllerHost + uri);
 		final Response response = target.request(MediaType.APPLICATION_JSON)
@@ -63,23 +56,10 @@ public class UnifiBase {
 		log.debug("Meta rc={}", responseMessage);
 
 		// Relog into unifi is response status bad
-		if (responseMessage.equals("error")) {
-			String account = "";
-			String accessToken = "";
-
-			// look up pbxid and access_token by old sessionId
-			for (final Cell<String, String, String> cell : sessionIdTable
-					.cellSet()) {
-				if (cell.getValue() == sessionId) {
-					account = cell.getRowKey();
-					accessToken = cell.getColumnKey();
-					break;
-				}
-			}
-			// set sessionId in table
-			final String newSessionId = baseUnifiLogin();
-			sessionIdTable.put(account, accessToken, newSessionId);
-			getData(newSessionId, uri, message);
+		if (response.getStatus() == 401 || responseMessage.equals("error")) {
+			final String newSessionId = renewSessionId(sessionId, account,
+					token);
+			return getData(newSessionId, uri, message, token, account);
 		}
 
 		return fullResponse;
@@ -118,7 +98,7 @@ public class UnifiBase {
 
 	protected void baseSetPermissionLevel(final String sessionId,
 			final String permissionLevel) {
-		log.debug("setPermissionLevel()");
+		// log.debug("setPermissionLevel()");
 		final DB db = dbClient.getDB("ace");
 
 		// get current site for session
@@ -178,43 +158,36 @@ public class UnifiBase {
 		return fullResponse;
 	}
 
-	protected Map<String, Object> getSessionInfo(final String sessionId) {
+	protected Map<String, Object> getSessionInfo(final String sessionId,
+			final String account, final String token) {
 		final DB db = dbClient.getDB("ace");
 		final DBCollection dbCollection = db.getCollection("cache_login");
 		final BasicDBObject query = new BasicDBObject("cookie", sessionId);
 		final DBObject session = dbCollection.findOne(query);
 		if (session == null) {
-			final String newSessionId = renewSessionId(sessionId);
-			getSessionInfo(newSessionId);
+			final String newSessionId = renewSessionId(sessionId, account,
+					token);
+			return getSessionInfo(newSessionId, account, token);
 		}
 
 		return session.toMap();
 	}
 
-	private String renewSessionId(final String sessionId) {
-		log.debug("getExtendedSiteInfo() get new sessionId");
-		log.debug("sessionId: {}", sessionId);
-		String account = "";
-		String accessToken = "";
+	private String renewSessionId(final String sessionId, final String account,
+			final String token) {
+		log.debug("renewSessionId()");
+		// log.debug("getExtendedSiteInfo() get new sessionId");
+		// log.debug("sessionId: {}", sessionId);
 
-		// look up pbxid and access_token by old sessionId
-		for (final Cell<String, String, String> cell : sessionIdTable.cellSet()) {
-			if (cell.getValue() == sessionId) {
-				account = cell.getRowKey();
-				accessToken = cell.getColumnKey();
-				break;
-			}
-		}
 		// set sessionId in table
 		final String newSessionId = baseUnifiLogin();
-		sessionIdTable.put(account, accessToken, newSessionId);
 		baseSetActiveAccount(newSessionId, account);
 		baseSetPermissionLevel(newSessionId, getPermissions(sessionId));
 		return newSessionId;
 	}
 
 	private String getPermissions(final String sessionId) {
-		log.debug("isPlatformAdmin()");
+		// log.debug("isPlatformAdmin()");
 		final DB db = dbClient.getDB("ace");
 
 		// get current site for session
@@ -228,8 +201,9 @@ public class UnifiBase {
 		return (String) dbObject.get("permissionLevel");
 	}
 
-	protected Map<String, Object> getExtendedSiteInfo(final String sessionId) {
-		log.debug("Getting extended site info");
+	protected Map<String, Object> getExtendedSiteInfo(final String sessionId,
+			final String account, final String token) {
+		// log.debug("Getting extended site info");
 		final DB db = dbClient.getDB("ace");
 
 		// get current site for session
@@ -237,12 +211,13 @@ public class UnifiBase {
 		BasicDBObject query = new BasicDBObject("cookie", sessionId);
 		DBObject dbObject = dbCollection.findOne(query);
 		if (dbObject == null) {
-			final String newSessionId = renewSessionId(sessionId);
-			getExtendedSiteInfo(newSessionId);
+			final String newSessionId = renewSessionId(sessionId, account,
+					token);
+			return getExtendedSiteInfo(newSessionId, account, token);
 		}
 
 		String siteName = "";
-		log.debug("extended site info site_id: {}", dbObject.get("site_id"));
+		// log.debug("extended site info site_id: {}", dbObject.get("site_id"));
 		if (dbObject.get("site_id") != null) {
 			final String siteId = dbObject.get("site_id").toString();
 			// get site name for uri to controller

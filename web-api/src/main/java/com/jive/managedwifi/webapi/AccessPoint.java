@@ -9,18 +9,24 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-@Path("/{unifises}/device/")
+@Path("/{unifises}/{account}/{token}/device/")
 @Produces(MediaType.APPLICATION_JSON)
 public interface AccessPoint {
 
-    @POST
-    @Produces(MediaType.APPLICATION_JSON)
-    public Map getAll(@PathParam("unifises") String sessionId);
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	public Map getAll(@PathParam("unifises") final String sessionId,
+			@PathParam("account") final String account,
+			@PathParam("token") final String token);
 
-    @POST
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("{id}")
-    public Map update(@PathParam("unifises") String sessionId, @PathParam("id") String deviceId, javax.ws.rs.core.Form device);
+	@POST
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("{id}")
+	public Map update(@PathParam("unifises") final String sessionId,
+			@PathParam("id") final String deviceId,
+			final javax.ws.rs.core.Form device,
+			@PathParam("account") final String account,
+			@PathParam("token") final String token);
 
 }

@@ -15,13 +15,15 @@ public class UnifiAccessPoint extends UnifiBase implements AccessPoint {
 	}
 
 	@Override
-	public Map<String, List<Map<String, Object>>> getAll(final String sessionId) {
-		final Map<String, Object> siteInfo = getExtendedSiteInfo(sessionId);
+	public Map<String, List<Map<String, Object>>> getAll(
+			final String sessionId, final String account, final String token) {
+		final Map<String, Object> siteInfo = getExtendedSiteInfo(sessionId,
+				account, token);
 
 		final Map<String, List<Map<String, Object>>> fullResponse = getData(
 				sessionId,
 				String.format("/api/s/%s/stat/device", siteInfo.get("name")),
-				null);
+				null, account, token);
 		final List<Map<String, Object>> allDevices = fullResponse.get("data");
 		final List<String> assignedMacs = (List<String>) siteInfo
 				.get("devices");
@@ -42,8 +44,9 @@ public class UnifiAccessPoint extends UnifiBase implements AccessPoint {
 
 	@Override
 	public Map update(final String sessionId, final String deviceId,
-			final Form device) {
-		final Map<String, Object> siteInfo = getExtendedSiteInfo(sessionId);
+			final Form device, final String account, final String token) {
+		final Map<String, Object> siteInfo = getExtendedSiteInfo(sessionId,
+				account, token);
 		return postFormData(sessionId, String.format("/api/s/%s/upd/device/%s",
 				siteInfo.get("name"), deviceId), device);
 	}

@@ -77,9 +77,6 @@ public class JiveAuth extends UnifiBase implements Auth {
 
 		final String sessionId = unifiLogin.login();
 
-		// Map account and accessToken to sessionId
-		sessionIdTable.put(account, accessToken, sessionId);
-
 		unifiLogin.setActiveAccount(sessionId, account);
 		unifiLogin.setPermissionLevel(sessionId,
 				(String) results.get("permissionLevel"));
