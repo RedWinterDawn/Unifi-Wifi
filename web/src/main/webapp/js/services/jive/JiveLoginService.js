@@ -5,12 +5,8 @@ managedWifi.factory('jiveLoginService', ['$q', '$http', '$cookies', '$location',
 
     var oauthReceive = function(access_token, account){
         var deferred = $q.defer();
-        console.log("oauthReceive");
-        console.log(access_token);
-        console.log(account);
         $http.get(appSettings.loginEndpoint + "oauth/v2/authorize/" + account + "/" + access_token).then(
             function(response) {
-                console.log(response);
                 sessionId = response.data.sessionId;
                 $cookies.unifises = sessionId;
                 $cookies.account = account;
@@ -31,16 +27,11 @@ managedWifi.factory('jiveLoginService', ['$q', '$http', '$cookies', '$location',
 
     // Find out if user is admin
     var isAdmin = function (){
-        console.log("isAdmin");
         var deferred = $q.defer();
 
         if(($cookies.unifises != null || sessionId != null) && isAdminCache == null){
-             console.log("unifises " + $cookies.unifises);
-             console.log("sessionId " + sessionId);
-             console.log("isAdminCache " + isAdminCache);
             $http.get(appSettings.loginEndpoint + (sessionId == null ? $cookies.unifises : sessionId) + "/login").then(
                 function(response) {
-                    console.log(response);
                     isAdminCache = response.data == "true";
                     deferred.resolve(isAdminCache);
                 },
@@ -49,7 +40,6 @@ managedWifi.factory('jiveLoginService', ['$q', '$http', '$cookies', '$location',
                 }
             );
         } else if(isAdminCache != null){
-            console.log("isadminCache " + isAdminCache);
             deferred.resolve(isAdminCache);
         } else {
             deferred.reject();
@@ -60,8 +50,6 @@ managedWifi.factory('jiveLoginService', ['$q', '$http', '$cookies', '$location',
 
     //get access token
     var login = function (account){
-        console.log("login");
-        console.log("account " + account);
 
         var deferred = $q.defer();
 
@@ -74,16 +62,13 @@ managedWifi.factory('jiveLoginService', ['$q', '$http', '$cookies', '$location',
         var redirect_uri = "https:%2F%2Fwifi.jive.com%2Findex.html%23%2Foauth2";
         var uri = "https://auth.jive.com/oauth2/v2/grant?client_id="+client_id+"&inflightRequest="+account+"&redirect_uri="+redirect_uri+"&response_type=token&scope=pbx.v1.profile";
             
-        console.log("uri= "+uri);
         window.location.href = uri;
          
         return deferred.promise;
     };
 
     var isLoggedIn= function (){
-        console.log("isLoggedIn");
         var deferred = $q.defer();
-        console.log("$cookies.unifises " + $cookies.unifises);
         if($cookies.unifises == null)
             deferred.reject();
         else
@@ -92,7 +77,6 @@ managedWifi.factory('jiveLoginService', ['$q', '$http', '$cookies', '$location',
     };
 
     var logout = function (){
-        console.log("logout");
         return $http({method: "POST", url: appSettings.apiEndpoint+"/login/logout"}).then(
             function(){
                 document.cookie = 'unifises=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';

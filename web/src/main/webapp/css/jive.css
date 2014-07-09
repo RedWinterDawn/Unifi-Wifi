@@ -4054,7 +4054,8 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini {
 	overflow: visible;
 	margin-bottom: 20px;
 	*position: relative;
-	*z-index: 2
+	*z-index: 2;
+	white-space: no-wrap;
 }
 .navbar-inner {
 	min-height: 40px;
@@ -5534,7 +5535,7 @@ body, html {
 	overflow: scroll;
 }
 body {
-	font-size: 80%;
+	font-size: 70%;
 	line-height: 18px;
 	color: #454545;
 	background-color: #fbfbfb;

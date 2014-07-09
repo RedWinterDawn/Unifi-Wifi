@@ -104,6 +104,7 @@ public class UnifiBase {
 		// get current site for session
 		final DBCollection dbCollection = db.getCollection("cache_login");
 		final BasicDBObject query = new BasicDBObject("cookie", sessionId);
+		log.debug("sessionId: {}", sessionId);
 		final DBObject dbObject = dbCollection.findOne(query);
 		if (dbObject == null) {
 			log.debug("dbObject is null");
@@ -125,6 +126,7 @@ public class UnifiBase {
 		// get current site for session
 		final DBCollection dbCollection = db.getCollection("cache_login");
 		final BasicDBObject query = new BasicDBObject("cookie", sessionId);
+		log.debug("sessionId: {}", sessionId);
 		final DBObject dbObject = dbCollection.findOne(query);
 		if (dbObject == null) {
 			log.debug("dbObject is null");
@@ -167,11 +169,13 @@ public class UnifiBase {
 		final DB db = dbClient.getDB("ace");
 		final DBCollection dbCollection = db.getCollection("cache_login");
 		final BasicDBObject query = new BasicDBObject("cookie", sessionId);
+		log.debug("sessionId: {}", sessionId);
 		final DBObject session = dbCollection.findOne(query);
 		if (session == null) {
 			log.debug("Session is null");
 			final String newSessionId = renewSessionId(sessionId, account,
 					token);
+			log.debug("newSessionId: {}", newSessionId);
 			return getSessionInfo(newSessionId, account, token);
 		}
 
@@ -185,8 +189,11 @@ public class UnifiBase {
 
 		// set sessionId in table
 		final String newSessionId = baseUnifiLogin();
+		log.debug("newSessionId: {}", newSessionId);
 		baseSetActiveAccount(newSessionId, account);
-		baseSetPermissionLevel(newSessionId, getPermissions(sessionId));
+		final String permissions = getPermissions(sessionId);
+		log.debug("permissions = {}", permissions);
+		baseSetPermissionLevel(newSessionId, permissions);
 		return newSessionId;
 	}
 
