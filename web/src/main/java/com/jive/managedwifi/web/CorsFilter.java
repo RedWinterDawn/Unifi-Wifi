@@ -11,21 +11,26 @@ import javax.ws.rs.container.ContainerResponseFilter;
 import javax.ws.rs.ext.Provider;
 
 @Provider
-public class CorsFilter implements ContainerResponseFilter {
+public class CorsFilter implements ContainerResponseFilter
+{
 
-    private final Properties props;
+  private final Properties props;
 
-    public CorsFilter() throws IOException {
-        props = new Properties();
-        props.load(getClass().getClassLoader().getResourceAsStream("web.properties"));
-    }
+  public CorsFilter() throws IOException
+  {
+    props = new Properties();
+    props.load(getClass().getClassLoader().getResourceAsStream("web.properties"));
+  }
 
-    @Override
-    public void filter(ContainerRequestContext requestCtx, ContainerResponseContext responseCtx) throws IOException {
-        responseCtx.getHeaders().add("Access-Control-Allow-Origin", props.getProperty("uihost"));
-        responseCtx.getHeaders().add("Access-Control-Allow-Methods", "POST, GET, DELETE, PUT, OPTIONS");
-        List<String> reqHead=requestCtx.getHeaders().get("Access-Control-Request-Headers");
-        if(null != reqHead)
-            responseCtx.getHeaders().put("Access-Control-Allow-Headers",new ArrayList<Object>(reqHead));
-    }
+  @Override
+  public void filter(final ContainerRequestContext requestCtx,
+      final ContainerResponseContext responseCtx)
+      throws IOException
+  {
+    responseCtx.getHeaders().add("Access-Control-Allow-Origin", props.getProperty("uihost"));
+    responseCtx.getHeaders().add("Access-Control-Allow-Methods", "POST, GET, DELETE, PUT, OPTIONS");
+    final List<String> reqHead = requestCtx.getHeaders().get("Access-Control-Request-Headers");
+    if (null != reqHead)
+      responseCtx.getHeaders().put("Access-Control-Allow-Headers", new ArrayList<Object>(reqHead));
+  }
 }

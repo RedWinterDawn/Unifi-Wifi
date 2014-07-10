@@ -10,10 +10,12 @@ import javax.ws.rs.core.MediaType;
 
 @Path("/oauth/v2/")
 @Produces(MediaType.TEXT_PLAIN)
-public interface Auth {
+public interface Auth
+{
 
-    @GET
-    @Path("authorize/{account}/{access_token}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Map authorize(@PathParam("account") String account, @PathParam("access_token") String access_token);
+  @GET
+  @Path("authorize/{account}/{access_token}")
+  @Produces(MediaType.APPLICATION_JSON)
+  public Map authorize(@PathParam("account") final String account,
+      @PathParam("access_token") final String access_token);
 }

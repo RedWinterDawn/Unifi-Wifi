@@ -10,18 +10,19 @@ import javax.ws.rs.core.MediaType;
 
 @Path("/{unifises}/{account}/{token}/user/")
 @Produces(MediaType.APPLICATION_JSON)
-public interface DeviceUser {
+public interface DeviceUser
+{
 
-	@POST
-	@Produces(MediaType.APPLICATION_JSON)
-	public Map getAll(@PathParam("unifises") final String sessionId,
-			@PathParam("account") final String account,
-			@PathParam("token") final String token);
+  @POST
+  @Produces(MediaType.APPLICATION_JSON)
+  public Map getAll(@PathParam("unifises") final String sessionId,
+      @PathParam("account") final String account,
+      @PathParam("token") final String token);
 
-	@POST
-	@Produces(MediaType.APPLICATION_JSON)
-	@Path("active")
-	public Map getActive(@PathParam("unifises") final String sessionId,
-			@PathParam("account") final String account,
-			@PathParam("token") final String token);
+  @POST
+  @Produces(MediaType.APPLICATION_JSON)
+  @Path("active")
+  public Map getActive(@PathParam("unifises") final String sessionId,
+      @PathParam("account") final String account,
+      @PathParam("token") final String token);
 }

@@ -11,17 +11,18 @@ managedWifi.controller('Oauth2Controller',["$scope", "$http", "$location", "$mod
         });
 
         var account = managedWifi.parseQuery().pbxid;
+        var pbx_path = managedWifi.parseQuery().pbxpath;
         if(account != null){
             console.log(account);
             loginService.isLoggedIn().then(
                 function(){
                     console.log("Is logged in");
                     loginService.logout();
-                    loginService.login(account);
+                    loginService.login(account, pbx_path);
                 },
                 function(){
                     console.log("Is not logged in");
-                    loginService.login(account); // get access token
+                    loginService.login(account, pbx_path); // get access token
                 }
             )
         }

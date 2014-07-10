@@ -4098,10 +4098,21 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini {
 	display: block;
 	padding: 10px 20px 10px;
 	margin-left: 0px;
-	font-size: 150%;
+	font-size: 130%;
 	font-weight: 200;
 	color: #fff;
 	text-shadow: 0 1px 0 #9cc92c
+}
+
+@media screen and (max-width: 1050px){
+    .navbar .brand {
+        display: none;
+    }
+}
+@media screen and (max-width: 750px) {
+	.navbar .title {
+		display: none;
+	}
 }
 .navbar .brand:hover, .navbar .brand:focus {
 	text-decoration: none
@@ -5532,19 +5543,19 @@ a.label:hover, a.label:focus, a.badge:hover, a.badge:focus {
 }
 body, html {
 	height: 100%;
-	overflow: scroll;
+	overflow: hidden;
 }
 body {
-	font-size: 70%;
+	font-size: 80%;
 	line-height: 18px;
 	color: #454545;
 	background-color: #fbfbfb;
 	background-image: url(../assets/textures/background.jpg);
 	background-position: 0 0;
 	background-repeat: repeat;
-	position: fixed;
 	width: 100%;
 	top: 40px;
+	margin-top: 40px;
 }
 body.loading .loading-hide {
 	display: none
@@ -5592,7 +5603,7 @@ header {
 	z-index: 10;
 	top: 0;
 	width: 100%;
-	min-width: 1000px
+	min-width: 500px
 }
 .breadcrumb {
 	padding: 0;
@@ -5634,6 +5645,7 @@ header {
 	top: 0px;
 	background-color: #f7f7f7;
 	float: left;
+	margin-top: 40px;
 }
 .workspace .main-sidebar li {
 	border-bottom: 1px solid #eee;
@@ -5661,7 +5673,7 @@ header {
 	overflow: scroll;
 }
 .workspace .scrollable {
-	height: calc(100% - 130px);
+	height: calc(100% - 225px);
 	overflow: scroll;
 }
 .workspace .scrollable ul {

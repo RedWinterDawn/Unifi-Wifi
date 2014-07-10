@@ -7,17 +7,19 @@ import com.google.inject.Injector;
 import com.jive.managedwifi.modules.AmazonModule;
 import com.jive.managedwifi.modules.UnifiModule;
 
-public class Launcher {
+public class Launcher
+{
 
-	public static void main(final String[] args) throws IOException {
+  public static void main(final String[] args) throws IOException
+  {
 
-		final Injector injector = Guice.createInjector(new UnifiModule(),
-				new AmazonModule());
+    final Injector injector = Guice.createInjector(new UnifiModule(),
+        new AmazonModule());
 
-		final UnifiBackup backupUnifi = injector.getInstance(UnifiBackup.class);
-		final AmazonSave amazonSave = injector.getInstance(AmazonSave.class);
+    final UnifiBackup backupUnifi = injector.getInstance(UnifiBackup.class);
+    final AmazonSave amazonSave = injector.getInstance(AmazonSave.class);
 
-		backupUnifi.unifiBackup();
-		amazonSave.storeFile();
-	}
+    backupUnifi.unifiBackup();
+    amazonSave.storeFile();
+  }
 }

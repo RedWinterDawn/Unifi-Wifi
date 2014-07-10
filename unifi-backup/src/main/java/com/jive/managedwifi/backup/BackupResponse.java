@@ -5,9 +5,10 @@ import java.util.List;
 import lombok.Value;
 
 @Value
-public class BackupResponse {
+public class BackupResponse
+{
 
-	private List<Datas> data;
+  private List<Datas> data;
 
-	public Datas meta;
+  public Datas meta;
 }

@@ -15,49 +15,50 @@ import javax.ws.rs.core.MediaType;
 
 @Path("/{unifises}/{account}/{token}/site/")
 @Produces(MediaType.APPLICATION_JSON)
-public interface Site {
+public interface Site
+{
 
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<Object> getSites(@PathParam("unifises") final String sessionId,
-			@PathParam("account") final String account,
-			@PathParam("token") final String token);
+  @GET
+  @Produces(MediaType.APPLICATION_JSON)
+  public List<Object> getSites(@PathParam("unifises") final String sessionId,
+      @PathParam("account") final String account,
+      @PathParam("token") final String token);
 
-	@GET
-	@Path("{id}")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Map getById(@PathParam("id") final String id,
-			@PathParam("account") final String account,
-			@PathParam("token") final String token);
+  @GET
+  @Path("{id}")
+  @Produces(MediaType.APPLICATION_JSON)
+  public Map getById(@PathParam("id") final String id,
+      @PathParam("account") final String account,
+      @PathParam("token") final String token);
 
-	@POST
-	@Path("{id}")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
-	public void update(@PathParam("id") final String id, final Map site,
-			@PathParam("account") final String account,
-			@PathParam("token") final String token);
+  @POST
+  @Path("{id}")
+  @Produces(MediaType.APPLICATION_JSON)
+  @Consumes(MediaType.APPLICATION_JSON)
+  public void update(@PathParam("id") final String id, final Map site,
+      @PathParam("account") final String account,
+      @PathParam("token") final String token);
 
-	@PUT
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.TEXT_PLAIN)
-	public String add(@PathParam("unifises") final String sessionId,
-			final Map site, @PathParam("account") final String account,
-			@PathParam("token") final String token);
+  @PUT
+  @Consumes(MediaType.APPLICATION_JSON)
+  @Produces(MediaType.TEXT_PLAIN)
+  public String add(@PathParam("unifises") final String sessionId,
+      final Map site, @PathParam("account") final String account,
+      @PathParam("token") final String token);
 
-	@DELETE
-	@Path("{id}")
-	public void delete(@PathParam("unifises") final String sessionId,
-			@PathParam("id") final String id,
-			@PathParam("account") final String account,
-			@PathParam("token") final String token);
+  @DELETE
+  @Path("{id}")
+  public void delete(@PathParam("unifises") final String sessionId,
+      @PathParam("id") final String id,
+      @PathParam("account") final String account,
+      @PathParam("token") final String token);
 
-	@POST
-	@Path("active")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
-	public void makeActive(@PathParam("unifises") final String sessionId,
-			final Map site, @PathParam("account") final String account,
-			@PathParam("token") final String token);
+  @POST
+  @Path("active")
+  @Produces(MediaType.APPLICATION_JSON)
+  @Consumes(MediaType.APPLICATION_JSON)
+  public void makeActive(@PathParam("unifises") final String sessionId,
+      final Map site, @PathParam("account") final String account,
+      @PathParam("token") final String token);
 
 }

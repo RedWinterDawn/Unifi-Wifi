@@ -9,17 +9,18 @@ import javax.ws.rs.core.MediaType;
 
 @Path("/{unifises}/login/")
 @Produces(MediaType.TEXT_PLAIN)
-public interface Login {
-	@GET
-	public Boolean isPlatformAdmin(@PathParam("unifises") final String sessionId);
+public interface Login
+{
+  @GET
+  public Boolean isPlatformAdmin(@PathParam("unifises") final String sessionId);
 
-	@POST
-	@Path("logout")
-	public void logout(@PathParam("unifises") final String sessionId);
+  @POST
+  @Path("logout")
+  public void logout(@PathParam("unifises") final String sessionId);
 
-	public String login();
+  public String login();
 
-	void setPermissionLevel(final String sessionId, final String permissionLevel);
+  void setPermissionLevel(final String sessionId, final String permissionLevel);
 
-	void setActiveAccount(final String sessionId, final String account);
+  void setActiveAccount(final String sessionId, final String account);
 }

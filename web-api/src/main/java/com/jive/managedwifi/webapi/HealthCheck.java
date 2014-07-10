@@ -5,9 +5,10 @@ import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
 
 @Path("/health-check")
-public interface HealthCheck {
+public interface HealthCheck
+{
 
-	@GET
-	public Response getHealth();
+  @GET
+  public Response getHealth();
 
 }

@@ -18,53 +18,60 @@ import com.google.inject.name.Names;
 import com.jive.jackson.ConstructorPropertiesAnnotationIntrospector;
 
 @Slf4j
-public class AmazonModule extends AbstractModule {
+public class AmazonModule extends AbstractModule
+{
 
-	private BlobStore blobStore = null;
+  private BlobStore blobStore = null;
 
-	@Override
-	protected void configure() {
+  @Override
+  protected void configure()
+  {
 
-		final Properties prop = new Properties();
-		InputStream input;
-		try {
-			input = Resources.getResource("aws.properties").openStream();
+    final Properties prop = new Properties();
+    InputStream input;
+    try
+    {
+      input = Resources.getResource("aws.properties").openStream();
 
-			prop.load(input);
-		} catch (final Exception e) {
-			log.warn("Error loading aws.properties");
-		}
+      prop.load(input);
+    }
+    catch (final Exception e)
+    {
+      log.warn("Error loading aws.properties");
+    }
 
-		bind(String.class).annotatedWith(Names.named("secretKey")).toInstance(
-				prop.getProperty("secretKey"));
-		bind(String.class).annotatedWith(Names.named("accessKey")).toInstance(
-				prop.getProperty("accessKey"));
-		bind(String.class).annotatedWith(Names.named("provider")).toInstance(
-				prop.getProperty("provider"));
-		bind(String.class).annotatedWith(Names.named("path")).toInstance(
-				prop.getProperty("path"));
+    bind(String.class).annotatedWith(Names.named("secretKey")).toInstance(
+        prop.getProperty("secretKey"));
+    bind(String.class).annotatedWith(Names.named("accessKey")).toInstance(
+        prop.getProperty("accessKey"));
+    bind(String.class).annotatedWith(Names.named("provider")).toInstance(
+        prop.getProperty("provider"));
+    bind(String.class).annotatedWith(Names.named("path")).toInstance(
+        prop.getProperty("path"));
 
-	}
+  }
 
-	@Provides
-	public BlobStore getContext(@Named("accessKey") final String accessKey,
-			@Named("secretKey") final String secretKey,
-			@Named("provider") final String provider) {
+  @Provides
+  public BlobStore getContext(@Named("accessKey") final String accessKey,
+      @Named("secretKey") final String secretKey,
+      @Named("provider") final String provider)
+  {
 
-		if (this.blobStore == null)
-			this.blobStore = ContextBuilder.newBuilder(provider)
-					.credentials(accessKey, secretKey)
-					.buildView(BlobStoreContext.class).getBlobStore();
+    if (this.blobStore == null)
+      this.blobStore = ContextBuilder.newBuilder(provider)
+          .credentials(accessKey, secretKey)
+          .buildView(BlobStoreContext.class).getBlobStore();
 
-		return this.blobStore;
-	}
+    return this.blobStore;
+  }
 
-	@Provides
-	public ObjectMapper getMapper() {
+  @Provides
+  public ObjectMapper getMapper()
+  {
 
-		final ObjectMapper mapper = new ObjectMapper();
-		ConstructorPropertiesAnnotationIntrospector.install(mapper);
+    final ObjectMapper mapper = new ObjectMapper();
+    ConstructorPropertiesAnnotationIntrospector.install(mapper);
 
-		return mapper;
-	}
+    return mapper;
+  }
 }

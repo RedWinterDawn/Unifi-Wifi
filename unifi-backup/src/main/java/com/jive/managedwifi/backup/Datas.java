@@ -3,9 +3,10 @@ package com.jive.managedwifi.backup;
 import lombok.Value;
 
 @Value
-public class Datas {
+public class Datas
+{
 
-	private String url;
+  private String url;
 
-	private String rc;
+  private String rc;
 }
