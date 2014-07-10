@@ -84,7 +84,7 @@ managedWifi.controller('MainMenuController', ["$scope", "$timeout", "$http", "$l
         $scope.logout = function() {
             loginService.logout().then(
                 function() {
-                    window.location.href = "https://www.onjive.com/auth/logout";
+                    window.location.href = $cookies.pbx_path;
                 },
                 function(reason) {
                     notificationService.error("login", "An error occurred while logging you out.");
@@ -237,7 +237,18 @@ managedWifi.controller('MainMenuController', ["$scope", "$timeout", "$http", "$l
         };
 
         $scope.returnHome = function() {
-            window.location = "https://www.onjive.com/";
+        	window.location.href = decodeURIComponent(getCookie("pbx_path"));
+        };
+
+        function getCookie(cname) {
+                var name = cname + "=";
+                var ca = document.cookie.split(';');
+                for(var i=0; i<ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0)==' ') c = c.substring(1);
+                    if (c.indexOf(name) != -1) return c.substring(name.length,c.length);
+                }
+                return "";
         };
 
         var subToken = messagingService.subscribe(managedWifi.messageTopics.service.refreshComplete.siteService, $scope.init);
