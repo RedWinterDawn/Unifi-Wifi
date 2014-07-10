@@ -16,6 +16,48 @@
 .clearfix:after {
 	clear: both
 }
+#curves div {
+    border: 3px solid #999;
+}
+
+#curves.curve div {
+    border-color: #ddd transparent transparent transparent;
+}
+
+#curve1 {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    -moz-border-radius: 50px 50px 0 0;
+    border-radius: 40px 40px 0 0;
+}
+#curve2 {
+    position: relative;
+    width: 25px;
+    height: 25px;
+    top: -40px;
+    left: 8px;
+    -moz-border-radius: 50px 50px 0 0;
+    border-radius: 25px 25px 0 0;
+}
+#curve3 {
+    position: relative;
+    width: 12px;
+    height: 12px;
+    top: -65px;
+    left: 14.5px;
+    -moz-border-radius: 10px 10px 0 0;
+    border-radius: 10px 10px 0 0;
+}
+#curve4 {
+    position: relative;
+    width: .01px;
+    height: .01px;
+    top: -77px;
+    left: 20.5px;
+    -moz-border-radius: 10px 10px 0 0;
+    border-radius: .01px .01px 0 0;
+}
 .hide-text {
 	font: 0/0 a;
 	color: transparent;

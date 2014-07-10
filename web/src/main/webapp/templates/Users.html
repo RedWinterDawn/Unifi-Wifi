@@ -192,8 +192,15 @@
                     <td>{{user.ip || ''}}</td>
                     <td ng-show="showAuthorized">{{user.is_guest ? user.authorized ? "User" : "Unauthorized" : "Guest"}}</td>
                     <td ng-show="showBlocked">{{user.blocked ? "Blocked" : "Unblocked"}}</td>
-                    <td>{{user.rssi | signal}} ({{user.signal}} dBm)</td>
-		    <td>{{user.tx_bytes | bytes}}</td>
+                    <td>
+                        <div id="curves" class="curve" style="height: 50px">
+                            <div ng-style="{ 'border-color': getSignalColor(user, 75) }" id="curve1"></div>
+                            <div ng-style="{ 'border-color': getSignalColor(user, 50) }" id="curve2"></div>
+                            <div ng-style="{ 'border-color': getSignalColor(user, 25) }" id="curve3"></div>
+                            <div ng-style="{ 'border-color': getSignalColor(user, 10) }" id="curve4"></div>
+                        </div>
+                    </td>
+                    <td>{{user.tx_bytes | bytes}}</td>
                     <td>{{user.rx_bytes | bytes}}</td>
                     <td>{{user.uptime | uptime}}</td>
                 </tr>
