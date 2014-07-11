@@ -193,11 +193,11 @@
                     <td ng-show="showAuthorized">{{user.is_guest ? user.authorized ? "User" : "Unauthorized" : "Guest"}}</td>
                     <td ng-show="showBlocked">{{user.blocked ? "Blocked" : "Unblocked"}}</td>
                     <td>
-                        <div id="curves" class="curve" style="height: 50px">
-                            <div ng-style="{ 'border-color': getSignalColor(user, 75) }" id="curve1"></div>
-                            <div ng-style="{ 'border-color': getSignalColor(user, 50) }" id="curve2"></div>
-                            <div ng-style="{ 'border-color': getSignalColor(user, 25) }" id="curve3"></div>
-                            <div ng-style="{ 'border-color': getSignalColor(user, 10) }" id="curve4"></div>
+                        <div id="curves" class="curve" style="height: 25px;">
+                            <div data-signalStrength="{{getSigColor(user.rssi, 0)}}" id="curve1" ng-click="redirect(user.id,'activity')"></div>
+                            <div data-signalStrength="{{getSigColor(user.rssi, 1)}}" id="curve2" ng-click="redirect(user.id,'activity')"></div>
+                            <div data-signalStrength="{{getSigColor(user.rssi, 2)}}" id="curve3" ng-click="redirect(user.id,'activity')"></div>
+                            <div data-signalStrength="{{getSigColor(user.rssi, 3)}}" id="curve4" ng-click="redirect(user.id,'activity')"></div>
                         </div>
                     </td>
                     <td>{{user.tx_bytes | bytes}}</td>

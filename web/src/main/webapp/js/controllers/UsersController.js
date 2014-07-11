@@ -74,20 +74,24 @@ managedWifi.controller('UsersController', ["$scope", "$location", "$routeParams"
             );
             init();
         };
-        
-        $scope.getSignalColor = function(user, percent) { 
-        	if(getSignalPercentage(user.rssi) > percent)
-        		return "black transparent transparent transparent";
-        	else
-        		return '#ddd transparent transparent transparent';
-        }
 
-        function getSignalPercentage(signal) {
+        $scope.getSigColor = function(signal, barNum) {
             signal = parseFloat(signal);
-            if (!signal) return "N/A";
+            if (!signal) return 0;
             if (signal > 45) signal = 45;
             if (signal < 5) signal = 5;
-            return ((signal - 5) / 40 * 99).toPrecision(2);
+            var finalsig = ((signal - 5) / 40 * 99).toPrecision(2);
+            
+            if(barNum == 0) return finalsig > 75 ? 1 : 0;
+            if(barNum == 1) return finalsig > 50 ? 1 : 0;
+            if(barNum == 2) return finalsig > 25 ? 1 : 0;
+            if(barNum == 3) return finalsig > 10 ? 1 : 0;
+            
+            return 0;
+        }
+        
+        $scope.redirect = function(accesspoint_id, tab){
+        	$location.url('/user/'+accesspoint_id+'/'+tab);
         }
 
         $scope.authorizeUser = function(user){

@@ -2,7 +2,13 @@
 
 managedWifi.controller('UserController', ["$scope", "$location", "$routeParams", "AccessPointService", "AccessPointUserService", "NetworkService", "notificationService", "dialogService",
     function UserController($scope, $location, $routeParams, accessPointService, accessPointUserService, networkService, notificationService, dialogService) {
-        $scope.activeSubItem = 'Overview';
+        
+		if($routeParams.tab == 'activity')
+			$scope.activeSubItem = 'Activity';
+		else
+			$scope.activeSubItem = 'Overview';
+        
+        
 
         accessPointUserService.getById($routeParams.id).then(
             function(user){

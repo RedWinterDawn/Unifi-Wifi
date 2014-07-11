@@ -17,35 +17,61 @@
 	clear: both
 }
 #curves div {
-    border: 3px solid #999;
+    border: 2px solid;
+}
+#curves.curve {
+    padding: 6px 0px 1px 6px;
 }
 
-#curves.curve div {
-    border-color: #ddd transparent transparent transparent;
+#curves.curve:hover {
+	background-color: #5299da;
+	border-color: white;
+  border-radius: 5px;
+  display: block;
+}
+
+[data-signalStrength='1']
+{
+	border-color: #5299da transparent transparent transparent !important;
+}
+
+#curves.curve:hover [data-signalStrength='1']
+{
+  border-color: white transparent transparent transparent !important;
+}
+
+[data-signalStrength='0']
+{
+  border-color: #ddd transparent transparent transparent !important;
+}
+
+#curves.curve:hover [data-signalStrength='0']
+{
+  border-color: #5299da transparent transparent transparent !important;
 }
 
 #curve1 {
     position: relative;
     width: 40px;
     height: 40px;
-    -moz-border-radius: 50px 50px 0 0;
+    -moz-border-radius: 40px 40px 0 0;
     border-radius: 40px 40px 0 0;
 }
 #curve2 {
     position: relative;
     width: 25px;
     height: 25px;
-    top: -40px;
+    top: -38px;
     left: 8px;
-    -moz-border-radius: 50px 50px 0 0;
+    -moz-border-radius: 25px 25px 0 0;
     border-radius: 25px 25px 0 0;
 }
 #curve3 {
     position: relative;
     width: 12px;
     height: 12px;
-    top: -65px;
-    left: 14.5px;
+    top: -61px;
+    left: 14.97px;
     -moz-border-radius: 10px 10px 0 0;
     border-radius: 10px 10px 0 0;
 }
@@ -53,9 +79,9 @@
     position: relative;
     width: .01px;
     height: .01px;
-    top: -77px;
-    left: 20.5px;
-    -moz-border-radius: 10px 10px 0 0;
+    top: -71px;
+    left: 21px;
+    -moz-border-radius: .01px .01px 0 0;
     border-radius: .01px .01px 0 0;
 }
 .hide-text {
@@ -5687,7 +5713,6 @@ header {
 	top: 0px;
 	background-color: #f7f7f7;
 	float: left;
-	margin-top: 40px;
 }
 .workspace .main-sidebar li {
 	border-bottom: 1px solid #eee;
