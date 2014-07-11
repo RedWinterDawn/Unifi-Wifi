@@ -9,7 +9,7 @@ managedWifi.controller('RefreshDataController',["$scope", "$timeout", "messaging
 
             $scope.lastRefreshed = moment().format('h:mm:ss a');
             refreshTimer = $timeout(function(){
-                messagingService.publish(managedWifi.messageTopics.service.refresh);
+                messagingService.publishSync(managedWifi.messageTopics.service.refresh);
             }, 20000);
         };
         loginService.isLoggedIn().then(init);

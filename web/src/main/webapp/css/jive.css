@@ -16,6 +16,12 @@
 .clearfix:after {
 	clear: both
 }
+.rotate-45-left {
+    display: inline-block !important;
+    -o-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
 #curves div {
     border: 2px solid;
 }
@@ -47,7 +53,7 @@
 
 #curves.curve:hover [data-signalStrength='0']
 {
-  border-color: #5299da transparent transparent transparent !important;
+  border-color: #528eda transparent transparent transparent !important;
 }
 
 #curve1 {

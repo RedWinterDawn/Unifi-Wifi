@@ -164,7 +164,7 @@
                             </ul>
                         </div>
                     </th>
-		    <th><a>Signal<i class="icon-signal"></i></a></th>
+		    <th style="white-space: nowrap;"><a>Signal<i class="icon-rss rotate-45-left"></i></a></th>
                     <th><a ng-click="paginator.setOrder('tx_bytes')">Download<i ng-class="paginator | sortClass:'tx_bytes'"></i></a>
                     </th>
                     <th><a ng-click="paginator.setOrder('rx_bytes')">Upload<i ng-class="paginator | sortClass:'rx_bytes'"></i></a>
@@ -193,7 +193,7 @@
                     <td ng-show="showAuthorized">{{user.is_guest ? user.authorized ? "User" : "Unauthorized" : "Guest"}}</td>
                     <td ng-show="showBlocked">{{user.blocked ? "Blocked" : "Unblocked"}}</td>
                     <td>
-                        <div id="curves" class="curve" style="height: 25px;">
+                        <div ng-show="user.is_connected" id="curves" class="curve" style="height: 25px;">
                             <div data-signalStrength="{{getSigColor(user.rssi, 0)}}" id="curve1" ng-click="redirect(user.id,'activity')"></div>
                             <div data-signalStrength="{{getSigColor(user.rssi, 1)}}" id="curve2" ng-click="redirect(user.id,'activity')"></div>
                             <div data-signalStrength="{{getSigColor(user.rssi, 2)}}" id="curve3" ng-click="redirect(user.id,'activity')"></div>

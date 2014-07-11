@@ -89,7 +89,7 @@ managedWifi.controller('UsersController', ["$scope", "$location", "$routeParams"
             
             return 0;
         }
-        
+
         $scope.redirect = function(accesspoint_id, tab){
         	$location.url('/user/'+accesspoint_id+'/'+tab);
         }
