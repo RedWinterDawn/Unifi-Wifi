@@ -7,7 +7,6 @@ var managedWifi = angular.module('managedWifi', ['ui.bootstrap', 'ngRoute', 'ngC
 managedWifi.resolveServiceAlias = function(names) {
 	var obj = {};
 	if (angular.isString(names)) names = [names];
-	console.log("resolveServiceAlias");
 
 	names.forEach(function(name) {
 		obj[name] = ['$injector', '$cookies',
@@ -125,8 +124,6 @@ managedWifi.config(['$routeProvider', '$locationProvider',
 			if ($location.search().mock != undefined)
 				$cookies.useMockServices = $location.search().mock;
 
-			console.log("app.js");
-		
     if(managedWifi.parseQuery().pbxid != null){
     	console.log("pbxid exists");
         $location.url('/oauth2');

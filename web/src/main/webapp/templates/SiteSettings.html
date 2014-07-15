@@ -1,8 +1,8 @@
 <div class="row-fluid page-title">
     <div class="span12">
-        <h1 class="content-title">Manage Location Settings </h1>
+        <h1 class="content-title">Manage AP Group Settings </h1>
         <ul class="crumbs">
-            <li class="active"><a style="cursor:pointer;">Manage Location Settings</a></li>
+            <li class="active"><a style="cursor:pointer;">Manage AP Group Settings</a></li>
         </ul>
     </div>
 </div>
@@ -11,7 +11,7 @@
 <div class="row-fluid">
     <div class="span12">
         <ul class="content-sidebar">
-            <li><a ng-click="activeItem = 'Details'" ng-class="activeItem == 'Details' ? 'active' : ''"><i class="icon-asterisk"></i>Location Details</a></li>
+            <li><a ng-click="activeItem = 'Details'" ng-class="activeItem == 'Details' ? 'active' : ''"><i class="icon-asterisk"></i>AP Group Details</a></li>
             <li><a ng-click="activeItem = 'Guest'" ng-class="activeItem == 'Guest' ? 'active' : ''"><i class="icon-asterisk"></i>Guest Network Settings</a></li>
             <li><a ng-click="activeItem = 'Access'" ng-class="activeItem == 'Access' ? 'active' : ''"><i class="icon-asterisk"></i>Access Control</a></li>
             <li><a ng-click="activeItem = 'Limits'" ng-class="activeItem == 'Limits' ? 'active' : ''"><i class="icon-asterisk"></i>Traffic Limits</a></li>
@@ -23,7 +23,7 @@
                         <div class="span12">
                             
                             <div ng-show="activeItem=='Details'">
-                                <h2>Location Details</h2>
+                                <h2>AP Group Details</h2>
                                 <p>Configure the settings for this site. The account id for this site is pre-determined and should be provided to you outside this application.</p>
                             </div>
                             <div ng-show="activeItem=='Guest'">
