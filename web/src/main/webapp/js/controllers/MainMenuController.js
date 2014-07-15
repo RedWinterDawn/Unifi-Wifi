@@ -106,6 +106,18 @@ managedWifi.controller('MainMenuController', ["$scope", "$timeout", "$http", "$l
                         $location.url("/users");
                         $location.replace("/users");
                     }
+                    if(location.hash.split('/')[1] == 'device') {
+                        $location.url("/devices");
+                        $location.replace("/devices");
+                    }
+                    if(location.hash.split('/')[1] == 'networks') {
+                        $location.url("/networks");
+                        $location.replace("/networks");
+                    }
+                    if(location.hash.split('/')[1] == 'settings') {
+                        location.reload();
+                    }
+
                 },
                 function() {
                     notificationService.error("loadSite", "An error occurred while switching sites.");
