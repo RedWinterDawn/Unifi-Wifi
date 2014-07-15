@@ -66,10 +66,17 @@ Instances Setup in AWS
 =========================
 - Managed-Wifi-Testing-3.1.10
 
-- Managed Wifi Dev 2 - running 3.2.1
+- Managed Wifi Dev 2 - running 3.2.1 ***Currently the production instance
+
+- portal-apis
+
+- wifi-jive-tmp - load balancer 
+
 
 Deploy New Fresh Instance (Talk to Phil)
 ================================
+####***Devops has a nice script to setup a fresh instance, talk to Phil or Mike.
+
 This is only for production and is not formatted the best. Be wary of what follows a little.
 
 Spin up an AWS instance using the jive-el6-v8 AMI according to the standard devops procedure
