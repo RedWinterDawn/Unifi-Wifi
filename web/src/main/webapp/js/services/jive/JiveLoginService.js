@@ -61,7 +61,7 @@ managedWifi.factory('jiveLoginService', ['$q', '$http', '$cookies', '$location',
             deferred.resolve();
 
         var client_id = "27abd5a4-9e81-4e4e-9ccf-f6e81df64d19";
-        var redirect_uri = "https:%2F%2Fwifi.jive.com%2Findex.html%23%2Foauth2";
+        var redirect_uri = "http:%2F%2Flocalhost:8000%2Findex.html%23%2Foauth2";
         var uri = "https://auth.jive.com/oauth2/v2/grant?client_id="+client_id+"&inflightRequest="+account+"&redirect_uri="+redirect_uri+"&response_type=token&scope=pbx.v1.profile";
             
         window.location.href = uri;

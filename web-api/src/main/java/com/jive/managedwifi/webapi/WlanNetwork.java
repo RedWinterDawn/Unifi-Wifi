@@ -25,6 +25,14 @@ public interface WlanNetwork
 
   @POST
   @Produces(MediaType.APPLICATION_JSON)
+  @Path("groups/add/wlan")
+  public Map createGroup(@PathParam("unifises") final String sessionId,
+      final javax.ws.rs.core.Form networkGroup,
+      @PathParam("account") final String account,
+      @PathParam("token") final String token);
+
+  @POST
+  @Produces(MediaType.APPLICATION_JSON)
   @Path("groups/user")
   public Map getUserGroups(@PathParam("unifises") final String sessionId,
       @PathParam("account") final String account,

@@ -10,17 +10,44 @@ managedWifi.controller('NetworksController', ["$scope", "$location", "$routePara
                 function(allNetworkData){
                     notificationService.clear("loadNetworks");
 
+                    $scope.zeroHandoffGroup2G = allNetworkData.wlangroups.filter(function(group){return group.name == 'zero-handoff2G';})[0];
+                    $scope.zeroHandoffGroup5G = allNetworkData.wlangroups.filter(function(group){return group.name == 'zero-handoff5G';})[0];
+
+                    if($scope.zeroHandoffGroup2G == undefined){
+                        var networkGroup = {
+                            name: "zero-handoff2G",
+                            roam_enabled:true,
+                            roam_radio:"ng",
+                            roam_channel_ng:1,
+                            roam_channel_na:36
+                        };
+                        
+                        networkService.createZeroHandoffGroup(networkGroup);
+                    }
+
+                    if($scope.zeroHandoffGroup5G == undefined){
+                        var networkGroup = {
+                            name: "zero-handoff5G",
+                            roam_enabled:true,
+                            roam_radio:"na",
+                            roam_channel_ng:1,
+                            roam_channel_na:36
+                        };
+                        
+                        networkService.createZeroHandoffGroup(networkGroup);
+                    }
+
                     allNetworkData.networks.forEach(function(network){ // modify model to work with angular particulars
                         network.id = network._id;
                     });
                     $scope.networks = allNetworkData.networks;
                     $scope.paginator.updateTotalItems($scope.networks.length);
         
-		    siteSettingsService.getAll().then(
-                         function(settings){
-                		$scope.guestSettings = settings.filter(function(setting){return setting.key == 'guest_access'})[0];
-			 } 
-       		    )	   
+				    siteSettingsService.getAll().then(
+	                     function(settings){
+	                    	 $scope.guestSettings = settings.filter(function(setting){return setting.key == 'guest_access'})[0];
+	                     } 
+				    );	   
                 },
                 function(reason){
                     //notificationService.error("loadNetworks", "An error occurred while loading networks.");

@@ -1,17 +1,17 @@
 <div class="row-fluid page-title">
     <div class="span12">
-        <h1 class="content-title" ng-show="!network.is_guest">{{isNew ? "Create New Network" : ("Manage " + network.name) }}</h1>
-        <h1 class="content-title" ng-show="network.is_guest">{{isNew ? "Create New Guest Network" : ("Manage " + network.name) }}</h1>
+        <h1 class="content-title" ng-show="!network.is_guest">{{isNew ? "Create New Network" : ("Manage: " + network.name) }}</h1>
+        <h1 class="content-title" ng-show="network.is_guest">{{isNew ? "Create New Guest Network" : ("Manage: " + network.name) }}</h1>
         <ul class="crumbs" ng-show="network.is_guest">
             <li><a href="#/networks">Wireless Networks</a>
             </li>
-            <li><a style="cursor:pointer;">{{isNew ? "Create New Guest Network" : ("Manage " + network.name) }}</a>
+            <li><a style="cursor:pointer;">{{isNew ? "Create New Guest Network" : ("Manage: " + network.name) }}</a>
             </li>
         </ul>
         <ul class="crumbs" ng-show="!network.is_guest">
             <li><a href="#/networks">Wireless Networks</a>
             </li>
-            <li><a style="cursor:pointer;">{{isNew ? "Create New Network" : ("Manage " + network.name) }}</a>
+            <li><a style="cursor:pointer;">{{isNew ? "Create New Network" : ("Manage: " + network.name) }}</a>
             </li>
         </ul>
     </div>
@@ -38,6 +38,68 @@
                     </ul>
                 </div>
             </div>
+            <!--  <div class="row-fluid">
+                <div class="span3 control-group">
+                    <div class="controls">
+                        <label class="checkbox" style="display: inline-block; margin-left:20px">
+                            <input type="checkbox" ng-model="network.zeroHandoff2G">Zero Handoff 2G</label>
+                    </div>
+                    <div class="controls" style="display: inline-block; margin-left:20px" ng-show="network.zeroHandoff2G">
+                        <select name="2GChannel" ng-model="network.zeroHandoff2G.channel" ng-required="network.zeroHandoff2G">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                        </select>
+                        <div ng-show="form.zeroHandoff2G.channel.$error.required" class="tip help">Please select a channel</div>
+                    </div>
+
+                </div>
+            </div> -->
+            <!-- <div class="row-fluid">
+                <div class="span3 control-group">
+                    <div class="controls">
+                        <label class="radio" style="display: inline-block; margin-left:20px">
+                            <input type="radio" ng-model="network.zeroHandoff2G" ng-value="true">Zero Handoff 2G
+                        </label>
+                        <label class="radio" style="display: inline-block; margin-left:20px">
+                            <input type="radio" ng-model="network.zeroHandoff2G" ng-value="false">Zero Handoff 5G
+                        </label>
+                    </div>
+                    <div class="controls" style="display: inline-block; margin-left:20px" ng-show="network.zeroHandoff5G">
+                        <select name="2GChannel" ng-model="network.zeroHandoff5G.channel" ng-required="network.zeroHandoff5G">
+                            <option value="36">36</option>
+                            <option value="40">40</option>
+                            <option value="44">44</option>
+                            <option value="48">48</option>
+                            <option value="52">52(dfs)</option>
+                            <option value="56">56(dfs)</option>
+                            <option value="60">60(dfs)</option>
+                            <option value="64">64(dfs)</option>
+                            <option value="100">100(dfs)</option>
+                            <option value="104">104(dfs)</option>
+                            <option value="108">108(dfs)</option>
+                            <option value="112">112(dfs)</option>
+                            <option value="116">116(dfs)</option>
+                            <option value="132">132(dfs)</option>
+                            <option value="140">140(dfs)</option>
+                            <option value="149">149</option>
+                            <option value="153">153</option>
+                            <option value="157">157</option>
+                            <option value="161">161</option>
+                            <option value="165">165</option>
+                        </select>
+                        <div ng-show="form.zeroHandoff5G.channel.$error.required" class="tip help">Please select a channel</div>
+                    </div>
+                </div>
+            </div> -->
             <div class="container-fluid">
                 <div class="row-fluid" ng-show="activeItem == 'Configuration'">
                     <div class="span12">
@@ -107,7 +169,7 @@
                                                         </label>
                                                     </div>
                                                 </div>
-                                                <div ng-style="{ color: getColor()}" class="control-group" >
+                                                <div ng-style="{ color: getColor()}" class="control-group">
                                                     <div class="control-label">Security</div>
                                                     <div class="controls">
                                                         <label class="radio">
@@ -119,9 +181,9 @@
                                                         <label class="radio">
                                                             <input type="radio" ng-model="network.security" ng-disabled="network.is_guest" value="wpapsk">WPA-Personal
                                                         </label>
-                                                        <!-- <label class="radio">
+                                                        <label class="radio">
                                                             <input type="radio" ng-model="network.security" value="wpaeap">WPA-Enterprise
-                                                        </label> -->
+                                                        </label>
                                                     </div>
                                                 </div>
                                                 <div class="control-group" ng-show="network.security == 'wep'" ng-class="form.wepKey.$invalid ? 'error' : ''">
@@ -181,6 +243,28 @@
                                                             <input type="checkbox" ng-model="showWpaePassword">Show Password</label>
                                                         <i ng-hide="form.wpaeapPass.$invalid" class="icon-ok-sign active"></i>
                                                         <div ng-show="form.wpaeapPass.$invalid" class="tip help">Please provide a passkey of at least length 8</div>
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    <div class="control-label">Zero Handoff</div>
+                                                    <div class="controls">
+                                                        <label class="radio">
+                                                            <input type="radio" ng-model="network.zeroHandoff" ng-value="true">Enabled
+                                                        </label>
+                                                        <label class="radio">
+                                                            <input type="radio" ng-model="network.zeroHandoff" ng-value="false">Disabled
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="control-group" ng-show="network.zeroHandoff" ng-class="form.zeroHandoffRadio.$invalid ? 'error' : ''">
+                                                    <div class="control-label">Radio</div>
+                                                    <div class="controls">
+                                                        <select name="zeroHandoffRadio" ng-model="network.zeroHandoffRadio" ng-required="network.zeroHandoff">
+                                                            <option value="2G">2G</option>
+                                                            <option value="5G">5G</option>
+                                                        </select>
+                                                        <i ng-hide="form.zeroHandoffRadio.$error.required"></i>
+                                                        <div ng-show="form.zeroHandoffRadio.$error.required" class="tip help">A radio is required</div>
                                                     </div>
                                                 </div>
                                             </div>

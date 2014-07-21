@@ -4,8 +4,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" src="//use.typekit.net/yre6wat.js"></script>
-    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
     <title>WiFi Management- Jive</title>
     <link rel="stylesheet" href="lib/select2/select2.css">
     <link rel="stylesheet" href="css/jive.css">
@@ -71,7 +69,7 @@
                         <div class="title"><i style="position: relative; top:-3px" class="icon-rss rotate-45-left"></i>WiFi</div>
                     </li>
                     <li class="brand" ng-bind="selectedSite.friendly_name" style="width:30%; text-align:left" ng-show="sites"></li>
-                    <li class="dropdown" ng-class="isActive('Settings')" ng-show="sites" style="float:right"><a ng-click="navigate('settings')" data-toggle="dropdown">Account Settings</a>
+                    <li class="dropdown" ng-class="isActive('Settings')" ng-show="sites" style="float:right"><a ng-click="navigate('settings')" data-toggle="dropdown">AP Group Settings</a>
                     </li>
                     <li class="dropdown" ng-class="isActive('Users')" ng-show="sites" style="float:right"><a ng-click="navigate('users')" data-toggle="dropdown">Connected User Devices</a>
                     </li>
@@ -93,7 +91,7 @@
         </div>
         <div class="main-sidebar" ng-controller="MainMenuController">
             <div ng-controller="RefreshDataController" style="position: relative; width: 100%;">
-                <h2 style="margin-left: 10px; float: left; font-size:27px; margin-bottom: 0px;">AP GROUPS</h2>
+                <h2 style="margin-left: 10px; float: left; font-size:17px; margin-bottom: 0px;">ACCESS POINT(AP) GROUPS</h2>
                 <div style="text-align: right; padding-top: 20px; padding-right: 10px;">
                     <big><i class="icon-refresh" ng-click="refreshData()"></i>
                     </big>
@@ -131,7 +129,7 @@
                             <a class="delete-site" ng-click="deleteSite(site,sites)"><i class="icon-trash" ></i></a>
                             <a ng-click="selectSite(site)">
                                 <h4 ng-bind="site.friendly_name" class="media-heading"></h4>
-                                <small ng-bind-template="{{site.city}}, {{site.state}} {{site.zip}}"></small>
+                               <!--  <small ng-bind-template="{{site.city}}, {{site.state}} {{site.zip}}"></small> -->
                             </a>
                         </li>
                     </ul>

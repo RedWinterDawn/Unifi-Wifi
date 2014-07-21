@@ -3,7 +3,7 @@
 managedWifi.controller('NewSiteController', ["$scope", "$location", "$routeParams", "SiteService", "notificationService", "dialogService", "SiteSettingsService",
     function NewSiteController($scope, $location, $routeParams, siteService, notificationService, dialogService, siteSettingsService) {
         $scope.original = {
-            friendly_name: "New Location"
+            friendly_name: ""
         };
         
         $scope.site = angular.copy($scope.original);

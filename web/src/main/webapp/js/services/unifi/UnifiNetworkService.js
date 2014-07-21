@@ -118,38 +118,44 @@ managedWifi.factory('unifiNetworkService', ['$q', '$http', 'appSettings', 'messa
             delete network.id;
             delete network._id;
             var firstGroup = wlangroups == null ? [] : wlangroups.filter(function(group){return group.attr_no_edit == undefined;});
-            if(firstGroup.length > 0)
-                network.wlangroup_id = firstGroup[0]._id;
+            if(firstGroup.length > 0) {
+                if(network.zeroHandoff){
+                	if(network.zeroHandoffRadio == '2G')
+                		network.wlangroup_id = firstGroup.filter(function(group){return group.name == "zero-handoff2G";})[0]._id;
+                	else
+                		network.wlangroup_id = firstGroup.filter(function(group){return group.name == "zero-handoff5G";})[0]._id;
+                }
+                else{
+                    network.wlangroup_id = firstGroup[0]._id;
+                }
+            }
+
             var deferred = $q.defer();
-	    if(usergroups == null || usergroups.length == 0){
-                this.getAll().then(function(allNetworkData){
-                    network.usergroup_id = usergroups[0]._id;
-                    deferred = $q.defer();
-                    service.webServicePutForm("/network", network).then(
-                        function(response) {
-                            networks.push(response.data.data[0]);
-                            deferred.resolve();
-                        },
-                        function(response) {
-                            deferred.reject(response);
-                        }
-                    );
-                })
+            if(usergroups == null || usergroups.length == 0){
+            	var self = this;
+                return this.getAll().then(function(allNetworkData){
+                    return self.add(network);
+                });
             }
-            else{
-                network.usergroup_id = usergroups[0]._id;
-                deferred = $q.defer();
-                service.webServicePutForm("/network", network).then(
-                    function(response) {
-                        networks.push(response.data.data[0]);
-                        deferred.resolve();
-                    },
-                    function(response) {
-                        deferred.reject(response);
-                    }
-                );
-            }
+	        network.usergroup_id = usergroups[0]._id;
+	        deferred = $q.defer();
+	        service.webServicePutForm("/network", network).then(
+	            function(response) {
+	                networks.push(response.data.data[0]);
+	                deferred.resolve();
+	            },
+	            function(response) {
+	                deferred.reject(response);
+	            }
+	        );
             return deferred.promise;
+        },
+
+        createZeroHandoffGroup: function(networkGroup){
+            var copy = angular.copy(networkGroup);
+            delete copy.id;
+            delete copy._id;
+            return service.webServicePostForm("/network/groups/add/wlan", copy);
         },
 
         delete: function(network){
