@@ -237,7 +237,7 @@ portal-api.URL=https://api.jive.com/wifi
 ```
 
 Find `JiveLoginService.js`
-Replace `wifi.jive.com` in the redirect_url path to `localhost:8000`
+Replace `https:%2F%2Fwifi.jive.com` in the redirect_url path to `http:%2F%2Flocalhost:8000`
 
 
 If you are connecting to the servers Unifi Controller also do:
