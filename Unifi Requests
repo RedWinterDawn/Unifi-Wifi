@@ -42,7 +42,7 @@ Unifi Commands and Default Results
     desc: "Basic Site"
     name: "111111111"
 
-####Command(Get Sites):
+####Command(Get Site):
 	Remote Address:10.104.0.199:8443
 	Request URL:https://10.104.0.199:8443/api/s/111111111/cmd/sitemgr
 	Request Method:POST
@@ -329,9 +329,9 @@ Unifi Commands and Default Results
 	name: "Default"
 	site_id: "53c44a49e4b0427b33a6e7f3"
 
-####Command(Add Network Group):
+####Command(Add Network Group w/ zero handoff 2G):
     Remote Address:10.104.0.199:8443
-    Request URL:https://10.104.0.199:8443/api/s/111111111/add/wlangroup
+    Request URL:https://10.104.0.199:8443/api/s/default/add/wlangroup
     Request Method:POST
     Status Code:200 OK
     Request Headersview source
@@ -340,31 +340,63 @@ Unifi Commands and Default Results
     Accept-Language:en-US,en;q=0.8
     Cache-Control:no-cache
     Connection:keep-alive
-    Content-Length:171
+    Content-Length:169
     Content-Type:application/x-www-form-urlencoded; charset=UTF-8
-    Cookie:unifises=10c1857b7ff68b1d69ad235a048b080f
+    Cookie:unifises=fc6167f45da7c3aa06792447ca9f31cc
     Host:10.104.0.199:8443
     Origin:https://10.104.0.199:8443
     Pragma:no-cache
-    Referer:https://10.104.0.199:8443/manage/s/111111111
-    User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36
+    Referer:https://10.104.0.199:8443/manage/s/default?name=Zero+handoff&roam_radio=ng&roam_channel_ng=1&roam_channel_na=36
+    User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36
     X-Requested-With:XMLHttpRequest
     Form Dataview sourceview URL encoded
-    json:{"name":"Network Group","roam_enabled":false,"roam_radio":"ng","roam_channel_ng":"1","roam_channel_na":"36"}
+    json:{"name":"zero handoff","roam_enabled":true,"roam_radio":"ng","roam_channel_ng":"1","roam_channel_na":"36"}
     Response Headersview source
-    Content-Length:246
+    Content-Length:244
     Content-Type:application/json;charset=ISO-8859-1
-    Date:Mon, 14 Jul 2014 22:58:05 GMT
+    Date:Mon, 21 Jul 2014 14:35:36 GMT
     Server:Apache-Coyote/1.1
 
 ####Result:
-    _id: "53c4607de4b0427b33a6e814"
-    name: "Network Group"
-    roam_channel_na: "36"
-    roam_channel_ng: "1"
-    roam_enabled: false
-    roam_radio: "ng"
-    site_id: "53c44a49e4b0427b33a6e7f3"
+    0: {_id:53cd2538e4b0427b33a6ec52, name:zero handoff, roam_channel_na:36, roam_channel_ng:1,…}
+        _id: "53cd2538e4b0427b33a6ec52"
+        name: "zero handoff"
+        roam_channel_na: "36"
+        roam_channel_ng: "1"
+        roam_enabled: true
+        roam_radio: "ng"
+        site_id: "53a1acb30cf2253a5154942d"
+
+####Command(Delete Network Group)
+    Remote Address:10.104.0.199:8443
+    Request URL:https://10.104.0.199:8443/api/s/v9yqebygpstinggbysgu/del/wlangroup/53b1cd750cf2c3dd2d3b5db9
+    Request Method:POST
+    Status Code:200 OK
+    Request Headersview source
+    Accept:*/*
+    Accept-Encoding:gzip,deflate,sdch
+    Accept-Language:en-US,en;q=0.8
+    Cache-Control:no-cache
+    Connection:keep-alive
+    Content-Length:11
+    Content-Type:application/x-www-form-urlencoded; charset=UTF-8
+    Cookie:unifises=5d414017e680721a443845126e31d70a
+    Host:10.104.0.199:8443
+    Origin:https://10.104.0.199:8443
+    Pragma:no-cache
+    Referer:https://10.104.0.199:8443/manage/s/v9yqebygpstinggbysgu
+    User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36
+    X-Requested-With:XMLHttpRequest
+    Form Dataview sourceview URL encoded
+    json:{}
+    Response Headersview source
+    Content-Length:41
+    Content-Type:application/json;charset=ISO-8859-1
+    Date:Thu, 17 Jul 2014 19:51:41 GMT
+    Server:Apache-Coyote/1.1
+
+####Result
+    rc: "ok"
 
 ##Networks
 
