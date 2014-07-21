@@ -1327,3 +1327,387 @@ Unifi Commands and Default Results
 
 ####Result:
     None
+
+##Stats
+
+####Command (User):
+    Remote Address:10.104.0.199:8443
+    Request URL:https://10.104.0.199:8443/api/s/cabfrcvinzbgchnrqpmy/stat/alluser
+    Request Method:POST
+    Status Code:200 OK
+    Request Headersview source
+    Accept:*/*
+    Accept-Encoding:gzip,deflate,sdch
+    Accept-Language:en-US,en;q=0.8
+    Cache-Control:no-cache
+    Connection:keep-alive
+    Content-Length:87
+    Content-Type:application/x-www-form-urlencoded; charset=UTF-8
+    Cookie:unifises=0ebe3c37128cf8a9eccf71a18bd843ee
+    Host:10.104.0.199:8443
+    Origin:https://10.104.0.199:8443
+    Pragma:no-cache
+    Referer:https://10.104.0.199:8443/manage/s/cabfrcvinzbgchnrqpmy
+    User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36
+    X-Requested-With:XMLHttpRequest
+    Form Dataview sourceview URL encoded
+    json:{"type":"all","is_offline":false,"within":"144"}
+    Response Headersview source
+    Content-Encoding:gzip
+    Content-Type:application/json;charset=ISO-8859-1
+    Date:Mon, 21 Jul 2014 21:11:39 GMT
+    Server:Apache-Coyote/1.1
+    Transfer-Encoding:chunked
+    Vary:Accept-Encoding
+
+####Result (per user):
+    data: [{_id:53b339eb0cf2c3dd2d3b5fc2, bytes:9868380571, duration:57820, first_seen:1404254698,…},…]
+        0: {_id:53b339eb0cf2c3dd2d3b5fc2, bytes:9868380571, duration:57820, first_seen:1404254698,…}
+            _id: "53b339eb0cf2c3dd2d3b5fc2"
+            bytes: 9868380571
+            duration: 57820
+            first_seen: 1404254698
+            hostname: "DownstasAppleTV"
+            is_guest: false
+            last_seen: 1405977060
+            mac: "f4:f9:51:dd:56:a4"
+            oui: "Apple"
+            rx_bytes: 227471150
+            site_id: "53a1b27d0cf2253a51549481"
+            stat: {_id:53b4a1be978fe35db1042298, bytes:9868380571, duration:57820, last_seen:1404404600, o:user,…}
+                _id: "53b4a1be978fe35db1042298"
+                bytes: 9868380571
+                duration: 57820
+                last_seen: 1404404600
+                o: "user"
+                rx_bytes: 227471150
+                site_id: "53a1b27d0cf2253a51549481"
+                tx_bytes: 9640909421
+                user: "f4:f9:51:dd:56:a4"
+            tx_bytes: 9640909421
+        1: {_id:53a2fcdd0cf2bb07755c3d32, bytes:13817825806, duration:1066492, first_seen:1403190492,…}
+        2: {_id:53a29b170cf2bb07755c3d1f, bytes:16059498765, duration:529528, first_seen:1403165462,…}
+        3: {_id:53b2587c0cf2c3dd2d3b5ef6, bytes:9270530791, duration:40979, first_seen:1404196988,…}
+        4: {_id:53a29adb0cf2bb07755c3d1d, bytes:177593802, duration:27089, first_seen:1403165403,…}
+
+####Command (Access Point):
+    Remote Address:10.104.0.199:8443
+    Request URL:https://10.104.0.199:8443/api/s/cabfrcvinzbgchnrqpmy/stat/sta
+    Request Method:POST
+    Status Code:200 OK
+    Request Headersview source
+    Accept:*/*
+    Accept-Encoding:gzip,deflate,sdch
+    Accept-Language:en-US,en;q=0.8
+    Cache-Control:no-cache
+    Connection:keep-alive
+    Content-Length:11
+    Content-Type:application/x-www-form-urlencoded; charset=UTF-8
+    Cookie:unifises=0ebe3c37128cf8a9eccf71a18bd843ee
+    Host:10.104.0.199:8443
+    Origin:https://10.104.0.199:8443
+    Pragma:no-cache
+    Referer:https://10.104.0.199:8443/manage/s/cabfrcvinzbgchnrqpmy
+    User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36
+    X-Requested-With:XMLHttpRequest
+    Form Dataview sourceview URL encoded
+    json:{}
+    Response Headersview source
+    Content-Length:1978
+    Content-Type:application/json;charset=ISO-8859-1
+    Date:Mon, 21 Jul 2014 21:06:25 GMT
+    Server:Apache-Coyote/1.1
+
+####Result (For each access point):
+    _id: "53b597b01ef73454048c10d5"
+    _rx_bytes: 501704
+    _rx_crypts: 0
+    _rx_dropped: 0
+    _rx_errors: 0
+    _rx_frags: 0
+    _rx_packets: 2503
+    _tx_bytes: 383368
+    _tx_dropped: 0
+    _tx_errors: 0
+    _tx_packets: 2411
+    _tx_retries: 409
+    _uptime: 19817
+    ap_mac: "24:a4:3c:8c:88:d2"
+    assoc_time: 1404409747
+    auth_time: 4294967153
+    authorized: true
+    bssid: "2a:a4:3c:8d:88:d2"
+    bytes: 9868514540
+    bytes-d: 114
+    bytes-r: 1
+    ccq: 991
+    channel: 11
+    dhcpend_time: 1800
+    dhcpstart_time: 1794
+    essid: "Aaron Wifi Jive"
+    first_seen: 1404254698
+    hostname: "DownstasAppleTV"
+    idletime: 17
+    ip: "192.168.1.235"
+    is_11a: null
+    is_11ac: null
+    is_11b: null
+    is_11n: true
+    is_guest: false
+    last_seen: 1405976761
+    mac: "f4:f9:51:dd:56:a4"
+    noise: -98
+    oui: "Apple"
+    powersave_enabled: false
+    qos_policy_applied: true
+    radio: "ng"
+    rssi: 35
+    rx_bytes: 227496430
+    rx_bytes-d: 64
+    rx_bytes-r: 1
+    rx_crypts: 0
+    rx_crypts-d: 0
+    rx_crypts-r: 0
+    rx_dropped: 0
+    rx_dropped-d: 0
+    rx_dropped-r: 0
+    rx_errors: 0
+    rx_errors-d: 0
+    rx_errors-r: 0
+    rx_frags: 0
+    rx_frags-d: 0
+    rx_frags-r: 0
+    rx_mcast: 43
+    rx_packets: 2324997
+    rx_packets-d: 1
+    rx_packets-r: 0
+    rx_rate: 72222
+    rx_retries: 6
+    signal: -63
+    site_id: "53a1b27d0cf2253a51549481"
+    state: 15
+    state_ht: true
+    state_pwrmgt: false
+    tx_bytes: 9641018110
+    tx_bytes-d: 50
+    tx_bytes-r: 0
+    tx_dropped: 0
+    tx_dropped-d: 0
+    tx_dropped-r: 0
+    tx_errors: 0
+    tx_errors-d: 0
+    tx_errors-r: 0
+    tx_packets: 6588111
+    tx_packets-d: 1
+    tx_packets-r: 0
+    tx_power: 46
+    tx_rate: 72222
+    tx_retries: 602053
+    tx_retries-d: 0
+    tx_retries-r: 0
+    uptime: 1567014
+    user_id: "53b339eb0cf2c3dd2d3b5fc2"
+
+####Command (Hourly - Statistics page):
+    Remote Address:10.104.0.199:8443
+    Request URL:https://10.104.0.199:8443/api/s/wkbntmd3kiqpba46zmqj/stat/report/hourly.system
+    Request Method:POST
+    Status Code:200 OK
+    Request Headersview source
+    Accept:*/*
+    Accept-Encoding:gzip,deflate,sdch
+    Accept-Language:en-US,en;q=0.8
+    Cache-Control:no-cache
+    Connection:keep-alive
+    Content-Length:129
+    Content-Type:application/x-www-form-urlencoded; charset=UTF-8
+    Cookie:unifises=0ebe3c37128cf8a9eccf71a18bd843ee
+    Host:10.104.0.199:8443
+    Origin:https://10.104.0.199:8443
+    Pragma:no-cache
+    Referer:https://10.104.0.199:8443/manage/s/wkbntmd3kiqpba46zmqj
+    User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36
+    X-Requested-With:XMLHttpRequest
+    Form Dataview sourceview URL encoded
+    json:{"attrs":["bytes","num_sta","time"],"start":1405886400000,"end":1405972800000}
+    Response Headersview source
+    Content-Encoding:gzip
+    Content-Type:application/json;charset=ISO-8859-1
+    Date:Mon, 21 Jul 2014 20:56:07 GMT
+    Server:Apache-Coyote/1.1
+    Transfer-Encoding:chunked
+    Vary:Accept-Encoding
+
+####Results (Time to # of bytes to # of clients):
+    data: [{_id:53cc1fcb1ef73454048d5df2, bytes:31114826, num_sta:3, o:system, time:1405886400000},…]
+        0: {_id:53cc1fcb1ef73454048d5df2, bytes:31114826, num_sta:3, o:system, time:1405886400000}
+            _id: "53cc1fcb1ef73454048d5df2"
+            bytes: 31114826
+            num_sta: 3
+            o: "system"
+            time: 1405886400000
+        1: {_id:53cc11d91ef73454048d5dc4, bytes:126802210, num_sta:2, o:system, time:1405882800000}
+            _id: "53cc11d91ef73454048d5dc4"
+            bytes: 126802210
+            num_sta: 2
+            o: "system"
+            time: 1405882800000
+        2: {_id:53cc03ab1ef73454048d5d6c, bytes:137364065, num_sta:3, o:system, time:1405879200000}
+        3: {_id:53cbf5b31ef73454048d5d3c, bytes:402607, num_sta:1, o:system, time:1405875600000}
+        4: {_id:53cbe7851ef73454048d5cec, bytes:288215, num_sta:1, o:system, time:1405872000000}
+        5: {_id:53cbd9941ef73454048d5cc0, bytes:2063266, num_sta:3, o:system, time:1405868400000}
+        6: {_id:53cbcb661ef73454048d5c70, bytes:11333194, num_sta:3, o:system, time:1405864800000}
+        7: {_id:53cbbd6e1ef73454048d5c42, bytes:401143924, num_sta:3, o:system, time:1405861200000}
+        8: {_id:53cbaf411ef73454048d5bf1, bytes:459170010, num_sta:3, o:system, time:1405857600000}
+        9: {_id:53cba14a1ef73454048d5bc2, bytes:5328145, num_sta:3, o:system, time:1405854000000}
+        10: {_id:53cb93521ef73454048d5b90, bytes:1248506, num_sta:3, o:system, time:1405850400000}
+        11: {_id:53cb85251ef73454048d5b42, bytes:1153752, num_sta:3, o:system, time:1405846800000}
+        12: {_id:53cb772e1ef73454048d5b04, bytes:1314402, num_sta:3, o:system, time:1405843200000}
+        13: {_id:53cb68ff1ef73454048d5ab6, bytes:1253832, num_sta:3, o:system, time:1405839600000}
+        14: {_id:53cb5af51ef73454048d5a4f, bytes:1303747, num_sta:3, o:system, time:1405836000000}
+        15: {_id:53cb4cdb1ef73454048d59ee, bytes:40538131, num_sta:3, o:system, time:1405832400000}
+        16: {_id:53cb3ecb1ef73454048d589e, bytes:20864362, num_sta:2, o:system, time:1405828800000}
+        17: {_id:53cb30c51ef73454048d585c, bytes:354227, num_sta:1, o:system, time:1405825200000}
+        18: {_id:53cb22b51ef73454048d57c6, bytes:395558, num_sta:1, o:system, time:1405821600000}
+        19: {_id:53cb14a61ef73454048d571c, bytes:401336, num_sta:1, o:system, time:1405818000000}
+        20: {_id:53cb06941ef73454048d5559, bytes:299775, num_sta:1, o:system, time:1405814400000}
+        21: {_id:53caf8851ef73454048d550d, bytes:278650, num_sta:1, o:system, time:1405810800000}
+        22: {_id:53caea751ef73454048d53f8, bytes:190542, num_sta:1, o:system, time:1405807200000}
+        23: {_id:53cadc641ef73454048d53b9, bytes:302216, num_sta:1, o:system, time:1405803600000}
+        24: {_id:53cace6e1ef73454048d5317, bytes:197991, num_sta:1, o:system, time:1405800000000}
+
+####Command (Statistics page):
+    Remote Address:10.104.0.199:8443
+    Request URL:https://10.104.0.199:8443/api/s/wkbntmd3kiqpba46zmqj/stat/quicklook
+    Request Method:POST
+    Status Code:200 OK
+    Request Headersview source
+    Accept:*/*
+    Accept-Encoding:gzip,deflate,sdch
+    Accept-Language:en-US,en;q=0.8
+    Cache-Control:no-cache
+    Connection:keep-alive
+    Content-Length:11
+    Content-Type:application/x-www-form-urlencoded; charset=UTF-8
+    Cookie:unifises=0ebe3c37128cf8a9eccf71a18bd843ee
+    Host:10.104.0.199:8443
+    Origin:https://10.104.0.199:8443
+    Pragma:no-cache
+    Referer:https://10.104.0.199:8443/manage/s/wkbntmd3kiqpba46zmqj
+    User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36
+    X-Requested-With:XMLHttpRequest
+    Form Dataview sourceview URL encoded
+    json:{}
+    Response Headersview source
+    Content-Encoding:gzip
+    Content-Type:application/json;charset=ISO-8859-1
+    Date:Mon, 21 Jul 2014 20:36:10 GMT
+    Server:Apache-Coyote/1.1
+    Transfer-Encoding:chunked
+    Vary:Accept-Encoding
+
+####Result:
+    data: [{,…}]
+    0: {,…}
+        aps_current: [{_id:53b46725fc0c2db25d87bbb0, ap:24:a4:3c:10:10:05, bytes:2327217193, guest-na-rx_bytes:58586,…},…]
+            0: {_id:53b46725fc0c2db25d87bbb0, ap:24:a4:3c:10:10:05, bytes:2327217193, guest-na-rx_bytes:58586,…}
+                _id: "53b46725fc0c2db25d87bbb0"
+                ap: "24:a4:3c:10:10:05"
+                bytes: 2327217193
+                guest-na-rx_bytes: 58586
+                guest-na-rx_frags: 8327617
+                guest-na-rx_packets: 546
+                guest-na-time_delta: 1405974945
+                guest-na-tx_bytes: 84941
+                guest-na-tx_packets: 457
+                guest-na-tx_retries: 7150
+                guest-ng-rx_bytes: 8093961
+                guest-ng-rx_frags: 115579308
+                guest-ng-rx_packets: 72734
+                guest-ng-time_delta: 1405974945
+                guest-ng-tx_bytes: 14327462
+                guest-ng-tx_packets: 66010
+                guest-ng-tx_retries: 99172
+                guest-rx_bytes: 8152547
+                guest-rx_frags: 123906925
+                guest-rx_packets: 73280
+                guest-time_delta: 2811949890
+                guest-tx_bytes: 14412403
+                guest-tx_packets: 66467
+                guest-tx_retries: 106322
+                na-rx_bytes: 136028658
+                na-rx_frags: 16655234
+                na-rx_packets: 661756
+                na-time_delta: 2811949890
+                na-tx_bytes: 998197655
+                na-tx_errors: 43
+                na-tx_packets: 1013991
+                na-tx_retries: 14300
+                ng-rx_bytes: 553427407
+                ng-rx_errors: 6
+                ng-rx_frags: 231158617
+                ng-rx_packets: 1092837
+                ng-time_delta: 2811949890
+                ng-tx_bytes: 639563473
+                ng-tx_errors: 3866
+                ng-tx_packets: 1115197
+                ng-tx_retries: 198344
+                o: "ap"
+                rx_bytes: 689456065
+                rx_errors: 6
+                rx_frags: 247813851
+                rx_packets: 1754593
+                site_id: "53a1af4c0cf2253a51549457"
+                time_delta: 5623899780
+                tx_bytes: 1637761128
+                tx_errors: 3909
+                tx_packets: 2129188
+                tx_retries: 212644
+                uplink-rx_bytes: 1737485875
+                uplink-rx_packets: 2898127
+                uplink-time_delta: 1405974945
+                uplink-tx_bytes: 849291503
+                uplink-tx_packets: 2022077
+                user-na-rx_bytes: 135970072
+                user-na-rx_frags: 8327617
+                user-na-rx_packets: 661210
+                user-na-time_delta: 1405974945
+                user-na-tx_bytes: 998112714
+                user-na-tx_errors: 43
+                user-na-tx_packets: 1013534
+                user-na-tx_retries: 7150
+                user-ng-rx_bytes: 545333446
+                user-ng-rx_errors: 6
+                user-ng-rx_frags: 115579309
+                user-ng-rx_packets: 1020103
+                user-ng-time_delta: 1405974945
+                user-ng-tx_bytes: 625236011
+                user-ng-tx_errors: 3866
+                user-ng-tx_packets: 1049187
+                user-ng-tx_retries: 99172
+                user-rx_bytes: 681303518
+                user-rx_errors: 6
+                user-rx_frags: 123906926
+                user-rx_packets: 1681313
+                user-time_delta: 2811949890
+                user-tx_bytes: 1623348725
+                user-tx_errors: 3909
+                user-tx_packets: 2062721
+                user-tx_retries: 106322
+            1: {_id:53b4675ffc0c2db25d87bbff, ap:dc:9f:db:62:93:91, bytes:640241929, guest-ng-rx_bytes:2628595,…}
+        stas_current: []
+        users_life: [{_id:53b7283c1ef73454048c2c8b, bytes:1013700918, duration:82991, last_seen:1405952960, o:user,…},…]
+            0: {_id:53b7283c1ef73454048c2c8b, bytes:1013700918, duration:82991, last_seen:1405952960, o:user,…}
+                _id: "53b7283c1ef73454048c2c8b"
+                bytes: 1013700918
+                duration: 82991
+                last_seen: 1405952960
+                o: "user"
+                rx_bytes: 63467568
+                site_id: "53a1af4c0cf2253a51549457"
+                tx_bytes: 950233350
+                user: "88:1f:a1:16:0b:4e"
+            1: {_id:53bc00051ef73454048c48c9, bytes:983603366, duration:170192, last_seen:1405970685, o:user,…}
+            2: {_id:53b7323d1ef73454048c2ca5, bytes:553637403, duration:41641, last_seen:1404572685, o:user,…}
+            3: {_id:53bb68161ef73454048c4395, bytes:385135004, duration:22083, last_seen:1405577310, o:user,…}
+            4: {_id:53baa3af1ef73454048c3a31, bytes:137825533, duration:6688, last_seen:1405058780, o:user,…}
