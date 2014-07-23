@@ -1,5 +1,7 @@
 package com.jive.managedwifi.unifi;
 
+import java.io.File;
+
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
@@ -41,7 +43,9 @@ public class ServicesHealthCheck implements HealthCheck {
 		log.debug("Portal apis responded with {}", response.getStatus());
 
 		if (response.getStatus() == 200)
-			return true;
+    {
+      return true;
+    }
 
 		return false;
 	}
@@ -61,7 +65,9 @@ public class ServicesHealthCheck implements HealthCheck {
 		log.debug("Unifi Controller responded with {}", response.getStatus());
 
 		if (response.getStatus() == 200 || response.getStatus() == 302)
-			return true;
+    {
+      return true;
+    }
 
 		return false;
 	}
@@ -76,9 +82,29 @@ public class ServicesHealthCheck implements HealthCheck {
 		log.debug("Mongo DB responded with {}", response.getStatus());
 
 		if (response.getStatus() == 200)
-			return true;
+    {
+      return true;
+    }
 
 		return false;
 	}
+
+  private boolean checkDiskSpace()
+  {
+    final long ONE_GIG = 1073741824;
+    final File file = new File("/");
+
+    final long freespace = file.getFreeSpace();
+    final long totalspace = file.getTotalSpace();
+    
+    final long filePercent = freespace / totalspace;
+    
+    if (filePercent > 75 || Long.compare(freespace, ONE_GIG) == -1)
+    {
+      return false;
+    }
+
+    return true;
+  }
 
 }

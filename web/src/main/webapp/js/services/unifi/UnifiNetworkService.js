@@ -162,7 +162,7 @@ managedWifi.factory('unifiNetworkService', ['$q', '$http', 'appSettings', 'messa
         	 if(networks == null || wlangroups == null){
                  var self = this;
                  return this.getAll().then(function(data){
-                     return self.changeAllNetworksZeroHandoff();
+                     return self.changeAllNetworksZeroHandoff(radio);
                  })
              }
         	 
