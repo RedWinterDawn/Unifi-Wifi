@@ -68,10 +68,14 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
                     }
                 );
 
-            if(!$scope.site.zeroHandoff)
+            if(!$scope.site.zeroHandoff) {
             	networkService.changeAllNetworksZeroHandoff("");
-            else if($scope.site.zeroHandoff)
+            	accessPointService.updateAllNetworksZeroHandoff("");
+            }
+            else if($scope.site.zeroHandoff) {
                 networkService.changeAllNetworksZeroHandoff($scope.site.zeroHandoffRadio);
+                accessPointService.updateAllApZeroHandoff($scope.site.zeroHandoffRadio);
+            }
         
             $scope.isNew = $routeParams.id == undefined;
 

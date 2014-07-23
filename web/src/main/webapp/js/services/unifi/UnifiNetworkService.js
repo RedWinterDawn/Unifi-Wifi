@@ -1,4 +1,4 @@
-managedWifi.factory('unifiNetworkService', ['$q', '$http', 'appSettings', 'messagingService', function ($q, $http, appSettings, messagingService) {
+managedWifi.factory('unifiNetworkService', ['$q', '$http', 'appSettings', 'messagingService', 'AccessPointService', function ($q, $http, appSettings, messagingService, accessPointService) {
 
     var allNetworkData = {};
     var networks = null;
@@ -181,6 +181,23 @@ managedWifi.factory('unifiNetworkService', ['$q', '$http', 'appSettings', 'messa
                 networks[i].wlangroup_id = networkGroupId;
                 this.update(networks[i]);
             }
+            
+            accessPointService.getAll().then(
+            	function(accessPoints){
+            		for(var i = 0; i < accessPoints.length; i++){
+            			if(radio == '2G'){
+                			accessPoints[i].wlangroup_id_ng = networkGroupId;
+                			accessPoint[i].wlan_overrides = [];
+                			accessPointService.update(accessPoint);
+            			}
+            			if(radio == '5G'){
+            				accessPoint[i].wlangroup_id_na = networkGroupId;
+                	     	accessPoint[i].wlan_overrides = [];
+                	     	accessPointService.update(accessPoint);
+            			}
+            		}
+            	}
+            );
         },
 
         delete: function(network){

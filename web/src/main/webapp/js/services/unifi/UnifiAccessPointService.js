@@ -84,7 +84,7 @@ managedWifi.factory('unifiAccessPointService', ['$q', '$http', 'appSettings', 'm
                 jive.applyProps(config, update, ["ip", "gateway", "netmask", "dns1", "dns2", "dnssuffix"]);
             return service.webServicePostForm("/device/" + accessPoint._id, {name: accessPoint.name, config_network: update});
         },
-
+        
         upgrade: function(accessPoint){
             return service.webServiceCmdDevMgr({mac: accessPoint.mac, cmd: "upgrade"}).then(function(){
                 accessPoints = null;
