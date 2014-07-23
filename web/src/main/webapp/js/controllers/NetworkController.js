@@ -44,6 +44,7 @@ managedWifi.controller('NetworkController', ["$scope", "$location", "$routeParam
         siteSettingsService.getAll().then(
             function(settings){
                 $scope.guestSettings = settings.filter(function(setting){return setting.key == 'guest_access'})[0];
+                $scope.originalSettingsMgmt = settings.filter(function(setting){return setting.key == 'mgmt'})[0];
 
                 if (!_.has($scope.guestSettings, 'expire')) $scope.guestSettings.expire = '4320';
                 if ($scope.guestSettings.hotspotNoAuth === 'true') {
@@ -54,6 +55,9 @@ managedWifi.controller('NetworkController', ["$scope", "$location", "$routeParam
 
                 if(!_.has($scope.guestSettings, 'redirect_enabled'))
                     $scope.guestSettings.redirect_enabled = false;
+
+                if($scope.originalSettingsMgmt.zeroHandoff)
+                    $scope.original.zeroHandoff = true;
             }
         );
 

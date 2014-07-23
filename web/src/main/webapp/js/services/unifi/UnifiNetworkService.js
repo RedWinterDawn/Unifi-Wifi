@@ -158,6 +158,31 @@ managedWifi.factory('unifiNetworkService', ['$q', '$http', 'appSettings', 'messa
             return service.webServicePostForm("/network/groups/add/wlan", copy);
         },
 
+        changeAllNetworksZeroHandoff: function(radio){
+        	 if(networks == null || wlangroups == null){
+                 var self = this;
+                 return this.getAll().then(function(data){
+                     return self.changeAllNetworksZeroHandoff();
+                 })
+             }
+        	 
+            var networkGroupId;
+            var firstGroup = wlangroups == null ? [] : wlangroups.filter(function(group){return group.attr_no_edit == undefined;});
+            if(firstGroup.length > 0) {
+                if(radio == '2G')
+                    networkGroupId = firstGroup.filter(function(group){return group.name == "zero-handoff2G";})[0]._id;
+                else if(radio == '5G')
+                    networkGroupId = firstGroup.filter(function(group){return group.name == "zero-handoff5G";})[0]._id;
+                else
+                	networkGroupId = firstGroup[0]._id;
+            }
+           
+            for(var i = 0; i < networks.length; i++){
+                networks[i].wlangroup_id = networkGroupId;
+                this.update(networks[i]);
+            }
+        },
+
         delete: function(network){
             var deferred = $q.defer();
 

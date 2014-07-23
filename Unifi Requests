@@ -1,0 +1,1791 @@
+Unifi Commands and Default Results
+===================================
+
+-Each result: {data: {0:...}, meta:{rc:...}} - meta can also include 'msg:'
+
+-Constantly refreshed: alarm, event, device, stats
+
+-"desc" (in the site collection) - '111111111'
+
+##Sites:
+
+####Command(Create Site):
+    Remote Address:10.104.0.199:8443
+    Request URL:https://10.104.0.199:8443/api/s/default/cmd/sitemgr
+    Request Method:POST
+    Status Code:200 OK
+    Request Headersview source
+    Accept:*/*
+    Accept-Encoding:gzip,deflate,sdch
+    Accept-Language:en-US,en;q=0.8
+    Cache-Control:no-cache
+    Connection:keep-alive
+    Content-Length:100
+    Content-Type:application/x-www-form-urlencoded; charset=UTF-8
+    Cookie:unifises=c1d978e5702b1fa2e808923a1fcd8f95
+    Host:10.104.0.199:8443
+    Origin:https://10.104.0.199:8443
+    Pragma:no-cache
+    Referer:https://10.104.0.199:8443/manage/s/default
+    User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36
+    X-Requested-With:XMLHttpRequest
+    Form Dataview sourceview URL encoded
+    json:{"name":"111111111","desc":"Basic Site","cmd":"add-site"}
+    Response Headersview source
+    Content-Length:125
+    Content-Type:application/json;charset=ISO-8859-1
+    Date:Mon, 14 Jul 2014 23:12:26 GMT
+    Server:Apache-Coyote/1.1
+
+####Result:
+    _id: "53c463dae4b0427b33a6e819"
+    desc: "Basic Site"
+    name: "111111111"
+
+####Command(Get Site):
+	Remote Address:10.104.0.199:8443
+	Request URL:https://10.104.0.199:8443/api/s/111111111/cmd/sitemgr
+	Request Method:POST
+	Status Code:200 OK
+	Request Headersview source
+	Accept:*/*
+	Accept-Encoding:gzip,deflate,sdch
+	Accept-Language:en-US,en;q=0.8
+	Cache-Control:no-cache
+	Connection:keep-alive
+	Content-Length:38
+	Content-Type:application/x-www-form-urlencoded; charset=UTF-8
+	Cookie:unifises=10c1857b7ff68b1d69ad235a048b080f
+	Host:10.104.0.199:8443
+	Origin:https://10.104.0.199:8443
+	Pragma:no-cache
+	Referer:https://10.104.0.199:8443/manage/s/111111111
+	User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36
+	X-Requested-With:XMLHttpRequest
+	Form Dataview sourceview URL encoded
+	json:{"cmd":"get-sites"}
+	Response Headersview source
+	Content-Encoding:gzip
+	Content-Type:application/json;charset=ISO-8859-1
+	Date:Mon, 14 Jul 2014 21:47:25 GMT
+	Server:Apache-Coyote/1.1
+	Transfer-Encoding:chunked
+	Vary:Accept-Encoding
+
+###Results:
+	_id: "53beb3aae4b0427b33a6e4dc"
+	desc: "New Location"
+	name: "a0tho2ksigoxrqnq9mzu"
+
+####Command(Delete Site):
+    Remote Address:10.104.0.199:8443
+    Request URL:https://10.104.0.199:8443/api/s/111111111/cmd/sitemgr
+    Request Method:POST
+    Status Code:200 OK
+    Request Headersview source
+    Accept:*/*
+    Accept-Encoding:gzip,deflate,sdch
+    Accept-Language:en-US,en;q=0.8
+    Cache-Control:no-cache
+    Connection:keep-alive
+    Content-Length:86
+    Content-Type:application/x-www-form-urlencoded; charset=UTF-8
+    Cookie:unifises=c1d978e5702b1fa2e808923a1fcd8f95
+    Host:10.104.0.199:8443
+    Origin:https://10.104.0.199:8443
+    Pragma:no-cache
+    Referer:https://10.104.0.199:8443/manage/s/111111111
+    User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36
+    X-Requested-With:XMLHttpRequest
+    Form Dataview sourceview URL encoded
+    json:{"cmd":"delete-site","site":"53c463dae4b0427b33a6e819"}
+    Response Headersview source
+    Content-Length:41
+    Content-Type:application/json;charset=ISO-8859-1
+    Date:Mon, 14 Jul 2014 23:14:17 GMT
+    Server:Apache-Coyote/1.1
+
+####Result:
+    - Logout
+
+
+##Usergroup
+
+####Command(Get UserGroups):
+	Remote Address:10.104.0.199:8443
+	Request URL:https://10.104.0.199:8443/api/s/111111111/list/usergroup
+	Request Method:POST
+	Status Code:200 OK
+	Request Headersview source
+	Accept:*/*
+	Accept-Encoding:gzip,deflate,sdch
+	Accept-Language:en-US,en;q=0.8
+	Cache-Control:no-cache
+	Connection:keep-alive
+	Content-Length:11
+	Content-Type:application/x-www-form-urlencoded; charset=UTF-8
+	Cookie:unifises=10c1857b7ff68b1d69ad235a048b080f
+	Host:10.104.0.199:8443
+	Origin:https://10.104.0.199:8443
+	Pragma:no-cache
+	Referer:https://10.104.0.199:8443/manage/s/111111111
+	User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36
+	X-Requested-With:XMLHttpRequest
+	Form Dataview sourceview URL encoded
+	json:{}
+	Response Headersview source
+	Content-Length:249
+	Content-Type:application/json;charset=ISO-8859-1
+	Date:Mon, 14 Jul 2014 21:47:25 GMT
+	Server:Apache-Coyote/1.1
+
+###Results:
+	_id: "53c44a49e4b0427b33a6e7f6"
+	attr_hidden_id: "Default"
+	attr_no_delete: true
+	name: "Default"
+	qos_rate_max_down: -1
+	qos_rate_max_up: -1
+	site_id: "53c44a49e4b0427b33a6e7f3"
+
+####Command(Add UserGroup):
+    Remote Address:10.104.0.199:8443
+    Request URL:https://10.104.0.199:8443/api/s/111111111/add/usergroup
+    Request Method:POST
+    Status Code:200 OK
+    Request Headersview source
+    Accept:*/*
+    Accept-Encoding:gzip,deflate,sdch
+    Accept-Language:en-US,en;q=0.8
+    Cache-Control:no-cache
+    Connection:keep-alive
+    Content-Length:173
+    Content-Type:application/x-www-form-urlencoded; charset=UTF-8
+    Cookie:unifises=10c1857b7ff68b1d69ad235a048b080f
+    Host:10.104.0.199:8443
+    Origin:https://10.104.0.199:8443
+    Pragma:no-cache
+    Referer:https://10.104.0.199:8443/manage/s/111111111
+    User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36
+    X-Requested-With:XMLHttpRequest
+    Form Dataview sourceview URL encoded
+    json:{"name":"UserGroup","downRate_enabled":true,"qos_rate_max_down":"10","upRate_enabled":true,"qos_rate_max_up":"10"}
+    Response Headersview source
+    Content-Length:252
+    Content-Type:application/json;charset=ISO-8859-1
+    Date:Mon, 14 Jul 2014 22:59:59 GMT
+    Server:Apache-Coyote/1.1
+
+####Result:
+    _id: "53c460efe4b0427b33a6e815"
+    downRate_enabled: true
+    name: "UserGroup"
+    qos_rate_max_down: "10"
+    qos_rate_max_up: "10"
+    site_id: "53c44a49e4b0427b33a6e7f3"
+
+####Command(Delete UserGroup):
+    Remote Address:10.104.0.199:8443
+    Request URL:https://10.104.0.199:8443/api/s/111111111/del/usergroup/53c460efe4b0427b33a6e815
+    Request Method:POST
+    Status Code:200 OK
+    Request Headersview source
+    Accept:*/*
+    Accept-Encoding:gzip,deflate,sdch
+    Accept-Language:en-US,en;q=0.8
+    Cache-Control:no-cache
+    Connection:keep-alive
+    Content-Length:11
+    Content-Type:application/x-www-form-urlencoded; charset=UTF-8
+    Cookie:unifises=10c1857b7ff68b1d69ad235a048b080f
+    Host:10.104.0.199:8443
+    Origin:https://10.104.0.199:8443
+    Pragma:no-cache
+    Referer:https://10.104.0.199:8443/manage/s/111111111
+    User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36
+    X-Requested-With:XMLHttpRequest
+    Form Dataview sourceview URL encoded
+    json:{}
+    Response Headersview source
+    Content-Length:41
+    Content-Type:application/json;charset=ISO-8859-1
+    Date:Mon, 14 Jul 2014 23:01:43 GMT
+    Server:Apache-Coyote/1.1
+
+####Result:
+    rc: "ok"
+
+##Guest
+
+####Command:
+    Remote Address:10.104.0.199:8443
+    Request URL:https://10.104.0.199:8443/api/s/111111111/set/setting/guest_access
+    Request Method:POST
+    Status Code:200 OK
+    Request Headersview source
+    Accept:*/*
+    Accept-Encoding:gzip,deflate,sdch
+    Accept-Language:en-US,en;q=0.8
+    Cache-Control:no-cache
+    Connection:keep-alive
+    Content-Length:1203
+    Content-Type:application/x-www-form-urlencoded; charset=UTF-8
+    Cookie:unifises=10c1857b7ff68b1d69ad235a048b080f
+    Host:10.104.0.199:8443
+    Origin:https://10.104.0.199:8443
+    Pragma:no-cache
+    Referer:https://10.104.0.199:8443/manage/s/111111111
+    User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36
+    X-Requested-With:XMLHttpRequest
+    Form Dataview sourceview URL encoded
+    json:{"portal_enabled":true,"auth":"password","x_password":"11111111","redirect_enabled":true,"redirect_url":"www.www.www","custom_ip":"","expire":"480","voucher_enabled":false,"payment_enabled":false,"gateway":"paypal","x_paypal_username":"","x_paypal_password":"","x_paypal_signature":"","paypal_use_sandbox":false,"x_stripe_api_key":"","x_quickpay_merchantid":"","x_quickpay_md5secret":"","x_authorize_loginid":"","x_authorize_transactionkey":"","authorize_use_sandbox":false,"x_merchantwarrior_merchantuuid":"","x_merchantwarrior_apikey":"","x_merchantwarrior_apipassphrase":"","merchantwarrior_use_sandbox":false,"portal_customized":true,"portal_use_hostname":false,"portal_hostname":"","restricted_subnet_1":"192.168.0.0/16","restricted_subnet_2":"172.16.0.0/12","restricted_subnet_3":"10.0.0.0/8","restricted_subnet_4":null,"allowed_subnet_1":null}
+    Response Headersview source
+    Content-Length:1172
+    Content-Type:application/json;charset=ISO-8859-1
+    Date:Mon, 14 Jul 2014 23:03:28 GMT
+    Server:Apache-Coyote/1.1
+
+####Result:
+    _id: "53c44a49e4b0427b33a6e7f5"
+    allowed_subnet_1: null
+    auth: "password"
+    authorize_use_sandbox: false
+    custom_ip: ""
+    expire: "480"
+    gateway: "paypal"
+    key: "guest_access"
+    merchantwarrior_use_sandbox: false
+    payment_enabled: false
+    paypal_use_sandbox: false
+    portal_customized: true
+    portal_enabled: true
+    portal_hostname: ""
+    portal_use_hostname: false
+    redirect_enabled: true
+    redirect_url: "www.www.www"
+    restricted_subnet_1: "192.168.0.0/16"
+    restricted_subnet_2: "172.16.0.0/12"
+    restricted_subnet_3: "10.0.0.0/8"
+    restricted_subnet_4: null
+    show_tou: "false"
+    site_id: "53c44a49e4b0427b33a6e7f3"
+    tou: "Term of Use"
+    voucher_enabled: false
+    x_authorize_loginid: ""
+    x_authorize_transactionkey: ""
+    x_merchantwarrior_apikey: ""
+    x_merchantwarrior_apipassphrase: ""
+    x_merchantwarrior_merchantuuid: ""
+    x_password: "11111111"
+    x_paypal_password: ""
+    x_paypal_signature: ""
+    x_paypal_username: ""
+    x_quickpay_md5secret: ""
+    x_quickpay_merchantid: ""
+    x_stripe_api_key: ""
+
+##NetworkGroup
+
+####Command(Get NetworkGroups):
+	Remote Address:10.104.0.199:8443
+	Request URL:https://10.104.0.199:8443/api/s/111111111/list/wlangroup
+	Request Method:POST
+	Status Code:200 OK
+	Request Headersview source
+	Accept:*/*
+	Accept-Encoding:gzip,deflate,sdch
+	Accept-Language:en-US,en;q=0.8
+	Cache-Control:no-cache
+	Connection:keep-alive
+	Content-Length:11
+	Content-Type:application/x-www-form-urlencoded; charset=UTF-8
+	Cookie:unifises=10c1857b7ff68b1d69ad235a048b080f
+	Host:10.104.0.199:8443
+	Origin:https://10.104.0.199:8443
+	Pragma:no-cache
+	Referer:https://10.104.0.199:8443/manage/s/111111111
+	User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36
+	X-Requested-With:XMLHttpRequest
+	Form Dataview sourceview URL encoded
+	json:{}
+	Response Headersview source
+	Content-Length:395
+	Content-Type:application/json;charset=ISO-8859-1
+	Date:Mon, 14 Jul 2014 21:47:25 GMT
+	Server:Apache-Coyote/1.1
+
+####Results:
+	_id: "53c44a49e4b0427b33a6e7f8"
+	attr_hidden: true
+	attr_hidden_id: "Off"
+	attr_no_delete: true
+	attr_no_edit: true
+	name: "Off"
+	site_id: "53c44a49e4b0427b33a6e7f3"
+
+	_id: "53c44a49e4b0427b33a6e7f7"
+	attr_hidden_id: "Default"
+	attr_no_delete: true
+	name: "Default"
+	site_id: "53c44a49e4b0427b33a6e7f3"
+
+####Command(Add Network Group w/ zero handoff 2G):
+    Remote Address:10.104.0.199:8443
+    Request URL:https://10.104.0.199:8443/api/s/v9yqebygpstinggbysgu/add/wlangroup
+    Request Method:POST
+    Status Code:200 OK
+    Request Headersview source
+    Accept:*/*
+    Accept-Encoding:gzip,deflate,sdch
+    Accept-Language:en-US,en;q=0.8
+    Cache-Control:no-cache
+    Connection:keep-alive
+    Content-Length:169
+    Content-Type:application/x-www-form-urlencoded; charset=UTF-8
+    Cookie:unifises=fc6167f45da7c3aa06792447ca9f31cc
+    Host:10.104.0.199:8443
+    Origin:https://10.104.0.199:8443
+    Pragma:no-cache
+    Referer:https://10.104.0.199:8443/manage/s/v9yqebygpstinggbysgu
+    User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36
+    X-Requested-With:XMLHttpRequest
+    Form Dataview sourceview URL encoded
+    json:{"name":"zero handoff","roam_enabled":true,"roam_radio":"ng","roam_channel_ng":"1","roam_channel_na":"36"}
+    Response Headersview source
+    Content-Length:244
+    Content-Type:application/json;charset=ISO-8859-1
+    Date:Mon, 21 Jul 2014 14:35:36 GMT
+    Server:Apache-Coyote/1.1
+
+####Result:
+    0: {_id:53cd2538e4b0427b33a6ec52, name:zero handoff, roam_channel_na:36, roam_channel_ng:1,…}
+        _id: "53cd2538e4b0427b33a6ec52"
+        name: "zero handoff"
+        roam_channel_na: "36"
+        roam_channel_ng: "1"
+        roam_enabled: true
+        roam_radio: "ng"
+        site_id: "53a1acb30cf2253a5154942d"
+
+####Command(Delete Network Group)
+    Remote Address:10.104.0.199:8443
+    Request URL:https://10.104.0.199:8443/api/s/v9yqebygpstinggbysgu/del/wlangroup/53b1cd750cf2c3dd2d3b5db9
+    Request Method:POST
+    Status Code:200 OK
+    Request Headersview source
+    Accept:*/*
+    Accept-Encoding:gzip,deflate,sdch
+    Accept-Language:en-US,en;q=0.8
+    Cache-Control:no-cache
+    Connection:keep-alive
+    Content-Length:11
+    Content-Type:application/x-www-form-urlencoded; charset=UTF-8
+    Cookie:unifises=5d414017e680721a443845126e31d70a
+    Host:10.104.0.199:8443
+    Origin:https://10.104.0.199:8443
+    Pragma:no-cache
+    Referer:https://10.104.0.199:8443/manage/s/v9yqebygpstinggbysgu
+    User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36
+    X-Requested-With:XMLHttpRequest
+    Form Dataview sourceview URL encoded
+    json:{}
+    Response Headersview source
+    Content-Length:41
+    Content-Type:application/json;charset=ISO-8859-1
+    Date:Thu, 17 Jul 2014 19:51:41 GMT
+    Server:Apache-Coyote/1.1
+
+####Result
+    rc: "ok"
+
+##Networks
+
+####Command(Get Networks):
+	Remote Address:10.104.0.199:8443
+	Request URL:https://10.104.0.199:8443/api/s/111111111/list/wlanconf
+	Request Method:POST
+	Status Code:200 OK
+	Request Headersview source
+	Accept:*/*
+	Accept-Encoding:gzip,deflate,sdch
+	Accept-Language:en-US,en;q=0.8
+	Cache-Control:no-cache
+	Connection:keep-alive
+	Content-Length:11
+	Content-Type:application/x-www-form-urlencoded; charset=UTF-8
+	Cookie:unifises=10c1857b7ff68b1d69ad235a048b080f
+	Host:10.104.0.199:8443
+	Origin:https://10.104.0.199:8443
+	Pragma:no-cache
+	Referer:https://10.104.0.199:8443/manage/s/111111111
+	User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36
+	X-Requested-With:XMLHttpRequest
+	Form Dataview sourceview URL encoded
+	json:{}
+	Response Headersview source
+	Content-Length:549
+	Content-Type:application/json;charset=ISO-8859-1
+	Date:Mon, 14 Jul 2014 21:47:25 GMT
+	Server:Apache-Coyote/1.1
+
+####Results:
+	_id: "53c44e14e4b0427b33a6e7fd"
+	enabled: true
+	hide_ssid: false
+	is_guest: false
+	name: "basic site network"
+	radius_ip_1: ""
+	radius_port_1: "1812"
+	security: "wpapsk"
+	site_id: "53c44a49e4b0427b33a6e7f3"
+	usergroup_id: "53c44a49e4b0427b33a6e7f6"
+	vlan: ""
+	vlan_enabled: false
+	wep_idx: "1"
+	wlangroup_id: "53c44a49e4b0427b33a6e7f7"
+	wpa_enc: "ccmp"
+	wpa_mode: "auto"
+	x_passphrase: "11111111"
+	x_radius_secret_1: ""
+	x_wep: ""
+
+####Command(Create/Edit Network):
+    Remote Address:10.104.0.199:8443
+    Request URL:https://10.104.0.199:8443/api/s/111111111/add/wlanconf
+    Request Method:POST
+    Status Code:200 OK
+    Request Headersview source
+    Accept:*/*
+    Accept-Encoding:gzip,deflate,sdch
+    Accept-Language:en-US,en;q=0.8
+    Cache-Control:no-cache
+    Connection:keep-alive
+    Content-Length:544
+    Content-Type:application/x-www-form-urlencoded; charset=UTF-8
+    Cookie:unifises=10c1857b7ff68b1d69ad235a048b080f
+    Host:10.104.0.199:8443
+    Origin:https://10.104.0.199:8443
+    Pragma:no-cache
+    Referer:https://10.104.0.199:8443/manage/s/111111111
+    User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36
+    X-Requested-With:XMLHttpRequest
+    Form Dataview sourceview URL encoded
+    json:{"name":"Name","security":"wpapsk","x_passphrase":"22222222","wep_idx":"1","x_wep":"","enabled":true,"radius_ip_1":"","radius_port_1":"1812","x_radius_secret_1":"","is_guest":true,"vlan_enabled":true,"vlan":"111","hide_ssid":true,"wpa_mode":"auto","wpa_enc":"ccmp","usergroup_id":"53c44a49e4b0427b33a6e7f6","wlangroup_id":"53c44a49e4b0427b33a6e7f7"}
+    Response Headersview source
+    Content-Length:535
+    Content-Type:application/json;charset=ISO-8859-1
+    Date:Mon, 14 Jul 2014 22:54:54 GMT
+    Server:Apache-Coyote/1.1
+
+####Results:
+    _id: "53c45fbee4b0427b33a6e813"
+    enabled: true
+    hide_ssid: true
+    is_guest: true
+    name: "Name"
+    radius_ip_1: ""
+    radius_port_1: "1812"
+    security: "wpapsk"
+    site_id: "53c44a49e4b0427b33a6e7f3"
+    usergroup_id: "53c44a49e4b0427b33a6e7f6"
+    vlan: "111"
+    vlan_enabled: true
+    wep_idx: "1"
+    wlangroup_id: "53c44a49e4b0427b33a6e7f7"
+    wpa_enc: "ccmp"
+    wpa_mode: "auto"
+    x_passphrase: "22222222"
+    x_radius_secret_1: ""
+    x_wep: ""
+
+####Command(Delete Network):
+    Remote Address:10.104.0.199:8443
+    Request URL:https://10.104.0.199:8443/api/s/111111111/del/wlanconf/53c45fbee4b0427b33a6e813
+    Request Method:POST
+    Status Code:200 OK
+    Request Headersview source
+    Accept:*/*
+    Accept-Encoding:gzip,deflate,sdch
+    Accept-Language:en-US,en;q=0.8
+    Cache-Control:no-cache
+    Connection:keep-alive
+    Content-Length:11
+    Content-Type:application/x-www-form-urlencoded; charset=UTF-8
+    Cookie:unifises=10c1857b7ff68b1d69ad235a048b080f
+    Host:10.104.0.199:8443
+    Origin:https://10.104.0.199:8443
+    Pragma:no-cache
+    Referer:https://10.104.0.199:8443/manage/s/111111111
+    User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36
+    X-Requested-With:XMLHttpRequest
+    Form Dataview sourceview URL encoded
+    json:{}
+    Response Headersview source
+    Content-Length:41
+    Content-Type:application/json;charset=ISO-8859-1
+    Date:Mon, 14 Jul 2014 22:56:11 GMT
+    Server:Apache-Coyote/1.1
+
+####Result:
+    rc: "ok"
+
+##Settings
+	
+####Command(Get Settings):
+	Remote Address:10.104.0.199:8443
+	Request URL:https://10.104.0.199:8443/api/s/111111111/get/setting
+	Request Method:POST
+	Status Code:200 OK
+	Request Headersview source
+	Accept:*/*
+	Accept-Encoding:gzip,deflate,sdch
+	Accept-Language:en-US,en;q=0.8
+	Cache-Control:no-cache
+	Connection:keep-alive
+	Content-Length:11
+	Content-Type:application/x-www-form-urlencoded; charset=UTF-8
+	Cookie:unifises=10c1857b7ff68b1d69ad235a048b080f
+	Host:10.104.0.199:8443
+	Origin:https://10.104.0.199:8443
+	Pragma:no-cache
+	Referer:https://10.104.0.199:8443/manage/s/111111111
+	User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36
+	X-Requested-With:XMLHttpRequest
+	Form Dataview sourceview URL encoded
+	json:{}
+	Response Headersview source
+	Content-Length:825
+	Content-Type:application/json;charset=ISO-8859-1
+	Date:Mon, 14 Jul 2014 21:47:25 GMT
+	Server:Apache-Coyote/1.1
+
+####Results:
+	_id: "53c44a49e4b0427b33a6e7f5"
+	auth: "none"
+	key: "guest_access"
+	restricted_subnet_1: "192.168.0.0/16"
+	restricted_subnet_2: "172.16.0.0/12"
+	restricted_subnet_3: "10.0.0.0/8"
+	show_tou: "false"
+	site_id: "53c44a49e4b0427b33a6e7f3"
+	tou: "Term of Use"
+
+	_id: "53c44a49e4b0427b33a6e7f4"
+	key: "connectivity"
+	site_id: "53c44a49e4b0427b33a6e7f3"
+	uplink_type: "gateway"
+
+	_id: "53c44a541ef73454048cceaa"
+	key: "mgmt"
+	site_id: "53c44a49e4b0427b33a6e7f3"
+	x_ssh_password: "iHTrVT9pMZsLXBhB"
+	x_ssh_username: "admin"
+
+	_id: "53a1acb30cf2253a5154942f"
+	key: "super_identity"
+	name: "unifi.yourdomain.com"
+
+	_id: "53a1acb30cf2253a51549430"
+	discoverable: "false"
+	key: "super_mgmt"
+
+##Devices:
+
+####Command(Get Devices):
+	Remote Address:10.104.0.199:8443
+	Request URL:https://10.104.0.199:8443/api/s/111111111/stat/device
+	Request Method:POST
+	Status Code:200 OK
+	Request Headersview source
+	Accept:*/*
+	Accept-Encoding:gzip,deflate,sdch
+	Accept-Language:en-US,en;q=0.8
+	Cache-Control:no-cache
+	Connection:keep-alive
+	Content-Length:11
+	Content-Type:application/x-www-form-urlencoded; charset=UTF-8
+	Cookie:unifises=10c1857b7ff68b1d69ad235a048b080f
+	Host:10.104.0.199:8443
+	Origin:https://10.104.0.199:8443
+	Pragma:no-cache
+	Referer:https://10.104.0.199:8443/manage/s/111111111
+	User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36
+	X-Requested-With:XMLHttpRequest
+	Form Dataview sourceview URL encoded
+	json:{}
+	Response Headersview source
+	Content-Length:41
+	Content-Type:application/json;charset=ISO-8859-1
+	Date:Mon, 14 Jul 2014 21:47:25 GMT
+	Server:Apache-Coyote/1.1
+
+####Results:
+
+#####Not Adopted(Pending):
+    _id: null
+    adopt_ip: "10.20.150.134"
+    adopt_url: "http://10.104.0.199:8080/inform"
+    adopted: false
+    default: true
+    discovered_via: "inform"
+    hostname: "UBNT"
+    ip: "10.20.150.134"
+    last_seen: 1405377618
+    locating: false
+    mac: "24:a4:3c:10:10:6e"
+    model: "U7E"
+    serial: "24A43C10106E"
+    site_id: "53a1acb30cf2253a5154942e"
+    state: 2
+    uptime: "80"
+    version: "3.2.1.2601"
+
+#####Adopting:
+    _id: "53c45c7be4b0427b33a6e80f"
+    adopt_ip: "10.20.150.134"
+    adopt_state: 0
+    adopt_tries: 0
+    adopt_url: "http://10.104.0.199:8080/inform"
+    adopted: true
+    cfgversion: "2d2cdebf43c1c3d4"
+    config_network: {ip:10.20.150.134, type:dhcp}
+    ip: "10.20.150.134"
+    type: "dhcp"
+    default: true
+    device_id: "53c45c7be4b0427b33a6e80f"
+    discovered_via: "inform"
+    guest-num_sta: 0
+    hostname: "UBNT"
+    ip: "10.20.150.134"
+    last_seen: 1405377650
+    locating: false
+    mac: "24:a4:3c:10:10:6e"
+    model: "U7E"
+    na-num_sta: 0
+    ng-num_sta: 0
+    num_sta: 0
+    radio_na: null
+    radio_ng: null
+    serial: "24A43C10106E"
+    site_id: "53c44a49e4b0427b33a6e7f3"
+    state: 7
+    state_expire: 1405377689
+    type: "uap"
+    uplink_table: []
+    uptime: "112"
+    user-num_sta: 0
+    version: "3.2.1.2601"
+    vwireEnabled: true
+    vwire_table: []
+    wlangroup_id_na: "53c44a49e4b0427b33a6e7f7"
+    wlangroup_id_ng: "53c44a49e4b0427b33a6e7f7"
+    x_authkey: "27dc04232cc9224c4b9f35c4e7230520"
+    x_vwirekey: "d3896d0d1c8eaaf8c5a3bfaefb4ea865"
+
+#####Connected:
+    _id: "53c45c7be4b0427b33a6e80f"
+    _uptime: 347
+    adopt_ip: "10.20.150.134"
+    adopt_state: 0
+    adopt_tries: 0
+    adopt_url: "http://10.104.0.199:8080/inform"
+    adopted: true
+    bytes: 0
+    bytes-d: 0
+    cfgversion: "ffdc9f863b93bcc5"
+    config_network: {ip:10.20.150.134, type:dhcp}
+        ip: "10.20.150.134"
+        type: "dhcp"
+    default: true
+    device_id: "53c45c7be4b0427b33a6e80f"
+    discovered_via: "inform"
+    downlink_table: []
+    ethernet_table: [{mac:24:a4:3c:10:10:6e, name:eth0, num_port:2}]
+        0: {mac:24:a4:3c:10:10:6e, name:eth0, num_port:2}
+            mac: "24:a4:3c:10:10:6e"
+            name: "eth0"
+            num_port: 2
+    guest-num_sta: 0
+    guest_token: "ADDE5C06CD0B47F35E1657FBC19C3EBF"
+    hostname: "UBNT"
+    inform_authkey: "27dc04232cc9224c4b9f35c4e7230520"
+    inform_ip: "54.88.187.144"
+    inform_url: "http://wifi.jive.com:8080/inform"
+    ip: "10.20.150.134"
+    isolated: false
+    known_cfgversion: "ffdc9f863b93bcc5"
+    last_seen: 1405377885
+    locating: false
+    mac: "24:a4:3c:10:10:6e"
+    model: "U7E"
+    na-channel: 157
+    na-eirp: 24
+    na-extchannel: 1
+    na-gain: 0
+    na-num_sta: 0
+    na-state: "RUN"
+    na-tx_power: "24"
+    na_ast_be_xmit: 588
+    na_ast_cst: null
+    na_ast_txto: null
+    na_tx_packets: 0
+    na_tx_rates: []
+    na_tx_retries: 0
+    ng-channel: 11
+    ng-eirp: 22
+    ng-extchannel: 0
+    ng-gain: 0
+    ng-num_sta: 0
+    ng-state: "RUN"
+    ng-tx_power: "22"
+    ng_ast_be_xmit: 532
+    ng_ast_cst: null
+    ng_ast_txto: null
+    ng_tx_packets: 0
+    ng_tx_rates: []
+    ng_tx_retries: 0
+    num_sta: 0
+    radio_na: {antenna_gain:0, builtin_ant_gain:0, builtin_antenna:true, max_txpower:24, min_txpower:12, name:eth2,…}
+        antenna_gain: 0
+        builtin_ant_gain: 0
+        builtin_antenna: true
+        max_txpower: 24
+        min_txpower: 12
+        name: "eth2"
+        radio: "na"
+    radio_ng: {antenna_gain:0, builtin_ant_gain:0, builtin_antenna:true, max_txpower:22, min_txpower:12, name:eth1,…}
+        antenna_gain: 0
+        builtin_ant_gain: 0
+        builtin_antenna: true
+        max_txpower: 22
+        min_txpower: 12
+        name: "eth1"
+        radio: "ng"
+    radio_table: [,…]
+        0: {antenna_gain:0, builtin_ant_gain:0, builtin_antenna:true, max_txpower:22, min_txpower:12, name:eth1,…}
+            antenna_gain: 0
+            builtin_ant_gain: 0
+            builtin_antenna: true
+            max_txpower: 22
+            min_txpower: 12
+            name: "eth1"
+            radio: "ng"
+        1: {antenna_gain:0, builtin_ant_gain:0, builtin_antenna:true, max_txpower:24, min_txpower:12, name:eth2,…}
+            antenna_gain: 0
+            builtin_ant_gain: 0
+            builtin_antenna: true
+            max_txpower: 24
+            min_txpower: 12
+            name: "eth2"
+            radio: "na"
+    rx_bytes: 0
+    rx_bytes-d: 0
+    scanning: false
+    serial: "24A43C10106E"
+    site_id: "53c44a49e4b0427b33a6e7f3"
+    stat: {_id:53c45cad1ef73454048cd207, ap:24:a4:3c:10:10:6e, bytes:0, na-rx_frags:399,…}
+        _id: "53c45cad1ef73454048cd207"
+        ap: "24:a4:3c:10:10:6e"
+        bytes: 0
+        na-rx_frags: 399
+        na-time_delta: 1405377885
+        na-tx_retries: 1
+        ng-rx_frags: 16508
+        ng-time_delta: 1405377885
+        ng-tx_retries: 40
+        o: "ap"
+        rx_frags: 16907
+        site_id: "53c44a49e4b0427b33a6e7f3"
+        time_delta: 2810755770
+        tx_retries: 41
+        uplink-rx_bytes: 335855
+        uplink-rx_packets: 2135
+        uplink-time_delta: 1405377885
+        uplink-tx_bytes: 11288
+        uplink-tx_packets: 31
+        user-na-rx_frags: 399
+        user-na-time_delta: 1405377885
+        user-na-tx_retries: 1
+        user-ng-rx_frags: 16508
+        user-ng-time_delta: 1405377885
+        user-ng-tx_retries: 40
+        user-rx_frags: 16907
+        user-time_delta: 2810755770
+        user-tx_retries: 41
+    state: 1
+    tx_bytes: 0
+    tx_bytes-d: 0
+    type: "uap"
+    uplink: {full_duplex:true, ip:0.0.0.0, mac:24:a4:3c:10:10:6e, max_speed:1000, name:eth0, num_port:2,…}
+        full_duplex: true
+        ip: "0.0.0.0"
+        mac: "24:a4:3c:10:10:6e"
+        max_speed: 1000
+        name: "eth0"
+        num_port: 2
+        rx_bytes: 345444
+        rx_bytes-r: 2197
+        rx_dropped: 0
+        rx_errors: 0
+        rx_multicast: 0
+        rx_packets: 2186
+        speed: 1000
+        tx_bytes: 12297
+        tx_bytes-r: 63
+        tx_dropped: 0
+        tx_errors: 0
+        tx_packets: 36
+        type: "wire"
+        up: true
+    uplink_table: []
+    uptime: 347
+    user-num_sta: 0
+    vap_table: [{ap_mac:24:a4:3c:10:10:6e, bssid:24:a4:3c:12:0d:c0, ccq:718895188, channel:11,…},…]
+        0: {ap_mac:24:a4:3c:10:10:6e, bssid:24:a4:3c:12:0d:c0, ccq:718895188, channel:11,…}
+            ap_mac: "24:a4:3c:10:10:6e"
+            bssid: "24:a4:3c:12:0d:c0"
+            ccq: 718895188
+            channel: 11
+            essid: "basic site network"
+            id: "53c44e14e4b0427b33a6e7fd"
+            is_guest: false
+            is_wep: false
+            map_id: null
+            name: "eth1"
+            num_sta: 0
+            radio: "ng"
+            rx_bytes: 0
+            rx_crypts: 0
+            rx_dropped: 0
+            rx_errors: 0
+            rx_frags: 16949
+            rx_nwids: 718896592
+            rx_packets: 0
+            site_id: "53c44a49e4b0427b33a6e7f3"
+            state: "RUN"
+            t: "vap"
+            tx_bytes: 0
+            tx_dropped: 0
+            tx_errors: 0
+            tx_packets: 0
+            tx_power: 22
+            tx_retries: 44
+            up: true
+            usage: "user"
+            wlanconf_id: "53c44e14e4b0427b33a6e7fd"
+        1: {ap_mac:24:a4:3c:10:10:6e, bssid:24:a4:3c:12:0d:d0, ccq:718895188, channel:157,…}
+            ap_mac: "24:a4:3c:10:10:6e"
+            bssid: "24:a4:3c:12:0d:d0"
+            ccq: 718895188
+            channel: 157
+            essid: "basic site network"
+            extchannel: 1
+            id: "53c44e14e4b0427b33a6e7fd"
+            is_guest: false
+            is_wep: false
+            map_id: null
+            name: "eth2"
+            num_sta: 0
+            radio: "na"
+            rx_bytes: 0
+            rx_crypts: 0
+            rx_dropped: 0
+            rx_errors: 0
+            rx_frags: 417
+            rx_nwids: 718896592
+            rx_packets: 0
+            site_id: "53c44a49e4b0427b33a6e7f3"
+            state: "RUN"
+            t: "vap"
+            tx_bytes: 0
+            tx_dropped: 0
+            tx_errors: 0
+            tx_packets: 0
+            tx_power: 24
+            tx_retries: 3
+            up: true
+            usage: "user"
+            wlanconf_id: "53c44e14e4b0427b33a6e7fd"
+    version: "3.2.1.2601"
+    vwireEnabled: true
+    vwire_table: []
+    wlangroup_id_na: "53c44a49e4b0427b33a6e7f7"
+    wlangroup_id_ng: "53c44a49e4b0427b33a6e7f7"
+    x_authkey: "27dc04232cc9224c4b9f35c4e7230520"
+    x_fingerprint: "c6:8b:96:a5:54:11:12:73:a0:e3:ef:31:c8:b1:9f:9f"
+    x_vwirekey: "d3896d0d1c8eaaf8c5a3bfaefb4ea865"
+
+##Command(Adopt):
+    Remote Address:10.104.0.199:8443
+    Request URL:https://10.104.0.199:8443/api/s/111111111/cmd/devmgr
+    Request Method:POST
+    Status Code:200 OK
+    Request Headersview source
+    Accept:*/*
+    Accept-Encoding:gzip,deflate,sdch
+    Accept-Language:en-US,en;q=0.8
+    Cache-Control:no-cache
+    Connection:keep-alive
+    Content-Length:82
+    Content-Type:application/x-www-form-urlencoded; charset=UTF-8
+    Cookie:unifises=10c1857b7ff68b1d69ad235a048b080f
+    Host:10.104.0.199:8443
+    Origin:https://10.104.0.199:8443
+    Pragma:no-cache
+    Referer:https://10.104.0.199:8443/manage/s/111111111
+    User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36
+    X-Requested-With:XMLHttpRequest
+    Form Dataview sourceview URL encoded
+    json:{"mac":"24:a4:3c:10:10:6e","cmd":"adopt"}
+    Response Headersview source
+    Content-Length:41
+    Content-Type:application/json;charset=ISO-8859-1
+    Date:Mon, 14 Jul 2014 22:40:59 GMT
+    Server:Apache-Coyote/1.1
+
+####Result:
+    rc: "ok"
+
+####Command(Forget Device):
+    Remote Address:10.104.0.199:8443
+    Request URL:https://10.104.0.199:8443/api/s/111111111/cmd/devmgr
+    Request Method:POST
+    Status Code:200 OK
+    Request Headersview source
+    Accept:*/*
+    Accept-Encoding:gzip,deflate,sdch
+    Accept-Language:en-US,en;q=0.8
+    Cache-Control:no-cache
+    Connection:keep-alive
+    Content-Length:86
+    Content-Type:application/x-www-form-urlencoded; charset=UTF-8
+    Cookie:unifises=10c1857b7ff68b1d69ad235a048b080f
+    Host:10.104.0.199:8443
+    Origin:https://10.104.0.199:8443
+    Pragma:no-cache
+    Referer:https://10.104.0.199:8443/manage/s/111111111
+    User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36
+    X-Requested-With:XMLHttpRequest
+    Form Dataview sourceview URL encoded
+    json:{"mac":"24:a4:3c:8c:8a:17","cmd":"delete-ap"}
+    Response Headersview source
+    Content-Length:41
+    Content-Type:application/json;charset=ISO-8859-1
+    Date:Mon, 14 Jul 2014 22:12:50 GMT
+    Server:Apache-Coyote/1.1
+
+####Results:
+    rc: "ok"
+
+####Command (Update device):
+    Remote Address:10.104.0.199:8443
+    Request URL:https://10.104.0.199:8443/api/s/v9yqebygpstinggbysgu/upd/device/53a4c8170cf2bb07755c3da7
+    Request Method:POST
+    Status Code:200 OK
+    Request Headersview source
+    Accept:*/*
+    Accept-Encoding:gzip,deflate,sdch
+    Accept-Language:en-US,en;q=0.8
+    Cache-Control:no-cache
+    Connection:keep-alive
+    Content-Length:38
+    Content-Type:application/x-www-form-urlencoded; charset=UTF-8
+    Cookie:unifises=bd5f86498ad905d58d4e75386b006198
+    Host:10.104.0.199:8443
+    Origin:https://10.104.0.199:8443
+    Pragma:no-cache
+    Referer:https://10.104.0.199:8443/manage/s/v9yqebygpstinggbysgu
+    User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36
+    X-Requested-With:XMLHttpRequest
+    Form Dataview sourceview URL encoded
+    json:{"name":"wifi acc"}
+    Response Headersview source
+    Content-Length:1221
+    Content-Type:application/json;charset=ISO-8859-1
+    Date:Tue, 22 Jul 2014 17:06:28 GMT
+    Server:Apache-Coyote/1.1
+
+####Results:
+    data: [,…]
+        0: {_id:53a4c8170cf2bb07755c3da7, adopted:true, cfgversion:016f3f4cd36b315c, config_network:{type:dhcp},…}
+            _id: "53a4c8170cf2bb07755c3da7"
+            adopted: true
+            cfgversion: "016f3f4cd36b315c"
+            config_network: {type:dhcp}
+            ethernet_table: [{mac:24:a4:3c:10:10:7e, name:eth0, num_port:2}]
+            inform_ip: "54.209.232.153"
+            inform_url: "http://wifi.jive.com:8080/inform"
+            ip: "10.0.1.5"
+            last_seen: 1406048785
+            mac: "24:a4:3c:10:10:7e"
+            model: "U7E"
+            name: "wifi acc"
+            radio_table: [,…]
+            serial: "24A43C10107E"
+            site_id: "53a4b8aa0cf2bb07755c3d93"
+            type: "uap"
+            version: "3.2.1.2601"
+            vwire_table: []
+            wlan_overrides: []
+            wlangroup_id_na: "53a4b8aa0cf2bb07755c3d97"
+            wlangroup_id_ng: "53a4b8aa0cf2bb07755c3d97"
+            x_authkey: "98bcd0c191843631dd38b7cb479e042c"
+            x_fingerprint: "e2:05:42:ad:e6:43:24:8d:d2:ae:0b:72:3a:d8:07:d3"
+            x_vwirekey: "7f89279d3ed4f50a004831499160eeab"
+    meta: {rc:ok}
+        rc: "ok"
+##Stats
+
+####Command(Get Stats):
+	Remote Address:10.104.0.199:8443
+	Request URL:https://10.104.0.199:8443/api/s/111111111/stat/sta
+	Request Method:POST
+	Status Code:200 OK
+	Request Headersview source
+	Accept:*/*
+	Accept-Encoding:gzip,deflate,sdch
+	Accept-Language:en-US,en;q=0.8
+	Cache-Control:no-cache
+	Connection:keep-alive
+	Content-Length:11
+	Content-Type:application/x-www-form-urlencoded; charset=UTF-8
+	Cookie:unifises=10c1857b7ff68b1d69ad235a048b080f
+	Host:10.104.0.199:8443
+	Origin:https://10.104.0.199:8443
+	Pragma:no-cache
+	Referer:https://10.104.0.199:8443/manage/s/111111111
+	User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36
+	X-Requested-With:XMLHttpRequest
+	Form Dataview sourceview URL encoded
+	json:{}
+	Response Headersview source
+	Content-Length:41
+	Content-Type:application/json;charset=ISO-8859-1
+	Date:Mon, 14 Jul 2014 21:47:25 GMT
+	Server:Apache-Coyote/1.1
+
+####Result:
+
+
+##Admins
+
+####Command(Get Admins):
+	Remote Address:10.104.0.199:8443
+	Request URL:https://10.104.0.199:8443/api/s/111111111/cmd/sitemgr
+	Request Method:POST
+	Status Code:200 OK
+	Request Headersview source
+	Accept:*/*
+	Accept-Encoding:gzip,deflate,sdch
+	Accept-Language:en-US,en;q=0.8
+	Cache-Control:no-cache
+	Connection:keep-alive
+	Content-Length:39
+	Content-Type:application/x-www-form-urlencoded; charset=UTF-8
+	Cookie:unifises=10c1857b7ff68b1d69ad235a048b080f
+	Host:10.104.0.199:8443
+	Origin:https://10.104.0.199:8443
+	Pragma:no-cache
+	Referer:https://10.104.0.199:8443/manage/s/111111111
+	User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36
+	X-Requested-With:XMLHttpRequest
+	Form Dataview sourceview URL encoded
+	json:{"cmd":"get-admins"}
+	Response Headersview source
+	Content-Length:136
+	Content-Type:application/json;charset=ISO-8859-1
+	Date:Mon, 14 Jul 2014 21:47:25 GMT
+	Server:Apache-Coyote/1.1
+
+####Results:
+	_id: "53a1acda0cf2253a5154943f"
+	is_super: true
+	name: "admin"
+	role: "admin"
+
+##Alarms
+
+####Command(Get Alarms):
+	Remote Address:10.104.0.199:8443
+	Request URL:https://10.104.0.199:8443/api/s/111111111/list/alarm
+	Request Method:POST
+	Status Code:200 OK
+	Request Headersview source
+	Accept:*/*
+	Accept-Encoding:gzip,deflate,sdch
+	Accept-Language:en-US,en;q=0.8
+	Cache-Control:no-cache
+	Connection:keep-alive
+	Content-Length:36
+	Content-Type:application/x-www-form-urlencoded; charset=UTF-8
+	Cookie:unifises=10c1857b7ff68b1d69ad235a048b080f
+	Host:10.104.0.199:8443
+	Origin:https://10.104.0.199:8443
+	Pragma:no-cache
+	Referer:https://10.104.0.199:8443/manage/s/111111111
+	User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36
+	X-Requested-With:XMLHttpRequest
+	Form Dataview sourceview URL encoded
+	json:{"_sort":"-time"}
+	Response Headersview source
+	Content-Length:41
+	Content-Type:application/json;charset=ISO-8859-1
+	Date:Mon, 14 Jul 2014 21:47:25 GMT
+	Server:Apache-Coyote/1.1
+
+####Results:
+    _id: "53c43319e4b0427b33a6e7e4"
+    ap: "24:a4:3c:8c:8a:17"
+    ap_name: ""
+    archived: false
+    datetime: "2014-07-14T19:44:25Z"
+    key: "EVT_AP_Lost_Contact"
+    msg: "AP[24:a4:3c:8c:8a:17] was disconnected"
+    site_id: "53beb3aae4b0427b33a6e4dc"
+    time: 1405367065115
+
+####Command(Archive):
+    Remote Address:10.104.0.199:8443
+    Request URL:https://10.104.0.199:8443/api/s/a0tho2ksigoxrqnq9mzu/cmd/evtmgr
+    Request Method:POST
+    Status Code:200 OK
+    Request Headersview source
+    Accept:*/*
+    Accept-Encoding:gzip,deflate,sdch
+    Accept-Language:en-US,en;q=0.8
+    Cache-Control:no-cache
+    Connection:keep-alive
+    Content-Length:87
+    Content-Type:application/x-www-form-urlencoded; charset=UTF-8
+    Cookie:unifises=10c1857b7ff68b1d69ad235a048b080f
+    Host:10.104.0.199:8443
+    Origin:https://10.104.0.199:8443
+    Pragma:no-cache
+    Referer:https://10.104.0.199:8443/manage/s/a0tho2ksigoxrqnq9mzu
+    User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36
+    X-Requested-With:XMLHttpRequest
+    Form Dataview sourceview URL encoded
+    json:{"_id":"53c44f75e4b0427b33a6e7fe","cmd":"archive-alarm"}
+    Response Headersview source
+    Content-Length:41
+    Content-Type:application/json;charset=ISO-8859-1
+    Date:Mon, 14 Jul 2014 22:27:58 GMT
+    Server:Apache-Coyote/1.1
+
+####Results:
+    rc: "ok"
+
+##Events
+
+####Command(Get Events):
+	Remote Address:10.104.0.199:8443
+	Request URL:https://10.104.0.199:8443/api/s/111111111/stat/event
+	Request Method:POST
+	Status Code:200 OK
+	Request Headersview source
+	Accept:*/*
+	Accept-Encoding:gzip,deflate,sdch
+	Accept-Language:en-US,en;q=0.8
+	Cache-Control:no-cache
+	Connection:keep-alive
+	Content-Length:11
+	Content-Type:application/x-www-form-urlencoded; charset=UTF-8
+	Cookie:unifises=10c1857b7ff68b1d69ad235a048b080f
+	Host:10.104.0.199:8443
+	Origin:https://10.104.0.199:8443
+	Pragma:no-cache
+	Referer:https://10.104.0.199:8443/manage/s/111111111
+	User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36
+	X-Requested-With:XMLHttpRequest
+	Form Dataview sourceview URL encoded
+	json:{"within":"720"}U
+	Response Headersview source
+	Content-Length:41
+	Content-Type:application/json;charset=ISO-8859-1
+	Date:Mon, 14 Jul 2014 21:47:25 GMT
+	Server:Apache-Coyote/1.1
+
+####Result:
+    data: [,…]
+    [0 … 99]
+        0: {_id:53ce9b0be4b0427b33a6ed88, ap:24:a4:3c:10:10:7e, bytes:719484952, datetime:2014-07-22T17:05:25Z,…}
+            _id: "53ce9b0be4b0427b33a6ed88"
+            ap: "24:a4:3c:10:10:7e"
+            bytes: 719484952
+            datetime: "2014-07-22T17:05:25Z"
+            duration: 89030
+            hostname: "Taylors-MBP"
+            key: "EVT_WU_Disconnected"
+            msg: "User[d8:a2:5e:8b:d0:72] disconnected from "wifi" (1d 43m connected, 686.15M bytes, last AP[24:a4:3c:10:10:7e])"
+            site_id: "53a4b8aa0cf2bb07755c3d93"
+            ssid: "wifi"
+            time: 1406048725000
+            user: "d8:a2:5e:8b:d0:72"
+        1: {_id:53ce7b67e4b0427b33a6ed6d, ap:24:a4:3c:10:10:7e, bytes:643927602, datetime:2014-07-22T14:49:36Z,…}
+        2: {_id:53ce7a00e4b0427b33a6ed6a, ap:24:a4:3c:10:10:7e, channel_from:11, channel_to:157,…}
+        3: {_id:53ce57c7e4b0427b33a6ed40, ap:24:a4:3c:10:10:7e, bytes:120475768, datetime:2014-07-22T12:17:36Z,…}
+        4: {_id:53ce31d0e4b0427b33a6ed3d, ap:24:a4:3c:10:10:7e, channel_from:157, channel_to:11,…}
+    meta: {rc:ok}
+        rc: "ok"
+
+##Users
+
+####Command(Get All Users:
+    Remote Address:10.104.0.199:8443
+    Request URL:https://10.104.0.199:8443/api/s/111111111/stat/alluser
+    Request Method:POST
+    Status Code:200 OK
+    Request Headersview source
+    Accept:*/*
+    Accept-Encoding:gzip,deflate,sdch
+    Accept-Language:en-US,en;q=0.8
+    Cache-Control:no-cache
+    Connection:keep-alive
+    Content-Length:87
+    Content-Type:application/x-www-form-urlencoded; charset=UTF-8
+    Cookie:unifises=10c1857b7ff68b1d69ad235a048b080f
+    Host:10.104.0.199:8443
+    Origin:https://10.104.0.199:8443
+    Pragma:no-cache
+    Referer:https://10.104.0.199:8443/manage/s/111111111
+    User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36
+    X-Requested-With:XMLHttpRequest
+    Form Dataview sourceview URL encoded
+    json:{"type":"all","is_offline":false,"within":"144"}
+    Response Headersview source
+    Content-Length:41
+    Content-Type:application/json;charset=ISO-8859-1
+    Date:Mon, 14 Jul 2014 22:51:13 GMT
+    Server:Apache-Coyote/1.1
+####Results:
+    _id: "53bf5d68e4b0427b33a6e537"
+    bytes: 233606019
+    duration: 227411
+    first_seen: 1405050216
+    hostname: "Martins-iPad"
+    is_guest: false
+    last_seen: 1405366710
+    mac: "f4:1b:a1:11:f8:c3"
+    oui: "Apple"
+    rx_bytes: 30514628
+    site_id: "53beb3aae4b0427b33a6e4dc"
+    stat: {_id:53bf5d681ef73454048c8dd6, bytes:233606019, duration:227411, last_seen:1405366710, o:user,…}
+        _id: "53bf5d681ef73454048c8dd6"
+        bytes: 233606019
+        duration: 227411
+        last_seen: 1405366710
+        o: "user"
+        rx_bytes: 30514628
+        site_id: "53beb3aae4b0427b33a6e4dc"
+        tx_bytes: 203091391
+        user: "f4:1b:a1:11:f8:c3"
+    tx_bytes: 203091391
+    Vary:Accept-Encoding
+
+####Command(Get Offline Users):
+    Remote Address:10.104.0.199:8443
+    Request URL:https://10.104.0.199:8443/api/s/111111111/stat/alluser
+    Request Method:POST
+    Status Code:200 OK
+    Request Headersview source
+    Accept:*/*
+    Accept-Encoding:gzip,deflate,sdch
+    Accept-Language:en-US,en;q=0.8
+    Cache-Control:no-cache
+    Connection:keep-alive
+    Content-Length:86
+    Content-Type:application/x-www-form-urlencoded; charset=UTF-8
+    Cookie:unifises=10c1857b7ff68b1d69ad235a048b080f
+    Host:10.104.0.199:8443
+    Origin:https://10.104.0.199:8443
+    Pragma:no-cache
+    Referer:https://10.104.0.199:8443/manage/s/111111111
+    User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36
+    X-Requested-With:XMLHttpRequest
+    Form Dataview sourceview URL encoded
+    json:{"type":"all","is_offline":true,"within":"144"}
+    Response Headersview source
+    Content-Length:41
+    Content-Type:application/json;charset=ISO-8859-1
+    Date:Mon, 14 Jul 2014 22:52:03 GMT
+    Server:Apache-Coyote/1.1
+
+##Backup
+
+####Command:
+    Remote Address:10.104.0.199:8443
+    Request URL:https://10.104.0.199:8443/api/s/111111111/cmd/system
+    Request Method:POST
+    Status Code:200 OK
+    Request Headersview source
+    Accept:*/*
+    Accept-Encoding:gzip,deflate,sdch
+    Accept-Language:en-US,en;q=0.8
+    Cache-Control:no-cache
+    Connection:keep-alive
+    Content-Length:58
+    Content-Type:application/x-www-form-urlencoded; charset=UTF-8
+    Cookie:unifises=10c1857b7ff68b1d69ad235a048b080f
+    Host:10.104.0.199:8443
+    Origin:https://10.104.0.199:8443
+    Pragma:no-cache
+    Referer:https://10.104.0.199:8443/manage/s/111111111
+    User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36
+    X-Requested-With:XMLHttpRequest
+    Form Dataview sourceview URL encoded
+    json:{"days":"7","cmd":"backup"}
+    Response Headersview source
+    Content-Length:74
+    Content-Type:application/json;charset=ISO-8859-1
+    Date:Mon, 14 Jul 2014 23:07:57 GMT
+    Server:Apache-Coyote/1.1
+
+####Result:
+    0: {url:/dl/backup/3.2.1.unf}
+        url: "/dl/backup/3.2.1.unf"
+
+##Logout
+
+####Command:
+    Remote Address:10.104.0.199:8443
+    Request URL:https://10.104.0.199:8443/logout
+    Request Method:GET
+    Status Code:302 Found
+    Request Headersview source
+    Accept:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+    Accept-Encoding:gzip,deflate,sdch
+    Accept-Language:en-US,en;q=0.8
+    Cache-Control:no-cache
+    Connection:keep-alive
+    Cookie:unifises=c1d978e5702b1fa2e808923a1fcd8f95
+    Host:10.104.0.199:8443
+    Pragma:no-cache
+    Referer:https://10.104.0.199:8443/manage/s/111111111
+    User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36
+    Response Headersview source
+    Content-Length:0
+    Date:Mon, 14 Jul 2014 23:14:17 GMT
+    Location:https://10.104.0.199:8443/login
+    Server:Apache-Coyote/1.1
+
+####Result:
+    None
+
+##Login
+
+####Command:
+    Remote Address:10.104.0.199:8443
+    Request URL:https://10.104.0.199:8443/login
+    Request Method:POST
+    Status Code:302 Found
+    Request Headersview source
+    Accept:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+    Accept-Encoding:gzip,deflate,sdch
+    Accept-Language:en-US,en;q=0.8
+    Cache-Control:no-cache
+    Connection:keep-alive
+    Content-Length:43
+    Content-Type:application/x-www-form-urlencoded
+    Host:10.104.0.199:8443
+    Origin:https://10.104.0.199:8443
+    Pragma:no-cache
+    Referer:https://10.104.0.199:8443/login
+    User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36
+    Form Dataview sourceview URL encoded
+    username:admin
+    password:Jive123
+    login:Login
+    Response Headersview source
+    Content-Length:0
+    Content-Type:text/html;charset=UTF-8
+    Date:Mon, 14 Jul 2014 23:16:31 GMT
+    Location:https://10.104.0.199:8443/manage/s/default
+    Server:Apache-Coyote/1.1
+    Set-Cookie:unifises=401504ddca0d52f0533933225d98570a; Path=/; Secure; HttpOnly
+
+####Result:
+    None
+
+##Stats
+
+####Command (User):
+    Remote Address:10.104.0.199:8443
+    Request URL:https://10.104.0.199:8443/api/s/cabfrcvinzbgchnrqpmy/stat/alluser
+    Request Method:POST
+    Status Code:200 OK
+    Request Headersview source
+    Accept:*/*
+    Accept-Encoding:gzip,deflate,sdch
+    Accept-Language:en-US,en;q=0.8
+    Cache-Control:no-cache
+    Connection:keep-alive
+    Content-Length:87
+    Content-Type:application/x-www-form-urlencoded; charset=UTF-8
+    Cookie:unifises=0ebe3c37128cf8a9eccf71a18bd843ee
+    Host:10.104.0.199:8443
+    Origin:https://10.104.0.199:8443
+    Pragma:no-cache
+    Referer:https://10.104.0.199:8443/manage/s/cabfrcvinzbgchnrqpmy
+    User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36
+    X-Requested-With:XMLHttpRequest
+    Form Dataview sourceview URL encoded
+    json:{"type":"all","is_offline":false,"within":"144"}
+    Response Headersview source
+    Content-Encoding:gzip
+    Content-Type:application/json;charset=ISO-8859-1
+    Date:Mon, 21 Jul 2014 21:11:39 GMT
+    Server:Apache-Coyote/1.1
+    Transfer-Encoding:chunked
+    Vary:Accept-Encoding
+
+####Result (per user):
+    data: [{_id:53b339eb0cf2c3dd2d3b5fc2, bytes:9868380571, duration:57820, first_seen:1404254698,…},…]
+        0: {_id:53b339eb0cf2c3dd2d3b5fc2, bytes:9868380571, duration:57820, first_seen:1404254698,…}
+            _id: "53b339eb0cf2c3dd2d3b5fc2"
+            bytes: 9868380571
+            duration: 57820
+            first_seen: 1404254698
+            hostname: "DownstasAppleTV"
+            is_guest: false
+            last_seen: 1405977060
+            mac: "f4:f9:51:dd:56:a4"
+            oui: "Apple"
+            rx_bytes: 227471150
+            site_id: "53a1b27d0cf2253a51549481"
+            stat: {_id:53b4a1be978fe35db1042298, bytes:9868380571, duration:57820, last_seen:1404404600, o:user,…}
+                _id: "53b4a1be978fe35db1042298"
+                bytes: 9868380571
+                duration: 57820
+                last_seen: 1404404600
+                o: "user"
+                rx_bytes: 227471150
+                site_id: "53a1b27d0cf2253a51549481"
+                tx_bytes: 9640909421
+                user: "f4:f9:51:dd:56:a4"
+            tx_bytes: 9640909421
+        1: {_id:53a2fcdd0cf2bb07755c3d32, bytes:13817825806, duration:1066492, first_seen:1403190492,…}
+        2: {_id:53a29b170cf2bb07755c3d1f, bytes:16059498765, duration:529528, first_seen:1403165462,…}
+        3: {_id:53b2587c0cf2c3dd2d3b5ef6, bytes:9270530791, duration:40979, first_seen:1404196988,…}
+        4: {_id:53a29adb0cf2bb07755c3d1d, bytes:177593802, duration:27089, first_seen:1403165403,…}
+
+####Command (Access Point):
+    Remote Address:10.104.0.199:8443
+    Request URL:https://10.104.0.199:8443/api/s/cabfrcvinzbgchnrqpmy/stat/sta
+    Request Method:POST
+    Status Code:200 OK
+    Request Headersview source
+    Accept:*/*
+    Accept-Encoding:gzip,deflate,sdch
+    Accept-Language:en-US,en;q=0.8
+    Cache-Control:no-cache
+    Connection:keep-alive
+    Content-Length:11
+    Content-Type:application/x-www-form-urlencoded; charset=UTF-8
+    Cookie:unifises=0ebe3c37128cf8a9eccf71a18bd843ee
+    Host:10.104.0.199:8443
+    Origin:https://10.104.0.199:8443
+    Pragma:no-cache
+    Referer:https://10.104.0.199:8443/manage/s/cabfrcvinzbgchnrqpmy
+    User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36
+    X-Requested-With:XMLHttpRequest
+    Form Dataview sourceview URL encoded
+    json:{}
+    Response Headersview source
+    Content-Length:1978
+    Content-Type:application/json;charset=ISO-8859-1
+    Date:Mon, 21 Jul 2014 21:06:25 GMT
+    Server:Apache-Coyote/1.1
+
+####Result (For each access point):
+    _id: "53b597b01ef73454048c10d5"
+    _rx_bytes: 501704
+    _rx_crypts: 0
+    _rx_dropped: 0
+    _rx_errors: 0
+    _rx_frags: 0
+    _rx_packets: 2503
+    _tx_bytes: 383368
+    _tx_dropped: 0
+    _tx_errors: 0
+    _tx_packets: 2411
+    _tx_retries: 409
+    _uptime: 19817
+    ap_mac: "24:a4:3c:8c:88:d2"
+    assoc_time: 1404409747
+    auth_time: 4294967153
+    authorized: true
+    bssid: "2a:a4:3c:8d:88:d2"
+    bytes: 9868514540
+    bytes-d: 114
+    bytes-r: 1
+    ccq: 991
+    channel: 11
+    dhcpend_time: 1800
+    dhcpstart_time: 1794
+    essid: "Aaron Wifi Jive"
+    first_seen: 1404254698
+    hostname: "DownstasAppleTV"
+    idletime: 17
+    ip: "192.168.1.235"
+    is_11a: null
+    is_11ac: null
+    is_11b: null
+    is_11n: true
+    is_guest: false
+    last_seen: 1405976761
+    mac: "f4:f9:51:dd:56:a4"
+    noise: -98
+    oui: "Apple"
+    powersave_enabled: false
+    qos_policy_applied: true
+    radio: "ng"
+    rssi: 35
+    rx_bytes: 227496430
+    rx_bytes-d: 64
+    rx_bytes-r: 1
+    rx_crypts: 0
+    rx_crypts-d: 0
+    rx_crypts-r: 0
+    rx_dropped: 0
+    rx_dropped-d: 0
+    rx_dropped-r: 0
+    rx_errors: 0
+    rx_errors-d: 0
+    rx_errors-r: 0
+    rx_frags: 0
+    rx_frags-d: 0
+    rx_frags-r: 0
+    rx_mcast: 43
+    rx_packets: 2324997
+    rx_packets-d: 1
+    rx_packets-r: 0
+    rx_rate: 72222
+    rx_retries: 6
+    signal: -63
+    site_id: "53a1b27d0cf2253a51549481"
+    state: 15
+    state_ht: true
+    state_pwrmgt: false
+    tx_bytes: 9641018110
+    tx_bytes-d: 50
+    tx_bytes-r: 0
+    tx_dropped: 0
+    tx_dropped-d: 0
+    tx_dropped-r: 0
+    tx_errors: 0
+    tx_errors-d: 0
+    tx_errors-r: 0
+    tx_packets: 6588111
+    tx_packets-d: 1
+    tx_packets-r: 0
+    tx_power: 46
+    tx_rate: 72222
+    tx_retries: 602053
+    tx_retries-d: 0
+    tx_retries-r: 0
+    uptime: 1567014
+    user_id: "53b339eb0cf2c3dd2d3b5fc2"
+
+####Command (Hourly - Statistics page):
+    Remote Address:10.104.0.199:8443
+    Request URL:https://10.104.0.199:8443/api/s/wkbntmd3kiqpba46zmqj/stat/report/hourly.system
+    Request Method:POST
+    Status Code:200 OK
+    Request Headersview source
+    Accept:*/*
+    Accept-Encoding:gzip,deflate,sdch
+    Accept-Language:en-US,en;q=0.8
+    Cache-Control:no-cache
+    Connection:keep-alive
+    Content-Length:129
+    Content-Type:application/x-www-form-urlencoded; charset=UTF-8
+    Cookie:unifises=0ebe3c37128cf8a9eccf71a18bd843ee
+    Host:10.104.0.199:8443
+    Origin:https://10.104.0.199:8443
+    Pragma:no-cache
+    Referer:https://10.104.0.199:8443/manage/s/wkbntmd3kiqpba46zmqj
+    User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36
+    X-Requested-With:XMLHttpRequest
+    Form Dataview sourceview URL encoded
+    json:{"attrs":["bytes","num_sta","time"],"start":1405886400000,"end":1405972800000}
+    Response Headersview source
+    Content-Encoding:gzip
+    Content-Type:application/json;charset=ISO-8859-1
+    Date:Mon, 21 Jul 2014 20:56:07 GMT
+    Server:Apache-Coyote/1.1
+    Transfer-Encoding:chunked
+    Vary:Accept-Encoding
+
+####Results (Time to # of bytes to # of clients):
+    data: [{_id:53cc1fcb1ef73454048d5df2, bytes:31114826, num_sta:3, o:system, time:1405886400000},…]
+        0: {_id:53cc1fcb1ef73454048d5df2, bytes:31114826, num_sta:3, o:system, time:1405886400000}
+            _id: "53cc1fcb1ef73454048d5df2"
+            bytes: 31114826
+            num_sta: 3
+            o: "system"
+            time: 1405886400000
+        1: {_id:53cc11d91ef73454048d5dc4, bytes:126802210, num_sta:2, o:system, time:1405882800000}
+            _id: "53cc11d91ef73454048d5dc4"
+            bytes: 126802210
+            num_sta: 2
+            o: "system"
+            time: 1405882800000
+        2: {_id:53cc03ab1ef73454048d5d6c, bytes:137364065, num_sta:3, o:system, time:1405879200000}
+        3: {_id:53cbf5b31ef73454048d5d3c, bytes:402607, num_sta:1, o:system, time:1405875600000}
+        4: {_id:53cbe7851ef73454048d5cec, bytes:288215, num_sta:1, o:system, time:1405872000000}
+        5: {_id:53cbd9941ef73454048d5cc0, bytes:2063266, num_sta:3, o:system, time:1405868400000}
+        6: {_id:53cbcb661ef73454048d5c70, bytes:11333194, num_sta:3, o:system, time:1405864800000}
+        7: {_id:53cbbd6e1ef73454048d5c42, bytes:401143924, num_sta:3, o:system, time:1405861200000}
+        8: {_id:53cbaf411ef73454048d5bf1, bytes:459170010, num_sta:3, o:system, time:1405857600000}
+        9: {_id:53cba14a1ef73454048d5bc2, bytes:5328145, num_sta:3, o:system, time:1405854000000}
+        10: {_id:53cb93521ef73454048d5b90, bytes:1248506, num_sta:3, o:system, time:1405850400000}
+        11: {_id:53cb85251ef73454048d5b42, bytes:1153752, num_sta:3, o:system, time:1405846800000}
+        12: {_id:53cb772e1ef73454048d5b04, bytes:1314402, num_sta:3, o:system, time:1405843200000}
+        13: {_id:53cb68ff1ef73454048d5ab6, bytes:1253832, num_sta:3, o:system, time:1405839600000}
+        14: {_id:53cb5af51ef73454048d5a4f, bytes:1303747, num_sta:3, o:system, time:1405836000000}
+        15: {_id:53cb4cdb1ef73454048d59ee, bytes:40538131, num_sta:3, o:system, time:1405832400000}
+        16: {_id:53cb3ecb1ef73454048d589e, bytes:20864362, num_sta:2, o:system, time:1405828800000}
+        17: {_id:53cb30c51ef73454048d585c, bytes:354227, num_sta:1, o:system, time:1405825200000}
+        18: {_id:53cb22b51ef73454048d57c6, bytes:395558, num_sta:1, o:system, time:1405821600000}
+        19: {_id:53cb14a61ef73454048d571c, bytes:401336, num_sta:1, o:system, time:1405818000000}
+        20: {_id:53cb06941ef73454048d5559, bytes:299775, num_sta:1, o:system, time:1405814400000}
+        21: {_id:53caf8851ef73454048d550d, bytes:278650, num_sta:1, o:system, time:1405810800000}
+        22: {_id:53caea751ef73454048d53f8, bytes:190542, num_sta:1, o:system, time:1405807200000}
+        23: {_id:53cadc641ef73454048d53b9, bytes:302216, num_sta:1, o:system, time:1405803600000}
+        24: {_id:53cace6e1ef73454048d5317, bytes:197991, num_sta:1, o:system, time:1405800000000}
+
+####Command (Statistics page):
+    Remote Address:10.104.0.199:8443
+    Request URL:https://10.104.0.199:8443/api/s/wkbntmd3kiqpba46zmqj/stat/quicklook
+    Request Method:POST
+    Status Code:200 OK
+    Request Headersview source
+    Accept:*/*
+    Accept-Encoding:gzip,deflate,sdch
+    Accept-Language:en-US,en;q=0.8
+    Cache-Control:no-cache
+    Connection:keep-alive
+    Content-Length:11
+    Content-Type:application/x-www-form-urlencoded; charset=UTF-8
+    Cookie:unifises=0ebe3c37128cf8a9eccf71a18bd843ee
+    Host:10.104.0.199:8443
+    Origin:https://10.104.0.199:8443
+    Pragma:no-cache
+    Referer:https://10.104.0.199:8443/manage/s/wkbntmd3kiqpba46zmqj
+    User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36
+    X-Requested-With:XMLHttpRequest
+    Form Dataview sourceview URL encoded
+    json:{}
+    Response Headersview source
+    Content-Encoding:gzip
+    Content-Type:application/json;charset=ISO-8859-1
+    Date:Mon, 21 Jul 2014 20:36:10 GMT
+    Server:Apache-Coyote/1.1
+    Transfer-Encoding:chunked
+    Vary:Accept-Encoding
+
+####Result:
+    data: [{,…}]
+    0: {,…}
+        aps_current: [{_id:53b46725fc0c2db25d87bbb0, ap:24:a4:3c:10:10:05, bytes:2327217193, guest-na-rx_bytes:58586,…},…]
+            0: {_id:53b46725fc0c2db25d87bbb0, ap:24:a4:3c:10:10:05, bytes:2327217193, guest-na-rx_bytes:58586,…}
+                _id: "53b46725fc0c2db25d87bbb0"
+                ap: "24:a4:3c:10:10:05"
+                bytes: 2327217193
+                guest-na-rx_bytes: 58586
+                guest-na-rx_frags: 8327617
+                guest-na-rx_packets: 546
+                guest-na-time_delta: 1405974945
+                guest-na-tx_bytes: 84941
+                guest-na-tx_packets: 457
+                guest-na-tx_retries: 7150
+                guest-ng-rx_bytes: 8093961
+                guest-ng-rx_frags: 115579308
+                guest-ng-rx_packets: 72734
+                guest-ng-time_delta: 1405974945
+                guest-ng-tx_bytes: 14327462
+                guest-ng-tx_packets: 66010
+                guest-ng-tx_retries: 99172
+                guest-rx_bytes: 8152547
+                guest-rx_frags: 123906925
+                guest-rx_packets: 73280
+                guest-time_delta: 2811949890
+                guest-tx_bytes: 14412403
+                guest-tx_packets: 66467
+                guest-tx_retries: 106322
+                na-rx_bytes: 136028658
+                na-rx_frags: 16655234
+                na-rx_packets: 661756
+                na-time_delta: 2811949890
+                na-tx_bytes: 998197655
+                na-tx_errors: 43
+                na-tx_packets: 1013991
+                na-tx_retries: 14300
+                ng-rx_bytes: 553427407
+                ng-rx_errors: 6
+                ng-rx_frags: 231158617
+                ng-rx_packets: 1092837
+                ng-time_delta: 2811949890
+                ng-tx_bytes: 639563473
+                ng-tx_errors: 3866
+                ng-tx_packets: 1115197
+                ng-tx_retries: 198344
+                o: "ap"
+                rx_bytes: 689456065
+                rx_errors: 6
+                rx_frags: 247813851
+                rx_packets: 1754593
+                site_id: "53a1af4c0cf2253a51549457"
+                time_delta: 5623899780
+                tx_bytes: 1637761128
+                tx_errors: 3909
+                tx_packets: 2129188
+                tx_retries: 212644
+                uplink-rx_bytes: 1737485875
+                uplink-rx_packets: 2898127
+                uplink-time_delta: 1405974945
+                uplink-tx_bytes: 849291503
+                uplink-tx_packets: 2022077
+                user-na-rx_bytes: 135970072
+                user-na-rx_frags: 8327617
+                user-na-rx_packets: 661210
+                user-na-time_delta: 1405974945
+                user-na-tx_bytes: 998112714
+                user-na-tx_errors: 43
+                user-na-tx_packets: 1013534
+                user-na-tx_retries: 7150
+                user-ng-rx_bytes: 545333446
+                user-ng-rx_errors: 6
+                user-ng-rx_frags: 115579309
+                user-ng-rx_packets: 1020103
+                user-ng-time_delta: 1405974945
+                user-ng-tx_bytes: 625236011
+                user-ng-tx_errors: 3866
+                user-ng-tx_packets: 1049187
+                user-ng-tx_retries: 99172
+                user-rx_bytes: 681303518
+                user-rx_errors: 6
+                user-rx_frags: 123906926
+                user-rx_packets: 1681313
+                user-time_delta: 2811949890
+                user-tx_bytes: 1623348725
+                user-tx_errors: 3909
+                user-tx_packets: 2062721
+                user-tx_retries: 106322
+            1: {_id:53b4675ffc0c2db25d87bbff, ap:dc:9f:db:62:93:91, bytes:640241929, guest-ng-rx_bytes:2628595,…}
+        stas_current: []
+        users_life: [{_id:53b7283c1ef73454048c2c8b, bytes:1013700918, duration:82991, last_seen:1405952960, o:user,…},…]
+            0: {_id:53b7283c1ef73454048c2c8b, bytes:1013700918, duration:82991, last_seen:1405952960, o:user,…}
+                _id: "53b7283c1ef73454048c2c8b"
+                bytes: 1013700918
+                duration: 82991
+                last_seen: 1405952960
+                o: "user"
+                rx_bytes: 63467568
+                site_id: "53a1af4c0cf2253a51549457"
+                tx_bytes: 950233350
+                user: "88:1f:a1:16:0b:4e"
+            1: {_id:53bc00051ef73454048c48c9, bytes:983603366, duration:170192, last_seen:1405970685, o:user,…}
+            2: {_id:53b7323d1ef73454048c2ca5, bytes:553637403, duration:41641, last_seen:1404572685, o:user,…}
+            3: {_id:53bb68161ef73454048c4395, bytes:385135004, duration:22083, last_seen:1405577310, o:user,…}
+            4: {_id:53baa3af1ef73454048c3a31, bytes:137825533, duration:6688, last_seen:1405058780, o:user,…}

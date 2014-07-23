@@ -1,7 +1,7 @@
 'use strict';
 
-managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$routeParams", "SiteService", "SiteSettingsService", "notificationService", "dialogService",
-    function SiteSettingsController($scope, $location, $routeParams, siteService, siteSettingsService, notificationService, dialogService) {
+managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$routeParams", "SiteService", "SiteSettingsService", "notificationService", "dialogService", "networkService",
+    function SiteSettingsController($scope, $location, $routeParams, siteService, siteSettingsService, notificationService, dialogService, networkService) {
         $scope.activeItem = 'Details';
         $scope.activeSubItem = 'Access';
         
@@ -38,6 +38,13 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
                     siteService.getById($scope.settings.site_id).then(
                             function(site){
                                 $scope.originalSite = site;
+                                
+                                if(!_.has($scope.originalSite, 'zeroHandoff'))
+                                    $scope.originalSite.zeroHandoff = false;
+                                
+                                if(!_.has($scope.originalSite, 'zeroHandoffRadio'))
+                                    $scope.originalSite.zeroHandoffRadio = "";
+                                
                                 $scope.site = angular.copy($scope.originalSite);
                             },
                             function(reason){
@@ -60,6 +67,11 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
                         notificationService.error("siteEdit", "An error occurred while attempting to save this site");
                     }
                 );
+
+            if(!$scope.site.zeroHandoff)
+            	networkService.changeAllNetworksZeroHandoff("");
+            else if($scope.site.zeroHandoff)
+                networkService.changeAllNetworksZeroHandoff($scope.site.zeroHandoffRadio);
         
             $scope.isNew = $routeParams.id == undefined;
 
