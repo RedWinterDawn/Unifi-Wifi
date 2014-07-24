@@ -42,9 +42,6 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
                                 if(!_.has($scope.originalSite, 'zeroHandoff'))
                                     $scope.originalSite.zeroHandoff = false;
                                 
-                                if(!_.has($scope.originalSite, 'zeroHandoffRadio'))
-                                    $scope.originalSite.zeroHandoffRadio = "";
-                                
                                 $scope.site = angular.copy($scope.originalSite);
                             },
                             function(reason){
@@ -68,13 +65,8 @@ managedWifi.controller('SiteSettingsController', ["$scope", "$location", "$route
                     }
                 );
 
-            if(!$scope.site.zeroHandoff) {
-            	networkService.changeAllNetworksZeroHandoff("");
-            	accessPointService.updateAllNetworksZeroHandoff("");
-            }
-            else if($scope.site.zeroHandoff) {
-                networkService.changeAllNetworksZeroHandoff($scope.site.zeroHandoffRadio);
-                accessPointService.updateAllApZeroHandoff($scope.site.zeroHandoffRadio);
+            if($scope.site.zeroHandoff != $scope.originalSite.zeroHandoff) {
+            	networkService.changeAllNetworksZeroHandoff($scope.site.zeroHandoff);
             }
         
             $scope.isNew = $routeParams.id == undefined;

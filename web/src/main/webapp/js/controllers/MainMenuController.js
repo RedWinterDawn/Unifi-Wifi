@@ -50,26 +50,13 @@ managedWifi.controller('MainMenuController', ["$scope", "$timeout", "$http", "$l
                     function(allNetworkData) {
                         $scope.networks = allNetworkData.networks;
 
-                        $scope.zeroHandoffGroup2G = allNetworkData.wlangroups.filter(function(group){return group.name == 'zero-handoff2G';})[0];
-                        $scope.zeroHandoffGroup5G = allNetworkData.wlangroups.filter(function(group){return group.name == 'zero-handoff5G';})[0];
+                        $scope.zeroHandoffGroup2G = allNetworkData.wlangroups.filter(function(group){return group.name == 'zero-handoff';})[0];
 
                         if($scope.zeroHandoffGroup2G == undefined){
                             var networkGroup = {
-                                name: "zero-handoff2G",
+                                name: "zero-handoff",
                                 roam_enabled:true,
                                 roam_radio:"ng",
-                                roam_channel_ng:1,
-                                roam_channel_na:36
-                            };
-                            
-                            networkService.createZeroHandoffGroup(networkGroup);
-                        }
-
-                        if($scope.zeroHandoffGroup5G == undefined){
-                            var networkGroup = {
-                                name: "zero-handoff5G",
-                                roam_enabled:true,
-                                roam_radio:"na",
                                 roam_channel_ng:1,
                                 roam_channel_na:36
                             };

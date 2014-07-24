@@ -69,7 +69,10 @@
                                                 </div>
                                             </div>
                                             <div class="control-group">
-                                                <div class="control-label">Zero Handoff</div>
+                                                <div class="control-label">
+                                                Zero Handoff
+                                                    <i class="icon-question-sign section-help" tooltip-placement="left" tooltip="Clients can roam freelys between APs without delay in transition. When enabled it is applied to all APs and networks within this group."></i>
+                                                </div>
                                                 <div class="controls">
                                                     <label class="radio">
                                                         <input type="radio" ng-model="site.zeroHandoff" ng-value="true">Enabled
@@ -77,17 +80,6 @@
                                                     <label class="radio">
                                                         <input type="radio" ng-model="site.zeroHandoff" ng-value="false">Disabled
                                                     </label>
-                                                </div>
-                                            </div>
-                                            <div class="control-group" ng-show="site.zeroHandoff" ng-class="form.zeroHandoffRadio.$invalid ? 'error' : ''">
-                                                <div class="control-label">Radio</div>
-                                                <div class="controls">
-                                                    <select name="zeroHandoffRadio" ng-model="site.zeroHandoffRadio" ng-required="site.zeroHandoff">
-                                                        <option value="2G">2G</option>
-                                                        <option value="5G">5G</option>
-                                                    </select>
-                                                    <i ng-hide="form.zeroHandoffRadio.$error.required"></i>
-                                                    <div ng-show="form.zeroHandoffRadio.$error.required" class="tip help">A radio is required</div>
                                                 </div>
                                             </div>
                                             <h2 style="font-size: 17px">Access Point SSH Username and Password</h2>

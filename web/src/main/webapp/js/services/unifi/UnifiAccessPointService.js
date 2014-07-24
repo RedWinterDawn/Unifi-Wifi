@@ -82,7 +82,8 @@ managedWifi.factory('unifiAccessPointService', ['$q', '$http', 'appSettings', 'm
             var update = {"type": config.type};
             if(config.type == 'static')
                 jive.applyProps(config, update, ["ip", "gateway", "netmask", "dns1", "dns2", "dnssuffix"]);
-            return service.webServicePostForm("/device/" + accessPoint._id, {name: accessPoint.name, config_network: update});
+            return service.webServicePostForm("/device/" + accessPoint._id, {name: accessPoint.name, wlangroup_id_ng: accessPoint.wlangroup_id_ng,
+            	wlangroup_id_na: accessPoint.wlangroup_id_na, wlan_overrides: accessPoint.wlan_overrides,config_network: update});
         },
         
         upgrade: function(accessPoint){
