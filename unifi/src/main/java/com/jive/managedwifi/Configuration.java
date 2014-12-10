@@ -124,7 +124,7 @@ public class Configuration
   public static String getPortalAPIBaseURL()
   {
     return INSTANCE.properties.getProperty("portal-api.URL",
-        "https://api.jive.com/wifi");
+        "http://10.104.1.237:9090");
   }
 
 }
